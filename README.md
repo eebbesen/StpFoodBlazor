@@ -1,3 +1,5 @@
+# StpFoodBlazor
+Display downtown Saint Paul food and drink deals
 
 
 ## Environment Variables

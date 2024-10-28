@@ -3,11 +3,10 @@ using System.Net.Http.Json;
 
 namespace StpFoodBlazor.Services
 {
-    public class HttpDealService(HttpClient httpClient, IConfiguration configuration) : IDealService
+    public class HttpDealService(HttpClient httpClient) : IDealService
     {
         public Task<DealEvent[]> GetDealsAsync(bool includeAlcohol)
         {
-            configuration.GetValue<string>("SheetsUrl");
             return httpClient.GetFromJsonAsync<DealEvent[]>(GetUrl());
         }
 
