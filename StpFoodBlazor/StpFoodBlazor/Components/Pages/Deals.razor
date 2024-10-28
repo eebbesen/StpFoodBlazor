@@ -1,0 +1,45 @@
+﻿@using StpFoodBlazor.Services
+@using StpFoodBlazor.Models
+@inject IDealService HttpDealService
+
+
+@page "/deals"
+@attribute [StreamRendering]
+
+<PageTitle>Deals</PageTitle>
+
+<h1>Deals</h1>
+
+<p>This component demonstrates showing data.</p>
+
+@if (rDeals == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Deal</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var rDeal in rDeals)
+            {
+                <tr>
+                    <td>@rDeal.Desc</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Deal[]? rDeals;
+
+    protected override async Task OnInitializedAsync()
+    {
+        rDeals = await HttpDealService.GetDealsAsync(false);
+    }
+}

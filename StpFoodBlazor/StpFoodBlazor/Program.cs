@@ -1,12 +1,16 @@
 using StpFoodBlazor.Client.Pages;
 using StpFoodBlazor.Components;
+using StpFoodBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddEnvironmentVariables();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<IDealService, HttpDealService>();
 
 var app = builder.Build();
 
