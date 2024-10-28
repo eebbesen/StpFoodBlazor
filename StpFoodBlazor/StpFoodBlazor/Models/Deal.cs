@@ -1,11 +1,11 @@
 ﻿namespace StpFoodBlazor.Models
 {
-    public class Deal
+    public class DealEvent
     {
-        public string? Desc { get; set; }
+        public string? Deal { get; set; }
         public string? Day { get; set; }
-        public string? Place { get; set; }
-        public bool IsAlcohol { get; set; }
+        public string? Name { get; set; }
+        public string? Alcohol { get; set; }
 
     }
 }

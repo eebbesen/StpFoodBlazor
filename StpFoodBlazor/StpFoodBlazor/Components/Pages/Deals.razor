@@ -12,7 +12,7 @@
 
 <p>This component demonstrates showing data.</p>
 
-@if (rDeals == null)
+@if (deals == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -21,14 +21,18 @@ else
     <table class="table">
         <thead>
             <tr>
+                <th>Place</th>
                 <th>Deal</th>
+                <th>Day</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var rDeal in rDeals)
+            @foreach (var deal in deals)
             {
                 <tr>
-                    <td>@rDeal.Desc</td>
+                    <td>@deal.Name</td>
+                    <td>@deal.Deal</td>
+                    <td>@deal.Day</td>
                 </tr>
             }
         </tbody>
@@ -36,10 +40,10 @@ else
 }
 
 @code {
-    private Deal[]? rDeals;
+    private DealEvent[]? deals;
 
     protected override async Task OnInitializedAsync()
     {
-        rDeals = await HttpDealService.GetDealsAsync(false);
+        deals = await HttpDealService.GetDealsAsync(false);
     }
 }
