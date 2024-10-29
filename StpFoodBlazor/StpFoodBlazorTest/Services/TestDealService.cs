@@ -1,11 +1,12 @@
 using StpFoodBlazor.Models;
+using StpFoodBlazor.Services;
 using System.Text.Json;
 using System.IO;
 using System.Threading.Tasks;
 using System;
 
 
-namespace StpFoodBlazor.Services
+namespace StpFoodBlazorTest.Services
 {
     public class TestDealService : IDealService
     {

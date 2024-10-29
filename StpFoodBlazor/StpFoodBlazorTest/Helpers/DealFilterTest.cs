@@ -1,8 +1,8 @@
 using StpFoodBlazor.Helpers;
 using StpFoodBlazor.Models;
-using StpFoodBlazor.Services;
 using System.Threading.Tasks;
 using System;
+using StpFoodBlazorTest.Services;
 
 namespace StpFoodBlazorTest.Helpers {
 
@@ -116,7 +116,7 @@ namespace StpFoodBlazorTest.Helpers {
         }
 
         private static async Task<DealEvent[]> getDeals() {
-            TestDealService dealService = new TestDealService();
+            TestDealService dealService = new();
             return await dealService.GetDealsAsync();
         }
 

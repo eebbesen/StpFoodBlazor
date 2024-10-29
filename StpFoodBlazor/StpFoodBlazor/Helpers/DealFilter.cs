@@ -1,5 +1,4 @@
 using StpFoodBlazor.Models;
-using System;
 
 namespace StpFoodBlazor.Helpers {
     public class DealFilter {
@@ -11,7 +10,7 @@ namespace StpFoodBlazor.Helpers {
 
         public DealEvent[] filter() {
             if (Deals == null) {
-                return new DealEvent[0];
+                return [];
             }
 
             DealEvent[] filteredDeals = Deals;
@@ -31,15 +30,7 @@ namespace StpFoodBlazor.Helpers {
             if(HappyHour != null) {
                 filteredDeals = filterByHappyHour(filteredDeals, (bool)HappyHour);
             }
-            // if (Name != null) {
-            //     filteredDeals = filterByName(filteredDeals);
-            // }
-            // if (Alcohol != null) {
-            //     filteredDeals = filterByAlcohol(filteredDeals);
-            // }
-            // if (HappyHour != null) {
-            //     filteredDeals = filterByHappyHour(filteredDeals);
-            // }
+
             return filteredDeals;
         }
 
