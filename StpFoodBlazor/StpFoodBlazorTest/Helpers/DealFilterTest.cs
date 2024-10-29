@@ -3,26 +3,27 @@ using StpFoodBlazor.Models;
 using StpFoodBlazor.Services;
 using System.Threading.Tasks;
 using System;
-using System.Runtime.ConstrainedExecution;
-using Bunit.Extensions;
 
 namespace StpFoodBlazorTest.Helpers {
 
     public class DealFilterTest {
+        private readonly DealEvent[] deals;
+        private readonly DealFilter filter;
+        public DealFilterTest() {
+            deals = getDeals().Result;
+            filter = new DealFilter();
+        }
+
         [Fact]
         public void ShouldHandleEmptyDeals() {
-            DealFilter filter = new DealFilter();
-
             DealEvent[] filteredDeals = filter.filter();
 
             Assert.Empty(filteredDeals);
         }
 
         [Fact]
-        public async Task ShouldReturnInputWhenNoFilterConditions() {
-            DealEvent[] deals = await getDeals();
+        public void ShouldReturnInputWhenNoFilterConditions() {
             int dealsLength = deals.Length;
-            DealFilter filter = new DealFilter();
             filter.Deals = deals;
 
             DealEvent[] filteredDeals = filter.filter();
@@ -32,10 +33,8 @@ namespace StpFoodBlazorTest.Helpers {
         }
 
         [Fact]
-        public async Task ShouldReturnFilteredByDay() {
+        public void ShouldReturnFilteredByDay() {
             String day = "Monday";
-            DealEvent[] deals = await getDeals();
-            DealFilter filter = new DealFilter();
             filter.Deals = deals;
             filter.Day = day;
 
@@ -46,10 +45,8 @@ namespace StpFoodBlazorTest.Helpers {
         }
 
         [Fact]
-        public async Task ShouldReturnFilteredByName() {
+        public void ShouldReturnFilteredByName() {
             String name = "Pino's Pizza";
-            DealEvent[] deals = await getDeals();
-            DealFilter filter = new DealFilter();
             filter.Deals = deals;
             filter.Name = name;
 
@@ -60,11 +57,9 @@ namespace StpFoodBlazorTest.Helpers {
         }
 
         [Fact]
-        public async Task ShouldReturnFilteredByNameAndDay() {
+        public void ShouldReturnFilteredByNameAndDay() {
             String name = "Pino's Pizza";
             String day = "Tuesday";
-            DealEvent[] deals = await getDeals();
-            DealFilter filter = new DealFilter();
             filter.Deals = deals;
             filter.Name = name;
             filter.Day = day;
@@ -79,9 +74,7 @@ namespace StpFoodBlazorTest.Helpers {
         }
 
         [Fact]
-        public async Task ShouldReturnFilteredByAlcoholTrue() {
-            DealEvent[] deals = await getDeals();
-            DealFilter filter = new DealFilter();
+        public void ShouldReturnFilteredByAlcoholTrue() {
             filter.Deals = deals;
             filter.Alcohol = true;
 
@@ -94,9 +87,7 @@ namespace StpFoodBlazorTest.Helpers {
         }
 
         [Fact]
-        public async Task ShouldReturnFilteredByAlcoholFalse() {
-            DealEvent[] deals = await getDeals();
-            DealFilter filter = new DealFilter();
+        public void ShouldReturnFilteredByAlcoholFalse() {
             filter.Deals = deals;
             filter.Alcohol = false;
 

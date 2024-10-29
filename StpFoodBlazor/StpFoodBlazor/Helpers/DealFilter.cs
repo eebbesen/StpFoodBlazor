@@ -15,11 +15,12 @@ namespace StpFoodBlazor.Helpers {
             }
 
             DealEvent[] filteredDeals = Deals;
-            if (Day != null) {
+
+            if (!string.IsNullOrWhiteSpace(Day)) {
                 filteredDeals = filterByDay(filteredDeals, Day);
             }
 
-            if (Name != null) {
+            if (!string.IsNullOrWhiteSpace(Name)) {
                 filteredDeals = filterByName(filteredDeals, Name);
             }
 
