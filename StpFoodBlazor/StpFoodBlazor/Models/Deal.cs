@@ -1,4 +1,6 @@
-﻿namespace StpFoodBlazor.Models
+﻿using System.Text.Json.Serialization;
+
+namespace StpFoodBlazor.Models
 {
     public class DealEvent
     {
@@ -6,7 +8,8 @@
         public string? Day { get; set; }
         public string? Name { get; set; }
         public string? Alcohol { get; set; }
-        public string? HappyHour { get; set; }
 
+        [JsonPropertyName("Happy Hour")]
+        public string? HappyHour { get; set; }
     }
 }

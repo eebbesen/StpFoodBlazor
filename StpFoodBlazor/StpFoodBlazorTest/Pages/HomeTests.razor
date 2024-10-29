@@ -4,15 +4,10 @@
     [Fact]
     public void HomeShouldDisplayText()
     {
-        // Arrange
         using var ctx = new TestContext();
         var cut = ctx.Render(@<Home />);
         var paraElm = cut.Find("h1");
 
-        // Act
-        @* cut.Find("button").Click(); *@
-
-        // Assert
         var paraElmText = paraElm.InnerHtml;
         paraElmText.MarkupMatches("Hello, world!");
     }
