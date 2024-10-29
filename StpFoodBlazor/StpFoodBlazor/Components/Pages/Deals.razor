@@ -44,6 +44,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        deals = await HttpDealService.GetDealsAsync(false);
+        deals = await HttpDealService.GetDealsAsync();
     }
 }
