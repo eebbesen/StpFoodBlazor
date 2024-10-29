@@ -5,9 +5,10 @@ namespace StpFoodBlazor.Services
 {
     public class HttpDealService(HttpClient httpClient) : IDealService
     {
-        public Task<DealEvent[]> GetDealsAsync(bool includeAlcohol)
+        public async Task<DealEvent[]> GetDealsAsync()
         {
-            return httpClient.GetFromJsonAsync<DealEvent[]>(GetUrl());
+            var result = await httpClient.GetFromJsonAsync<DealEvent[]>(GetUrl());
+            return result ?? Array.Empty<DealEvent>();
         }
 
         private static String GetUrl()

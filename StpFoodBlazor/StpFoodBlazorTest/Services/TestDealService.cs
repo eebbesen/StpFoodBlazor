@@ -10,7 +10,7 @@ namespace StpFoodBlazor.Services
     public class TestDealService : IDealService
     {
         private static readonly string DEAL_FIXTURES_PATH = Path.Combine(Directory.GetCurrentDirectory(), "fixtures", "deals.json");
-        public async Task<DealEvent[]> GetDealsAsync(bool includeAlcohol)
+        public async Task<DealEvent[]> GetDealsAsync()
         {
             if (File.Exists(DEAL_FIXTURES_PATH))
             {
