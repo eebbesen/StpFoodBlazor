@@ -18,7 +18,7 @@
 }
 else
 {
-    <table class="table">
+    <table class="table" id="deals_table">
         <thead>
             <tr>
                 <th>Place</th>
@@ -26,7 +26,7 @@ else
                 <th>Day</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="deals_table_body">
             @foreach (var deal in deals)
             {
                 <tr>

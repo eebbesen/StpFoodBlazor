@@ -1,0 +1,2918 @@
+[
+  {
+    "PlaceID": "1",
+    "Day": "Monday",
+    "Name": "Asian Express",
+    "Deal": "$12.95 combo",
+    "Address": "101 5th St E # 285, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "1",
+    "Day": "Tuesday",
+    "Name": "Asian Express",
+    "Deal": "$12.95 combo",
+    "Address": "101 5th St E # 285, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "1",
+    "Day": "Wednesday",
+    "Name": "Asian Express",
+    "Deal": "$12.95 combo",
+    "Address": "101 5th St E # 285, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "1",
+    "Day": "Thursday",
+    "Name": "Asian Express",
+    "Deal": "$12.95 combo",
+    "Address": "101 5th St E # 285, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "1",
+    "Day": "Friday",
+    "Name": "Asian Express",
+    "Deal": "$12.95 combo",
+    "Address": "101 5th St E # 285, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "4",
+    "Day": "Monday",
+    "Name": "Ho Fan",
+    "Deal": "$12.95 combo",
+    "Address": "445 Minnesota St #225, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "4",
+    "Day": "Tuesday",
+    "Name": "Ho Fan",
+    "Deal": "$12.95 combo",
+    "Address": "445 Minnesota St #225, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "4",
+    "Day": "Wednesday",
+    "Name": "Ho Fan",
+    "Deal": "$12.95 combo",
+    "Address": "445 Minnesota St #225, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "4",
+    "Day": "Thursday",
+    "Name": "Ho Fan",
+    "Deal": "$12.95 combo",
+    "Address": "445 Minnesota St #225, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "4",
+    "Day": "Friday",
+    "Name": "Ho Fan",
+    "Deal": "$12.95 combo",
+    "Address": "445 Minnesota St #225, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "9",
+    "Day": "Monday",
+    "Name": "Mai-Lam Vietnamese Restaurant",
+    "Deal": "$11.95 combo",
+    "Address": "401 Robert St N #203, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "9",
+    "Day": "Tuesday",
+    "Name": "Mai-Lam Vietnamese Restaurant",
+    "Deal": "$11.95 combo",
+    "Address": "401 Robert St N #203, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "9",
+    "Day": "Wednesday",
+    "Name": "Mai-Lam Vietnamese Restaurant",
+    "Deal": "$11.95 combo",
+    "Address": "401 Robert St N #203, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "9",
+    "Day": "Thursday",
+    "Name": "Mai-Lam Vietnamese Restaurant",
+    "Deal": "$11.95 combo",
+    "Address": "401 Robert St N #203, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "9",
+    "Day": "Friday",
+    "Name": "Mai-Lam Vietnamese Restaurant",
+    "Deal": "$11.95 combo",
+    "Address": "401 Robert St N #203, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "14",
+    "Day": "Monday",
+    "Name": "American Cajun Grill",
+    "Deal": "$10 meat combo",
+    "Address": "56 6th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "14",
+    "Day": "Tuesday",
+    "Name": "American Cajun Grill",
+    "Deal": "$10 meat combo",
+    "Address": "56 6th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "14",
+    "Day": "Wednesday",
+    "Name": "American Cajun Grill",
+    "Deal": "$10 meat combo",
+    "Address": "56 6th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "14",
+    "Day": "Thursday",
+    "Name": "American Cajun Grill",
+    "Deal": "$10 meat combo",
+    "Address": "56 6th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "14",
+    "Day": "Friday",
+    "Name": "American Cajun Grill",
+    "Deal": "$10 meat combo",
+    "Address": "56 6th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "14",
+    "Day": "Monday",
+    "Name": "American Cajun Grill",
+    "Deal": "$10 veg combo",
+    "Address": "56 6th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "14",
+    "Day": "Tuesday",
+    "Name": "American Cajun Grill",
+    "Deal": "$10 veg combo",
+    "Address": "56 6th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "14",
+    "Day": "Wednesday",
+    "Name": "American Cajun Grill",
+    "Deal": "$10 veg combo",
+    "Address": "56 6th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "14",
+    "Day": "Thursday",
+    "Name": "American Cajun Grill",
+    "Deal": "$10 veg combo",
+    "Address": "56 6th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "14",
+    "Day": "Friday",
+    "Name": "American Cajun Grill",
+    "Deal": "$10 veg combo",
+    "Address": "56 6th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Monday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$14.32 lunch buffet (tax included)",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Tuesday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$14.32 lunch buffet (tax included)",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Wednesday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$14.32 lunch buffet (tax included)",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Thursday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$14.32 lunch buffet (tax included)",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Friday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$14.32 lunch buffet (tax included)",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Monday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$5 Fried Tofu or Edamame https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Tuesday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$5 Fried Tofu or Edamame https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Wednesday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$5 Fried Tofu or Edamame https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Thursday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$5 Fried Tofu or Edamame https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Friday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$5 Fried Tofu or Edamame https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Saturday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$5 Fried Tofu or Edamame https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Sunday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$5 Fried Tofu or Edamame https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Monday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$6 Sue's Egg Rolls, Fried Spring Rolls, Cream Cheese Wontons, or Potstickers https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Tuesday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$6 Sue's Egg Rolls, Fried Spring Rolls, Cream Cheese Wontons, or Potstickers https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Wednesday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$6 Sue's Egg Rolls, Fried Spring Rolls, Cream Cheese Wontons, or Potstickers https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Thursday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$6 Sue's Egg Rolls, Fried Spring Rolls, Cream Cheese Wontons, or Potstickers https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Friday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$6 Sue's Egg Rolls, Fried Spring Rolls, Cream Cheese Wontons, or Potstickers https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Saturday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$6 Sue's Egg Rolls, Fried Spring Rolls, Cream Cheese Wontons, or Potstickers https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Sunday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$6 Sue's Egg Rolls, Fried Spring Rolls, Cream Cheese Wontons, or Potstickers https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Monday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$7 Supenn's Fresh Sprint Rolls or Chicken Satay https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Tuesday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$7 Supenn's Fresh Sprint Rolls or Chicken Satay https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Wednesday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$7 Supenn's Fresh Sprint Rolls or Chicken Satay https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Thursday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$7 Supenn's Fresh Sprint Rolls or Chicken Satay https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Friday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$7 Supenn's Fresh Sprint Rolls or Chicken Satay https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Saturday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$7 Supenn's Fresh Sprint Rolls or Chicken Satay https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Sunday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$7 Supenn's Fresh Sprint Rolls or Chicken Satay https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Monday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$5 rails, $5.50 taps, $6 house wine, $7.50 specialty drinks, $8.50 house martinis https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Tuesday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$5 rails, $5.50 taps, $6 house wine, $7.50 specialty drinks, $8.50 house martinis https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Wednesday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$5 rails, $5.50 taps, $6 house wine, $7.50 specialty drinks, $8.50 house martinis https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Thursday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$5 rails, $5.50 taps, $6 house wine, $7.50 specialty drinks, $8.50 house martinis https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Friday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$5 rails, $5.50 taps, $6 house wine, $7.50 specialty drinks, $8.50 house martinis https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Saturday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$5 rails, $5.50 taps, $6 house wine, $7.50 specialty drinks, $8.50 house martinis https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "15",
+    "Day": "Sunday",
+    "Name": "Sawatdee Saint Paul",
+    "Deal": "$5 rails, $5.50 taps, $6 house wine, $7.50 specialty drinks, $8.50 house martinis https://www.sawatdee.com/st-paul-menu",
+    "Address": "486 Robert St N, St Paul, MN 55101",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "18",
+    "Day": "Thursday",
+    "Name": "Sushi Sushi",
+    "Deal": "Buy one roll get one half off",
+    "Address": "56 6th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "20",
+    "Day": "Tuesday",
+    "Name": "Mi Mexico Querido",
+    "Deal": "Taco Tuesday, $1.75 tacos; discounted taco bowl",
+    "Address": "444 Cedar St # 210, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "21",
+    "Day": "Monday",
+    "Name": "Pino's Pizza",
+    "Deal": "$9 for two slices and a drink or one calzone and a drink",
+    "Address": "55 5th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "21",
+    "Day": "Tuesday",
+    "Name": "Pino's Pizza",
+    "Deal": "$9 for two slices and a drink or one calzone and a drink",
+    "Address": "55 5th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "21",
+    "Day": "Wednesday",
+    "Name": "Pino's Pizza",
+    "Deal": "$9 for two slices and a drink or one calzone and a drink",
+    "Address": "55 5th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "21",
+    "Day": "Thursday",
+    "Name": "Pino's Pizza",
+    "Deal": "$9 for two slices and a drink or one calzone and a drink",
+    "Address": "55 5th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "21",
+    "Day": "Friday",
+    "Name": "Pino's Pizza",
+    "Deal": "$9 for two slices and a drink or one calzone and a drink",
+    "Address": "55 5th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "30",
+    "Day": "Monday",
+    "Name": "Catrina's Skyway",
+    "Deal": "Daily special",
+    "Address": "332 Minnesota St # N233, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "30",
+    "Day": "Tuesday",
+    "Name": "Catrina's Skyway",
+    "Deal": "Daily special",
+    "Address": "332 Minnesota St # N233, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "30",
+    "Day": "Wednesday",
+    "Name": "Catrina's Skyway",
+    "Deal": "Daily special",
+    "Address": "332 Minnesota St # N233, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "30",
+    "Day": "Thursday",
+    "Name": "Catrina's Skyway",
+    "Deal": "Daily special",
+    "Address": "332 Minnesota St # N233, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "30",
+    "Day": "Friday",
+    "Name": "Catrina's Skyway",
+    "Deal": "Daily special",
+    "Address": "332 Minnesota St # N233, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "40",
+    "Day": "Wednesday",
+    "Name": "Lunds & Byerly's",
+    "Deal": "$6 sushi roll",
+    "Address": "115 10th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "40",
+    "Day": "Friday",
+    "Name": "Lunds & Byerly's",
+    "Deal": "$6 rotisserie chicken",
+    "Address": "115 10th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "41",
+    "Day": "Monday",
+    "Name": "Little Sicily Pizza & Pasta",
+    "Deal": "2 slices + drink or 1 slice + salad + drink for $8.99",
+    "Address": "401 Robert St N #207, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "41",
+    "Day": "Tuesday",
+    "Name": "Little Sicily Pizza & Pasta",
+    "Deal": "2 slices + drink or 1 slice + salad + drink for $8.99",
+    "Address": "401 Robert St N #207, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "41",
+    "Day": "Wednesday",
+    "Name": "Little Sicily Pizza & Pasta",
+    "Deal": "2 slices + drink or 1 slice + salad + drink for $8.99",
+    "Address": "401 Robert St N #207, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "41",
+    "Day": "Thursday",
+    "Name": "Little Sicily Pizza & Pasta",
+    "Deal": "2 slices + drink or 1 slice + salad + drink for $8.99",
+    "Address": "401 Robert St N #207, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "41",
+    "Day": "Friday",
+    "Name": "Little Sicily Pizza & Pasta",
+    "Deal": "2 slices + drink or 1 slice + salad + drink for $8.99",
+    "Address": "401 Robert St N #207, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "43",
+    "Day": "Monday",
+    "Name": "Cassie's Deli",
+    "Deal": "$7.99 sandwich and chips",
+    "Address": "444 Cedar St, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "43",
+    "Day": "Tuesday",
+    "Name": "Cassie's Deli",
+    "Deal": "$7.99 sandwich and fries",
+    "Address": "444 Cedar St, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "43",
+    "Day": "Wednesday",
+    "Name": "Cassie's Deli",
+    "Deal": "$7.99 sandwich and fries",
+    "Address": "444 Cedar St, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "43",
+    "Day": "Thursday",
+    "Name": "Cassie's Deli",
+    "Deal": "$7.99 sandwich and fries",
+    "Address": "444 Cedar St, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "43",
+    "Day": "Friday",
+    "Name": "Cassie's Deli",
+    "Deal": "$7.99 sandwich and fries",
+    "Address": "444 Cedar St, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "12",
+    "Day": "Monday",
+    "Name": "Subway",
+    "Deal": "$6.99 any footlong with code 699FL ends 11/02",
+    "Address": "30 E 7th St #335, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "12",
+    "Day": "Tuesday",
+    "Name": "Subway",
+    "Deal": "$6.99 any footlong with code 699FL ends 11/02",
+    "Address": "30 E 7th St #335, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "12",
+    "Day": "Wednesday",
+    "Name": "Subway",
+    "Deal": "$6.99 any footlong with code 699FL ends 11/02",
+    "Address": "30 E 7th St #335, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "12",
+    "Day": "Thursday",
+    "Name": "Subway",
+    "Deal": "$6.99 any footlong with code 699FL ends 11/02",
+    "Address": "30 E 7th St #335, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "12",
+    "Day": "Friday",
+    "Name": "Subway",
+    "Deal": "$6.99 any footlong with code 699FL ends 11/02",
+    "Address": "30 E 7th St #335, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "12",
+    "Day": "Saturday",
+    "Name": "Subway",
+    "Deal": "$6.99 any footlong with code 699FL ends 11/02",
+    "Address": "30 E 7th St #335, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "12",
+    "Day": "Sunday",
+    "Name": "Subway",
+    "Deal": "$6.99 any footlong with code 699FL ends 11/02",
+    "Address": "30 E 7th St #335, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "10",
+    "Day": "Monday",
+    "Name": "Subway",
+    "Deal": "$6.99 any footlong with code 699FL ends 11/02",
+    "Address": "55 5th St E Suite 316, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "10",
+    "Day": "Tuesday",
+    "Name": "Subway",
+    "Deal": "$6.99 any footlong with code 699FL ends 11/02",
+    "Address": "55 5th St E Suite 316, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "10",
+    "Day": "Wednesday",
+    "Name": "Subway",
+    "Deal": "$6.99 any footlong with code 699FL ends 11/02",
+    "Address": "55 5th St E Suite 316, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "10",
+    "Day": "Thursday",
+    "Name": "Subway",
+    "Deal": "$6.99 any footlong with code 699FL ends 11/02",
+    "Address": "55 5th St E Suite 316, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "10",
+    "Day": "Friday",
+    "Name": "Subway",
+    "Deal": "$6.99 any footlong with code 699FL ends 11/02",
+    "Address": "55 5th St E Suite 316, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "11",
+    "Day": "Monday",
+    "Name": "Subway",
+    "Deal": "$6.99 any footlong with code 699FL ends 11/02",
+    "Address": "401 Robert St Suite 221, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "11",
+    "Day": "Tuesday",
+    "Name": "Subway",
+    "Deal": "$6.99 any footlong with code 699FL ends 11/02",
+    "Address": "401 Robert St Suite 221, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "11",
+    "Day": "Wednesday",
+    "Name": "Subway",
+    "Deal": "$6.99 any footlong with code 699FL ends 11/02",
+    "Address": "401 Robert St Suite 221, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "11",
+    "Day": "Thursday",
+    "Name": "Subway",
+    "Deal": "$6.99 any footlong with code 699FL ends 11/02",
+    "Address": "401 Robert St Suite 221, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "11",
+    "Day": "Friday",
+    "Name": "Subway",
+    "Deal": "$6.99 any footlong with code 699FL ends 11/02",
+    "Address": "401 Robert St Suite 221, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "27",
+    "Day": "Monday",
+    "Name": "Erbert and Gerbert's",
+    "Deal": "50% off first sandwich ordered on app",
+    "Address": "334 Wabasha St N, St Paul, MN 55102",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "27",
+    "Day": "Tuesday",
+    "Name": "Erbert and Gerbert's",
+    "Deal": "50% off first sandwich ordered on app",
+    "Address": "334 Wabasha St N, St Paul, MN 55102",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "27",
+    "Day": "Wednesday",
+    "Name": "Erbert and Gerbert's",
+    "Deal": "50% off first sandwich ordered on app",
+    "Address": "334 Wabasha St N, St Paul, MN 55102",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "27",
+    "Day": "Thursday",
+    "Name": "Erbert and Gerbert's",
+    "Deal": "50% off first sandwich ordered on app",
+    "Address": "334 Wabasha St N, St Paul, MN 55102",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "27",
+    "Day": "Friday",
+    "Name": "Erbert and Gerbert's",
+    "Deal": "50% off first sandwich ordered on app",
+    "Address": "334 Wabasha St N, St Paul, MN 55102",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "57",
+    "Day": "Wednesday",
+    "Name": "1881 by Lake Elmo Inn",
+    "Deal": "50% off wild rice duck egg soup appetizer when you mention email",
+    "Address": "Union Depot",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "57",
+    "Day": "Thursday",
+    "Name": "1881 by Lake Elmo Inn",
+    "Deal": "50% off wild rice duck egg soup appetizer when you mention email",
+    "Address": "Union Depot",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "57",
+    "Day": "Friday",
+    "Name": "1881 by Lake Elmo Inn",
+    "Deal": "50% off wild rice duck egg soup appetizer when you mention email",
+    "Address": "Union Depot",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "57",
+    "Day": "Saturday",
+    "Name": "1881 by Lake Elmo Inn",
+    "Deal": "50% off wild rice duck egg soup appetizer when you mention email",
+    "Address": "Union Depot",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "57",
+    "Day": "Sunday",
+    "Name": "1881 by Lake Elmo Inn",
+    "Deal": "50% off wild rice duck egg soup appetizer when you mention email",
+    "Address": "Union Depot",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "57",
+    "Day": "Wednesday",
+    "Name": "1881 by Lake Elmo Inn",
+    "Deal": "$10 select craft cocktail",
+    "Address": "Union Depot",
+    "Happy Hour": "",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "57",
+    "Day": "Thursday",
+    "Name": "1881 by Lake Elmo Inn",
+    "Deal": "$10 select craft cocktail",
+    "Address": "Union Depot",
+    "Happy Hour": "",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "57",
+    "Day": "Friday",
+    "Name": "1881 by Lake Elmo Inn",
+    "Deal": "$10 select craft cocktail",
+    "Address": "Union Depot",
+    "Happy Hour": "",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "57",
+    "Day": "Saturday",
+    "Name": "1881 by Lake Elmo Inn",
+    "Deal": "$10 select craft cocktail",
+    "Address": "Union Depot",
+    "Happy Hour": "",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "57",
+    "Day": "Sunday",
+    "Name": "1881 by Lake Elmo Inn",
+    "Deal": "$10 select craft cocktail",
+    "Address": "Union Depot",
+    "Happy Hour": "",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "57",
+    "Day": "Wednesday",
+    "Name": "1881 by Lake Elmo Inn",
+    "Deal": "Discounted drinks https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
+    "Address": "Union Depot",
+    "Happy Hour": "14:00 - 17:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "57",
+    "Day": "Thursday",
+    "Name": "1881 by Lake Elmo Inn",
+    "Deal": "Discounted drinks https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
+    "Address": "Union Depot",
+    "Happy Hour": "14:00 - 17:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "57",
+    "Day": "Friday",
+    "Name": "1881 by Lake Elmo Inn",
+    "Deal": "Discounted drinks https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
+    "Address": "Union Depot",
+    "Happy Hour": "14:00 - 17:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "57",
+    "Day": "Saturday",
+    "Name": "1881 by Lake Elmo Inn",
+    "Deal": "Discounted drinks https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
+    "Address": "Union Depot",
+    "Happy Hour": "14:00 - 17:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "57",
+    "Day": "Sunday",
+    "Name": "1881 by Lake Elmo Inn",
+    "Deal": "Discounted drinks https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
+    "Address": "Union Depot",
+    "Happy Hour": "14:00 - 17:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "57",
+    "Day": "Wednesday",
+    "Name": "1881 by Lake Elmo Inn",
+    "Deal": "Discounted apps https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
+    "Address": "Union Depot",
+    "Happy Hour": "14:00 - 17:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "57",
+    "Day": "Thursday",
+    "Name": "1881 by Lake Elmo Inn",
+    "Deal": "Discounted apps https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
+    "Address": "Union Depot",
+    "Happy Hour": "14:00 - 17:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "57",
+    "Day": "Friday",
+    "Name": "1881 by Lake Elmo Inn",
+    "Deal": "Discounted apps https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
+    "Address": "Union Depot",
+    "Happy Hour": "14:00 - 17:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "57",
+    "Day": "Saturday",
+    "Name": "1881 by Lake Elmo Inn",
+    "Deal": "Discounted apps https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
+    "Address": "Union Depot",
+    "Happy Hour": "14:00 - 17:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "57",
+    "Day": "Sunday",
+    "Name": "1881 by Lake Elmo Inn",
+    "Deal": "Discounted apps https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
+    "Address": "Union Depot",
+    "Happy Hour": "14:00 - 17:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "32",
+    "Day": "Monday",
+    "Name": "Urban Wok",
+    "Deal": "Triple Points",
+    "Address": "209 4th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "32",
+    "Day": "Tuesday",
+    "Name": "Urban Wok",
+    "Deal": "BOGO create your own entree purchase using code TAKEOUT",
+    "Address": "209 4th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "32",
+    "Day": "Wednesday",
+    "Name": "Urban Wok",
+    "Deal": "$0.75 wings",
+    "Address": "209 4th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "32",
+    "Day": "Friday",
+    "Name": "Urban Wok",
+    "Deal": "Free appetizer (not chicken wings) with create your own entree purchase using code FRYDAY",
+    "Address": "209 4th St E, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "52",
+    "Day": "Monday",
+    "Name": "Burger Moe's",
+    "Deal": "$7 burger",
+    "Address": "242 7th St W, St Paul, MN 55102",
+    "Happy Hour": "15:00 - 23:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "52",
+    "Day": "Tuesday",
+    "Name": "Burger Moe's",
+    "Deal": "$5 tacos",
+    "Address": "242 7th St W, St Paul, MN 55102",
+    "Happy Hour": "15:00 - 23:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "52",
+    "Day": "Wednesday",
+    "Name": "Burger Moe's",
+    "Deal": "$0.99 wings",
+    "Address": "242 7th St W, St Paul, MN 55102",
+    "Happy Hour": "15:00 - 23:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "52",
+    "Day": "Monday",
+    "Name": "Burger Moe's",
+    "Deal": "$4 pints ($3.50 Coors Light)",
+    "Address": "242 7th St W, St Paul, MN 55102",
+    "Happy Hour": "15:00 - 18:00, 21:00 - 23:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "52",
+    "Day": "Tuesday",
+    "Name": "Burger Moe's",
+    "Deal": "$4 pints ($3.50 Coors Light)",
+    "Address": "242 7th St W, St Paul, MN 55102",
+    "Happy Hour": "15:00 - 18:00, 21:00 - 23:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "52",
+    "Day": "Wednesday",
+    "Name": "Burger Moe's",
+    "Deal": "$4 pints ($3.50 Coors Light)",
+    "Address": "242 7th St W, St Paul, MN 55102",
+    "Happy Hour": "15:00 - 18:00, 21:00 - 23:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "52",
+    "Day": "Thursday",
+    "Name": "Burger Moe's",
+    "Deal": "$4 pints ($3.50 Coors Light)",
+    "Address": "242 7th St W, St Paul, MN 55102",
+    "Happy Hour": "15:00 - 18:00, 21:00 - 23:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "52",
+    "Day": "Friday",
+    "Name": "Burger Moe's",
+    "Deal": "$4 pints ($3.50 Coors Light)",
+    "Address": "242 7th St W, St Paul, MN 55102",
+    "Happy Hour": "15:00 - 18:00, 21:00 - 23:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "52",
+    "Day": "Saturday",
+    "Name": "Burger Moe's",
+    "Deal": "$4 pints ($3.50 Coors Light)",
+    "Address": "242 7th St W, St Paul, MN 55102",
+    "Happy Hour": "15:00 - 18:00, 21:00 - 23:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "52",
+    "Day": "Sunday",
+    "Name": "Burger Moe's",
+    "Deal": "$4 pints ($3.50 Coors Light) all day",
+    "Address": "242 7th St W, St Paul, MN 55102",
+    "Happy Hour": "",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "42",
+    "Day": "Wednesday",
+    "Name": "Skyway New Masala",
+    "Deal": "10% off",
+    "Address": "444 Cedar St suite 216, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "13",
+    "Day": "Monday",
+    "Name": "Jackey's Peg Leg",
+    "Deal": "2 for 1 beers and rails ($7 - $9)",
+    "Address": "380 Cedar St, St Paul, MN 55101",
+    "Happy Hour": "12:00 - 19:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "13",
+    "Day": "Tuesday",
+    "Name": "Jackey's Peg Leg",
+    "Deal": "2 for 1 beers and rails ($7 - $9)",
+    "Address": "380 Cedar St, St Paul, MN 55101",
+    "Happy Hour": "12:00 - 19:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "13",
+    "Day": "Wednesday",
+    "Name": "Jackey's Peg Leg",
+    "Deal": "2 for 1 beers and rails ($7 - $9)",
+    "Address": "380 Cedar St, St Paul, MN 55101",
+    "Happy Hour": "12:00 - 19:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "13",
+    "Day": "Thursday",
+    "Name": "Jackey's Peg Leg",
+    "Deal": "2 for 1 beers and rails ($7 - $9)",
+    "Address": "380 Cedar St, St Paul, MN 55101",
+    "Happy Hour": "12:00 - 19:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "13",
+    "Day": "Friday",
+    "Name": "Jackey's Peg Leg",
+    "Deal": "2 for 1 beers and rails ($7 - $9)",
+    "Address": "380 Cedar St, St Paul, MN 55101",
+    "Happy Hour": "12:00 - 19:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "13",
+    "Day": "Saturday",
+    "Name": "Jackey's Peg Leg",
+    "Deal": "2 for 1 beers and rails ($7 - $9)",
+    "Address": "380 Cedar St, St Paul, MN 55101",
+    "Happy Hour": "12:00 - 19:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "13",
+    "Day": "Sunday",
+    "Name": "Jackey's Peg Leg",
+    "Deal": "2 for 1 beers and rails ($7 - $9)",
+    "Address": "380 Cedar St, St Paul, MN 55101",
+    "Happy Hour": "12:00 - 19:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "13",
+    "Day": "Tuesday",
+    "Name": "Jackey's Peg Leg",
+    "Deal": "2 for 1 tacos ($3.99)",
+    "Address": "380 Cedar St, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "13",
+    "Day": "Wednesday",
+    "Name": "Jackey's Peg Leg",
+    "Deal": "50% off wings ($6.50)",
+    "Address": "380 Cedar St, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "13",
+    "Day": "Thursday",
+    "Name": "Jackey's Peg Leg",
+    "Deal": "$5 off burgers ($5.99 - $11.99)",
+    "Address": "380 Cedar St, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Monday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$15 slice and pint of Modist Dreamyard Hazy IPA",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Tuesday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$15 slice and pint of Modist Dreamyard Hazy IPA",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Wednesday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$15 slice and pint of Modist Dreamyard Hazy IPA",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Thursday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$15 slice and pint of Modist Dreamyard Hazy IPA",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Friday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$15 slice and pint of Modist Dreamyard Hazy IPA",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Saturday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$15 slice and pint of Modist Dreamyard Hazy IPA",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Sunday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$15 slice and pint of Modist Dreamyard Hazy IPA",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Monday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$2 pickle roll-up",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Tuesday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$2 pickle roll-up",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Wednesday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$2 pickle roll-up",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Thursday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$2 pickle roll-up",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Friday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$2 pickle roll-up",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Saturday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$2 pickle roll-up",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Sunday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$2 pickle roll-up",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Monday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$2 off cheeseburger sandwich ($11 - $18)",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Tuesday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$2 off cheeseburger sandwich ($11 - $18)",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Wednesday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$2 off cheeseburger sandwich ($11 - $18)",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Thursday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$2 off cheeseburger sandwich ($11 - $18)",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Friday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$2 off cheeseburger sandwich ($11 - $18)",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Saturday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$2 off cheeseburger sandwich ($11 - $18)",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Sunday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$2 off cheeseburger sandwich ($11 - $18)",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "17",
+    "Day": "Wednesday",
+    "Name": "Wrestaurant at the Palace",
+    "Deal": "$2 off pizza ($14 - $22)",
+    "Address": "33 W 7th Pl, St Paul, MN 55102",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "26",
+    "Day": "Monday",
+    "Name": "Sakura",
+    "Deal": "Apps and sushi ($4.50 - $8:00) https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
+    "Address": "350 St Peter St #195, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "26",
+    "Day": "Tuesday",
+    "Name": "Sakura",
+    "Deal": "Apps and sushi ($4.50 - $8:00) https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
+    "Address": "350 St Peter St #195, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "26",
+    "Day": "Wednesday",
+    "Name": "Sakura",
+    "Deal": "Apps and sushi ($4.50 - $8:00) https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
+    "Address": "350 St Peter St #195, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "26",
+    "Day": "Thursday",
+    "Name": "Sakura",
+    "Deal": "Apps and sushi ($4.50 - $8:00) https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
+    "Address": "350 St Peter St #195, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "26",
+    "Day": "Friday",
+    "Name": "Sakura",
+    "Deal": "Apps and sushi ($4.50 - $8:00) https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
+    "Address": "350 St Peter St #195, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "26",
+    "Day": "Monday",
+    "Name": "Sakura",
+    "Deal": "$5 Beer, wine, sake, rails https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
+    "Address": "350 St Peter St #195, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "26",
+    "Day": "Tuesday",
+    "Name": "Sakura",
+    "Deal": "$5 Beer, wine, sake, rails https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
+    "Address": "350 St Peter St #195, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "26",
+    "Day": "Wednesday",
+    "Name": "Sakura",
+    "Deal": "$5 Beer, wine, sake, rails https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
+    "Address": "350 St Peter St #195, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "26",
+    "Day": "Thursday",
+    "Name": "Sakura",
+    "Deal": "$5 Beer, wine, sake, rails https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
+    "Address": "350 St Peter St #195, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "26",
+    "Day": "Friday",
+    "Name": "Sakura",
+    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13) https://lostfoxlowertown.com/#happy-hour",
+    "Address": "350 St Peter St #195, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "31",
+    "Day": "Monday",
+    "Name": "Lost Fox",
+    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13) https://lostfoxlowertown.com/#happy-hour",
+    "Address": "213 4th St E #100, St Paul, MN 55101",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "31",
+    "Day": "Tuesday",
+    "Name": "Lost Fox",
+    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13) https://lostfoxlowertown.com/#happy-hour",
+    "Address": "213 4th St E #100, St Paul, MN 55101",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "31",
+    "Day": "Wednesday",
+    "Name": "Lost Fox",
+    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13) https://lostfoxlowertown.com/#happy-hour",
+    "Address": "213 4th St E #100, St Paul, MN 55101",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "31",
+    "Day": "Thursday",
+    "Name": "Lost Fox",
+    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13) https://lostfoxlowertown.com/#happy-hour",
+    "Address": "213 4th St E #100, St Paul, MN 55101",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "31",
+    "Day": "Friday",
+    "Name": "Lost Fox",
+    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13) https://lostfoxlowertown.com/#happy-hour",
+    "Address": "213 4th St E #100, St Paul, MN 55101",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "31",
+    "Day": "Saturday",
+    "Name": "Lost Fox",
+    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13) https://lostfoxlowertown.com/#happy-hour",
+    "Address": "213 4th St E #100, St Paul, MN 55101",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "31",
+    "Day": "Sunday",
+    "Name": "Lost Fox",
+    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13) https://lostfoxlowertown.com/#happy-hour",
+    "Address": "213 4th St E #100, St Paul, MN 55101",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "31",
+    "Day": "Monday",
+    "Name": "Lost Fox",
+    "Deal": "Food specials ($4-$8) https://lostfoxlowertown.com/#happy-hour",
+    "Address": "213 4th St E #100, St Paul, MN 55101",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "31",
+    "Day": "Tuesday",
+    "Name": "Lost Fox",
+    "Deal": "Food specials ($4-$8) https://lostfoxlowertown.com/#happy-hour",
+    "Address": "213 4th St E #100, St Paul, MN 55101",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "31",
+    "Day": "Wednesday",
+    "Name": "Lost Fox",
+    "Deal": "Food specials ($4-$8) https://lostfoxlowertown.com/#happy-hour",
+    "Address": "213 4th St E #100, St Paul, MN 55101",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "31",
+    "Day": "Thursday",
+    "Name": "Lost Fox",
+    "Deal": "Food specials ($4-$8) https://lostfoxlowertown.com/#happy-hour",
+    "Address": "213 4th St E #100, St Paul, MN 55101",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "31",
+    "Day": "Friday",
+    "Name": "Lost Fox",
+    "Deal": "Food specials ($4-$8) https://lostfoxlowertown.com/#happy-hour",
+    "Address": "213 4th St E #100, St Paul, MN 55101",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "31",
+    "Day": "Saturday",
+    "Name": "Lost Fox",
+    "Deal": "Food specials ($4-$8) https://lostfoxlowertown.com/#happy-hour",
+    "Address": "213 4th St E #100, St Paul, MN 55101",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "31",
+    "Day": "Sunday",
+    "Name": "Lost Fox",
+    "Deal": "Food specials ($4-$8) https://lostfoxlowertown.com/#happy-hour",
+    "Address": "213 4th St E #100, St Paul, MN 55101",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "34",
+    "Day": "Monday",
+    "Name": "Erta Ale Ethiopian",
+    "Deal": "$5 drinks",
+    "Address": "308 E Prince St STE 140, St Paul, MN 55101",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "34",
+    "Day": "Tuesday",
+    "Name": "Erta Ale Ethiopian",
+    "Deal": "$5 drinks",
+    "Address": "308 E Prince St STE 140, St Paul, MN 55101",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "34",
+    "Day": "Wednesday",
+    "Name": "Erta Ale Ethiopian",
+    "Deal": "$5 drinks",
+    "Address": "308 E Prince St STE 140, St Paul, MN 55101",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "34",
+    "Day": "Thursday",
+    "Name": "Erta Ale Ethiopian",
+    "Deal": "$5 drinks",
+    "Address": "308 E Prince St STE 140, St Paul, MN 55101",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "34",
+    "Day": "Friday",
+    "Name": "Erta Ale Ethiopian",
+    "Deal": "$5 drinks",
+    "Address": "308 E Prince St STE 140, St Paul, MN 55101",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "34",
+    "Day": "Saturday",
+    "Name": "Erta Ale Ethiopian",
+    "Deal": "Vegan Buffet",
+    "Address": "308 E Prince St STE 140, St Paul, MN 55101",
+    "Happy Hour": "11:00 - 14:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "56",
+    "Day": "Wednesday",
+    "Name": "MetroNOME",
+    "Deal": "BOGO beer",
+    "Address": "385 Broadway Street, St. Paul, MN 55101",
+    "Happy Hour": "16:00 - 22:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "62",
+    "Day": "Monday",
+    "Name": "Kincaid's",
+    "Deal": "Food specials",
+    "Address": "380 Saint Peter Street, Suite 125",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "62",
+    "Day": "Tuesday",
+    "Name": "Kincaid's",
+    "Deal": "Food specials",
+    "Address": "380 Saint Peter Street, Suite 125",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "62",
+    "Day": "Wednesday",
+    "Name": "Kincaid's",
+    "Deal": "Food specials",
+    "Address": "380 Saint Peter Street, Suite 125",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "62",
+    "Day": "Thursday",
+    "Name": "Kincaid's",
+    "Deal": "Food specials",
+    "Address": "380 Saint Peter Street, Suite 125",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "62",
+    "Day": "Friday",
+    "Name": "Kincaid's",
+    "Deal": "Food specials",
+    "Address": "380 Saint Peter Street, Suite 125",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "62",
+    "Day": "Monday",
+    "Name": "Kincaid's",
+    "Deal": "Drink specials",
+    "Address": "380 Saint Peter Street, Suite 125",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "62",
+    "Day": "Tuesday",
+    "Name": "Kincaid's",
+    "Deal": "Drink specials",
+    "Address": "380 Saint Peter Street, Suite 125",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "62",
+    "Day": "Wednesday",
+    "Name": "Kincaid's",
+    "Deal": "Drink specials",
+    "Address": "380 Saint Peter Street, Suite 125",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "62",
+    "Day": "Thursday",
+    "Name": "Kincaid's",
+    "Deal": "Drink specials",
+    "Address": "380 Saint Peter Street, Suite 125",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "62",
+    "Day": "Friday",
+    "Name": "Kincaid's",
+    "Deal": "Drink specials",
+    "Address": "380 Saint Peter Street, Suite 125",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "56",
+    "Day": "Wednesday",
+    "Name": "MetroNOME",
+    "Deal": "BOGO beer",
+    "Address": "385 Broadway Street, St. Paul, MN 55101",
+    "Happy Hour": "16:00 - 22:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "50",
+    "Day": "Friday",
+    "Name": "Wild Bill's Sports Saloon",
+    "Deal": "$12.99 Fish Fry",
+    "Address": "175 7th St W, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 21:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "50",
+    "Day": "Monday",
+    "Name": "Wild Bill's Sports Saloon",
+    "Deal": "$3 rails, $4 calls/bottles/20 oz. domestic taps, $5 slushies/house wine",
+    "Address": "175 7th St W, St Paul, MN 55102",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "50",
+    "Day": "Tuesday",
+    "Name": "Wild Bill's Sports Saloon",
+    "Deal": "$3 rails, $4 calls/bottles/20 oz. domestic taps, $5 slushies/house wine",
+    "Address": "175 7th St W, St Paul, MN 55102",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "50",
+    "Day": "Wednesday",
+    "Name": "Wild Bill's Sports Saloon",
+    "Deal": "$3 rails, $4 calls/bottles/20 oz. domestic taps, $5 slushies/house wine",
+    "Address": "175 7th St W, St Paul, MN 55102",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "50",
+    "Day": "Thursday",
+    "Name": "Wild Bill's Sports Saloon",
+    "Deal": "$3 rails, $4 calls/bottles/20 oz. domestic taps, $5 slushies/house wine",
+    "Address": "175 7th St W, St Paul, MN 55102",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "50",
+    "Day": "Friday",
+    "Name": "Wild Bill's Sports Saloon",
+    "Deal": "$3 rails, $4 calls/bottles/20 oz. domestic taps, $5 slushies/house wine",
+    "Address": "175 7th St W, St Paul, MN 55102",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "50",
+    "Day": "Monday",
+    "Name": "Wild Bill's Sports Saloon",
+    "Deal": "$5 apps, $7 apps, $2 off wings https://www.wildbillssportssaloon-stpaul.com/promos",
+    "Address": "175 7th St W, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "50",
+    "Day": "Tuesday",
+    "Name": "Wild Bill's Sports Saloon",
+    "Deal": "$5 apps, $7 apps, $2 off wings https://www.wildbillssportssaloon-stpaul.com/promos",
+    "Address": "175 7th St W, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "50",
+    "Day": "Wednesday",
+    "Name": "Wild Bill's Sports Saloon",
+    "Deal": "$5 apps, $7 apps, $2 off wings https://www.wildbillssportssaloon-stpaul.com/promos",
+    "Address": "175 7th St W, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "50",
+    "Day": "Thursday",
+    "Name": "Wild Bill's Sports Saloon",
+    "Deal": "$5 apps, $7 apps, $2 off wings https://www.wildbillssportssaloon-stpaul.com/promos",
+    "Address": "175 7th St W, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "50",
+    "Day": "Friday",
+    "Name": "Wild Bill's Sports Saloon",
+    "Deal": "$5 apps, $7 apps, $2 off wings https://www.wildbillssportssaloon-stpaul.com/promos",
+    "Address": "175 7th St W, St Paul, MN 55102",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "64",
+    "Day": "Monday",
+    "Name": "Truck Park",
+    "Deal": "$2 off all drinks https://www.truckparkusa.com/drinks",
+    "Address": "214 7th Street West",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "64",
+    "Day": "Tuesday",
+    "Name": "Truck Park",
+    "Deal": "$2 off all drinks https://www.truckparkusa.com/drinks",
+    "Address": "214 7th Street West",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "64",
+    "Day": "Wednesday",
+    "Name": "Truck Park",
+    "Deal": "$2 off all drinks https://www.truckparkusa.com/drinks",
+    "Address": "214 7th Street West",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "64",
+    "Day": "Thursday",
+    "Name": "Truck Park",
+    "Deal": "$2 off all drinks https://www.truckparkusa.com/drinks",
+    "Address": "214 7th Street West",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "64",
+    "Day": "Friday",
+    "Name": "Truck Park",
+    "Deal": "$2 off all drinks https://www.truckparkusa.com/drinks",
+    "Address": "214 7th Street West",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "64",
+    "Day": "Saturday",
+    "Name": "Truck Park",
+    "Deal": "$2 off all drinks https://www.truckparkusa.com/drinks",
+    "Address": "214 7th Street West",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "64",
+    "Day": "Sunday",
+    "Name": "Truck Park",
+    "Deal": "$2 off all drinks https://www.truckparkusa.com/drinks",
+    "Address": "214 7th Street West",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "65",
+    "Day": "Monday",
+    "Name": "New Bohemia",
+    "Deal": "$2 off all drinks",
+    "Address": "222 7th St. W",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "65",
+    "Day": "Tuesday",
+    "Name": "New Bohemia",
+    "Deal": "$2 off all drinks",
+    "Address": "222 7th St. W",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "65",
+    "Day": "Wednesday",
+    "Name": "New Bohemia",
+    "Deal": "$2 off all drinks",
+    "Address": "222 7th St. W",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "65",
+    "Day": "Thursday",
+    "Name": "New Bohemia",
+    "Deal": "$2 off all drinks",
+    "Address": "222 7th St. W",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "65",
+    "Day": "Friday",
+    "Name": "New Bohemia",
+    "Deal": "$2 off all drinks",
+    "Address": "222 7th St. W",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "65",
+    "Day": "Saturday",
+    "Name": "New Bohemia",
+    "Deal": "$2 off all drinks",
+    "Address": "222 7th St. W",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "65",
+    "Day": "Sunday",
+    "Name": "New Bohemia",
+    "Deal": "$2 off all drinks",
+    "Address": "222 7th St. W",
+    "Happy Hour": "",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "65",
+    "Day": "Monday",
+    "Name": "New Bohemia",
+    "Deal": "$2 off select apps",
+    "Address": "222 7th St. W",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "65",
+    "Day": "Tuesday",
+    "Name": "New Bohemia",
+    "Deal": "$2 off select apps",
+    "Address": "222 7th St. W",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "65",
+    "Day": "Wednesday",
+    "Name": "New Bohemia",
+    "Deal": "$2 off select apps",
+    "Address": "222 7th St. W",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "65",
+    "Day": "Thursday",
+    "Name": "New Bohemia",
+    "Deal": "$2 off select apps",
+    "Address": "222 7th St. W",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "65",
+    "Day": "Friday",
+    "Name": "New Bohemia",
+    "Deal": "$2 off select apps",
+    "Address": "222 7th St. W",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "65",
+    "Day": "Saturday",
+    "Name": "New Bohemia",
+    "Deal": "$2 off select apps",
+    "Address": "222 7th St. W",
+    "Happy Hour": "15:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "65",
+    "Day": "Sunday",
+    "Name": "New Bohemia",
+    "Deal": "$2 off select apps",
+    "Address": "222 7th St. W",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "66",
+    "Day": "Thursday",
+    "Name": "Apostle Supper Club",
+    "Deal": "$4 domestic beer, $5 house wine/well drinks, $6 tiki cocktails https://www.apostlesupperclub.com/happy-hour",
+    "Address": "253 KELLOGG BLVD WEST",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "66",
+    "Day": "Friday",
+    "Name": "Apostle Supper Club",
+    "Deal": "$4 domestic beer, $5 house wine/well drinks, $6 tiki cocktails https://www.apostlesupperclub.com/happy-hour",
+    "Address": "253 KELLOGG BLVD WEST",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "66",
+    "Day": "Thursday",
+    "Name": "Apostle Supper Club",
+    "Deal": "Discounted apps ($6 - $13) https://www.apostlesupperclub.com/happy-hour",
+    "Address": "253 KELLOGG BLVD WEST",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "66",
+    "Day": "Thursday",
+    "Name": "Apostle Supper Club",
+    "Deal": "Discounted apps ($6 - $13) https://www.apostlesupperclub.com/happy-hour",
+    "Address": "253 KELLOGG BLVD WEST",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "49",
+    "Day": "Monday",
+    "Name": "Smorgies",
+    "Deal": "2 for 1 rails, house wines, all taps https://www.smorgiesbar.com/menu",
+    "Address": "127 7th St. W, St. Paul, MN 55102",
+    "Happy Hour": "15:00 - 17:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "49",
+    "Day": "Tuesday",
+    "Name": "Smorgies",
+    "Deal": "2 for 1 rails, house wines, all taps https://www.smorgiesbar.com/menu",
+    "Address": "127 7th St. W, St. Paul, MN 55102",
+    "Happy Hour": "15:00 - 17:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "49",
+    "Day": "Wednesday",
+    "Name": "Smorgies",
+    "Deal": "2 for 1 rails, house wines, all taps https://www.smorgiesbar.com/menu",
+    "Address": "127 7th St. W, St. Paul, MN 55102",
+    "Happy Hour": "15:00 - 17:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "49",
+    "Day": "Thursday",
+    "Name": "Smorgies",
+    "Deal": "2 for 1 rails, house wines, all taps https://www.smorgiesbar.com/menu",
+    "Address": "127 7th St. W, St. Paul, MN 55102",
+    "Happy Hour": "15:00 - 17:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "49",
+    "Day": "Friday",
+    "Name": "Smorgies",
+    "Deal": "2 for 1 rails, house wines, all taps https://www.smorgiesbar.com/menu",
+    "Address": "127 7th St. W, St. Paul, MN 55102",
+    "Happy Hour": "15:00 - 17:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "49",
+    "Day": "Saturday",
+    "Name": "Smorgies",
+    "Deal": "2 for 1 rails, house wines, all taps https://www.smorgiesbar.com/menu",
+    "Address": "127 7th St. W, St. Paul, MN 55102",
+    "Happy Hour": "15:00 - 17:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "49",
+    "Day": "Sunday",
+    "Name": "Smorgies",
+    "Deal": "2 for 1 rails, house wines, all taps https://www.smorgiesbar.com/menu",
+    "Address": "127 7th St. W, St. Paul, MN 55102",
+    "Happy Hour": "15:00 - 17:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "49",
+    "Day": "Saturday",
+    "Name": "Smorgies",
+    "Deal": "$15 bottle of champagne and juice https://www.smorgiesbar.com/menu",
+    "Address": "127 7th St. W, St. Paul, MN 55102",
+    "Happy Hour": "9:30 - 15:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "49",
+    "Day": "Sunday",
+    "Name": "Smorgies",
+    "Deal": "$15 bottle of champagne and juice https://www.smorgiesbar.com/menu",
+    "Address": "127 7th St. W, St. Paul, MN 55102",
+    "Happy Hour": "9:30 - 15:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "51",
+    "Day": "Monday",
+    "Name": "Patrick McGovern's",
+    "Deal": "$1.50 off all libations",
+    "Address": "225 7th St W, Saint Paul, MN 55102",
+    "Happy Hour": "15:00 - 17:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "51",
+    "Day": "Tuesday",
+    "Name": "Patrick McGovern's",
+    "Deal": "$1.50 off all libations",
+    "Address": "225 7th St W, Saint Paul, MN 55102",
+    "Happy Hour": "15:00 - 17:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "51",
+    "Day": "Wednesday",
+    "Name": "Patrick McGovern's",
+    "Deal": "$1.50 off all libations",
+    "Address": "225 7th St W, Saint Paul, MN 55102",
+    "Happy Hour": "15:00 - 17:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "51",
+    "Day": "Thursday",
+    "Name": "Patrick McGovern's",
+    "Deal": "$1.50 off all libations",
+    "Address": "225 7th St W, Saint Paul, MN 55102",
+    "Happy Hour": "15:00 - 17:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "51",
+    "Day": "Friday",
+    "Name": "Patrick McGovern's",
+    "Deal": "$1.50 off all libations",
+    "Address": "225 7th St W, Saint Paul, MN 55102",
+    "Happy Hour": "15:00 - 17:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "67",
+    "Day": "Monday",
+    "Name": "Downtowner Woodfire Grill",
+    "Deal": "App discounts",
+    "Address": "253 West 7th Street, St. Paul, MN 55102",
+    "Happy Hour": "15:00 - 17:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "67",
+    "Day": "Tuesday",
+    "Name": "Downtowner Woodfire Grill",
+    "Deal": "App discounts",
+    "Address": "253 West 7th Street, St. Paul, MN 55102",
+    "Happy Hour": "15:00 - 17:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "67",
+    "Day": "Wednesday",
+    "Name": "Downtowner Woodfire Grill",
+    "Deal": "App discounts",
+    "Address": "253 West 7th Street, St. Paul, MN 55102",
+    "Happy Hour": "15:00 - 17:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "67",
+    "Day": "Thursday",
+    "Name": "Downtowner Woodfire Grill",
+    "Deal": "App discounts",
+    "Address": "253 West 7th Street, St. Paul, MN 55102",
+    "Happy Hour": "15:00 - 17:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "67",
+    "Day": "Friday",
+    "Name": "Downtowner Woodfire Grill",
+    "Deal": "App discounts",
+    "Address": "253 West 7th Street, St. Paul, MN 55102",
+    "Happy Hour": "15:00 - 17:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "68",
+    "Day": "Monday",
+    "Name": "Tom Reid's Hockey City Pub",
+    "Deal": "2 for 1 drink specials",
+    "Address": "258 7th Street West, Saint Paul, Minnesota 55102",
+    "Happy Hour": "16:00 - 18:00, 21:00 - 23:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "68",
+    "Day": "Tuesday",
+    "Name": "Tom Reid's Hockey City Pub",
+    "Deal": "2 for 1 drink specials",
+    "Address": "258 7th Street West, Saint Paul, Minnesota 55102",
+    "Happy Hour": "",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "68",
+    "Day": "Wednesday",
+    "Name": "Tom Reid's Hockey City Pub",
+    "Deal": "2 for 1 drink specials",
+    "Address": "258 7th Street West, Saint Paul, Minnesota 55102",
+    "Happy Hour": "",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "68",
+    "Day": "Thursday",
+    "Name": "Tom Reid's Hockey City Pub",
+    "Deal": "2 for 1 drink specials",
+    "Address": "258 7th Street West, Saint Paul, Minnesota 55102",
+    "Happy Hour": "",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "68",
+    "Day": "Friday",
+    "Name": "Tom Reid's Hockey City Pub",
+    "Deal": "2 for 1 drink specials",
+    "Address": "258 7th Street West, Saint Paul, Minnesota 55102",
+    "Happy Hour": "",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "68",
+    "Day": "Monday",
+    "Name": "Tom Reid's Hockey City Pub",
+    "Deal": "All you can eat salad bar and soup",
+    "Address": "258 7th Street West, Saint Paul, Minnesota 55102",
+    "Happy Hour": "11:00 - 14:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "68",
+    "Day": "Tuesday",
+    "Name": "Tom Reid's Hockey City Pub",
+    "Deal": "All you can eat salad bar and soup",
+    "Address": "258 7th Street West, Saint Paul, Minnesota 55102",
+    "Happy Hour": "11:00 - 14:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "68",
+    "Day": "Wednesday",
+    "Name": "Tom Reid's Hockey City Pub",
+    "Deal": "All you can eat salad bar and soup",
+    "Address": "258 7th Street West, Saint Paul, Minnesota 55102",
+    "Happy Hour": "11:00 - 14:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "68",
+    "Day": "Thursday",
+    "Name": "Tom Reid's Hockey City Pub",
+    "Deal": "All you can eat salad bar and soup",
+    "Address": "258 7th Street West, Saint Paul, Minnesota 55102",
+    "Happy Hour": "11:00 - 14:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "68",
+    "Day": "Friday",
+    "Name": "Tom Reid's Hockey City Pub",
+    "Deal": "All you can eat salad bar and soup",
+    "Address": "258 7th Street West, Saint Paul, Minnesota 55102",
+    "Happy Hour": "11:00 - 14:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "68",
+    "Day": "Sunday",
+    "Name": "Tom Reid's Hockey City Pub",
+    "Deal": "All you can eat salad bar and soup",
+    "Address": "258 7th Street West, Saint Paul, Minnesota 55102",
+    "Happy Hour": "11:00 - 14:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "69",
+    "Day": "Monday",
+    "Name": "Parlour",
+    "Deal": "$5 beer, $7 select wine, $9 cocktail of the day https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png",
+    "Address": "267 West 7th Street",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "69",
+    "Day": "Tuesday",
+    "Name": "Parlour",
+    "Deal": "$5 beer, $7 select wine, $9 cocktail of the day https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png",
+    "Address": "267 West 7th Street",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "69",
+    "Day": "Wednesday",
+    "Name": "Parlour",
+    "Deal": "$5 beer, $7 select wine, $9 cocktail of the day https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png",
+    "Address": "267 West 7th Street",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "69",
+    "Day": "Thursday",
+    "Name": "Parlour",
+    "Deal": "$5 beer, $7 select wine, $9 cocktail of the day https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png",
+    "Address": "267 West 7th Street",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "69",
+    "Day": "Friday",
+    "Name": "Parlour",
+    "Deal": "$5 beer, $7 select wine, $9 cocktail of the day https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png",
+    "Address": "267 West 7th Street",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "69",
+    "Day": "Saturday",
+    "Name": "Parlour",
+    "Deal": "$5 beer, $7 select wine, $9 cocktail of the day https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png",
+    "Address": "267 West 7th Street",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "69",
+    "Day": "Sunday",
+    "Name": "Parlour",
+    "Deal": "$5 beer, $7 select wine, $9 cocktail of the day https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png",
+    "Address": "267 West 7th Street",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": "x"
+  },
+  {
+    "PlaceID": "69",
+    "Day": "Monday",
+    "Name": "Parlour",
+    "Deal": "$8 kung pao brussels, loaded fries, chicken bites",
+    "Address": "267 West 7th Street",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "69",
+    "Day": "Tuesday",
+    "Name": "Parlour",
+    "Deal": "$8 kung pao brussels, loaded fries, chicken bites",
+    "Address": "267 West 7th Street",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "69",
+    "Day": "Wednesday",
+    "Name": "Parlour",
+    "Deal": "$8 kung pao brussels, loaded fries, chicken bites",
+    "Address": "267 West 7th Street",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "69",
+    "Day": "Thursday",
+    "Name": "Parlour",
+    "Deal": "$8 kung pao brussels, loaded fries, chicken bites",
+    "Address": "267 West 7th Street",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "69",
+    "Day": "Friday",
+    "Name": "Parlour",
+    "Deal": "$8 kung pao brussels, loaded fries, chicken bites",
+    "Address": "267 West 7th Street",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "69",
+    "Day": "Saturday",
+    "Name": "Parlour",
+    "Deal": "$8 kung pao brussels, loaded fries, chicken bites",
+    "Address": "267 West 7th Street",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "69",
+    "Day": "Sunday",
+    "Name": "Parlour",
+    "Deal": "$8 kung pao brussels, loaded fries, chicken bites",
+    "Address": "267 West 7th Street",
+    "Happy Hour": "16:00 - 18:00",
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "7",
+    "Day": "Thursday",
+    "Name": "Potbelly",
+    "Deal": "Double coinsThursdays",
+    "Address": "444 Cedar St Ste 201 Ste 201, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "7",
+    "Day": "Monday",
+    "Name": "Potbelly",
+    "Deal": "Free drink with Smokestack Pork & Mac until 10/20",
+    "Address": "444 Cedar St Ste 201 Ste 201, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "7",
+    "Day": "Tuesday",
+    "Name": "Potbelly",
+    "Deal": "Free drink with Smokestack Pork & Mac until 10/20",
+    "Address": "444 Cedar St Ste 201 Ste 201, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "7",
+    "Day": "Wednesday",
+    "Name": "Potbelly",
+    "Deal": "Free drink with Smokestack Pork & Mac until 10/20",
+    "Address": "444 Cedar St Ste 201 Ste 201, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "7",
+    "Day": "Thursday",
+    "Name": "Potbelly",
+    "Deal": "Free drink with Smokestack Pork & Mac until 10/20",
+    "Address": "444 Cedar St Ste 201 Ste 201, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "7",
+    "Day": "Friday",
+    "Name": "Potbelly",
+    "Deal": "Free drink with Smokestack Pork & Mac until 10/20",
+    "Address": "444 Cedar St Ste 201 Ste 201, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "",
+    "Day": "",
+    "Name": "#VALUE!",
+    "Deal": "",
+    "Address": "#VALUE!",
+    "Happy Hour": null,
+    "Alcohol": null
+  }
+]

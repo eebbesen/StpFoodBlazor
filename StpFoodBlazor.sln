@@ -12,6 +12,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StpFoodBlazor/StpFoodBlazor", "StpFoodBlazor\StpFoodBlazor", "{12D778A7-F91E-4C9A-B22D-A6F1234DED57}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StpFoodBlazor", "StpFoodBlazor", "{3E5FF025-4B81-4632-A11E-35434BB0AFD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StpFoodBlazorTest", "StpFoodBlazor\StpFoodBlazorTest\StpFoodBlazorTest.csproj", "{E98A3889-1C2A-409A-BC90-C2169EC34D0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,11 +32,19 @@ Global
 		{4AE3A97E-7466-4FA0-B673-32DDBDA72028}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AE3A97E-7466-4FA0-B673-32DDBDA72028}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AE3A97E-7466-4FA0-B673-32DDBDA72028}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E98A3889-1C2A-409A-BC90-C2169EC34D0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E98A3889-1C2A-409A-BC90-C2169EC34D0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E98A3889-1C2A-409A-BC90-C2169EC34D0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E98A3889-1C2A-409A-BC90-C2169EC34D0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50D293FD-58CD-47E2-898E-F9459EE7019F}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7F94FD23-B768-496A-8128-212CA339A3CF} = {12D778A7-F91E-4C9A-B22D-A6F1234DED57}
+		{E98A3889-1C2A-409A-BC90-C2169EC34D0A} = {3E5FF025-4B81-4632-A11E-35434BB0AFD6}
 	EndGlobalSection
 EndGlobal
