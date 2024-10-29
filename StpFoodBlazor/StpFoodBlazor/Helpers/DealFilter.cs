@@ -28,9 +28,9 @@ namespace StpFoodBlazor.Helpers {
                 filteredDeals = filterByAlcohol(filteredDeals, (bool)Alcohol);
             }
 
-            // if(HappyHour != null) {
-            //     filteredDeals = filterByHappyHour(filteredDeals, (bool)HappyHour);
-            // }
+            if(HappyHour != null) {
+                filteredDeals = filterByHappyHour(filteredDeals, (bool)HappyHour);
+            }
             // if (Name != null) {
             //     filteredDeals = filterByName(filteredDeals);
             // }
@@ -60,14 +60,14 @@ namespace StpFoodBlazor.Helpers {
         }
 
         // Need to convert column header with space to model attribute without one
-        // private static DealEvent[] filterByHappyHour(DealEvent[] deals, Boolean happyHour) {
-        //     if (happyHour) {
-        //         return deals.Where(deal =>
-        //             deal.HappyHour != null && deal.HappyHour.Trim() != "").ToArray();
-        //     }
+        private static DealEvent[] filterByHappyHour(DealEvent[] deals, Boolean happyHour) {
+            if (happyHour) {
+                return deals.Where(deal =>
+                    deal.HappyHour != null && deal.HappyHour.Trim() != "").ToArray();
+            }
 
-        //     return deals.Where(deal =>
-        //             deal.HappyHour == null || deal.HappyHour.Trim() == "").ToArray();
-        // }
+            return deals.Where(deal =>
+                    deal.HappyHour == null || deal.HappyHour.Trim() == "").ToArray();
+        }
     }
 }

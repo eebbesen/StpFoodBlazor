@@ -12,11 +12,12 @@ namespace StpFoodBlazorTest.Helpers {
         public DealFilterTest() {
             deals = getDeals().Result;
             filter = new DealFilter();
+            filter.Deals = deals;
         }
 
         [Fact]
         public void ShouldHandleEmptyDeals() {
-            DealEvent[] filteredDeals = filter.filter();
+            DealEvent[] filteredDeals = new DealFilter().filter();
 
             Assert.Empty(filteredDeals);
         }
@@ -24,7 +25,6 @@ namespace StpFoodBlazorTest.Helpers {
         [Fact]
         public void ShouldReturnInputWhenNoFilterConditions() {
             int dealsLength = deals.Length;
-            filter.Deals = deals;
 
             DealEvent[] filteredDeals = filter.filter();
 
@@ -35,7 +35,6 @@ namespace StpFoodBlazorTest.Helpers {
         [Fact]
         public void ShouldReturnFilteredByDay() {
             String day = "Monday";
-            filter.Deals = deals;
             filter.Day = day;
 
             DealEvent[] filteredDeals = filter.filter();
@@ -47,7 +46,6 @@ namespace StpFoodBlazorTest.Helpers {
         [Fact]
         public void ShouldReturnFilteredByName() {
             String name = "Pino's Pizza";
-            filter.Deals = deals;
             filter.Name = name;
 
             DealEvent[] filteredDeals = filter.filter();
@@ -60,7 +58,6 @@ namespace StpFoodBlazorTest.Helpers {
         public void ShouldReturnFilteredByNameAndDay() {
             String name = "Pino's Pizza";
             String day = "Tuesday";
-            filter.Deals = deals;
             filter.Name = name;
             filter.Day = day;
 
@@ -75,7 +72,6 @@ namespace StpFoodBlazorTest.Helpers {
 
         [Fact]
         public void ShouldReturnFilteredByAlcoholTrue() {
-            filter.Deals = deals;
             filter.Alcohol = true;
 
             DealEvent[] filteredDeals = filter.filter();
@@ -88,7 +84,6 @@ namespace StpFoodBlazorTest.Helpers {
 
         [Fact]
         public void ShouldReturnFilteredByAlcoholFalse() {
-            filter.Deals = deals;
             filter.Alcohol = false;
 
             DealEvent[] filteredDeals = filter.filter();
@@ -99,19 +94,26 @@ namespace StpFoodBlazorTest.Helpers {
             });
         }
 
-        // Need to convert column header with space to model attribute without one
-        // [Fact]
-        // public async Task ShouldReturnFilteredByHappyHourTrue() {
-        //     DealEvent[] deals = await getDeals();
-        //     DealFilter filter = new DealFilter();
-        //     filter.Deals = deals;
-        //     filter.HappyHour = true;
+        [Fact]
+        public void ShouldReturnFilteredByHappyHourTrue() {
+            filter.HappyHour = true;
 
-        //     DealEvent[] filteredDeals = filter.filter();
+            DealEvent[] filteredDeals = filter.filter();
 
-        //     Assert.Equal(5, filteredDeals.Length);
-        //     Array.ForEach(filteredDeals, deal => Assert.NotNull(deal.HappyHour));
-        // }
+            Assert.Equal(191, filteredDeals.Length);
+            Array.ForEach(filteredDeals, deal => Assert.NotNull(deal.HappyHour));
+        }
+
+        [Fact]
+        public void ShouldReturnFilteredByHappyHourFalse() {
+            filter.HappyHour = false;
+
+            DealEvent[] filteredDeals = filter.filter();
+
+            Assert.Equal(133, filteredDeals.Length);
+            Array.ForEach(filteredDeals, deal =>
+                Assert.True(string.IsNullOrWhiteSpace(deal.HappyHour)));
+        }
 
         private static async Task<DealEvent[]> getDeals() {
             TestDealService dealService = new TestDealService();
