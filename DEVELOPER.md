@@ -9,7 +9,12 @@
 https://learn.microsoft.com/en-us/aspnet/core/blazor/test?view=aspnetcore-8.0
 
 
-#### bunit setup
+    $ dotnet test --collect "XPlat Code Coverage"
+
+
+# General
+
+## bunit setup
 
 https://bunit.dev/docs/getting-started/create-test-project.html?tabs=xunit
 
@@ -28,7 +33,3 @@ Link the project and the test project
 dotnet sln StpFoodBlazor.sln add StpFoodBlazor/StpFoodBlazorTest/StpFoodBlazorTest.csproj
 dotnet add StpFoodBlazor/StpFoodBlazorTest/StpFoodBlazorTest.csproj reference StpFoodBlazor/StpFoodBlazor.csproj
 ```
-
-# General
-
-### Setup
