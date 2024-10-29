@@ -2,6 +2,6 @@
 {
     public interface IDealService
     {
-        public Task<Models.DealEvent[]> GetDealsAsync(bool includeAlcohol);
+        public Task<Models.DealEvent[]> GetDealsAsync();
     }
 }

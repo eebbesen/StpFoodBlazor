@@ -6,6 +6,7 @@
         public string? Day { get; set; }
         public string? Name { get; set; }
         public string? Alcohol { get; set; }
+        public string? HappyHour { get; set; }
 
     }
 }
