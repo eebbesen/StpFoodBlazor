@@ -1,20 +1,40 @@
-@using StpFoodBlazor.Components.Pages
-@using StpFoodBlazor.Services
-@using StpFoodBlazorTest.Services
+@using Bunit  
+@using Bunit.Rendering  
+@using AngleSharp.Dom  
+@using AngleSharp.Html.Dom // Added this using directive  
+@using StpFoodBlazor.Components.Pages  
+@using StpFoodBlazor.Services  
+@using StpFoodBlazorTest.Services  
 
-@code {
-    [Fact]
-    public void DealsShouldDisplayText()
-    {
-        using var ctx = new TestContext();
-        ctx.Services.AddSingleton<IDealService>(new TestDealService());
-        var cut = ctx.Render(@<Deals />);
-        cut.WaitForElement("#deals_table_body");
-        var tbody = cut.Find("tbody");
+@code {  
+  [Fact]  
+  public void DealsShouldDisplayText()  
+  {  
+      using var ctx = new TestContext();  
+      ctx.Services.AddSingleton<IDealService>(new TestDealService());  
+      var cut = ctx.Render(@<Deals />);  
+      var tbody = getTbody(cut);  
 
-        Assert.Equal(324, tbody.ChildElementCount);
-        Assert.Equal("Asian Express", tbody.Children[0].Children[0].InnerHtml);
-        Assert.Equal("$12.95 combo", tbody.Children[0].Children[1].InnerHtml);
-        Assert.Equal("Monday", tbody.Children[0].Children[2].InnerHtml);
-    }
+      Assert.Equal(324, tbody.ChildElementCount);  
+      Assert.Equal("Asian Express", tbody.Children[0].Children[0].InnerHtml);  
+      Assert.Equal("$12.95 combo", tbody.Children[0].Children[1].InnerHtml);  
+      Assert.Equal("Monday", tbody.Children[0].Children[2].InnerHtml);  
+  }  
+
+  [Fact]  
+  public void DealsShouldDefaultToToday()  
+  {  
+      using var ctx = new TestContext();  
+      ctx.Services.AddSingleton<IDealService>(new TestDealService());  
+      var cut = ctx.Render(@<Deals />);
+      var dowSelect = (IHtmlSelectElement)cut.WaitForElement("#day-of-week-select");
+
+      Assert.Equal(DateTime.Today.DayOfWeek.ToString(), dowSelect.Value);
+  }  
+
+  private IElement getTbody(IRenderedFragment cut)  
+  {  
+      cut.WaitForElement("#deals_table_body");  
+      return cut.Find("tbody");  
+  }  
 }

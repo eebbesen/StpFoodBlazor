@@ -7,7 +7,7 @@ namespace StpFoodBlazor.Services
         public async Task<DealEvent[]> GetDealsAsync()
         {
             var result = await httpClient.GetFromJsonAsync<DealEvent[]>(GetUrl());
-            return result ?? Array.Empty<DealEvent>();
+            return result ?? [];
         }
 
         private static String GetUrl()

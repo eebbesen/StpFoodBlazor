@@ -10,14 +10,19 @@
 
 <h1>Deals</h1>
 
-<p>This component demonstrates showing data.</p>
-
 @if (deals == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
+    <select class="select-element" id="day-of-week-select" @bind="selectedDayOfWeek">
+        <option value="">All</option>
+        @foreach (var dow in daysOfWeek)
+        {
+            <option value="@dow">@dow</option>
+        }
+    </select>
     <table class="table" id="deals_table">
         <thead>
             <tr>
@@ -41,6 +46,8 @@ else
 
 @code {
     private DealEvent[]? deals;
+    private string? selectedDayOfWeek = DateTime.Today.DayOfWeek.ToString();
+    private static readonly List<DayOfWeek> daysOfWeek = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList();
 
     protected override async Task OnInitializedAsync()
     {
