@@ -17,7 +17,7 @@ namespace StpFoodBlazorTest.Helpers {
 
         [Fact]
         public void ShouldHandleEmptyDeals() {
-            DealEvent[] filteredDeals = new DealFilter().filter();
+            DealEvent[] filteredDeals = new DealFilter().Filter();
 
             Assert.Empty(filteredDeals);
         }
@@ -26,7 +26,7 @@ namespace StpFoodBlazorTest.Helpers {
         public void ShouldReturnInputWhenNoFilterConditions() {
             int dealsLength = deals.Length;
 
-            DealEvent[] filteredDeals = filter.filter();
+            DealEvent[] filteredDeals = filter.Filter();
 
             Assert.Equal(324, dealsLength);
             Assert.Equal(dealsLength, filteredDeals.Length);
@@ -37,7 +37,7 @@ namespace StpFoodBlazorTest.Helpers {
             String day = "Monday";
             filter.Day = day;
 
-            DealEvent[] filteredDeals = filter.filter();
+            DealEvent[] filteredDeals = filter.Filter();
 
             Assert.Equal(45, filteredDeals.Length);
             Array.ForEach(filteredDeals, deal => Assert.Equal(day, deal.Day));
@@ -48,7 +48,7 @@ namespace StpFoodBlazorTest.Helpers {
             String name = "Pino's Pizza";
             filter.Name = name;
 
-            DealEvent[] filteredDeals = filter.filter();
+            DealEvent[] filteredDeals = filter.Filter();
 
             Assert.Equal(5, filteredDeals.Length);
             Array.ForEach(filteredDeals, deal => Assert.Equal(name, deal.Name));
@@ -61,7 +61,7 @@ namespace StpFoodBlazorTest.Helpers {
             filter.Name = name;
             filter.Day = day;
 
-            DealEvent[] filteredDeals = filter.filter();
+            DealEvent[] filteredDeals = filter.Filter();
 
             Assert.Single(filteredDeals);
             Array.ForEach(filteredDeals, deal => {
@@ -74,7 +74,7 @@ namespace StpFoodBlazorTest.Helpers {
         public void ShouldReturnFilteredByAlcoholTrue() {
             filter.Alcohol = true;
 
-            DealEvent[] filteredDeals = filter.filter();
+            DealEvent[] filteredDeals = filter.Filter();
 
             Assert.Equal(109, filteredDeals.Length);
             Array.ForEach(filteredDeals, deal => {
@@ -86,7 +86,7 @@ namespace StpFoodBlazorTest.Helpers {
         public void ShouldReturnFilteredByAlcoholFalse() {
             filter.Alcohol = false;
 
-            DealEvent[] filteredDeals = filter.filter();
+            DealEvent[] filteredDeals = filter.Filter();
 
             Assert.Equal(215, filteredDeals.Length);
             Array.ForEach(filteredDeals, deal => {
@@ -98,7 +98,7 @@ namespace StpFoodBlazorTest.Helpers {
         public void ShouldReturnFilteredByHappyHourTrue() {
             filter.HappyHour = true;
 
-            DealEvent[] filteredDeals = filter.filter();
+            DealEvent[] filteredDeals = filter.Filter();
 
             Assert.Equal(191, filteredDeals.Length);
             Array.ForEach(filteredDeals, deal => Assert.NotNull(deal.HappyHour));
@@ -108,7 +108,7 @@ namespace StpFoodBlazorTest.Helpers {
         public void ShouldReturnFilteredByHappyHourFalse() {
             filter.HappyHour = false;
 
-            DealEvent[] filteredDeals = filter.filter();
+            DealEvent[] filteredDeals = filter.Filter();
 
             Assert.Equal(133, filteredDeals.Length);
             Array.ForEach(filteredDeals, deal =>

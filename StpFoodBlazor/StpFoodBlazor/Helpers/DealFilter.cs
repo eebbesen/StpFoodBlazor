@@ -8,7 +8,7 @@ namespace StpFoodBlazor.Helpers {
         public bool? Alcohol { get; set; }
         public bool? HappyHour { get; set; }
 
-        public DealEvent[] filter() {
+        public DealEvent[] Filter() {
             if (Deals == null) {
                 return [];
             }
@@ -16,33 +16,33 @@ namespace StpFoodBlazor.Helpers {
             DealEvent[] filteredDeals = Deals;
 
             if (!string.IsNullOrWhiteSpace(Day)) {
-                filteredDeals = filterByDay(filteredDeals, Day);
+                filteredDeals = FilterByDay(filteredDeals, Day);
             }
 
             if (!string.IsNullOrWhiteSpace(Name)) {
-                filteredDeals = filterByName(filteredDeals, Name);
+                filteredDeals = FilterByName(filteredDeals, Name);
             }
 
             if (Alcohol != null) {
-                filteredDeals = filterByAlcohol(filteredDeals, (bool)Alcohol);
+                filteredDeals = FilterByAlcohol(filteredDeals, (bool)Alcohol);
             }
 
             if(HappyHour != null) {
-                filteredDeals = filterByHappyHour(filteredDeals, (bool)HappyHour);
+                filteredDeals = FilterByHappyHour(filteredDeals, (bool)HappyHour);
             }
 
             return filteredDeals;
         }
 
-        private static DealEvent[] filterByDay(DealEvent[] deals, String day) {
+        private static DealEvent[] FilterByDay(DealEvent[] deals, String day) {
             return deals.Where(deal => deal.Day == day).ToArray();
         }
 
-        private static DealEvent[] filterByName(DealEvent[] deals, String name) {
+        private static DealEvent[] FilterByName(DealEvent[] deals, String name) {
             return deals.Where(deal => deal.Name == name).ToArray();
         }
 
-        private static DealEvent[] filterByAlcohol(DealEvent[] deals, Boolean alcohol) {
+        private static DealEvent[] FilterByAlcohol(DealEvent[] deals, Boolean alcohol) {
             if (alcohol) {
                 return deals.Where(deal => !string.IsNullOrWhiteSpace(deal.Alcohol)).ToArray();
             }
@@ -51,7 +51,7 @@ namespace StpFoodBlazor.Helpers {
         }
 
         // Need to convert column header with space to model attribute without one
-        private static DealEvent[] filterByHappyHour(DealEvent[] deals, Boolean happyHour) {
+        private static DealEvent[] FilterByHappyHour(DealEvent[] deals, Boolean happyHour) {
             if (happyHour) {
                 return deals.Where(deal =>
                     deal.HappyHour != null && deal.HappyHour.Trim() != "").ToArray();
