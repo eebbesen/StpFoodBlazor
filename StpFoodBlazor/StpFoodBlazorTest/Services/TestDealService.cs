@@ -4,14 +4,16 @@ using System.Text.Json;
 using System.IO;
 using System.Threading.Tasks;
 using System;
+using System.Net.Http;
 
 
 namespace StpFoodBlazorTest.Services
 {
-    public class TestDealService : IDealService
+    public class TestDealService(HttpClient? httpClient) : HttpDealService(httpClient ?? new HttpClient())
     {
         private static readonly string DEAL_FIXTURES_PATH = Path.Combine(Directory.GetCurrentDirectory(), "fixtures", "deals.json");
-        public async Task<DealEvent[]> GetDealsAsync()
+
+        public new static async Task<DealEvent[]> GetDealsAsync()
         {
             if (File.Exists(DEAL_FIXTURES_PATH))
             {

@@ -3,5 +3,6 @@
     public interface IDealService
     {
         public Task<Models.DealEvent[]> GetDealsAsync();
+        public string? Day { get; set; }
     }
 }

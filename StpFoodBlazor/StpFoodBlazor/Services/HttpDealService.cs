@@ -4,6 +4,8 @@ namespace StpFoodBlazor.Services
 {
     public class HttpDealService(HttpClient httpClient) : IDealService
     {
+        public string? Day { get; set; }
+
         public async Task<DealEvent[]> GetDealsAsync()
         {
             var result = await httpClient.GetFromJsonAsync<DealEvent[]>(GetUrl());

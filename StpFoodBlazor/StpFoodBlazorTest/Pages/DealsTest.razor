@@ -11,7 +11,7 @@
   public void DealsShouldDisplayText()
   {
       using var ctx = new TestContext();
-      ctx.Services.AddSingleton<IDealService>(new TestDealService());
+      ctx.Services.AddSingleton<IDealService>(new TestDealService(null));
       var cut = ctx.Render(@<Deals />);
       var tbody = getTbody(cut);
 
@@ -25,7 +25,7 @@
   public void DealsShouldDefaultToToday()
   {
       using var ctx = new TestContext();
-      ctx.Services.AddSingleton<IDealService>(new TestDealService());
+      ctx.Services.AddSingleton<IDealService>(new TestDealService(null));
       var cut = ctx.Render(@<Deals />);
       var dowSelect = (IHtmlSelectElement)cut.WaitForElement("#day-of-week-select");
 
