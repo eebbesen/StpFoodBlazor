@@ -4,7 +4,7 @@ namespace StpFoodBlazor.Services
 {
     public class HttpDealService(HttpClient httpClient) : IDealService
     {
-        public string? Day { get; set; }
+        public string? DayOfWeek { get; set; }
 
         public async Task<DealEvent[]> GetDealsAsync()
         {
