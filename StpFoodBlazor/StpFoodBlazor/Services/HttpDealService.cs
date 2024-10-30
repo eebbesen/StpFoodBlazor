@@ -1,14 +1,13 @@
-﻿using StpFoodBlazor.Models;
+﻿using StpFoodBlazor.Helpers;
+using StpFoodBlazor.Models;
 
 namespace StpFoodBlazor.Services
 {
     public class HttpDealService(HttpClient httpClient) : IDealService
     {
-        public string? DayOfWeek { get; set; }
-
         public async Task<DealEvent[]> GetDealsAsync()
         {
-            var result = await httpClient.GetFromJsonAsync<DealEvent[]>(GetUrl());
+            DealEvent[]? result = await httpClient.GetFromJsonAsync<DealEvent[]>(GetUrl());
             return result ?? [];
         }
 

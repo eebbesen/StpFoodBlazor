@@ -4,25 +4,20 @@ using System.Text.Json;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-using System.Net.Http;
 
 
 namespace StpFoodBlazorTest.Services
 {
-    public class TestDealService(HttpClient? httpClient) : HttpDealService(httpClient ?? new HttpClient())
+    public class TestDealService : IDealService
     {
         private static readonly string DEAL_FIXTURES_PATH = Path.Combine(Directory.GetCurrentDirectory(), "fixtures", "deals.json");
 
-        public new static async Task<DealEvent[]> GetDealsAsync()
+        public async Task<DealEvent[]> GetDealsAsync()
         {
             if (File.Exists(DEAL_FIXTURES_PATH))
             {
                 string jsonContent = await File.ReadAllTextAsync(DEAL_FIXTURES_PATH);
-                var deals = JsonSerializer.Deserialize<DealEvent[]>(jsonContent);
-                if (deals == null)
-                {
-                    throw new InvalidOperationException("Deserialization resulted in a null value.");
-                }
+                var deals = JsonSerializer.Deserialize<DealEvent[]>(jsonContent) ?? throw new InvalidOperationException("Deserialization resulted in a null value.");
                 return deals;
             }
             else

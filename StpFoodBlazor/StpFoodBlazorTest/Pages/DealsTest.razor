@@ -11,12 +11,12 @@
   public void DealsShouldDisplayText()
   {
       using var ctx = new TestContext();
-      ctx.Services.AddSingleton<IDealService>(new TestDealService(null));
+      ctx.Services.AddSingleton<IDealService>(new TestDealService());
       var cut = ctx.Render(@<Deals />);
       var tbody = getTbody(cut);
 
-      Assert.Equal(324, tbody.ChildElementCount);
-      Assert.Equal("Monday", tbody.Children[0].Children[0].InnerHtml);
+      Assert.Equal(47, tbody.ChildElementCount);
+      Assert.Equal("Wednesday", tbody.Children[0].Children[0].InnerHtml);
       Assert.Equal("Asian Express", tbody.Children[0].Children[1].InnerHtml);
       Assert.Equal("$12.95 combo", tbody.Children[0].Children[2].InnerHtml);
   }
@@ -25,7 +25,7 @@
   public void DealsShouldDefaultToToday()
   {
       using var ctx = new TestContext();
-      ctx.Services.AddSingleton<IDealService>(new TestDealService(null));
+      ctx.Services.AddSingleton<IDealService>(new TestDealService());
       var cut = ctx.Render(@<Deals />);
       var dowSelect = (IHtmlSelectElement)cut.WaitForElement("#day-of-week-select");
 
@@ -34,7 +34,7 @@
 
   private IElement getTbody(IRenderedFragment cut)
   {
-      cut.WaitForElement("#deals_table_body");
+      cut.WaitForElement("#deals_table_body", TimeSpan.FromSeconds(5));
       return cut.Find("tbody");
   }
 }

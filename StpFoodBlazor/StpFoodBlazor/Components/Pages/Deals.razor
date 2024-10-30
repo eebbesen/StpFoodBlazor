@@ -51,8 +51,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        IDealService service = HttpDealService;
-        service.DayOfWeek = selectedDayOfWeek;
-        deals = await service.GetDealsAsync();
+        deals = await HttpDealService.GetDealsAsync();
     }
 }
