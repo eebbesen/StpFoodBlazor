@@ -11,6 +11,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<IDealService, HttpDealService>();
+builder.Services.AddScoped<ITimeService, TimeService>();
 
 var app = builder.Build();
 

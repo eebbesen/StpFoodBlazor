@@ -1,40 +1,51 @@
 @using Bunit
 @using Bunit.Rendering
 @using AngleSharp.Dom
-@using AngleSharp.Html.Dom // Added this using directive
+@using AngleSharp.Html.Dom
 @using StpFoodBlazor.Components.Pages
 @using StpFoodBlazor.Services
 @using StpFoodBlazorTest.Services
 
 @code {
-  [Fact]
-  public void DealsShouldDisplayText()
-  {
-      using var ctx = new TestContext();
-      ctx.Services.AddSingleton<IDealService>(new TestDealService());
-      var cut = ctx.Render(@<Deals />);
-      var tbody = getTbody(cut);
 
-      Assert.Equal(47, tbody.ChildElementCount);
-      Assert.Equal("Wednesday", tbody.Children[0].Children[0].InnerHtml);
-      Assert.Equal("Asian Express", tbody.Children[0].Children[1].InnerHtml);
-      Assert.Equal("$12.95 combo", tbody.Children[0].Children[2].InnerHtml);
-  }
+    private TestContext ctx;
 
-  [Fact]
-  public void DealsShouldDefaultToToday()
-  {
-      using var ctx = new TestContext();
-      ctx.Services.AddSingleton<IDealService>(new TestDealService());
-      var cut = ctx.Render(@<Deals />);
-      var dowSelect = (IHtmlSelectElement)cut.WaitForElement("#day-of-week-select");
+    public DealsTest()
+    {
+        ctx = new TestContext();
+        ctx.Services.AddSingleton<IDealService>(new TestDealService());
+        ctx.Services.AddSingleton<ITimeService>(new TestTimeService(DateTime.Now));
+    }
 
-      Assert.Equal(DateTime.Today.DayOfWeek.ToString(), dowSelect.Value);
-  }
+    [Fact]
+    public void DealsShouldDisplayDealTextWednesday()
+    {
+        ctx.Services.AddSingleton<ITimeService>(new TestTimeService(new DateTime(2024, 10, 23)));
+        var cut = ctx.Render(@<Deals />);
+        var tbody = getTbody(cut);
 
-  private IElement getTbody(IRenderedFragment cut)
-  {
-      cut.WaitForElement("#deals_table_body", TimeSpan.FromSeconds(5));
-      return cut.Find("tbody");
-  }
+        Assert.Equal(55, tbody.ChildElementCount);
+        Assert.Equal("Wednesday", tbody.Children[0].Children[0].InnerHtml);
+        Assert.Equal("Asian Express", tbody.Children[0].Children[1].InnerHtml);
+        Assert.Equal("$12.95 combo", tbody.Children[0].Children[2].InnerHtml);
+        foreach (var tr in tbody.Children)
+        {
+            Assert.Equal("Wednesday", tr.Children[0].InnerHtml);
+        }
+    }
+
+    [Fact]
+    public void DealsShouldDefaultToCurrentDay()
+    {
+        var cut = ctx.Render(@<Deals />);
+        var dowSelect = (IHtmlSelectElement)cut.WaitForElement("#day-of-week-select");
+
+        Assert.Equal(DateTime.Today.DayOfWeek.ToString(), dowSelect.Value);
+    }
+
+    private IElement getTbody(IRenderedFragment cut)
+    {
+        cut.WaitForElement("#deals_table_body", TimeSpan.FromSeconds(5));
+        return cut.Find("tbody");
+    }
 }

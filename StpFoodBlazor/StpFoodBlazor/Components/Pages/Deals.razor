@@ -1,6 +1,8 @@
-﻿@using StpFoodBlazor.Services
+﻿@using StpFoodBlazor.Helpers
+@using StpFoodBlazor.Services
 @using StpFoodBlazor.Models
 @inject IDealService HttpDealService
+@inject ITimeService TimeService
 
 
 @page "/"
@@ -46,11 +48,15 @@ else
 
 @code {
     private DealEvent[]? deals;
-    private string? selectedDayOfWeek = DateTime.Today.DayOfWeek.ToString();
+    private string? selectedDayOfWeek = new TimeService().GetDayOfWeek().ToString();
     private static readonly List<DayOfWeek> daysOfWeek = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList();
 
     protected override async Task OnInitializedAsync()
     {
-        deals = await HttpDealService.GetDealsAsync();
+        var allDeals = await HttpDealService.GetDealsAsync();
+        DealFilter filter = new DealFilter();
+        filter.Day = selectedDayOfWeek;
+        filter.Deals = allDeals;
+        deals = filter.Filter();
     }
 }
