@@ -1,6 +1,8 @@
-﻿@using StpFoodBlazor.Services
+﻿@using StpFoodBlazor.Helpers
+@using StpFoodBlazor.Services
 @using StpFoodBlazor.Models
 @inject IDealService HttpDealService
+@inject ITimeService TimeService
 
 
 @page "/"
@@ -10,29 +12,34 @@
 
 <h1>Deals</h1>
 
-<p>This component demonstrates showing data.</p>
-
 @if (deals == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
+    <select class="select-element" id="day-of-week-select" @bind="selectedDayOfWeek">
+        <option value="">All</option>
+        @foreach (var dow in daysOfWeek)
+        {
+            <option value="@dow">@dow</option>
+        }
+    </select>
     <table class="table" id="deals_table">
         <thead>
             <tr>
+                <th>Day</th>
                 <th>Place</th>
                 <th>Deal</th>
-                <th>Day</th>
             </tr>
         </thead>
         <tbody id="deals_table_body">
             @foreach (var deal in deals)
             {
                 <tr>
+                    <td>@deal.Day</td>
                     <td>@deal.Name</td>
                     <td>@deal.Deal</td>
-                    <td>@deal.Day</td>
                 </tr>
             }
         </tbody>
@@ -41,9 +48,15 @@ else
 
 @code {
     private DealEvent[]? deals;
+    private string? selectedDayOfWeek = new TimeService().GetDayOfWeek().ToString();
+    private static readonly List<DayOfWeek> daysOfWeek = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList();
 
     protected override async Task OnInitializedAsync()
     {
-        deals = await HttpDealService.GetDealsAsync();
+        var allDeals = await HttpDealService.GetDealsAsync();
+        DealFilter filter = new DealFilter();
+        filter.Day = selectedDayOfWeek;
+        filter.Deals = allDeals;
+        deals = filter.Filter();
     }
 }

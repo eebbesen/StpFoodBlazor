@@ -116,10 +116,7 @@ namespace StpFoodBlazorTest.Helpers {
         }
 
         private static async Task<DealEvent[]> getDeals() {
-            TestDealService dealService = new();
-            return await dealService.GetDealsAsync();
+            return await new TestDealService().GetDealsAsync();
         }
-
     }
-
 }

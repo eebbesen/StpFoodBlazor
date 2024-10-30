@@ -1,4 +1,5 @@
-﻿using StpFoodBlazor.Models;
+﻿using StpFoodBlazor.Helpers;
+using StpFoodBlazor.Models;
 
 namespace StpFoodBlazor.Services
 {
@@ -6,8 +7,8 @@ namespace StpFoodBlazor.Services
     {
         public async Task<DealEvent[]> GetDealsAsync()
         {
-            var result = await httpClient.GetFromJsonAsync<DealEvent[]>(GetUrl());
-            return result ?? Array.Empty<DealEvent>();
+            DealEvent[]? result = await httpClient.GetFromJsonAsync<DealEvent[]>(GetUrl());
+            return result ?? [];
         }
 
         private static String GetUrl()
