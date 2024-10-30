@@ -6,6 +6,7 @@
 
 
 @page "/"
+@rendermode InteractiveServer
 @attribute [StreamRendering]
 
 <PageTitle>Deals</PageTitle>
@@ -18,7 +19,7 @@
 }
 else
 {
-    <select class="select-element" id="day-of-week-select" @bind="selectedDayOfWeek">
+    <select class="select-element" id="day-of-week-select" @bind="selectedDayOfWeek" @bind:after="OnSelectedDayChanged">
         <option value="">All</option>
         @foreach (var dow in daysOfWeek)
         {
@@ -58,5 +59,11 @@ else
         filter.Day = selectedDayOfWeek;
         filter.Deals = allDeals;
         deals = filter.Filter();
+    }
+
+    void OnSelectedDayChanged(ChangeEventArgs e)
+    {
+        selectedDayOfWeek = (string)e.Value;
+        
     }
 }
