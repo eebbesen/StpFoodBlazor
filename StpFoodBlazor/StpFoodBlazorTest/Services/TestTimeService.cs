@@ -6,9 +6,9 @@ namespace StpFoodBlazorTest.Services
     public class TestTimeService : ITimeService
     {
         public string? DayOfWeek { get; set; } = DateTime.Today.DayOfWeek.ToString();
-        public string? GetDayOfWeek()
+        public string GetDayOfWeek()
         {
-            return DayOfWeek;
+            return DayOfWeek ?? string.Empty;
         }
     }
 }
