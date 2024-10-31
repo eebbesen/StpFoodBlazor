@@ -30,7 +30,6 @@
         Assert.Equal("$12.95 combo", tbody.Children[0].Children[2].InnerHtml);
     }
 
-    
     [Fact]
     public void DealsShouldDisplayAllColumnsThursday()
     {
@@ -45,7 +44,7 @@
 
     [Fact]
     public void DealsShouldDisplayOnlyDealsForSelectedDay()
-    {   
+    {
         timeService.DayOfWeek = DayOfWeek.Wednesday.ToString();
         var cut = ctx.Render(@<Deals />);
         var tbody = getTbody(cut);
@@ -65,6 +64,38 @@
         var dowSelect = (IHtmlSelectElement)cut.WaitForElement("#day-of-week-select");
 
         Assert.Equal(DateTime.Today.DayOfWeek.ToString(), dowSelect.Value);
+    }
+
+    [Fact]
+    public void DealsShouldChangeWhenNewValueSelectedMonday()
+    {
+        var cut = ctx.Render(@<Deals />);
+        var dowSelect = (IHtmlSelectElement)cut.WaitForElement("#day-of-week-select");
+
+        dowSelect.Change("Monday");
+
+        var tbody = getTbody(cut);
+        Assert.Equal(45, tbody.ChildElementCount);
+        foreach (var tr in tbody.Children)
+        {
+            Assert.Equal("Monday", tr.Children[0].InnerHtml);
+        }
+    }
+
+    [Fact]
+    public void DealsShouldChangeWhenNewValueSelectedFriday()
+    {
+        var cut = ctx.Render(@<Deals />);
+        var dowSelect = (IHtmlSelectElement)cut.WaitForElement("#day-of-week-select");
+
+        dowSelect.Change("Friday");
+
+        var tbody = getTbody(cut);
+        Assert.Equal(51, tbody.ChildElementCount);
+        foreach (var tr in tbody.Children)
+        {
+            Assert.Equal("Friday", tr.Children[0].InnerHtml);
+        }
     }
 
     private IElement getTbody(IRenderedFragment cut)
