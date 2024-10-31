@@ -1,8 +1,8 @@
 ﻿@using StpFoodBlazor.Helpers
 @using StpFoodBlazor.Services
 @using StpFoodBlazor.Models
-@inject IDealService HttpDealService
-@inject ITimeService TimeService
+@inject IDealService DealServiceImpl
+@inject ITimeService TimeServiceImpl
 
 
 @page "/"
@@ -19,7 +19,7 @@
 }
 else
 {
-    <select class="select-element" id="day-of-week-select" @bind="selectedDayOfWeek" @bind:after="OnSelectedDayChanged">
+    <select class="select-element" id="day-of-week-select" @onchange="OnSelectedDayChanged" value="@selectedDayOfWeek">
         <option value="">All</option>
         @foreach (var dow in daysOfWeek)
         {
@@ -49,21 +49,34 @@ else
 
 @code {
     private DealEvent[]? deals;
-    private string? selectedDayOfWeek = new TimeService().GetDayOfWeek().ToString();
+    private DealEvent[]? allDeals = null;
+    private static bool isInitialized = false;
+    private string? selectedDayOfWeek = null;
     private static readonly List<DayOfWeek> daysOfWeek = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList();
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        var allDeals = await HttpDealService.GetDealsAsync();
-        DealFilter filter = new DealFilter();
-        filter.Day = selectedDayOfWeek;
-        filter.Deals = allDeals;
-        deals = filter.Filter();
+        if (firstRender)
+        {
+            //do something
+            allDeals = await DealServiceImpl.GetDealsAsync();
+            selectedDayOfWeek = TimeServiceImpl.GetDayOfWeek();
+            FilterDeals();
+            StateHasChanged();
+        }
     }
 
     void OnSelectedDayChanged(ChangeEventArgs e)
     {
-        selectedDayOfWeek = (string)e.Value;
-        
+        selectedDayOfWeek = (string?)e.Value;
+        FilterDeals();
+    }
+
+    private void FilterDeals()
+    {
+        DealFilter filter = new DealFilter();
+        filter.Day = selectedDayOfWeek;
+        filter.Deals = allDeals;
+        deals = filter.Filter();
     }
 }

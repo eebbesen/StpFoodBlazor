@@ -9,25 +9,48 @@
 @code {
 
     private TestContext ctx;
+    private TestTimeService timeService = new TestTimeService();
 
     public DealsTest()
     {
         ctx = new TestContext();
         ctx.Services.AddSingleton<IDealService>(new TestDealService());
-        ctx.Services.AddSingleton<ITimeService>(new TestTimeService(DateTime.Now));
+        ctx.Services.AddSingleton<ITimeService>(timeService);
     }
 
     [Fact]
-    public void DealsShouldDisplayDealTextWednesday()
+    public void DealsShouldDisplayAllColumnsWednesday()
     {
-        ctx.Services.AddSingleton<ITimeService>(new TestTimeService(new DateTime(2024, 10, 23)));
+        timeService.DayOfWeek = DayOfWeek.Wednesday.ToString();
+        var cut = ctx.Render(@<Deals />);
+        var tbody = getTbody(cut);
+
+        Assert.Equal("Wednesday", tbody.Children[0].Children[0].InnerHtml);
+        Assert.Equal("Asian Express", tbody.Children[0].Children[1].InnerHtml);
+        Assert.Equal("$12.95 combo", tbody.Children[0].Children[2].InnerHtml);
+    }
+
+    
+    [Fact]
+    public void DealsShouldDisplayAllColumnsThursday()
+    {
+        timeService.DayOfWeek = DayOfWeek.Thursday.ToString();
+        var cut = ctx.Render(@<Deals />);
+        var tbody = getTbody(cut);
+
+        Assert.Equal("Thursday", tbody.Children[0].Children[0].InnerHtml);
+        Assert.Equal("Asian Express", tbody.Children[0].Children[1].InnerHtml);
+        Assert.Equal("$12.95 combo", tbody.Children[0].Children[2].InnerHtml);
+    }
+
+    [Fact]
+    public void DealsShouldDisplayOnlyDealsForSelectedDay()
+    {   
+        timeService.DayOfWeek = DayOfWeek.Wednesday.ToString();
         var cut = ctx.Render(@<Deals />);
         var tbody = getTbody(cut);
 
         Assert.Equal(55, tbody.ChildElementCount);
-        Assert.Equal("Wednesday", tbody.Children[0].Children[0].InnerHtml);
-        Assert.Equal("Asian Express", tbody.Children[0].Children[1].InnerHtml);
-        Assert.Equal("$12.95 combo", tbody.Children[0].Children[2].InnerHtml);
         foreach (var tr in tbody.Children)
         {
             Assert.Equal("Wednesday", tr.Children[0].InnerHtml);
@@ -37,6 +60,7 @@
     [Fact]
     public void DealsShouldDefaultToCurrentDay()
     {
+        ctx.Services.AddSingleton<ITimeService>(timeService);
         var cut = ctx.Render(@<Deals />);
         var dowSelect = (IHtmlSelectElement)cut.WaitForElement("#day-of-week-select");
 
