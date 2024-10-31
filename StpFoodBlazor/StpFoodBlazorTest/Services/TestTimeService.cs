@@ -3,11 +3,12 @@ using System;
 
 namespace StpFoodBlazorTest.Services
 {
-    public class TestTimeService(DateTime dateTime) : ITimeService
+    public class TestTimeService : ITimeService
     {
+        public string? DayOfWeek { get; set; } = DateTime.Today.DayOfWeek.ToString();
         public string GetDayOfWeek()
         {
-            return dateTime.DayOfWeek.ToString();
+            return DayOfWeek ?? string.Empty;
         }
     }
 }
