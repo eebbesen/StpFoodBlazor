@@ -19,32 +19,36 @@
 }
 else
 {
-    <select class="select-element" id="day-of-week-select" @onchange="OnSelectedDayChanged" value="@selectedDayOfWeek">
+    <select class="select-element" id="day-of-week-select"
+        @onchange="OnSelectedDayChanged" value="@selectedDayOfWeek">
         <option value="">All</option>
         @foreach (var dow in daysOfWeek)
         {
             <option value="@dow">@dow</option>
         }
     </select>
-    <table class="table" id="deals_table">
-        <thead>
-            <tr>
-                <th>Day</th>
-                <th>Place</th>
-                <th>Deal</th>
-            </tr>
-        </thead>
-        <tbody id="deals_table_body">
-            @foreach (var deal in deals)
-            {
+    <div class="table-responsive">
+        <table class="table table-striped" id="deals_table">
+            <caption>Downtown Saint Paul deals</caption>
+            <thead class="table-dark">
                 <tr>
-                    <td>@deal.Day</td>
-                    <td>@deal.Name</td>
-                    <td>@deal.Deal</td>
+                    <th>Day</th>
+                    <th>Place</th>
+                    <th>Deal</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody id="deals_table_body">
+                @foreach (var deal in deals)
+                {
+                    <tr>
+                        <td>@deal.Day</td>
+                        <td>@deal.Name</td>
+                        <td>@deal.Deal</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 }
 
 @code {
