@@ -25,16 +25,18 @@
 else
 {
     <div class="row">
-        <select class="select-element form-select mb-2" id="day-of-week-select"
-            @onchange="OnSelectedDayChanged" value="@selectedDayOfWeek">
-            <option value="">All</option>
-            @foreach (var dow in daysOfWeek)
-            {
-                <option value="@dow">@dow</option>
-            }
-        </select>
+        <div class="col-2">
+            <select class="select-element form-select mb-2" id="day-of-week-select"
+                @onchange="OnSelectedDayChanged" value="@selectedDayOfWeek">
+                <option value="">All</option>
+                @foreach (var dow in daysOfWeek)
+                {
+                    <option value="@dow">@dow</option>
+                }
+            </select>
+        </div>
     </div>
-    <div class="row bg-dark text-light">
+    <div class="row bg-dark text-light rounded">
         <div class="col-1">Day</div>
         <div class="col-3">Place</div>
         <div class="col">Deal</div>
