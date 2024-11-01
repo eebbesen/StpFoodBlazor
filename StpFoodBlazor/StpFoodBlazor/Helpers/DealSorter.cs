@@ -4,10 +4,16 @@ namespace StpFoodBlazor.Helpers
 {
     public static class DealSorter
     {
-        public static List<DealEvent> SortDealEventsByName(List<DealEvent> DealEvents)
+        public static DealEvent[] SortDealEventsByName(DealEvent[]? DealEvents)
         {
-            DealEvents.Sort((x, y) => x.Name.CompareTo(y.Name));
-            return DealEvents;
+            if (DealEvents == null)
+            {
+                return [];
+            }
+
+            Array.Sort(DealEvents, static (x, y) =>
+                string.Compare(x.Name, y.Name, StringComparison.Ordinal));
+            return [.. DealEvents];
         }
     }
 }

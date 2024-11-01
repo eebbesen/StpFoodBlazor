@@ -67,6 +67,7 @@ else
             allDeals = await DealServiceImpl.GetDealsAsync();
             selectedDayOfWeek = TimeServiceImpl.GetDayOfWeek();
             FilterDeals();
+            SortDeals();
             StateHasChanged();
         }
     }
@@ -75,6 +76,7 @@ else
     {
         selectedDayOfWeek = (string?)e.Value;
         FilterDeals();
+        SortDeals();
     }
 
     private void FilterDeals()
@@ -83,5 +85,10 @@ else
         filter.Day = selectedDayOfWeek;
         filter.Deals = allDeals;
         deals = filter.Filter();
+    }
+
+    private void SortDeals()
+    {
+        deals = DealSorter.SortDealEventsByName(deals);
     }
 }
