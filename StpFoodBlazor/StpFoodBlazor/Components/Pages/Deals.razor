@@ -11,45 +11,46 @@
 
 <PageTitle>Deals</PageTitle>
 
-<h1>Deals</h1>
+<div class="container">
+    <div class="row">
+        <h1>Deals</h1>
+    </div>
 
 @if (deals == null)
 {
-    <p><em>Loading...</em></p>
+    <div class="row">
+        <p><em>Loading...</em></p>
+    </div>
 }
 else
 {
-    <select class="select-element form-select mb-2" id="day-of-week-select"
-        @onchange="OnSelectedDayChanged" value="@selectedDayOfWeek">
-        <option value="">All</option>
-        @foreach (var dow in daysOfWeek)
+    <div class="row">
+        <select class="select-element form-select mb-2" id="day-of-week-select"
+            @onchange="OnSelectedDayChanged" value="@selectedDayOfWeek">
+            <option value="">All</option>
+            @foreach (var dow in daysOfWeek)
+            {
+                <option value="@dow">@dow</option>
+            }
+        </select>
+    </div>
+    <div class="row bg-dark text-light">
+        <div class="col-1">Day</div>
+        <div class="col-3">Place</div>
+        <div class="col">Deal</div>
+    </div>
+    <div id="deals_table_body">
+        @foreach (var deal in deals)
         {
-            <option value="@dow">@dow</option>
+        <div class="row">
+            <div class="col-1">@deal.Day</div>
+            <div class="col-3">@deal.Name</div>
+            <div class="col">@deal.Deal</div>
+        </div>
         }
-    </select>
-    <div class="table-responsive">
-        <table class="table table-striped" id="deals_table">
-            <caption>Downtown Saint Paul deals</caption>
-            <thead class="table-dark">
-                <tr>
-                    <th>Day</th>
-                    <th>Place</th>
-                    <th>Deal</th>
-                </tr>
-            </thead>
-            <tbody id="deals_table_body">
-                @foreach (var deal in deals)
-                {
-                    <tr>
-                        <td>@deal.Day</td>
-                        <td>@deal.Name</td>
-                        <td>@deal.Deal</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
     </div>
 }
+</div>
 
 @code {
     private DealEvent[]? deals;

@@ -101,6 +101,6 @@
     private IElement getTbody(IRenderedFragment cut)
     {
         cut.WaitForElement("#deals_table_body", TimeSpan.FromSeconds(5));
-        return cut.Find("tbody");
+        return cut.Find("#deals_table_body");
     }
 }
