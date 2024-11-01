@@ -23,11 +23,11 @@
     {
         timeService.DayOfWeek = DayOfWeek.Wednesday.ToString();
         var cut = ctx.Render(@<Deals />);
-        var tbody = getTbody(cut);
+        var elements = getElements(cut);
 
-        Assert.Equal("Wednesday", tbody.Children[0].Children[0].InnerHtml);
-        Assert.Equal("Asian Express", tbody.Children[0].Children[1].InnerHtml);
-        Assert.Equal("$12.95 combo", tbody.Children[0].Children[2].InnerHtml);
+        Assert.Equal("Wednesday", elements.Children[0].Children[0].InnerHtml);
+        Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[1].InnerHtml);
+        Assert.Equal("Discounted apps https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf", elements.Children[0].Children[2].InnerHtml);
     }
 
     [Fact]
@@ -35,11 +35,11 @@
     {
         timeService.DayOfWeek = DayOfWeek.Thursday.ToString();
         var cut = ctx.Render(@<Deals />);
-        var tbody = getTbody(cut);
+        var elements = getElements(cut);
 
-        Assert.Equal("Thursday", tbody.Children[0].Children[0].InnerHtml);
-        Assert.Equal("Asian Express", tbody.Children[0].Children[1].InnerHtml);
-        Assert.Equal("$12.95 combo", tbody.Children[0].Children[2].InnerHtml);
+        Assert.Equal("Thursday", elements.Children[0].Children[0].InnerHtml);
+        Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[1].InnerHtml);
+        Assert.Equal("Discounted apps https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf", elements.Children[0].Children[2].InnerHtml);
     }
 
     [Fact]
@@ -47,10 +47,10 @@
     {
         timeService.DayOfWeek = DayOfWeek.Wednesday.ToString();
         var cut = ctx.Render(@<Deals />);
-        var tbody = getTbody(cut);
+        var elements = getElements(cut);
 
-        Assert.Equal(55, tbody.ChildElementCount);
-        foreach (var tr in tbody.Children)
+        Assert.Equal(55, elements.ChildElementCount);
+        foreach (var tr in elements.Children)
         {
             Assert.Equal("Wednesday", tr.Children[0].InnerHtml);
         }
@@ -74,9 +74,9 @@
 
         dowSelect.Change("Monday");
 
-        var tbody = getTbody(cut);
-        Assert.Equal(45, tbody.ChildElementCount);
-        foreach (var tr in tbody.Children)
+        var elements = getElements(cut);
+        Assert.Equal(45, elements.ChildElementCount);
+        foreach (var tr in elements.Children)
         {
             Assert.Equal("Monday", tr.Children[0].InnerHtml);
         }
@@ -90,15 +90,15 @@
 
         dowSelect.Change("Friday");
 
-        var tbody = getTbody(cut);
-        Assert.Equal(51, tbody.ChildElementCount);
-        foreach (var tr in tbody.Children)
+        var elements = getElements(cut);
+        Assert.Equal(51, elements.ChildElementCount);
+        foreach (var tr in elements.Children)
         {
             Assert.Equal("Friday", tr.Children[0].InnerHtml);
         }
     }
 
-    private IElement getTbody(IRenderedFragment cut)
+    private IElement getElements(IRenderedFragment cut)
     {
         cut.WaitForElement("#deals_table_body", TimeSpan.FromSeconds(5));
         return cut.Find("#deals_table_body");
