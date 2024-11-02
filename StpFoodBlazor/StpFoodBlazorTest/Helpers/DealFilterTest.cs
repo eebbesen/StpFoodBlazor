@@ -28,7 +28,7 @@ namespace StpFoodBlazorTest.Helpers {
 
             DealEvent[] filteredDeals = filter.Filter();
 
-            Assert.Equal(324, dealsLength);
+            Assert.Equal(299, dealsLength);
             Assert.Equal(dealsLength, filteredDeals.Length);
         }
 
@@ -88,7 +88,7 @@ namespace StpFoodBlazorTest.Helpers {
 
             DealEvent[] filteredDeals = filter.Filter();
 
-            Assert.Equal(215, filteredDeals.Length);
+            Assert.Equal(190, filteredDeals.Length);
             Array.ForEach(filteredDeals, deal => {
                 Assert.True(string.IsNullOrEmpty(deal.Alcohol));
             });
@@ -110,7 +110,7 @@ namespace StpFoodBlazorTest.Helpers {
 
             DealEvent[] filteredDeals = filter.Filter();
 
-            Assert.Equal(133, filteredDeals.Length);
+            Assert.Equal(108, filteredDeals.Length);
             Array.ForEach(filteredDeals, deal =>
                 Assert.True(string.IsNullOrWhiteSpace(deal.HappyHour)));
         }

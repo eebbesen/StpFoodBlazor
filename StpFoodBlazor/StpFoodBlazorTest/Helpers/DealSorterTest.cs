@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using StpFoodBlazor.Helpers;
 using StpFoodBlazor.Models;
 
@@ -7,22 +6,22 @@ namespace StpFoodBlazorTest.Helpers
     public class DealSorterTest
     {
         [Fact]
-        public void SortDealEventsByName_SortsCorrectly()
+        public void Sort_SortsCorrectly()
         {
             var dealEvents = new DealEvent[]
             {
-                new() { Name = "Sawatdee Saint Paul" },
-                new() { Name = "Asian Express" },
-                new() { Name = "Afro Deli" }
+                new() { Name = "Sawatdee Saint Paul", Deal = "$14.32 lunch buffet (tax included)" },
+                new() { Name = "Asian Express", Deal = "$12.95 combo" },
+                new() { Name = "Sawatdee Saint Paul", Deal = "$5 Fried Tofu or Edamame https://www.sawatdee.com/st-paul-menu" }
             };
             var expectedOrder = new DealEvent[]
             {
-                new() { Name = "Afro Deli" },
-                new() { Name = "Asian Express" },
-                new() { Name = "Sawatdee Saint Paul" }
+                new() { Name = "Asian Express", Deal = "$12.95 combo" },
+                new() { Name = "Sawatdee Saint Paul", Deal = "$14.32 lunch buffet (tax included)" },
+                new() { Name = "Sawatdee Saint Paul", Deal = "$5 Fried Tofu or Edamame https://www.sawatdee.com/st-paul-menu" }
             };
 
-            var sortedDealEvents = DealSorter.SortDealEventsByName(dealEvents);
+            var sortedDealEvents = DealSorter.Sort(dealEvents);
 
             for (int i = 0; i < expectedOrder.Length; i++)
             {
@@ -31,30 +30,30 @@ namespace StpFoodBlazorTest.Helpers
         }
 
         [Fact]
-        public void SortDealEventsByName_EmptyArray()
+        public void Sort_EmptyArray()
         {
             // Arrange
             var dealEvents = new DealEvent[]{};
 
             // Act
-            var sortedDealEvents = DealSorter.SortDealEventsByName(dealEvents);
+            var sortedDealEvents = DealSorter.Sort(dealEvents);
 
             // Assert
             Assert.Empty(sortedDealEvents);
         }
 
         [Fact]
-        public void SortDealEventsByName_SingleElement()
+        public void Sort_SingleElement()
         {
             var dealEvents = new DealEvent[]
             {
-                new() { Name = "Afro Deli" }
+                new() { Name = "Asian Express", Deal = "$12.95 combo" }
             };
 
-            var sortedDealEvents = DealSorter.SortDealEventsByName(dealEvents);
+            var sortedDealEvents = DealSorter.Sort(dealEvents);
 
             Assert.Single(sortedDealEvents);
-            Assert.Equal("Afro Deli", sortedDealEvents[0].Name);
+            Assert.Equal("Asian Express", sortedDealEvents[0].Name);
         }
     }
 }

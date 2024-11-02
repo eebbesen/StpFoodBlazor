@@ -27,7 +27,7 @@
 
         Assert.Equal("Wednesday", elements.Children[0].Children[0].InnerHtml);
         Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[1].InnerHtml);
-        Assert.Equal("Discounted apps https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf", elements.Children[0].Children[2].InnerHtml);
+        Assert.Equal("$10 select craft cocktail", elements.Children[0].Children[2].InnerHtml);
     }
 
     [Fact]
@@ -39,7 +39,7 @@
 
         Assert.Equal("Thursday", elements.Children[0].Children[0].InnerHtml);
         Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[1].InnerHtml);
-        Assert.Equal("Discounted apps https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf", elements.Children[0].Children[2].InnerHtml);
+        Assert.Equal("$10 select craft cocktail", elements.Children[0].Children[2].InnerHtml);
     }
 
     [Fact]
@@ -96,6 +96,20 @@
         {
             Assert.Equal("Friday", tr.Children[0].InnerHtml);
         }
+    }
+
+    [Fact]
+    public void DealsShouldSortByDay()
+    {
+        var cut = ctx.Render(@<Deals />);
+        var dowSelect = (IHtmlSelectElement)cut.WaitForElement("#day-of-week-select");
+
+        dowSelect.Change(""); // All value in the select is ""
+
+        var elements = getElements(cut);
+        Assert.Equal(299, elements.ChildElementCount);
+        Assert.Equal("Sunday", elements.Children[0].Children[0].InnerHtml);
+        Assert.Equal("Saturday", elements.Children[298].Children[0].InnerHtml);
     }
 
     private IElement getElements(IRenderedFragment cut)
