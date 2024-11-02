@@ -32,8 +32,11 @@ else
             </select>
         </div>
     </div>
-    <div class="row bg-dark text-light rounded">
-        <div class="col-1">Day</div>
+    <div class="row bg-dark text-light rounded" id="deals_table_header">
+        @if (string.IsNullOrEmpty(selectedDayOfWeek))
+        {
+            <div class="col-1">Day</div>
+        }
         <div class="col-3">Place</div>
         <div class="col">Deal</div>
     </div>
@@ -42,7 +45,10 @@ else
         @foreach (var deal in deals)
         {
         <div class="row @(rowCounter % 2 == 0 ? "" : "rounded bg-secondary bg-opacity-25")">
-            <div class="col-1">@deal.Day</div>
+            @if (string.IsNullOrEmpty(selectedDayOfWeek))
+            {
+                <div class="col-1">@deal.Day</div>
+            }
             <div class="col-3">@deal.Name</div>
             <div class="col">@deal.Deal</div>
         </div>
