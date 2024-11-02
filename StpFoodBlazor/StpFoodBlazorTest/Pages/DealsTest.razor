@@ -25,9 +25,8 @@
         var cut = ctx.Render(@<Deals />);
         var elements = getElements(cut);
 
-        Assert.Equal("Wednesday", elements.Children[0].Children[0].InnerHtml);
-        Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[1].InnerHtml);
-        Assert.Equal("$10 select craft cocktail", elements.Children[0].Children[2].InnerHtml);
+        Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
+        Assert.Equal("$10 select craft cocktail", elements.Children[0].Children[1].InnerHtml);
     }
 
     [Fact]
@@ -37,9 +36,8 @@
         var cut = ctx.Render(@<Deals />);
         var elements = getElements(cut);
 
-        Assert.Equal("Thursday", elements.Children[0].Children[0].InnerHtml);
-        Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[1].InnerHtml);
-        Assert.Equal("$10 select craft cocktail", elements.Children[0].Children[2].InnerHtml);
+        Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
+        Assert.Equal("$10 select craft cocktail", elements.Children[0].Children[1].InnerHtml);
     }
 
     [Fact]
@@ -50,10 +48,6 @@
         var elements = getElements(cut);
 
         Assert.Equal(55, elements.ChildElementCount);
-        foreach (var tr in elements.Children)
-        {
-            Assert.Equal("Wednesday", tr.Children[0].InnerHtml);
-        }
     }
 
     [Fact]
@@ -76,10 +70,6 @@
 
         var elements = getElements(cut);
         Assert.Equal(45, elements.ChildElementCount);
-        foreach (var tr in elements.Children)
-        {
-            Assert.Equal("Monday", tr.Children[0].InnerHtml);
-        }
     }
 
     [Fact]
@@ -92,10 +82,6 @@
 
         var elements = getElements(cut);
         Assert.Equal(51, elements.ChildElementCount);
-        foreach (var tr in elements.Children)
-        {
-            Assert.Equal("Friday", tr.Children[0].InnerHtml);
-        }
     }
 
     [Fact]
@@ -110,6 +96,36 @@
         Assert.Equal(299, elements.ChildElementCount);
         Assert.Equal("Sunday", elements.Children[0].Children[0].InnerHtml);
         Assert.Equal("Saturday", elements.Children[298].Children[0].InnerHtml);
+    }
+
+    [Fact]
+    public void DealsShouldShowDayColumnWhenAllDays()
+    {
+        var cut = ctx.Render(@<Deals />);
+        var dowSelect = (IHtmlSelectElement)cut.WaitForElement("#day-of-week-select");
+
+        dowSelect.Change(""); // All value in the select is ""
+
+        var elements = getElements(cut);
+        Assert.Equal(299, elements.ChildElementCount);
+        Assert.Equal("Sunday", elements.Children[0].Children[0].InnerHtml);
+        Assert.Equal("Saturday", elements.Children[298].Children[0].InnerHtml);
+        Assert.Equal("Day", cut.Find("#deals_table_header").Children[0].InnerHtml);
+    }
+
+    [Fact]
+    public void DealsShouldNotShowDayColumnWhenNotAllDays()
+    {
+        var cut = ctx.Render(@<Deals />);
+        var dowSelect = (IHtmlSelectElement)cut.WaitForElement("#day-of-week-select");
+
+        dowSelect.Change("Friday");
+
+        var elements = getElements(cut);
+        Assert.Equal(51, elements.ChildElementCount);
+        Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
+        Assert.Equal("Wrestaurant at the Palace", elements.Children[50].Children[0].InnerHtml);
+        Assert.Equal("Place", cut.Find("#deals_table_header").Children[0].InnerHtml);
     }
 
     private IElement getElements(IRenderedFragment cut)

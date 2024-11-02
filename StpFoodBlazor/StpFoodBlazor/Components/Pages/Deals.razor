@@ -12,10 +12,6 @@
 <PageTitle>Deals</PageTitle>
 
 <div class="container mb-5">
-    <div class="row">
-        <h1>Deals</h1>
-    </div>
-
 @if (deals == null)
 {
     <div class="row">
@@ -36,19 +32,32 @@ else
             </select>
         </div>
     </div>
-    <div class="row bg-dark text-light rounded">
-        <div class="col-1">Day</div>
+    <div class="row bg-dark text-light rounded" id="deals_table_header">
+        @if (string.IsNullOrEmpty(selectedDayOfWeek))
+        {
+            <div class="col-1">Day</div>
+        }
         <div class="col-3">Place</div>
         <div class="col">Deal</div>
     </div>
     <div id="deals_table_body">
+        @{var rowCounter = 0;}
         @foreach (var deal in deals)
         {
-        <div class="row">
-            <div class="col-1">@deal.Day</div>
+        <div class="row @(rowCounter % 2 == 0 ? "" : "rounded bg-secondary bg-opacity-25")">
+            @if (string.IsNullOrEmpty(selectedDayOfWeek))
+            {
+                <div class="col-1">@deal.Day</div>
+            }
             <div class="col-3">@deal.Name</div>
-            <div class="col">@deal.Deal</div>
+            <div class="col">
+                @if (!string.IsNullOrEmpty(deal.HappyHour))
+                {
+                    <i class="bi bi-clock" title=@deal.HappyHour>&nbsp;</i>
+                }
+                @deal.Deal</div>
         </div>
+        rowCounter++;
         }
     </div>
 }

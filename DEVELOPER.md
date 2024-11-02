@@ -1,19 +1,19 @@
 
-### Run
+## Run
 
     $ cd StpFoodBlazor/StpFoodBlazor/
     $ dotnet run
 
-### Testing
+## Test
 
 https://learn.microsoft.com/en-us/aspnet/core/blazor/test?view=aspnetcore-8.0
 
     $ dotnet test --collect "XPlat Code Coverage"
 
 
-# General
+## General
 
-## bunit setup
+### bunit setup
 
 https://bunit.dev/docs/getting-started/create-test-project.html?tabs=xunit
 
@@ -29,3 +29,8 @@ Link the project and the test project
 
     $ dotnet sln StpFoodBlazor.sln add StpFoodBlazor/StpFoodBlazorTest/StpFoodBlazorTest.csproj
     $ dotnet add StpFoodBlazor/StpFoodBlazorTest/StpFoodBlazorTest.csproj reference StpFoodBlazor/StpFoodBlazor.csproj
+
+### Bootstrap icons
+
+    $ cd StpFoodBlazor/StpFoodBlazor
+    $ dotnet add package BootstrapIcons.AspNetCore --version 1.11.0
