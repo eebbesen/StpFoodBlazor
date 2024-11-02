@@ -50,7 +50,12 @@ else
                 <div class="col-1">@deal.Day</div>
             }
             <div class="col-3">@deal.Name</div>
-            <div class="col">@deal.Deal</div>
+            <div class="col">
+                @if (!string.IsNullOrEmpty(deal.HappyHour))
+                {
+                    <i class="bi bi-clock" title=@deal.HappyHour>&nbsp;</i>
+                }
+                @deal.Deal</div>
         </div>
         rowCounter++;
         }
