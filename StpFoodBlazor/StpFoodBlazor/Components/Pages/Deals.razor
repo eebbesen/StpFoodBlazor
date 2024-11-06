@@ -31,6 +31,11 @@ else
                 }
             </select>
         </div>
+        <div class="col">
+            <label for="happy-hour-checkbox" class="form-label">Include Happy Hour?</label>
+            <input type="checkbox" id="happy-hour-checkbox" checked="@happyHour"
+                @onchange="OnHappyHourChanged">
+        </div>
     </div>
     <div class="row bg-dark text-light rounded" id="deals_table_header">
         @if (string.IsNullOrEmpty(selectedDayOfWeek))
@@ -67,6 +72,8 @@ else
     private DealEvent[]? deals;
     private DealEvent[]? allDeals = null;
     private string? selectedDayOfWeek = null;
+
+    private bool happyHour = false;
     private static readonly List<DayOfWeek> daysOfWeek = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList();
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -88,11 +95,22 @@ else
         SortDeals();
     }
 
+    void OnHappyHourChanged(ChangeEventArgs e)
+    {
+        if (e.Value is bool value)
+        {
+            happyHour = value;
+        }
+        FilterDeals();
+        SortDeals();
+    }
+
     private void FilterDeals()
     {
         DealFilter filter = new DealFilter();
-        filter.Day = selectedDayOfWeek;
         filter.Deals = allDeals;
+        filter.Day = selectedDayOfWeek;
+        filter.HappyHour = happyHour;
         deals = filter.Filter();
     }
 
