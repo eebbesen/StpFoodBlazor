@@ -1,0 +1,14 @@
+@using StpFoodBlazor.Components.Pages
+
+@code {
+    [Fact]
+    public void AboutShouldDisplayText()
+    {
+        using var ctx = new TestContext();
+        var cut = ctx.Render(@<About />);
+        var paraElm = cut.Find("div.container");
+
+        var paraElmText = paraElm.InnerHtml;
+        paraElmText.Contains("Downtown Saint Paul food and drink deals compiled by");
+    }
+}
