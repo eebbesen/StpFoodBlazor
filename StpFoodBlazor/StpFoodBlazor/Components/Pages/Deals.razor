@@ -31,10 +31,15 @@ else
                 }
             </select>
         </div>
-        <div class="col">
-            <label for="happy-hour-checkbox" class="form-label">Include Happy Hour?</label>
-            <input type="checkbox" id="happy-hour-checkbox" checked="@happyHour"
+        <div class="col form-check mt-2">
+            <label for="happy-hour-checkbox" class="form-check-label">Include Happy Hour?</label>
+            <input type="checkbox" class="form-check-input" id="happy-hour-checkbox" checked="@happyHour"
                 @onchange="OnHappyHourChanged">
+        </div>
+        <div class="col form-check mt-2">
+            <label for="alcohol-checkbox" class="form-check-label">Include Alcohol?</label>
+            <input type="checkbox" class="form-check-input" id="alcohol-checkbox" checked="@alcohol"
+                    @onchange="OnAlcoholChanged">
         </div>
     </div>
     <div class="row bg-dark text-light rounded" id="deals_table_header">
@@ -74,6 +79,7 @@ else
     private string? selectedDayOfWeek = null;
 
     private bool happyHour = false;
+    private bool alcohol = false;
     private static readonly List<DayOfWeek> daysOfWeek = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList();
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -105,12 +111,23 @@ else
         SortDeals();
     }
 
+    void OnAlcoholChanged(ChangeEventArgs e)
+    {
+        if (e.Value is bool value)
+        {
+            alcohol = value;
+        }
+        FilterDeals();
+        SortDeals();
+    }
+
     private void FilterDeals()
     {
         DealFilter filter = new DealFilter();
         filter.Deals = allDeals;
         filter.Day = selectedDayOfWeek;
         filter.HappyHour = happyHour;
+        filter.Alcohol = alcohol;
         deals = filter.Filter();
     }
 

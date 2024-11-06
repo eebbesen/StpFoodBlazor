@@ -19,7 +19,7 @@
     }
 
     [Fact]
-    public void DealsShouldDisplayAllColumnsWednesday()
+    public void DealsShouldDisplayTwoColumnsWednesday()
     {
         timeService.DayOfWeek = DayOfWeek.Wednesday.ToString();
         var cut = ctx.Render(@<Deals />);
@@ -30,7 +30,7 @@
     }
 
     [Fact]
-    public void DealsShouldDisplayAllColumnsThursday()
+    public void DealsShouldDisplayTwoColumnsThursday()
     {
         timeService.DayOfWeek = DayOfWeek.Thursday.ToString();
         var cut = ctx.Render(@<Deals />);
@@ -39,6 +39,42 @@
         Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
         Assert.Equal("$10 select craft cocktail", elements.Children[0].Children[1].InnerHtml);
     }
+
+    [Fact]
+    public void DealsShouldExcludeAlcoholWhenUncheckedThursday()
+    {
+        timeService.DayOfWeek = DayOfWeek.Thursday.ToString();
+        var cut = ctx.Render(@<Deals />);
+        var elements = getElements(cut);
+
+        Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
+        Assert.Equal("50% off wild rice duck egg soup appetizer when you mention email", elements.Children[0].Children[1].InnerHtml);
+    }
+
+    [Fact]
+    public void DealsShouldExcludeHappyHourWhenUncheckedThursday()
+    {
+        timeService.DayOfWeek = DayOfWeek.Thursday.ToString();
+        var cut = ctx.Render(@<Deals />);
+        var elements = getElements(cut);
+
+        Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
+        Assert.Equal("50% off wild rice duck egg soup appetizer when you mention email", elements.Children[0].Children[1].InnerHtml);
+    }
+    
+    [Fact]
+    public void DealsShouldIncludeHappyHourWhenCheckedThursday()
+    {
+        timeService.DayOfWeek = DayOfWeek.Thursday.ToString();
+        var cut = ctx.Render(@<Deals />);
+        var elements = getElements(cut);
+
+        Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
+        Assert.Equal("Discounted apps", elements.Children[0].Children[1].InnerHtml);
+        Assert.Equal("bi bi-clock", elements.Children[0].Children[1].ClassName);
+        Assert.Equal("bi bi-clock", elements.Children[0].Children[1].GetAttribute("title"));
+    }
+
 
     [Fact]
     public void DealsShouldDisplayOnlyDealsForSelectedDay()
