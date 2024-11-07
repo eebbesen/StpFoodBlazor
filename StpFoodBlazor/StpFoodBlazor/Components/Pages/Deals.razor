@@ -31,12 +31,12 @@ else
                 }
             </select>
         </div>
-        <div class="col form-check mt-2">
+        <div class="col-2 form-check mt-2">
             <label for="happy-hour-checkbox" class="form-check-label">Include Happy Hour?</label>
             <input type="checkbox" class="form-check-input" id="happy-hour-checkbox" checked="@happyHour"
                 @onchange="OnHappyHourChanged">
         </div>
-        <div class="col form-check mt-2">
+        <div class="col-2 form-check mt-2">
             <label for="alcohol-checkbox" class="form-check-label">Include Alcohol?</label>
             <input type="checkbox" class="form-check-input" id="alcohol-checkbox" checked="@alcohol"
                     @onchange="OnAlcoholChanged">
@@ -63,11 +63,11 @@ else
             <div class="col">
                 @if (!string.IsNullOrEmpty(deal.HappyHour))
                 {
-                    <i class="bi bi-clock rounded" title=@deal.HappyHour>&nbsp;</i>
+                    <i class="bi bi-clock" data-bs-toggle="tooltip" title=@deal.HappyHour>&nbsp;</i>
                 }
                 @if (!string.IsNullOrEmpty(deal.Alcohol))
                 {
-                    <i class="bi bi-cup-straw rounded" title="alcohol">&nbsp;</i>
+                            <i class="bi bi-cup-straw" data-bs-toggle="tooltip" title="alcohol">&nbsp;</i>
                 }
                 @deal.Deal</div>
         </div>
