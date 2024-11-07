@@ -71,8 +71,9 @@ namespace StpFoodBlazorTest.Helpers {
         }
 
         [Fact]
-        public void ShouldReturnFilteredByAlcoholTrue() {
+        public void ShouldReturnFilteredByAlcoholExclusive() {
             filter.Alcohol = true;
+            filter.Inclusive = false;
 
             DealEvent[] filteredDeals = filter.Filter();
 
@@ -80,6 +81,17 @@ namespace StpFoodBlazorTest.Helpers {
             Array.ForEach(filteredDeals, deal => {
                 Assert.False(string.IsNullOrEmpty(deal.Alcohol));
             });
+        }
+
+        [Fact]
+        public void ShouldReturnFilteredByAlcoholInclusive()
+        {
+            filter.Alcohol = true;
+            filter.Inclusive = true;
+
+            DealEvent[] filteredDeals = filter.Filter();
+
+            Assert.Equal(299, filteredDeals.Length);
         }
 
         [Fact]
@@ -95,13 +107,25 @@ namespace StpFoodBlazorTest.Helpers {
         }
 
         [Fact]
-        public void ShouldReturnFilteredByHappyHourTrue() {
+        public void ShouldReturnFilteredByHappyHourExclusive() {
             filter.HappyHour = true;
+            filter.Inclusive = false;
 
             DealEvent[] filteredDeals = filter.Filter();
 
             Assert.Equal(191, filteredDeals.Length);
             Array.ForEach(filteredDeals, deal => Assert.NotNull(deal.HappyHour));
+        }
+
+        [Fact]
+        public void ShouldReturnFilteredByHappyHourInclusive()
+        {
+            filter.HappyHour = true;
+            filter.Inclusive = true;
+
+            DealEvent[] filteredDeals = filter.Filter();
+
+            Assert.Equal(299, filteredDeals.Length);
         }
 
         [Fact]

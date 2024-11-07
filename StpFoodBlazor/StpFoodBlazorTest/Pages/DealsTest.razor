@@ -71,11 +71,10 @@
         cut.Find("#happy-hour-checkbox").Change(true);
 
         Assert.Equal("1881 by Lake Elmo Inn", elements.Children[1].Children[0].InnerHtml);
-        Assert.Equal("Discounted apps", elements.Children[1].Children[1].InnerHtml);
-        Assert.Equal("bi bi-clock", elements.Children[1].Children[1].ClassName);
-        Assert.Equal("14:00 - 17:00", elements.Children[1].Children[1].GetAttribute("title"));
+        Assert.Contains("Discounted apps", elements.Children[1].InnerHtml);
+        Assert.Equal("bi bi-clock", elements.Children[1].Children[1].Children[0].ClassName);
+        Assert.Equal("14:00 - 17:00", elements.Children[1].Children[1].Children[0].GetAttribute("title"));
     }
-
 
     [Fact]
     public void DealsShouldDisplayOnlyDealsForSelectedDayWednesday()
