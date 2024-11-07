@@ -31,6 +31,16 @@ else
                 }
             </select>
         </div>
+        <div class="col-2 form-check mt-2">
+            <label for="happy-hour-checkbox" class="form-check-label">Include Happy Hour?</label>
+            <input type="checkbox" class="form-check-input" id="happy-hour-checkbox" checked="@happyHour"
+                @onchange="OnHappyHourChanged">
+        </div>
+        <div class="col-2 form-check mt-2">
+            <label for="alcohol-checkbox" class="form-check-label">Include Alcohol?</label>
+            <input type="checkbox" class="form-check-input" id="alcohol-checkbox" checked="@alcohol"
+                    @onchange="OnAlcoholChanged">
+        </div>
     </div>
     <div class="row bg-dark text-light rounded" id="deals_table_header">
         @if (string.IsNullOrEmpty(selectedDayOfWeek))
@@ -53,7 +63,11 @@ else
             <div class="col">
                 @if (!string.IsNullOrEmpty(deal.HappyHour))
                 {
-                    <i class="bi bi-clock" title=@deal.HappyHour>&nbsp;</i>
+                    <i class="bi bi-clock" data-bs-toggle="tooltip" title=@deal.HappyHour>&nbsp;</i>
+                }
+                @if (!string.IsNullOrEmpty(deal.Alcohol))
+                {
+                            <i class="bi bi-cup-straw" data-bs-toggle="tooltip" title="alcohol">&nbsp;</i>
                 }
                 @deal.Deal</div>
         </div>
@@ -67,6 +81,9 @@ else
     private DealEvent[]? deals;
     private DealEvent[]? allDeals = null;
     private string? selectedDayOfWeek = null;
+
+    private bool happyHour = false;
+    private bool alcohol = false;
     private static readonly List<DayOfWeek> daysOfWeek = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList();
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -88,11 +105,33 @@ else
         SortDeals();
     }
 
+    void OnHappyHourChanged(ChangeEventArgs e)
+    {
+        if (e.Value is bool value)
+        {
+            happyHour = value;
+        }
+        FilterDeals();
+        SortDeals();
+    }
+
+    void OnAlcoholChanged(ChangeEventArgs e)
+    {
+        if (e.Value is bool value)
+        {
+            alcohol = value;
+        }
+        FilterDeals();
+        SortDeals();
+    }
+
     private void FilterDeals()
     {
         DealFilter filter = new DealFilter();
-        filter.Day = selectedDayOfWeek;
         filter.Deals = allDeals;
+        filter.Day = selectedDayOfWeek;
+        filter.HappyHour = happyHour;
+        filter.Alcohol = alcohol;
         deals = filter.Filter();
     }
 

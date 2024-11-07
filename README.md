@@ -3,6 +3,8 @@ Display downtown Saint Paul food and drink deals
 
 ![tests](https://github.com/eebbesen/StpFoodBlazor/actions/workflows/test.yml/badge.svg)
 
+[See it in action!](stpfoodblazor-d3f0aqbuf5bxfugt.centralus-01.azurewebsites.net)
+
 ## Requirements
 
 You can modify this code to use other data services and data attributes but this code assumes you are using [sheet_zoukas-lambda](https://github.com/eebbesen/sheet_zoukas-lambda/) deployed on AWS to expose a Google Sheet.
