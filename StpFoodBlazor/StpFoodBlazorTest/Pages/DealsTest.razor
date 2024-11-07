@@ -61,7 +61,7 @@
 
         Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
         Assert.Contains("$10 select craft cocktail", elements.Children[0].Children[1].InnerHtml);
-        Assert.Equal("bi bi-cup-straw", elements.Children[0].Children[1].Children[0].ClassName);
+        Assert.Equal("bi bi-cup-straw rounded", elements.Children[0].Children[1].Children[0].ClassName);
         Assert.Equal("alcohol", elements.Children[0].Children[1].Children[0].GetAttribute("title"));
     }
 
@@ -86,7 +86,7 @@
 
         Assert.Equal("1881 by Lake Elmo Inn", elements.Children[1].Children[0].InnerHtml);
         Assert.Contains("Discounted apps", elements.Children[1].InnerHtml);
-        Assert.Equal("bi bi-clock", elements.Children[1].Children[1].Children[0].ClassName);
+        Assert.Equal("bi bi-clock rounded", elements.Children[1].Children[1].Children[0].ClassName);
         Assert.Equal("14:00 - 17:00", elements.Children[1].Children[1].Children[0].GetAttribute("title"));
     }
 
