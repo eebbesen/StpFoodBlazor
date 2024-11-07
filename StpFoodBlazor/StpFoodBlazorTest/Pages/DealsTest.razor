@@ -52,6 +52,20 @@
     }
 
     [Fact]
+    public void DealsShouldIncludeAlcoholThursday()
+    {
+        timeService.DayOfWeek = DayOfWeek.Thursday.ToString();
+        var cut = ctx.Render(@<Deals />);
+        var elements = getElements(cut);
+        cut.Find("#alcohol-checkbox").Change(true);
+
+        Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
+        Assert.Contains("$10 select craft cocktail", elements.Children[0].Children[1].InnerHtml);
+        Assert.Equal("bi bi-cup-straw", elements.Children[0].Children[1].Children[0].ClassName);
+        Assert.Equal("alcohol", elements.Children[0].Children[1].Children[0].GetAttribute("title"));
+    }
+
+    [Fact]
     public void DealsShouldExcludeHappyHourWhenUncheckedThursday()
     {
         timeService.DayOfWeek = DayOfWeek.Thursday.ToString();

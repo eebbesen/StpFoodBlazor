@@ -65,6 +65,10 @@ else
                 {
                     <i class="bi bi-clock" title=@deal.HappyHour>&nbsp;</i>
                 }
+                @if (!string.IsNullOrEmpty(deal.Alcohol))
+                {
+                    <i class="bi bi-cup-straw" title="alcohol">&nbsp;</i>
+                }
                 @deal.Deal</div>
         </div>
         rowCounter++;
