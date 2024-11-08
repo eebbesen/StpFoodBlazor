@@ -20,9 +20,9 @@
 }
 else
 {
-    <div class="row">
-        <div class="col-2">
-            <select class="select-element form-select mb-2" id="day-of-week-select"
+    <div class="row align-items-center mb-2">
+        <div class="d-flex align-items-center">
+            <select class="select-element form-select" style="max-width: 9rem" id="day-of-week-select"
                 @onchange="OnSelectedDayChanged" value="@selectedDayOfWeek">
                 <option value="">All</option>
                 @foreach (var dow in daysOfWeek)
@@ -30,16 +30,16 @@ else
                     <option value="@dow">@dow</option>
                 }
             </select>
-        </div>
-        <div class="col-2 form-check mt-2">
-            <label for="happy-hour-checkbox" class="form-check-label">Include Happy Hour?</label>
-            <input type="checkbox" class="form-check-input" id="happy-hour-checkbox" checked="@happyHour"
-                @onchange="OnHappyHourChanged">
-        </div>
-        <div class="col-2 form-check mt-2">
-            <label for="alcohol-checkbox" class="form-check-label">Include Alcohol?</label>
-            <input type="checkbox" class="form-check-input" id="alcohol-checkbox" checked="@alcohol"
-                    @onchange="OnAlcoholChanged">
+            <div class="form-check ms-3">
+                <label for="happy-hour-checkbox" class="form-check-label">Happy Hour? <i class="bi bi-clock" data-bs-toggle="tooltip" title="happy hour"></i></label>
+                <input type="checkbox" class="form-check-input" id="happy-hour-checkbox" checked="@happyHour"
+                    @onchange="OnHappyHourChanged">
+            </div>
+            <div class="form-check ms-3">
+                <label for="alcohol-checkbox" class="form-check-label">Alcohol? <i class="bi bi-cup-straw" data-bs-toggle="tooltip" title="alcohol"></i></label>
+                <input type="checkbox" class="form-check-input" id="alcohol-checkbox" checked="@alcohol"
+                        @onchange="OnAlcoholChanged">
+            </div>
         </div>
     </div>
     <div class="row bg-dark text-light rounded" id="deals_table_header">
