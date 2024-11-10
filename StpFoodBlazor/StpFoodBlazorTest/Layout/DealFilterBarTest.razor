@@ -6,11 +6,7 @@
 @code {
     private TestContext ctx;
 
-    void OnSelectedDayChanged(ChangeEventArgs e){}
-
-    void OnHappyHourChanged(ChangeEventArgs e){}
-
-    void OnAlcoholChanged(ChangeEventArgs e){}
+    void OnChangeStub(ChangeEventArgs e){}
 
     public DealFilterBarTest()
     {
@@ -21,9 +17,9 @@
     public void ShouldRenderCompents()
     {
         var cut = ctx.Render(@<DealFilterBar selectedDayOfWeek="Tuesday"
-          OnSelectedDayChanged="OnSelectedDayChanged"
-          OnHappyHourChanged="OnHappyHourChanged"
-          OnAlcoholChanged="OnAlcoholChanged"
+          OnSelectedDayChanged="OnChangeStub"
+          OnHappyHourChanged="OnChangeStub"
+          OnAlcoholChanged="OnChangeStub"
           happyHour=false
           alcohol=false />);
 
@@ -37,9 +33,9 @@
     public void ShouldRenderDayOfWeek()
     {
         var cut = ctx.Render(@<DealFilterBar selectedDayOfWeek="Tuesday"
-          OnSelectedDayChanged="OnSelectedDayChanged"
-          OnHappyHourChanged="OnHappyHourChanged"
-          OnAlcoholChanged="OnAlcoholChanged"
+          OnSelectedDayChanged="OnChangeStub"
+          OnHappyHourChanged="OnChangeStub"
+          OnAlcoholChanged="OnChangeStub"
           happyHour=false
           alcohol=false />);
 
@@ -51,9 +47,9 @@
     public void ShouldRenderHappyHour()
     {
         var cut = ctx.Render(@<DealFilterBar selectedDayOfWeek="Tuesday"
-          OnSelectedDayChanged="OnSelectedDayChanged"
-          OnHappyHourChanged="OnHappyHourChanged"
-          OnAlcoholChanged="OnAlcoholChanged"
+          OnSelectedDayChanged="OnChangeStub"
+          OnHappyHourChanged="OnChangeStub"
+          OnAlcoholChanged="OnChangeStub"
           happyHour=true
           alcohol=false />);
 
@@ -65,9 +61,9 @@
     public void ShouldRenderAlcohol()
     {
         var cut = ctx.Render(@<DealFilterBar selectedDayOfWeek="Tuesday"
-          OnSelectedDayChanged="OnSelectedDayChanged"
-          OnHappyHourChanged="OnHappyHourChanged"
-          OnAlcoholChanged="OnAlcoholChanged"
+          OnSelectedDayChanged="OnChangeStub"
+          OnHappyHourChanged="OnChangeStub"
+          OnAlcoholChanged="OnChangeStub"
           happyHour=false
           alcohol=true />);
 
