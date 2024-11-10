@@ -1,0 +1,18 @@
+﻿@inherits LayoutComponentBase
+@using StpFoodBlazor.Models
+
+@if (!string.IsNullOrEmpty(Deal.HappyHour))
+{
+    <i class="bi bi-clock me-1" data-bs-toggle="tooltip" title=@Deal.HappyHour></i>
+}
+@if (!string.IsNullOrEmpty(Deal.Alcohol))
+{
+    <i class="bi bi-cup-straw me-1" data-bs-toggle="tooltip" title="alcohol"></i>
+}
+
+@Deal.Deal
+
+@code {
+    [Parameter]
+    public required DealEvent Deal { get; set; }
+}

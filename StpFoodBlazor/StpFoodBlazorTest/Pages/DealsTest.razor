@@ -62,7 +62,7 @@
 
         Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
         Assert.Contains("$10 select craft cocktail", elements.Children[0].Children[1].InnerHtml);
-        Assert.Equal("bi bi-cup-straw", elements.Children[0].Children[1].Children[0].ClassName);
+        Assert.Equal("bi bi-cup-straw me-1", elements.Children[0].Children[1].Children[0].ClassName);
         Assert.Equal("alcohol", elements.Children[0].Children[1].Children[0].GetAttribute("title"));
     }
 
@@ -87,8 +87,8 @@
 
         Assert.Equal("1881 by Lake Elmo Inn", elements.Children[1].Children[0].InnerHtml);
         Assert.Contains("Discounted apps", elements.Children[1].InnerHtml);
-        Assert.Equal("bi bi-clock", elements.Children[1].Children[1].Children[0].ClassName);
-        Assert.Equal("14:00 - 17:00", elements.Children[1].Children[1].Children[0].GetAttribute("title"));
+        Assert.Equal("bi bi-clock me-1", elements.Children[1].Children[1].Children[0].Children[0].ClassName);
+        Assert.Equal("14:00 - 17:00", elements.Children[1].Children[1].Children[0].Children[0].GetAttribute("title"));
     }
 
     [Fact]
@@ -183,7 +183,7 @@
     public void DealsShouldWrapDealInURLSunday()
     {
         timeService.DayOfWeek = DayOfWeek.Sunday.ToString();
-        var expected = "<i class=\"bi bi-clock\" data-bs-toggle=\"tooltip\" title=\"16:00 - 18:00\">&nbsp;</i><i class=\"bi bi-cup-straw\" data-bs-toggle=\"tooltip\" title=\"alcohol\">&nbsp;</i><a href=\"https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png\" target=\"_blank\">$5 beer, $7 select wine, $9 cocktail of the day</a>";
+        var expected = "<a href=\"https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png\" target=\"_blank\"><i class=\"bi bi-clock me-1\" data-bs-toggle=\"tooltip\" title=\"16:00 - 18:00\"></i><i class=\"bi bi-cup-straw me-1\" data-bs-toggle=\"tooltip\" title=\"alcohol\"></i>$5 beer, $7 select wine, $9 cocktail of the day</a>";
         var cut = ctx.Render(@<Deals />);
         getElements(cut);
         cut.Find("#alcohol-checkbox").Change(true);
