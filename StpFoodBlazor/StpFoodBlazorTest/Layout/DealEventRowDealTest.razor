@@ -1,0 +1,59 @@
+@using StpFoodBlazor.Components.Layout
+@using StpFoodBlazor.Models
+
+@code {
+    private TestContext ctx;
+    private DealEvent deal = new DealEvent
+        {
+            Deal = "Great Deal",
+            Name = "Great Place",
+            Day = "Monday"
+        };
+    private static string alcoholIcon =
+        "<i class=\"bi bi-cup-straw me-1\" data-bs-toggle=\"tooltip\" title=\"alcohol\"></i>";
+    private static string happyHourIcon =
+        "<i class=\"bi bi-clock me-1\" data-bs-toggle=\"tooltip\" title=\"16:00 - 18:00\"></i>";
+
+    public DealEventRowDealTest()
+    {
+        ctx = new TestContext();
+    }
+
+    [Fact]
+    public void ShouldHandleNoAlcoholOrHappyHour()
+    {
+        var cut = ctx.Render(@<DealEventRowDeal Deal=deal />);
+        Assert.Equal(deal.Deal, cut.Markup);
+    }
+
+    [Fact]
+    public void ShouldHandleAlcohol()
+    {
+        deal.Alcohol = "x";
+
+        var cut = ctx.Render(@<DealEventRowDeal Deal=deal />);
+        Assert.Equal(alcoholIcon + @deal.Deal,
+            cut.Markup);
+    }
+
+    [Fact]
+    public void ShouldHandleHappyHour()
+    {
+        deal.HappyHour = "16:00 - 18:00";
+
+        var cut = ctx.Render(@<DealEventRowDeal Deal=deal />);
+        Assert.Equal(happyHourIcon + @deal.Deal,
+            cut.Markup);
+    }
+
+    [Fact]
+    public void ShouldHandleHappyHourAndAlcohol()
+    {
+        deal.HappyHour = "16:00 - 18:00";
+        deal.Alcohol = "x";
+
+        var cut = ctx.Render(@<DealEventRowDeal Deal=deal />);
+        Assert.Equal(happyHourIcon + alcoholIcon + @deal.Deal,
+            cut.Markup);
+    }
+}

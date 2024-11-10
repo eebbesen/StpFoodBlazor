@@ -1,0 +1,64 @@
+@using StpFoodBlazor.Components.Layout
+@using StpFoodBlazor.Models
+@using AngleSharp.Html.Dom
+@using AngleSharp.Dom
+
+@code {
+    private TestContext ctx;
+
+    void OnChangeStub(ChangeEventArgs e){}
+
+    public DealFilterBarTest()
+    {
+        ctx = new TestContext();
+    }
+
+    [Fact]
+    public void ShouldRenderCompents()
+    {
+        var cut = RenterDealFilterBar("Tuesday", false, false);
+
+        cut.Find("#filter-bar");
+        cut.Find("#day-of-week-select");
+        cut.Find("#happy-hour-checkbox");
+        cut.Find("#alcohol-checkbox");
+    }
+
+    [Fact]
+    public void ShouldRenderDayOfWeek()
+    {
+        var cut = RenterDealFilterBar("Tuesday", false, false);
+
+        var dow = cut.Find("#day-of-week-select");
+        Assert.Equal("Tuesday", dow.GetAttribute("value"));
+    }
+
+    [Fact]
+    public void ShouldRenderHappyHour()
+    {
+        var cut = RenterDealFilterBar("Tuesday", true, false);
+
+        var hh = cut.Find("#happy-hour-checkbox");
+        Assert.True(((IHtmlInputElement)hh).IsChecked);
+    }
+
+    [Fact]
+    public void ShouldRenderAlcohol()
+    {
+        var cut = RenterDealFilterBar("Tuesday", false, true);
+
+        var hh = cut.Find("#alcohol-checkbox");
+        Assert.True(((IHtmlInputElement)hh).IsChecked);
+    }
+
+    private IRenderedFragment RenterDealFilterBar(string dow, bool hh, bool alc)
+    {
+        return ctx.Render(@<DealFilterBar selectedDayOfWeek=@dow
+          OnSelectedDayChanged="OnChangeStub"
+          OnHappyHourChanged="OnChangeStub"
+          OnAlcoholChanged="OnChangeStub"
+          happyHour=@hh
+          alcohol=@alc />);
+    }
+
+}

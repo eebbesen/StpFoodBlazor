@@ -16,6 +16,7 @@ The backing Google Sheet requires the following tabs and corresponding column he
     * Deal
     * Happy Hour
     * Alcohol
+    * Url
 
 ## Environment Variables
 `SheetId` is the Google Sheet ID from which data will be read. `SheetsUrl` is the URL of the service that retrieves the data from the Google Sheet.

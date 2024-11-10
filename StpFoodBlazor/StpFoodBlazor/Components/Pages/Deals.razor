@@ -1,6 +1,7 @@
 ﻿@using StpFoodBlazor.Helpers
 @using StpFoodBlazor.Services
 @using StpFoodBlazor.Models
+@using StpFoodBlazor.Components.Layout;
 @inject IDealService DealServiceImpl
 @inject ITimeService TimeServiceImpl
 
@@ -20,34 +21,8 @@
 }
 else
 {
-    <div class="row align-items-center mb-2">
-        <div class="d-flex align-items-center">
-            <select class="select-element form-select" style="max-width: 9rem" id="day-of-week-select"
-                @onchange="OnSelectedDayChanged" value="@selectedDayOfWeek">
-                <option value="">All</option>
-                @foreach (var dow in daysOfWeek)
-                {
-                    <option value="@dow">@dow</option>
-                }
-            </select>
-            <div class="form-check-inline ms-3 d-flex flex-row-reverse">
-                <label for="happy-hour-checkbox" class="form-check-label d-flex">
-                    <span class="d-none d-sm-block ms-2">Happy Hour</span>
-                    <i class="bi bi-clock ms-1" data-bs-toggle="tooltip" title="happy hour"></i>
-                </label>
-                <input type="checkbox" class="form-check-input" id="happy-hour-checkbox" checked="@happyHour"
-                    @onchange="OnHappyHourChanged">
-            </div>
-            <div class="form-check-inline d-flex flex-row-reverse">
-                <label for="alcohol-checkbox" class="form-check-label d-flex">
-                    <span class="d-none d-sm-block ms-2">Alcohol</span>
-                    <i class="bi bi-cup-straw ms-1" data-bs-toggle="tooltip" title="alcohol"></i>
-                </label>
-                <input type="checkbox" class="form-check-input" id="alcohol-checkbox" checked="@alcohol"
-                        @onchange="OnAlcoholChanged">
-            </div>
-        </div>
-    </div>
+    <DealFilterBar selectedDayOfWeek="@selectedDayOfWeek" OnSelectedDayChanged="OnSelectedDayChanged"
+        happyHour="@happyHour" OnHappyHourChanged="OnHappyHourChanged" alcohol="@alcohol" OnAlcoholChanged="OnAlcoholChanged"></DealFilterBar>
     <div class="row bg-dark text-light rounded" id="deals_table_header">
         @if (string.IsNullOrEmpty(selectedDayOfWeek))
         {
@@ -67,15 +42,16 @@ else
             }
             <div class="col-3">@deal.Name</div>
             <div class="col">
-                @if (!string.IsNullOrEmpty(deal.HappyHour))
+                @if (!string.IsNullOrEmpty(deal.URL))
                 {
-                    <i class="bi bi-clock" data-bs-toggle="tooltip" title=@deal.HappyHour>&nbsp;</i>
+                    <NavLink href=@deal.URL target="_blank">
+                        <DealEventRowDeal Deal=deal></DealEventRowDeal>
+                    </NavLink>
                 }
-                @if (!string.IsNullOrEmpty(deal.Alcohol))
-                {
-                            <i class="bi bi-cup-straw" data-bs-toggle="tooltip" title="alcohol">&nbsp;</i>
+                else {
+                    <DealEventRowDeal Deal=deal></DealEventRowDeal>
                 }
-                @deal.Deal</div>
+            </div>
         </div>
         rowCounter++;
         }
@@ -90,7 +66,6 @@ else
 
     private bool happyHour = false;
     private bool alcohol = false;
-    private static readonly List<DayOfWeek> daysOfWeek = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().ToList();
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
