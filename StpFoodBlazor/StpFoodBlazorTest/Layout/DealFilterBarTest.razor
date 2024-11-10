@@ -1,26 +1,16 @@
 @using StpFoodBlazor.Components.Layout
 @using StpFoodBlazor.Models
+@using AngleSharp.Html.Dom
+@using AngleSharp.Dom
 
 @code {
     private TestContext ctx;
-    private string selectedDayChangedTo = "";
-    private bool happyHourChangedTo = false;
-    private bool alcoholChangedTo = false;
 
-    void OnSelectedDayChanged(ChangeEventArgs e)
-    {
-        selectedDayChangedTo = (string?)e.Value;
-    }
+    void OnSelectedDayChanged(ChangeEventArgs e){}
 
-    void OnHappyHourChanged(ChangeEventArgs e)
-    {
-        happyHourChangedTo = (bool)e.Value;
-    }
+    void OnHappyHourChanged(ChangeEventArgs e){}
 
-    void OnAlcoholChanged(ChangeEventArgs e)
-    {
-        alcoholChangedTo = (bool)e.Value;
-    }
+    void OnAlcoholChanged(ChangeEventArgs e){}
 
     public DealFilterBarTest()
     {
@@ -41,5 +31,48 @@
         cut.Find("#day-of-week-select");
         cut.Find("#happy-hour-checkbox");
         cut.Find("#alcohol-checkbox");
+    }
+
+    [Fact]
+    public void ShouldRenderDayOfWeek()
+    {
+        var cut = ctx.Render(@<DealFilterBar selectedDayOfWeek="Tuesday"
+          OnSelectedDayChanged="OnSelectedDayChanged"
+          OnHappyHourChanged="OnHappyHourChanged"
+          OnAlcoholChanged="OnAlcoholChanged"
+          happyHour=false
+          alcohol=false />);
+
+        var dow = cut.Find("#day-of-week-select");
+        Assert.Equal("Tuesday", dow.GetAttribute("value"));
+    }
+
+    [Fact]
+    public void ShouldRenderHappyHour()
+    {
+        var cut = ctx.Render(@<DealFilterBar selectedDayOfWeek="Tuesday"
+          OnSelectedDayChanged="OnSelectedDayChanged"
+          OnHappyHourChanged="OnHappyHourChanged"
+          OnAlcoholChanged="OnAlcoholChanged"
+          happyHour=true
+          alcohol=false />);
+
+        var hh = cut.Find("#happy-hour-checkbox");
+        Assert.True(((IHtmlInputElement)hh).IsChecked);
+    }
+
+    [Fact]
+    public void ShouldRenderAlcohol()
+    {
+        var cut = ctx.Render(@<DealFilterBar selectedDayOfWeek="Tuesday"
+          OnSelectedDayChanged="OnSelectedDayChanged"
+          OnHappyHourChanged="OnHappyHourChanged"
+          OnAlcoholChanged="OnAlcoholChanged"
+          happyHour=false
+          alcohol=true />);
+
+        var hh = cut.Find("#alcohol-checkbox");
+        Assert.True(((IHtmlInputElement)hh).IsChecked);
+
     }
 }
