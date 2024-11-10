@@ -1,0 +1,45 @@
+@using StpFoodBlazor.Components.Layout
+@using StpFoodBlazor.Models
+
+@code {
+    private TestContext ctx;
+    private string selectedDayChangedTo = "";
+    private bool happyHourChangedTo = false;
+    private bool alcoholChangedTo = false;
+
+    void OnSelectedDayChanged(ChangeEventArgs e)
+    {
+        selectedDayChangedTo = (string?)e.Value;
+    }
+
+    void OnHappyHourChanged(ChangeEventArgs e)
+    {
+        happyHourChangedTo = (bool)e.Value;
+    }
+
+    void OnAlcoholChanged(ChangeEventArgs e)
+    {
+        alcoholChangedTo = (bool)e.Value;
+    }
+
+    public DealFilterBarTest()
+    {
+        ctx = new TestContext();
+    }
+
+    [Fact]
+    public void ShouldRenderCompents()
+    {
+        var cut = ctx.Render(@<DealFilterBar selectedDayOfWeek="Tuesday"
+          OnSelectedDayChanged="OnSelectedDayChanged"
+          OnHappyHourChanged="OnHappyHourChanged"
+          OnAlcoholChanged="OnAlcoholChanged"
+          happyHour=false
+          alcohol=false />);
+
+        cut.Find("#filter-bar");
+        cut.Find("#day-of-week-select");
+        cut.Find("#happy-hour-checkbox");
+        cut.Find("#alcohol-checkbox");
+    }
+}
