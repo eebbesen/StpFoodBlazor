@@ -8,6 +8,7 @@ namespace StpFoodBlazor.Models
         public string? Day { get; set; }
         public string? Name { get; set; }
         public string? Alcohol { get; set; }
+        public string? URL { get; set; }
 
         [JsonPropertyName("Happy Hour")]
         public string? HappyHour { get; set; }

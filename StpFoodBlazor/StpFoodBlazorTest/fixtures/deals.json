@@ -273,7 +273,8 @@
     "PlaceID": "15",
     "Day": "Monday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$5 Fried Tofu or Edamame https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$5 Fried Tofu or Edamame",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -282,7 +283,8 @@
     "PlaceID": "15",
     "Day": "Tuesday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$5 Fried Tofu or Edamame https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$5 Fried Tofu or Edamame",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -291,7 +293,8 @@
     "PlaceID": "15",
     "Day": "Wednesday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$5 Fried Tofu or Edamame https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$5 Fried Tofu or Edamame",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -300,7 +303,8 @@
     "PlaceID": "15",
     "Day": "Thursday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$5 Fried Tofu or Edamame https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$5 Fried Tofu or Edamame",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -309,7 +313,8 @@
     "PlaceID": "15",
     "Day": "Friday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$5 Fried Tofu or Edamame https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$5 Fried Tofu or Edamame",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -318,7 +323,8 @@
     "PlaceID": "15",
     "Day": "Saturday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$5 Fried Tofu or Edamame https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$5 Fried Tofu or Edamame",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -327,7 +333,8 @@
     "PlaceID": "15",
     "Day": "Sunday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$5 Fried Tofu or Edamame https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$5 Fried Tofu or Edamame",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -336,7 +343,8 @@
     "PlaceID": "15",
     "Day": "Monday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$6 Sue's Egg Rolls, Fried Spring Rolls, Cream Cheese Wontons, or Potstickers https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$6 Sue's Egg Rolls, Fried Spring Rolls, Cream Cheese Wontons, or Potstickers",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -345,7 +353,8 @@
     "PlaceID": "15",
     "Day": "Tuesday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$6 Sue's Egg Rolls, Fried Spring Rolls, Cream Cheese Wontons, or Potstickers https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$6 Sue's Egg Rolls, Fried Spring Rolls, Cream Cheese Wontons, or Potstickers",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -354,7 +363,8 @@
     "PlaceID": "15",
     "Day": "Wednesday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$6 Sue's Egg Rolls, Fried Spring Rolls, Cream Cheese Wontons, or Potstickers https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$6 Sue's Egg Rolls, Fried Spring Rolls, Cream Cheese Wontons, or Potstickers",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -363,7 +373,8 @@
     "PlaceID": "15",
     "Day": "Thursday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$6 Sue's Egg Rolls, Fried Spring Rolls, Cream Cheese Wontons, or Potstickers https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$6 Sue's Egg Rolls, Fried Spring Rolls, Cream Cheese Wontons, or Potstickers",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -372,7 +383,8 @@
     "PlaceID": "15",
     "Day": "Friday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$6 Sue's Egg Rolls, Fried Spring Rolls, Cream Cheese Wontons, or Potstickers https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$6 Sue's Egg Rolls, Fried Spring Rolls, Cream Cheese Wontons, or Potstickers",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -381,7 +393,8 @@
     "PlaceID": "15",
     "Day": "Saturday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$6 Sue's Egg Rolls, Fried Spring Rolls, Cream Cheese Wontons, or Potstickers https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$6 Sue's Egg Rolls, Fried Spring Rolls, Cream Cheese Wontons, or Potstickers",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -390,7 +403,8 @@
     "PlaceID": "15",
     "Day": "Sunday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$6 Sue's Egg Rolls, Fried Spring Rolls, Cream Cheese Wontons, or Potstickers https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$6 Sue's Egg Rolls, Fried Spring Rolls, Cream Cheese Wontons, or Potstickers",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -399,7 +413,8 @@
     "PlaceID": "15",
     "Day": "Monday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$7 Supenn's Fresh Sprint Rolls or Chicken Satay https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$7 Supenn's Fresh Sprint Rolls or Chicken Satay",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -408,7 +423,8 @@
     "PlaceID": "15",
     "Day": "Tuesday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$7 Supenn's Fresh Sprint Rolls or Chicken Satay https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$7 Supenn's Fresh Sprint Rolls or Chicken Satay",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -417,7 +433,8 @@
     "PlaceID": "15",
     "Day": "Wednesday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$7 Supenn's Fresh Sprint Rolls or Chicken Satay https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$7 Supenn's Fresh Sprint Rolls or Chicken Satay",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -426,7 +443,8 @@
     "PlaceID": "15",
     "Day": "Thursday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$7 Supenn's Fresh Sprint Rolls or Chicken Satay https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$7 Supenn's Fresh Sprint Rolls or Chicken Satay",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -435,7 +453,8 @@
     "PlaceID": "15",
     "Day": "Friday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$7 Supenn's Fresh Sprint Rolls or Chicken Satay https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$7 Supenn's Fresh Sprint Rolls or Chicken Satay",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -444,7 +463,8 @@
     "PlaceID": "15",
     "Day": "Saturday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$7 Supenn's Fresh Sprint Rolls or Chicken Satay https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$7 Supenn's Fresh Sprint Rolls or Chicken Satay",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -453,7 +473,8 @@
     "PlaceID": "15",
     "Day": "Sunday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$7 Supenn's Fresh Sprint Rolls or Chicken Satay https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$7 Supenn's Fresh Sprint Rolls or Chicken Satay",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -462,7 +483,8 @@
     "PlaceID": "15",
     "Day": "Monday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$5 rails, $5.50 taps, $6 house wine, $7.50 specialty drinks, $8.50 house martinis https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$5 rails, $5.50 taps, $6 house wine, $7.50 specialty drinks, $8.50 house martinis",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": "x"
@@ -471,7 +493,8 @@
     "PlaceID": "15",
     "Day": "Tuesday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$5 rails, $5.50 taps, $6 house wine, $7.50 specialty drinks, $8.50 house martinis https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$5 rails, $5.50 taps, $6 house wine, $7.50 specialty drinks, $8.50 house martinis",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": "x"
@@ -480,7 +503,8 @@
     "PlaceID": "15",
     "Day": "Wednesday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$5 rails, $5.50 taps, $6 house wine, $7.50 specialty drinks, $8.50 house martinis https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$5 rails, $5.50 taps, $6 house wine, $7.50 specialty drinks, $8.50 house martinis",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": "x"
@@ -489,7 +513,8 @@
     "PlaceID": "15",
     "Day": "Thursday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$5 rails, $5.50 taps, $6 house wine, $7.50 specialty drinks, $8.50 house martinis https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$5 rails, $5.50 taps, $6 house wine, $7.50 specialty drinks, $8.50 house martinis",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": "x"
@@ -498,7 +523,8 @@
     "PlaceID": "15",
     "Day": "Friday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$5 rails, $5.50 taps, $6 house wine, $7.50 specialty drinks, $8.50 house martinis https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$5 rails, $5.50 taps, $6 house wine, $7.50 specialty drinks, $8.50 house martinis",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": "x"
@@ -507,7 +533,8 @@
     "PlaceID": "15",
     "Day": "Saturday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$5 rails, $5.50 taps, $6 house wine, $7.50 specialty drinks, $8.50 house martinis https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$5 rails, $5.50 taps, $6 house wine, $7.50 specialty drinks, $8.50 house martinis",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": "x"
@@ -516,7 +543,8 @@
     "PlaceID": "15",
     "Day": "Sunday",
     "Name": "Sawatdee Saint Paul",
-    "Deal": "$5 rails, $5.50 taps, $6 house wine, $7.50 specialty drinks, $8.50 house martinis https://www.sawatdee.com/st-paul-menu",
+    "Deal": "$5 rails, $5.50 taps, $6 house wine, $7.50 specialty drinks, $8.50 house martinis",
+    "URL": "https://www.sawatdee.com/st-paul-menu",
     "Address": "486 Robert St N, St Paul, MN 55101",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": "x"
@@ -1029,7 +1057,8 @@
     "PlaceID": "57",
     "Day": "Wednesday",
     "Name": "1881 by Lake Elmo Inn",
-    "Deal": "Discounted drinks https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
+    "Deal": "Discounted drinks",
+    "URL": "https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
     "Address": "Union Depot",
     "Happy Hour": "14:00 - 17:00",
     "Alcohol": "x"
@@ -1038,7 +1067,8 @@
     "PlaceID": "57",
     "Day": "Thursday",
     "Name": "1881 by Lake Elmo Inn",
-    "Deal": "Discounted drinks https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
+    "Deal": "Discounted drinks",
+    "URL": "https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
     "Address": "Union Depot",
     "Happy Hour": "14:00 - 17:00",
     "Alcohol": "x"
@@ -1047,7 +1077,8 @@
     "PlaceID": "57",
     "Day": "Friday",
     "Name": "1881 by Lake Elmo Inn",
-    "Deal": "Discounted drinks https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
+    "Deal": "Discounted drinks",
+    "URL": "https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
     "Address": "Union Depot",
     "Happy Hour": "14:00 - 17:00",
     "Alcohol": "x"
@@ -1056,7 +1087,8 @@
     "PlaceID": "57",
     "Day": "Saturday",
     "Name": "1881 by Lake Elmo Inn",
-    "Deal": "Discounted drinks https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
+    "Deal": "Discounted drinks",
+    "URL": "https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
     "Address": "Union Depot",
     "Happy Hour": "14:00 - 17:00",
     "Alcohol": "x"
@@ -1065,7 +1097,8 @@
     "PlaceID": "57",
     "Day": "Sunday",
     "Name": "1881 by Lake Elmo Inn",
-    "Deal": "Discounted drinks https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
+    "Deal": "Discounted drinks",
+    "URL": "https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
     "Address": "Union Depot",
     "Happy Hour": "14:00 - 17:00",
     "Alcohol": "x"
@@ -1074,7 +1107,8 @@
     "PlaceID": "57",
     "Day": "Wednesday",
     "Name": "1881 by Lake Elmo Inn",
-    "Deal": "Discounted apps https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
+    "Deal": "Discounted apps",
+    "URL": "https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
     "Address": "Union Depot",
     "Happy Hour": "14:00 - 17:00",
     "Alcohol": null
@@ -1083,7 +1117,8 @@
     "PlaceID": "57",
     "Day": "Thursday",
     "Name": "1881 by Lake Elmo Inn",
-    "Deal": "Discounted apps https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
+    "Deal": "Discounted apps",
+    "URL": "https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
     "Address": "Union Depot",
     "Happy Hour": "14:00 - 17:00",
     "Alcohol": null
@@ -1092,7 +1127,8 @@
     "PlaceID": "57",
     "Day": "Friday",
     "Name": "1881 by Lake Elmo Inn",
-    "Deal": "Discounted apps https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
+    "Deal": "Discounted apps",
+    "URL": "https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
     "Address": "Union Depot",
     "Happy Hour": "14:00 - 17:00",
     "Alcohol": null
@@ -1101,7 +1137,8 @@
     "PlaceID": "57",
     "Day": "Saturday",
     "Name": "1881 by Lake Elmo Inn",
-    "Deal": "Discounted apps https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
+    "Deal": "Discounted apps",
+    "URL": "https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
     "Address": "Union Depot",
     "Happy Hour": "14:00 - 17:00",
     "Alcohol": null
@@ -1110,7 +1147,8 @@
     "PlaceID": "57",
     "Day": "Sunday",
     "Name": "1881 by Lake Elmo Inn",
-    "Deal": "Discounted apps https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
+    "Deal": "Discounted apps",
+    "URL": "https://1881bylei.com/wp-content/uploads/2024/08/1881_happy_hour.pdf",
     "Address": "Union Depot",
     "Happy Hour": "14:00 - 17:00",
     "Alcohol": null
@@ -1542,7 +1580,8 @@
     "PlaceID": "26",
     "Day": "Monday",
     "Name": "Sakura",
-    "Deal": "Apps and sushi ($4.50 - $8:00) https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
+    "Deal": "Apps and sushi ($4.50 - $8:00)",
+    "URL": "https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
     "Address": "350 St Peter St #195, St Paul, MN 55102",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -1551,7 +1590,8 @@
     "PlaceID": "26",
     "Day": "Tuesday",
     "Name": "Sakura",
-    "Deal": "Apps and sushi ($4.50 - $8:00) https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
+    "Deal": "Apps and sushi ($4.50 - $8:00)",
+    "URL": "https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
     "Address": "350 St Peter St #195, St Paul, MN 55102",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -1560,7 +1600,8 @@
     "PlaceID": "26",
     "Day": "Wednesday",
     "Name": "Sakura",
-    "Deal": "Apps and sushi ($4.50 - $8:00) https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
+    "Deal": "Apps and sushi ($4.50 - $8:00)",
+    "URL": "https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
     "Address": "350 St Peter St #195, St Paul, MN 55102",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -1569,7 +1610,8 @@
     "PlaceID": "26",
     "Day": "Thursday",
     "Name": "Sakura",
-    "Deal": "Apps and sushi ($4.50 - $8:00) https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
+    "Deal": "Apps and sushi ($4.50 - $8:00)",
+    "URL": "https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
     "Address": "350 St Peter St #195, St Paul, MN 55102",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -1578,7 +1620,8 @@
     "PlaceID": "26",
     "Day": "Friday",
     "Name": "Sakura",
-    "Deal": "Apps and sushi ($4.50 - $8:00) https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
+    "Deal": "Apps and sushi ($4.50 - $8:00)",
+    "URL": "https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
     "Address": "350 St Peter St #195, St Paul, MN 55102",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -1587,7 +1630,8 @@
     "PlaceID": "26",
     "Day": "Monday",
     "Name": "Sakura",
-    "Deal": "$5 Beer, wine, sake, rails https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
+    "Deal": "$5 Beer, wine, sake, rails",
+    "URL": "https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
     "Address": "350 St Peter St #195, St Paul, MN 55102",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": "x"
@@ -1596,7 +1640,8 @@
     "PlaceID": "26",
     "Day": "Tuesday",
     "Name": "Sakura",
-    "Deal": "$5 Beer, wine, sake, rails https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
+    "Deal": "$5 Beer, wine, sake, rails",
+    "URL": "https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
     "Address": "350 St Peter St #195, St Paul, MN 55102",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": "x"
@@ -1605,7 +1650,8 @@
     "PlaceID": "26",
     "Day": "Wednesday",
     "Name": "Sakura",
-    "Deal": "$5 Beer, wine, sake, rails https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
+    "Deal": "$5 Beer, wine, sake, rails",
+    "URL": "https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
     "Address": "350 St Peter St #195, St Paul, MN 55102",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": "x"
@@ -1614,7 +1660,8 @@
     "PlaceID": "26",
     "Day": "Thursday",
     "Name": "Sakura",
-    "Deal": "$5 Beer, wine, sake, rails https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
+    "Deal": "$5 Beer, wine, sake, rails",
+    "URL": "https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
     "Address": "350 St Peter St #195, St Paul, MN 55102",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": "x"
@@ -1623,7 +1670,8 @@
     "PlaceID": "26",
     "Day": "Friday",
     "Name": "Sakura",
-    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13) https://lostfoxlowertown.com/#happy-hour",
+    "Deal": "$5 Beer, wine, sake, rails",
+    "URL": "https://static1.squarespace.com/static/5e6ef5a95bceee1383e06242/t/66f0e60dff18bb0db14a64bb/1727063566018/Happy+Hour+Menu+2024-09-06.pdf",
     "Address": "350 St Peter St #195, St Paul, MN 55102",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": "x"
@@ -1632,7 +1680,8 @@
     "PlaceID": "31",
     "Day": "Monday",
     "Name": "Lost Fox",
-    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13) https://lostfoxlowertown.com/#happy-hour",
+    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13)",
+    "URL": "https://lostfoxlowertown.com/#happy-hour",
     "Address": "213 4th St E #100, St Paul, MN 55101",
     "Happy Hour": "15:00 - 18:00",
     "Alcohol": "x"
@@ -1641,7 +1690,8 @@
     "PlaceID": "31",
     "Day": "Tuesday",
     "Name": "Lost Fox",
-    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13) https://lostfoxlowertown.com/#happy-hour",
+    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13)",
+    "URL": "https://lostfoxlowertown.com/#happy-hour",
     "Address": "213 4th St E #100, St Paul, MN 55101",
     "Happy Hour": "15:00 - 18:00",
     "Alcohol": "x"
@@ -1650,7 +1700,8 @@
     "PlaceID": "31",
     "Day": "Wednesday",
     "Name": "Lost Fox",
-    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13) https://lostfoxlowertown.com/#happy-hour",
+    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13)",
+    "URL": "https://lostfoxlowertown.com/#happy-hour",
     "Address": "213 4th St E #100, St Paul, MN 55101",
     "Happy Hour": "15:00 - 18:00",
     "Alcohol": "x"
@@ -1659,7 +1710,8 @@
     "PlaceID": "31",
     "Day": "Thursday",
     "Name": "Lost Fox",
-    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13) https://lostfoxlowertown.com/#happy-hour",
+    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13)",
+    "URL": "https://lostfoxlowertown.com/#happy-hour",
     "Address": "213 4th St E #100, St Paul, MN 55101",
     "Happy Hour": "15:00 - 18:00",
     "Alcohol": "x"
@@ -1668,7 +1720,8 @@
     "PlaceID": "31",
     "Day": "Friday",
     "Name": "Lost Fox",
-    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13) https://lostfoxlowertown.com/#happy-hour",
+    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13)",
+    "URL": "https://lostfoxlowertown.com/#happy-hour",
     "Address": "213 4th St E #100, St Paul, MN 55101",
     "Happy Hour": "15:00 - 18:00",
     "Alcohol": "x"
@@ -1677,7 +1730,8 @@
     "PlaceID": "31",
     "Day": "Saturday",
     "Name": "Lost Fox",
-    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13) https://lostfoxlowertown.com/#happy-hour",
+    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13)",
+    "URL": "https://lostfoxlowertown.com/#happy-hour",
     "Address": "213 4th St E #100, St Paul, MN 55101",
     "Happy Hour": "15:00 - 18:00",
     "Alcohol": "x"
@@ -1686,7 +1740,8 @@
     "PlaceID": "31",
     "Day": "Sunday",
     "Name": "Lost Fox",
-    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13) https://lostfoxlowertown.com/#happy-hour",
+    "Deal": "$1 off beer, wine, well drinks. $2 off house cocktails ($5-$13)",
+    "URL": "https://lostfoxlowertown.com/#happy-hour",
     "Address": "213 4th St E #100, St Paul, MN 55101",
     "Happy Hour": "15:00 - 18:00",
     "Alcohol": "x"
@@ -1695,7 +1750,8 @@
     "PlaceID": "31",
     "Day": "Monday",
     "Name": "Lost Fox",
-    "Deal": "Food specials ($4-$8) https://lostfoxlowertown.com/#happy-hour",
+    "Deal": "Food specials ($4-$8)",
+    "URL": "https://lostfoxlowertown.com/#happy-hour",
     "Address": "213 4th St E #100, St Paul, MN 55101",
     "Happy Hour": "15:00 - 18:00",
     "Alcohol": null
@@ -1704,7 +1760,8 @@
     "PlaceID": "31",
     "Day": "Tuesday",
     "Name": "Lost Fox",
-    "Deal": "Food specials ($4-$8) https://lostfoxlowertown.com/#happy-hour",
+    "Deal": "Food specials ($4-$8)",
+    "URL": "https://lostfoxlowertown.com/#happy-hour",
     "Address": "213 4th St E #100, St Paul, MN 55101",
     "Happy Hour": "15:00 - 18:00",
     "Alcohol": null
@@ -1713,7 +1770,8 @@
     "PlaceID": "31",
     "Day": "Wednesday",
     "Name": "Lost Fox",
-    "Deal": "Food specials ($4-$8) https://lostfoxlowertown.com/#happy-hour",
+    "Deal": "Food specials ($4-$8)",
+    "URL": "https://lostfoxlowertown.com/#happy-hour",
     "Address": "213 4th St E #100, St Paul, MN 55101",
     "Happy Hour": "15:00 - 18:00",
     "Alcohol": null
@@ -1722,7 +1780,8 @@
     "PlaceID": "31",
     "Day": "Thursday",
     "Name": "Lost Fox",
-    "Deal": "Food specials ($4-$8) https://lostfoxlowertown.com/#happy-hour",
+    "Deal": "Food specials ($4-$8)",
+    "URL": "https://lostfoxlowertown.com/#happy-hour",
     "Address": "213 4th St E #100, St Paul, MN 55101",
     "Happy Hour": "15:00 - 18:00",
     "Alcohol": null
@@ -1731,7 +1790,8 @@
     "PlaceID": "31",
     "Day": "Friday",
     "Name": "Lost Fox",
-    "Deal": "Food specials ($4-$8) https://lostfoxlowertown.com/#happy-hour",
+    "Deal": "Food specials ($4-$8)",
+    "URL": "https://lostfoxlowertown.com/#happy-hour",
     "Address": "213 4th St E #100, St Paul, MN 55101",
     "Happy Hour": "15:00 - 18:00",
     "Alcohol": null
@@ -1740,7 +1800,8 @@
     "PlaceID": "31",
     "Day": "Saturday",
     "Name": "Lost Fox",
-    "Deal": "Food specials ($4-$8) https://lostfoxlowertown.com/#happy-hour",
+    "Deal": "Food specials ($4-$8)",
+    "URL": "https://lostfoxlowertown.com/#happy-hour",
     "Address": "213 4th St E #100, St Paul, MN 55101",
     "Happy Hour": "15:00 - 18:00",
     "Alcohol": null
@@ -1749,7 +1810,8 @@
     "PlaceID": "31",
     "Day": "Sunday",
     "Name": "Lost Fox",
-    "Deal": "Food specials ($4-$8) https://lostfoxlowertown.com/#happy-hour",
+    "Deal": "Food specials ($4-$8)",
+    "URL": "https://lostfoxlowertown.com/#happy-hour",
     "Address": "213 4th St E #100, St Paul, MN 55101",
     "Happy Hour": "15:00 - 18:00",
     "Alcohol": null
@@ -1974,7 +2036,8 @@
     "PlaceID": "50",
     "Day": "Monday",
     "Name": "Wild Bill's Sports Saloon",
-    "Deal": "$5 apps, $7 apps, $2 off wings https://www.wildbillssportssaloon-stpaul.com/promos",
+    "Deal": "$5 apps, $7 apps, $2 off wings",
+    "URL": "https://www.wildbillssportssaloon-stpaul.com/promos",
     "Address": "175 7th St W, St Paul, MN 55102",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -1983,7 +2046,8 @@
     "PlaceID": "50",
     "Day": "Tuesday",
     "Name": "Wild Bill's Sports Saloon",
-    "Deal": "$5 apps, $7 apps, $2 off wings https://www.wildbillssportssaloon-stpaul.com/promos",
+    "Deal": "$5 apps, $7 apps, $2 off wings",
+    "URL": "https://www.wildbillssportssaloon-stpaul.com/promos",
     "Address": "175 7th St W, St Paul, MN 55102",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -1992,7 +2056,8 @@
     "PlaceID": "50",
     "Day": "Wednesday",
     "Name": "Wild Bill's Sports Saloon",
-    "Deal": "$5 apps, $7 apps, $2 off wings https://www.wildbillssportssaloon-stpaul.com/promos",
+    "Deal": "$5 apps, $7 apps, $2 off wings",
+    "URL": "https://www.wildbillssportssaloon-stpaul.com/promos",
     "Address": "175 7th St W, St Paul, MN 55102",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -2001,7 +2066,8 @@
     "PlaceID": "50",
     "Day": "Thursday",
     "Name": "Wild Bill's Sports Saloon",
-    "Deal": "$5 apps, $7 apps, $2 off wings https://www.wildbillssportssaloon-stpaul.com/promos",
+    "Deal": "$5 apps, $7 apps, $2 off wings",
+    "URL": "https://www.wildbillssportssaloon-stpaul.com/promos",
     "Address": "175 7th St W, St Paul, MN 55102",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -2010,7 +2076,8 @@
     "PlaceID": "50",
     "Day": "Friday",
     "Name": "Wild Bill's Sports Saloon",
-    "Deal": "$5 apps, $7 apps, $2 off wings https://www.wildbillssportssaloon-stpaul.com/promos",
+    "Deal": "$5 apps, $7 apps, $2 off wings",
+    "URL": "https://www.wildbillssportssaloon-stpaul.com/promos",
     "Address": "175 7th St W, St Paul, MN 55102",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -2019,7 +2086,8 @@
     "PlaceID": "64",
     "Day": "Monday",
     "Name": "Truck Park",
-    "Deal": "$2 off all drinks https://www.truckparkusa.com/drinks",
+    "Deal": "$2 off all drinks",
+    "URL": "https://www.truckparkusa.com/drinks",
     "Address": "214 7th Street West",
     "Happy Hour": "15:00 - 18:00",
     "Alcohol": "x"
@@ -2028,7 +2096,8 @@
     "PlaceID": "64",
     "Day": "Tuesday",
     "Name": "Truck Park",
-    "Deal": "$2 off all drinks https://www.truckparkusa.com/drinks",
+    "Deal": "$2 off all drinks",
+    "URL": "https://www.truckparkusa.com/drinks",
     "Address": "214 7th Street West",
     "Happy Hour": "15:00 - 18:00",
     "Alcohol": "x"
@@ -2037,7 +2106,8 @@
     "PlaceID": "64",
     "Day": "Wednesday",
     "Name": "Truck Park",
-    "Deal": "$2 off all drinks https://www.truckparkusa.com/drinks",
+    "Deal": "$2 off all drinks",
+    "URL": "https://www.truckparkusa.com/drinks",
     "Address": "214 7th Street West",
     "Happy Hour": "15:00 - 18:00",
     "Alcohol": "x"
@@ -2046,7 +2116,8 @@
     "PlaceID": "64",
     "Day": "Thursday",
     "Name": "Truck Park",
-    "Deal": "$2 off all drinks https://www.truckparkusa.com/drinks",
+    "Deal": "$2 off all drinks",
+    "URL": "https://www.truckparkusa.com/drinks",
     "Address": "214 7th Street West",
     "Happy Hour": "15:00 - 18:00",
     "Alcohol": "x"
@@ -2055,7 +2126,8 @@
     "PlaceID": "64",
     "Day": "Friday",
     "Name": "Truck Park",
-    "Deal": "$2 off all drinks https://www.truckparkusa.com/drinks",
+    "Deal": "$2 off all drinks",
+    "URL": "https://www.truckparkusa.com/drinks",
     "Address": "214 7th Street West",
     "Happy Hour": "15:00 - 18:00",
     "Alcohol": "x"
@@ -2064,7 +2136,8 @@
     "PlaceID": "64",
     "Day": "Saturday",
     "Name": "Truck Park",
-    "Deal": "$2 off all drinks https://www.truckparkusa.com/drinks",
+    "Deal": "$2 off all drinks",
+    "URL": "https://www.truckparkusa.com/drinks",
     "Address": "214 7th Street West",
     "Happy Hour": "15:00 - 18:00",
     "Alcohol": "x"
@@ -2073,7 +2146,8 @@
     "PlaceID": "64",
     "Day": "Sunday",
     "Name": "Truck Park",
-    "Deal": "$2 off all drinks https://www.truckparkusa.com/drinks",
+    "Deal": "$2 off all drinks",
+    "URL": "https://www.truckparkusa.com/drinks",
     "Address": "214 7th Street West",
     "Happy Hour": "15:00 - 18:00",
     "Alcohol": "x"
@@ -2208,7 +2282,8 @@
     "PlaceID": "66",
     "Day": "Thursday",
     "Name": "Apostle Supper Club",
-    "Deal": "$4 domestic beer, $5 house wine/well drinks, $6 tiki cocktails https://www.apostlesupperclub.com/happy-hour",
+    "Deal": "$4 domestic beer, $5 house wine/well drinks, $6 tiki cocktails",
+    "URL": "https://www.apostlesupperclub.com/happy-hour",
     "Address": "253 KELLOGG BLVD WEST",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": "x"
@@ -2217,7 +2292,8 @@
     "PlaceID": "66",
     "Day": "Friday",
     "Name": "Apostle Supper Club",
-    "Deal": "$4 domestic beer, $5 house wine/well drinks, $6 tiki cocktails https://www.apostlesupperclub.com/happy-hour",
+    "Deal": "$4 domestic beer, $5 house wine/well drinks, $6 tiki cocktails",
+    "URL": "https://www.apostlesupperclub.com/happy-hour",
     "Address": "253 KELLOGG BLVD WEST",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": "x"
@@ -2226,7 +2302,8 @@
     "PlaceID": "66",
     "Day": "Thursday",
     "Name": "Apostle Supper Club",
-    "Deal": "Discounted apps ($6 - $13) https://www.apostlesupperclub.com/happy-hour",
+    "Deal": "Discounted apps ($6 - $13)",
+    "URL": "https://www.apostlesupperclub.com/happy-hour",
     "Address": "253 KELLOGG BLVD WEST",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -2235,7 +2312,8 @@
     "PlaceID": "66",
     "Day": "Thursday",
     "Name": "Apostle Supper Club",
-    "Deal": "Discounted apps ($6 - $13) https://www.apostlesupperclub.com/happy-hour",
+    "Deal": "Discounted apps ($6 - $13)",
+    "URL": "https://www.apostlesupperclub.com/happy-hour",
     "Address": "253 KELLOGG BLVD WEST",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": null
@@ -2244,7 +2322,8 @@
     "PlaceID": "49",
     "Day": "Monday",
     "Name": "Smorgies",
-    "Deal": "2 for 1 rails, house wines, all taps https://www.smorgiesbar.com/menu",
+    "Deal": "2 for 1 rails, house wines, all taps",
+    "URL": "https://www.smorgiesbar.com/menu",
     "Address": "127 7th St. W, St. Paul, MN 55102",
     "Happy Hour": "15:00 - 17:00",
     "Alcohol": "x"
@@ -2253,7 +2332,8 @@
     "PlaceID": "49",
     "Day": "Tuesday",
     "Name": "Smorgies",
-    "Deal": "2 for 1 rails, house wines, all taps https://www.smorgiesbar.com/menu",
+    "Deal": "2 for 1 rails, house wines, all taps",
+    "URL": "https://www.smorgiesbar.com/menu",
     "Address": "127 7th St. W, St. Paul, MN 55102",
     "Happy Hour": "15:00 - 17:00",
     "Alcohol": "x"
@@ -2262,7 +2342,8 @@
     "PlaceID": "49",
     "Day": "Wednesday",
     "Name": "Smorgies",
-    "Deal": "2 for 1 rails, house wines, all taps https://www.smorgiesbar.com/menu",
+    "Deal": "2 for 1 rails, house wines, all taps",
+    "URL": "https://www.smorgiesbar.com/menu",
     "Address": "127 7th St. W, St. Paul, MN 55102",
     "Happy Hour": "15:00 - 17:00",
     "Alcohol": "x"
@@ -2271,7 +2352,8 @@
     "PlaceID": "49",
     "Day": "Thursday",
     "Name": "Smorgies",
-    "Deal": "2 for 1 rails, house wines, all taps https://www.smorgiesbar.com/menu",
+    "Deal": "2 for 1 rails, house wines, all taps",
+    "URL": "https://www.smorgiesbar.com/menu",
     "Address": "127 7th St. W, St. Paul, MN 55102",
     "Happy Hour": "15:00 - 17:00",
     "Alcohol": "x"
@@ -2280,7 +2362,8 @@
     "PlaceID": "49",
     "Day": "Friday",
     "Name": "Smorgies",
-    "Deal": "2 for 1 rails, house wines, all taps https://www.smorgiesbar.com/menu",
+    "Deal": "2 for 1 rails, house wines, all taps",
+    "URL": "https://www.smorgiesbar.com/menu",
     "Address": "127 7th St. W, St. Paul, MN 55102",
     "Happy Hour": "15:00 - 17:00",
     "Alcohol": "x"
@@ -2289,7 +2372,8 @@
     "PlaceID": "49",
     "Day": "Saturday",
     "Name": "Smorgies",
-    "Deal": "2 for 1 rails, house wines, all taps https://www.smorgiesbar.com/menu",
+    "Deal": "2 for 1 rails, house wines, all taps",
+    "URL": "https://www.smorgiesbar.com/menu",
     "Address": "127 7th St. W, St. Paul, MN 55102",
     "Happy Hour": "15:00 - 17:00",
     "Alcohol": "x"
@@ -2298,7 +2382,8 @@
     "PlaceID": "49",
     "Day": "Sunday",
     "Name": "Smorgies",
-    "Deal": "2 for 1 rails, house wines, all taps https://www.smorgiesbar.com/menu",
+    "Deal": "2 for 1 rails, house wines, all taps",
+    "URL": "https://www.smorgiesbar.com/menu",
     "Address": "127 7th St. W, St. Paul, MN 55102",
     "Happy Hour": "15:00 - 17:00",
     "Alcohol": "x"
@@ -2307,7 +2392,8 @@
     "PlaceID": "49",
     "Day": "Saturday",
     "Name": "Smorgies",
-    "Deal": "$15 bottle of champagne and juice https://www.smorgiesbar.com/menu",
+    "Deal": "$15 bottle of champagne and juice",
+    "URL": "https://www.smorgiesbar.com/menu",
     "Address": "127 7th St. W, St. Paul, MN 55102",
     "Happy Hour": "9:30 - 15:00",
     "Alcohol": "x"
@@ -2316,7 +2402,8 @@
     "PlaceID": "49",
     "Day": "Sunday",
     "Name": "Smorgies",
-    "Deal": "$15 bottle of champagne and juice https://www.smorgiesbar.com/menu",
+    "Deal": "$15 bottle of champagne and juice",
+    "URL": "https://www.smorgiesbar.com/menu",
     "Address": "127 7th St. W, St. Paul, MN 55102",
     "Happy Hour": "9:30 - 15:00",
     "Alcohol": "x"
@@ -2514,7 +2601,8 @@
     "PlaceID": "69",
     "Day": "Monday",
     "Name": "Parlour",
-    "Deal": "$5 beer, $7 select wine, $9 cocktail of the day https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png",
+    "Deal": "$5 beer, $7 select wine, $9 cocktail of the day",
+    "URL": "https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png",
     "Address": "267 West 7th Street",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": "x"
@@ -2523,7 +2611,8 @@
     "PlaceID": "69",
     "Day": "Tuesday",
     "Name": "Parlour",
-    "Deal": "$5 beer, $7 select wine, $9 cocktail of the day https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png",
+    "Deal": "$5 beer, $7 select wine, $9 cocktail of the day",
+    "URL": "https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png",
     "Address": "267 West 7th Street",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": "x"
@@ -2532,7 +2621,8 @@
     "PlaceID": "69",
     "Day": "Wednesday",
     "Name": "Parlour",
-    "Deal": "$5 beer, $7 select wine, $9 cocktail of the day https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png",
+    "Deal": "$5 beer, $7 select wine, $9 cocktail of the day",
+    "URL": "https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png",
     "Address": "267 West 7th Street",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": "x"
@@ -2541,7 +2631,8 @@
     "PlaceID": "69",
     "Day": "Thursday",
     "Name": "Parlour",
-    "Deal": "$5 beer, $7 select wine, $9 cocktail of the day https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png",
+    "Deal": "$5 beer, $7 select wine, $9 cocktail of the day",
+    "URL": "https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png",
     "Address": "267 West 7th Street",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": "x"
@@ -2550,7 +2641,8 @@
     "PlaceID": "69",
     "Day": "Friday",
     "Name": "Parlour",
-    "Deal": "$5 beer, $7 select wine, $9 cocktail of the day https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png",
+    "Deal": "$5 beer, $7 select wine, $9 cocktail of the day",
+    "URL": "https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png",
     "Address": "267 West 7th Street",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": "x"
@@ -2559,7 +2651,8 @@
     "PlaceID": "69",
     "Day": "Saturday",
     "Name": "Parlour",
-    "Deal": "$5 beer, $7 select wine, $9 cocktail of the day https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png",
+    "Deal": "$5 beer, $7 select wine, $9 cocktail of the day",
+    "URL": "https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png",
     "Address": "267 West 7th Street",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": "x"
@@ -2568,7 +2661,8 @@
     "PlaceID": "69",
     "Day": "Sunday",
     "Name": "Parlour",
-    "Deal": "$5 beer, $7 select wine, $9 cocktail of the day https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png",
+    "Deal": "$5 beer, $7 select wine, $9 cocktail of the day",
+    "URL": "https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png",
     "Address": "267 West 7th Street",
     "Happy Hour": "16:00 - 18:00",
     "Alcohol": "x"

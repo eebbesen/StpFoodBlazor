@@ -56,8 +56,9 @@
     {
         timeService.DayOfWeek = DayOfWeek.Thursday.ToString();
         var cut = ctx.Render(@<Deals />);
-        var elements = getElements(cut);
+        getElements(cut);
         cut.Find("#alcohol-checkbox").Change(true);
+        var elements = getElements(cut);
 
         Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
         Assert.Contains("$10 select craft cocktail", elements.Children[0].Children[1].InnerHtml);
@@ -176,6 +177,21 @@
         Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
         Assert.Equal("Urban Wok", elements.Children[17].Children[0].InnerHtml);
         Assert.Equal("Place", cut.Find("#deals_table_header").Children[0].InnerHtml);
+    }
+
+    [Fact]
+    public void DealsShouldWrapDealInURLSunday()
+    {
+        timeService.DayOfWeek = DayOfWeek.Sunday.ToString();
+        var expected = "<i class=\"bi bi-clock\" data-bs-toggle=\"tooltip\" title=\"16:00 - 18:00\">&nbsp;</i><i class=\"bi bi-cup-straw\" data-bs-toggle=\"tooltip\" title=\"alcohol\">&nbsp;</i><a href=\"https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png\" target=\"_blank\">$5 beer, $7 select wine, $9 cocktail of the day</a>";
+        var cut = ctx.Render(@<Deals />);
+        getElements(cut);
+        cut.Find("#alcohol-checkbox").Change(true);
+        cut.Find("#happy-hour-checkbox").Change(true);
+        var elements = getElements(cut);
+
+        Assert.Equal("Parlour", elements.Children[10].Children[0].InnerHtml);
+        Assert.Equal(expected, elements.Children[10].Children[1].InnerHtml);
     }
 
     private IElement getElements(IRenderedFragment cut)

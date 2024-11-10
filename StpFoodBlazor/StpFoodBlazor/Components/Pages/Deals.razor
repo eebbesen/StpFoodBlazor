@@ -75,7 +75,16 @@ else
                 {
                             <i class="bi bi-cup-straw" data-bs-toggle="tooltip" title="alcohol">&nbsp;</i>
                 }
-                @deal.Deal</div>
+
+                @if (!string.IsNullOrEmpty(deal.URL))
+                {
+                    <a href=@deal.URL target="_blank">@deal.Deal</a>
+                }
+                else
+                {
+                    @deal.Deal
+                }
+            </div>
         </div>
         rowCounter++;
         }
