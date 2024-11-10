@@ -16,12 +16,7 @@
     [Fact]
     public void ShouldRenderCompents()
     {
-        var cut = ctx.Render(@<DealFilterBar selectedDayOfWeek="Tuesday"
-          OnSelectedDayChanged="OnChangeStub"
-          OnHappyHourChanged="OnChangeStub"
-          OnAlcoholChanged="OnChangeStub"
-          happyHour=false
-          alcohol=false />);
+        var cut = RenterDealFilterBar("Tuesday", false, false);
 
         cut.Find("#filter-bar");
         cut.Find("#day-of-week-select");
@@ -32,12 +27,7 @@
     [Fact]
     public void ShouldRenderDayOfWeek()
     {
-        var cut = ctx.Render(@<DealFilterBar selectedDayOfWeek="Tuesday"
-          OnSelectedDayChanged="OnChangeStub"
-          OnHappyHourChanged="OnChangeStub"
-          OnAlcoholChanged="OnChangeStub"
-          happyHour=false
-          alcohol=false />);
+        var cut = RenterDealFilterBar("Tuesday", false, false);
 
         var dow = cut.Find("#day-of-week-select");
         Assert.Equal("Tuesday", dow.GetAttribute("value"));
@@ -46,12 +36,7 @@
     [Fact]
     public void ShouldRenderHappyHour()
     {
-        var cut = ctx.Render(@<DealFilterBar selectedDayOfWeek="Tuesday"
-          OnSelectedDayChanged="OnChangeStub"
-          OnHappyHourChanged="OnChangeStub"
-          OnAlcoholChanged="OnChangeStub"
-          happyHour=true
-          alcohol=false />);
+        var cut = RenterDealFilterBar("Tuesday", true, false);
 
         var hh = cut.Find("#happy-hour-checkbox");
         Assert.True(((IHtmlInputElement)hh).IsChecked);
@@ -60,15 +45,20 @@
     [Fact]
     public void ShouldRenderAlcohol()
     {
-        var cut = ctx.Render(@<DealFilterBar selectedDayOfWeek="Tuesday"
-          OnSelectedDayChanged="OnChangeStub"
-          OnHappyHourChanged="OnChangeStub"
-          OnAlcoholChanged="OnChangeStub"
-          happyHour=false
-          alcohol=true />);
+        var cut = RenterDealFilterBar("Tuesday", false, true);
 
         var hh = cut.Find("#alcohol-checkbox");
         Assert.True(((IHtmlInputElement)hh).IsChecked);
-
     }
+
+    private IRenderedFragment RenterDealFilterBar(string dow, bool hh, bool alc)
+    {
+        return ctx.Render(@<DealFilterBar selectedDayOfWeek=@dow
+          OnSelectedDayChanged="OnChangeStub"
+          OnHappyHourChanged="OnChangeStub"
+          OnAlcoholChanged="OnChangeStub"
+          happyHour=@hh
+          alcohol=@alc />);
+    }
+
 }
