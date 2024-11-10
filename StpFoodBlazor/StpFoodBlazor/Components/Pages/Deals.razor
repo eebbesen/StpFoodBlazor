@@ -71,11 +71,11 @@ else
                 @if (!string.IsNullOrEmpty(deal.URL))
                 {
                     <NavLink href=@deal.URL target="_blank">
-                        <DealEventRow Deal=deal></DealEventRow>
+                        <DealEventRowDeal Deal=deal></DealEventRowDeal>
                     </NavLink>
                 }
                 else {
-                    <DealEventRow Deal=deal></DealEventRow>
+                    <DealEventRowDeal Deal=deal></DealEventRowDeal>
                 }
             </div>
         </div>
