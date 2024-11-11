@@ -1,0 +1,63 @@
+@using StpFoodBlazor.Components.Layout
+@using StpFoodBlazor.Models
+@using AngleSharp.Html.Dom
+@using AngleSharp.Dom
+
+@code {
+    private TestContext ctx;
+    private DealEvent[] sharedDeals = new DealEvent[]
+    {
+        new DealEvent { Name = "Urban Wok", Day = "Wednesday",
+          Deal = "$0.75 wings", URL = "https://www.google.com/1" },
+        new DealEvent { Name = "Pino's Pizza", Day = "Wednesday",
+          Deal = "$9 for two slices and a drink or one calzone and a drink",
+          URL = "https://www.google.com/2" },
+        new DealEvent { Name = "Mai-Lam Vietnamese Restaurant", Day = "Wednesday",
+          Deal = "$11.95 combo", URL = "https://www.google.com/3" },
+        new DealEvent { Name = "Sawatdee Saint Paul", Day = "Wednesday",
+          Deal = "$14.32 lunch buffet (tax included)", URL = "https://www.google.com/3" }
+    };
+
+    public DealTableBodyTest()
+    {
+        ctx = new TestContext();
+    }
+
+    [Fact]
+    public void ShouldRenderCompentsNoDaySelected()
+    {
+        var cut = RenterDealTableBody(null, sharedDeals);
+
+        var body = cut.Find("#deals_table_body");
+
+        Assert.Equal(sharedDeals.Length, body.Children.Length);
+        Assert.Equal("row", body.Children[0].ClassName);
+        Assert.Equal("Wednesday", body.Children[0].Children[0].TextContent);
+        Assert.Equal("Urban Wok", body.Children[0].Children[1].TextContent);
+        Assert.Equal("$0.75 wings", body.Children[0].Children[2].TextContent);
+        Assert.Equal("row rounded bg-secondary bg-opacity-25", body.Children[1].ClassName);
+        Assert.Equal("row", body.Children[2].ClassName);
+        Assert.Equal("row rounded bg-secondary bg-opacity-25", body.Children[3].ClassName);
+    }
+
+    [Fact]
+    public void ShouldRenderCompentsDaySelected()
+    {
+        var cut = RenterDealTableBody("Wednesday", sharedDeals);
+
+        var body = cut.Find("#deals_table_body");
+
+        Assert.Equal(sharedDeals.Length, body.Children.Length);
+        Assert.Equal("row", body.Children[0].ClassName);
+        Assert.Equal("Urban Wok", body.Children[0].Children[0].TextContent);
+        Assert.Equal("$0.75 wings", body.Children[0].Children[1].TextContent);
+        Assert.Equal("row rounded bg-secondary bg-opacity-25", body.Children[1].ClassName);
+        Assert.Equal("row", body.Children[2].ClassName);
+        Assert.Equal("row rounded bg-secondary bg-opacity-25", body.Children[3].ClassName);
+    }
+
+    private IRenderedFragment RenterDealTableBody(string dow, DealEvent[] deals)
+    {
+        return ctx.Render(@<DealTableBody selectedDayOfWeek=@dow deals=@deals />);
+    }
+}
