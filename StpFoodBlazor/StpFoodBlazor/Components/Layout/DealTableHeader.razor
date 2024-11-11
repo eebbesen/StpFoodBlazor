@@ -1,0 +1,15 @@
+@inherits LayoutComponentBase
+
+<div class="row bg-dark text-light rounded" id="deals_table_header">
+    @if (string.IsNullOrEmpty(selectedDayOfWeek))
+    {
+        <div class="col-1">Day</div>
+    }
+    <div class="col-3">Place</div>
+    <div class="col">Deal</div>
+</div>
+
+@code {
+    [Parameter]
+    public string? selectedDayOfWeek { get; set; }
+}

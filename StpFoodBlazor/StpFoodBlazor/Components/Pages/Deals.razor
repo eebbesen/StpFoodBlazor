@@ -22,40 +22,12 @@
 else
 {
     <DealFilterBar selectedDayOfWeek="@selectedDayOfWeek" OnSelectedDayChanged="OnSelectedDayChanged"
-        happyHour="@happyHour" OnHappyHourChanged="OnHappyHourChanged" alcohol="@alcohol" OnAlcoholChanged="OnAlcoholChanged"></DealFilterBar>
-    <div class="row bg-dark text-light rounded" id="deals_table_header">
-        @if (string.IsNullOrEmpty(selectedDayOfWeek))
-        {
-            <div class="col-1">Day</div>
-        }
-        <div class="col-3">Place</div>
-        <div class="col">Deal</div>
-    </div>
-    <div id="deals_table_body">
-        @{var rowCounter = 0;}
-        @foreach (var deal in deals)
-        {
-        <div class="row @(rowCounter % 2 == 0 ? "" : "rounded bg-secondary bg-opacity-25")">
-            @if (string.IsNullOrEmpty(selectedDayOfWeek))
-            {
-                <div class="col-1">@deal.Day</div>
-            }
-            <div class="col-3">@deal.Name</div>
-            <div class="col">
-                @if (!string.IsNullOrEmpty(deal.URL))
-                {
-                    <NavLink href=@deal.URL target="_blank">
-                        <DealEventRowDeal Deal=deal></DealEventRowDeal>
-                    </NavLink>
-                }
-                else {
-                    <DealEventRowDeal Deal=deal></DealEventRowDeal>
-                }
-            </div>
-        </div>
-        rowCounter++;
-        }
-    </div>
+        happyHour="@happyHour" OnHappyHourChanged="OnHappyHourChanged" alcohol="@alcohol"
+        OnAlcoholChanged="OnAlcoholChanged" />
+
+    <DealTableHeader selectedDayOfWeek="@selectedDayOfWeek" />
+
+    <DealTableBody deals="@deals" selectedDayOfWeek="@selectedDayOfWeek" />
 }
 </div>
 
