@@ -22,8 +22,7 @@
 else
 {
     <DealFilterBar selectedDayOfWeek="@selectedDayOfWeek" OnSelectedDayChanged="OnSelectedDayChanged"
-        happyHour="@happyHour" OnHappyHourChanged="OnHappyHourChanged" alcohol="@alcohol"
-        OnAlcoholChanged="OnAlcoholChanged" />
+        happyHour="@happyHour" OnHappyHourChanged="OnHappyHourChanged" />
 
     <DealTableHeader selectedDayOfWeek="@selectedDayOfWeek" />
 
@@ -37,7 +36,6 @@ else
     private string? selectedDayOfWeek = null;
 
     private bool happyHour = false;
-    private bool alcohol = false;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -68,23 +66,12 @@ else
         SortDeals();
     }
 
-    void OnAlcoholChanged(ChangeEventArgs e)
-    {
-        if (e.Value is bool value)
-        {
-            alcohol = value;
-        }
-        FilterDeals();
-        SortDeals();
-    }
-
     private void FilterDeals()
     {
         DealFilter filter = new DealFilter();
         filter.Deals = allDeals;
         filter.Day = selectedDayOfWeek;
         filter.HappyHour = happyHour;
-        filter.Alcohol = alcohol;
         deals = filter.Filter();
     }
 

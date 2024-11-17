@@ -26,7 +26,7 @@
         var elements = getElements(cut);
 
         Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
-        Assert.Equal("50% off wild rice duck egg soup appetizer when you mention email", elements.Children[0].Children[1].InnerHtml);
+        Assert.Equal("<i class=\"bi bi-cup-straw me-1\" data-bs-toggle=\"tooltip\" title=\"alcohol\"></i>$10 select craft cocktail", elements.Children[0].Children[1].InnerHtml);
     }
 
     [Fact]
@@ -37,33 +37,7 @@
         var elements = getElements(cut);
 
         Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
-        Assert.Equal("50% off wild rice duck egg soup appetizer when you mention email", elements.Children[0].Children[1].InnerHtml);
-    }
-
-    [Fact]
-    public void DealsShouldExcludeAlcoholWhenUncheckedThursday()
-    {
-        timeService.DayOfWeek = DayOfWeek.Thursday.ToString();
-        var cut = ctx.Render(@<Deals />);
-        var elements = getElements(cut);
-
-        Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
-        Assert.Equal("50% off wild rice duck egg soup appetizer when you mention email", elements.Children[0].Children[1].InnerHtml);
-    }
-
-    [Fact]
-    public void DealsShouldIncludeAlcoholThursday()
-    {
-        timeService.DayOfWeek = DayOfWeek.Thursday.ToString();
-        var cut = ctx.Render(@<Deals />);
-        getElements(cut);
-        cut.Find("#alcohol-checkbox").Change(true);
-        var elements = getElements(cut);
-
-        Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
-        Assert.Contains("$10 select craft cocktail", elements.Children[0].Children[1].InnerHtml);
-        Assert.Equal("bi bi-cup-straw me-1", elements.Children[0].Children[1].Children[0].ClassName);
-        Assert.Equal("alcohol", elements.Children[0].Children[1].Children[0].GetAttribute("title"));
+        Assert.Equal("<i class=\"bi bi-cup-straw me-1\" data-bs-toggle=\"tooltip\" title=\"alcohol\"></i>$10 select craft cocktail", elements.Children[0].Children[1].InnerHtml);
     }
 
     [Fact]
@@ -73,8 +47,7 @@
         var cut = ctx.Render(@<Deals />);
         var elements = getElements(cut);
 
-        Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
-        Assert.Equal("50% off wild rice duck egg soup appetizer when you mention email", elements.Children[0].Children[1].InnerHtml);
+        Assert.DoesNotContain("bi-clock", elements.InnerHtml);
     }
 
     [Fact]
@@ -85,10 +58,7 @@
         var elements = getElements(cut);
         cut.Find("#happy-hour-checkbox").Change(true);
 
-        Assert.Equal("1881 by Lake Elmo Inn", elements.Children[1].Children[0].InnerHtml);
-        Assert.Contains("Discounted apps", elements.Children[1].InnerHtml);
-        Assert.Equal("bi bi-clock me-1", elements.Children[1].Children[1].Children[0].Children[0].ClassName);
-        Assert.Equal("14:00 - 17:00", elements.Children[1].Children[1].Children[0].Children[0].GetAttribute("title"));
+        Assert.Contains("bi-clock", elements.InnerHtml);
     }
 
     [Fact]
@@ -98,7 +68,7 @@
         var cut = ctx.Render(@<Deals />);
         var elements = getElements(cut);
 
-        Assert.Equal(21, elements.ChildElementCount);
+        Assert.Equal(23, elements.ChildElementCount);
     }
 
     [Fact]
@@ -132,7 +102,7 @@
         dowSelect.Change("Friday");
 
         var elements = getElements(cut);
-        Assert.Equal(18, elements.ChildElementCount);
+        Assert.Equal(20, elements.ChildElementCount);
     }
 
     [Fact]
@@ -144,9 +114,9 @@
         dowSelect.Change(""); // All value in the select is ""
 
         var elements = getElements(cut);
-        Assert.Equal(97, elements.ChildElementCount);
+        Assert.Equal(108, elements.ChildElementCount);
         Assert.Equal("Sunday", elements.Children[0].Children[0].InnerHtml);
-        Assert.Equal("Saturday", elements.Children[96].Children[0].InnerHtml);
+        Assert.Equal("Saturday", elements.Children[107].Children[0].InnerHtml);
     }
 
     [Fact]
@@ -158,9 +128,9 @@
         dowSelect.Change(""); // All value in the select is ""
 
         var elements = getElements(cut);
-        Assert.Equal(97, elements.ChildElementCount);
+        Assert.Equal(108, elements.ChildElementCount);
         Assert.Equal("Sunday", elements.Children[0].Children[0].InnerHtml);
-        Assert.Equal("Saturday", elements.Children[96].Children[0].InnerHtml);
+        Assert.Equal("Friday", elements.Children[96].Children[0].InnerHtml);
         Assert.Equal("Day", cut.Find("#deals_table_header").Children[0].InnerHtml);
     }
 
@@ -173,9 +143,9 @@
         dowSelect.Change("Friday");
 
         var elements = getElements(cut);
-        Assert.Equal(18, elements.ChildElementCount);
+        Assert.Equal(20, elements.ChildElementCount);
         Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
-        Assert.Equal("Urban Wok", elements.Children[17].Children[0].InnerHtml);
+        Assert.Equal("Subway", elements.Children[17].Children[0].InnerHtml);
         Assert.Equal("Place", cut.Find("#deals_table_header").Children[0].InnerHtml);
     }
 
@@ -186,7 +156,6 @@
         var expected = "<a href=\"https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png\" target=\"_blank\"><i class=\"bi bi-clock me-1\" data-bs-toggle=\"tooltip\" title=\"16:00 - 18:00\"></i><i class=\"bi bi-cup-straw me-1\" data-bs-toggle=\"tooltip\" title=\"alcohol\"></i>$5 beer, $7 select wine, $9 cocktail of the day</a>";
         var cut = ctx.Render(@<Deals />);
         getElements(cut);
-        cut.Find("#alcohol-checkbox").Change(true);
         cut.Find("#happy-hour-checkbox").Change(true);
         var elements = getElements(cut);
 

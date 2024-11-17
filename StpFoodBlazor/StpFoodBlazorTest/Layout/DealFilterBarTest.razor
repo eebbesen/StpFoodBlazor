@@ -21,7 +21,6 @@
         cut.Find("#filter-bar");
         cut.Find("#day-of-week-select");
         cut.Find("#happy-hour-checkbox");
-        cut.Find("#alcohol-checkbox");
     }
 
     [Fact]
@@ -42,23 +41,12 @@
         Assert.True(((IHtmlInputElement)hh).IsChecked);
     }
 
-    [Fact]
-    public void ShouldRenderAlcohol()
-    {
-        var cut = RenterDealFilterBar("Tuesday", false, true);
-
-        var hh = cut.Find("#alcohol-checkbox");
-        Assert.True(((IHtmlInputElement)hh).IsChecked);
-    }
-
     private IRenderedFragment RenterDealFilterBar(string dow, bool hh, bool alc)
     {
         return ctx.Render(@<DealFilterBar selectedDayOfWeek=@dow
           OnSelectedDayChanged="OnChangeStub"
           OnHappyHourChanged="OnChangeStub"
-          OnAlcoholChanged="OnChangeStub"
-          happyHour=@hh
-          alcohol=@alc />);
+          happyHour=@hh />);
     }
 
 }
