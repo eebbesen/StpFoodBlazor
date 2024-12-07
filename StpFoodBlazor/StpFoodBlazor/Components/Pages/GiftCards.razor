@@ -33,12 +33,13 @@ else
         if (firstRender)
         {
             giftcards = await GiftCardServiceImpl.GetGiftCardsAsync();
+            SortGiftCards();
             StateHasChanged();
         }
     }
 
-    @* private void SortDeals()
+    private void SortGiftCards()
     {
         giftcards = GiftCardSorter.Sort(giftcards);
-    } *@
+    }
 }
