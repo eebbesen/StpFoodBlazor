@@ -24,9 +24,9 @@
     }
 
     [Fact]
-    public void ShouldRenderCompentsNoDaySelected()
+    public void ShouldRendernComponentsNoDaySelected()
     {
-        var cut = RenterDealTableBody(null, sharedDeals);
+        var cut = RenderDealTableBody(null, sharedDeals);
 
         var body = cut.Find("#deals_table_body");
 
@@ -41,9 +41,9 @@
     }
 
     [Fact]
-    public void ShouldRenderCompentsDaySelected()
+    public void ShouldRenderComponentsDaySelected()
     {
-        var cut = RenterDealTableBody("Wednesday", sharedDeals);
+        var cut = RenderDealTableBody("Wednesday", sharedDeals);
 
         var body = cut.Find("#deals_table_body");
 
@@ -56,7 +56,7 @@
         Assert.Equal("row rounded bg-secondary bg-opacity-25", body.Children[3].ClassName);
     }
 
-    private IRenderedFragment RenterDealTableBody(string dow, DealEvent[] deals)
+    private IRenderedFragment RenderDealTableBody(string dow, DealEvent[] deals)
     {
         return ctx.Render(@<DealTableBody selectedDayOfWeek=@dow deals=@deals />);
     }
