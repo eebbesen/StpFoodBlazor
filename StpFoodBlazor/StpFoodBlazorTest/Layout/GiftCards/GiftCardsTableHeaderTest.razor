@@ -1,0 +1,34 @@
+@using StpFoodBlazor.Components.Layout.GiftCards
+@using StpFoodBlazor.Models
+@using AngleSharp.Html.Dom
+@using AngleSharp.Dom
+@using StpFoodBlazor.Components
+
+@code {
+    private TestContext ctx;
+
+    public GiftCardsTableHeaderTest()
+    {
+        ctx = new TestContext();
+    }
+
+    [Fact]
+    public void ShouldRenderComponents()
+    {
+        var cut = RenderGiftCardTableHead();
+
+        var header = cut.Find("#giftcards_table_header");
+
+        Assert.Equal("row bg-dark text-light rounded", header.ClassName);
+        header.Children[0].MarkupMatches("<div class=\"col-2\">Place</div>");
+        header.Children[1].MarkupMatches("<div class=\"col-4\">Deal</div>");
+        header.Children[2].MarkupMatches("<div class=\"col-4\">Terms</div>");
+        header.Children[3].MarkupMatches("<div class=\"col\">Start</div>");
+        header.Children[4].MarkupMatches("<div class=\"col\">End</div>");
+    }
+
+    private IRenderedFragment RenderGiftCardTableHead()
+    {
+        return ctx.Render(@<GiftCardsTableHeader />);
+    }
+}

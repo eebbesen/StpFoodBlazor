@@ -11,6 +11,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<IDealService, HttpDealService>();
 builder.Services.AddScoped<ITimeService, TimeService>();
+builder.Services.AddScoped<IGiftCardService, HttpGiftCardService>();
 
 var app = builder.Build();
 
