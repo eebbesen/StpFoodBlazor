@@ -26,7 +26,6 @@ Then run the following to convert the XML into HTML in the `coveragereport` dire
       -reporttypes:Html
 
 
-
 ## General
 
 ### bunit setup
