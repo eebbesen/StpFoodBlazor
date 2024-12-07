@@ -1,0 +1,47 @@
+@using Bunit
+@using Bunit.Rendering
+@using AngleSharp.Dom
+@using AngleSharp.Html.Dom
+@using StpFoodBlazor.Components.Pages
+@using StpFoodBlazor.Services
+@using StpFoodBlazorTest.Services
+
+@code {
+
+    private TestContext ctx;
+
+    public GiftCardsTest()
+    {
+        ctx = new TestContext();
+        ctx.Services.AddSingleton<IGiftCardService>(new TestGiftCardService());
+    }
+
+    [Fact]
+    public void GiftCardsShouldRenderRecords()
+    {
+        var cut = ctx.Render(@<GiftCards />);
+        var elements = getElements(cut);
+
+        Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
+        Assert.Equal("Buy $100 get $20", elements.Children[0].Children[1].InnerHtml);
+        Assert.Equal("$20 valid 01/01/2025 - 04/30/2025", elements.Children[0].Children[2].InnerHtml);
+        Assert.Equal("", elements.Children[0].Children[3].InnerHtml);
+        Assert.Equal("12/24", elements.Children[0].Children[4].InnerHtml);
+    }
+
+    [Fact]
+    public void GiftCardsShouldSortByName()
+    {
+        var cut = ctx.Render(@<GiftCards />);
+        var elements = getElements(cut);
+
+        Assert.Equal(40, elements.ChildElementCount);
+        Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
+        Assert.Equal("Wild Bill Sports Saloon", elements.Children[39].Children[0].InnerHtml);
+    }
+    private IElement getElements(IRenderedFragment cut)
+    {
+        cut.WaitForElement("#giftcards_table_body", TimeSpan.FromSeconds(5));
+        return cut.Find("#giftcards_table_body");
+    }
+}

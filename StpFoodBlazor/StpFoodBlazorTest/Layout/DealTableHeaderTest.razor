@@ -12,9 +12,9 @@
     }
 
     [Fact]
-    public void ShouldRenderCompentsDaySelected()
+    public void ShouldRenderComponentsDaySelected()
     {
-        var cut = RenterDealTableHead("Sundeay");
+        var cut = RenderDealTableHead("Sundeay");
 
         var header = cut.Find("#deals_table_header");
 
@@ -24,9 +24,9 @@
     }
 
     [Fact]
-    public void ShouldRenderCompentsNoDaySelected()
+    public void ShouldRenderComponentsNoDaySelected()
     {
-        var cut = RenterDealTableHead("");
+        var cut = RenderDealTableHead("");
 
         var header = cut.Find("#deals_table_header");
 
@@ -36,7 +36,7 @@
         header.Children[2].MarkupMatches("<div class=\"col\">Deal</div>");
     }
 
-    private IRenderedFragment RenterDealTableHead(string dow)
+    private IRenderedFragment RenderDealTableHead(string dow)
     {
         return ctx.Render(@<DealTableHeader selectedDayOfWeek=@dow />);
     }
