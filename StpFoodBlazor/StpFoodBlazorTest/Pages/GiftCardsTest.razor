@@ -9,11 +9,12 @@
 @code {
 
     private TestContext ctx;
-
+    private TestTimeService timeService = new TestTimeService();
     public GiftCardsTest()
     {
         ctx = new TestContext();
         ctx.Services.AddSingleton<IGiftCardService>(new TestGiftCardService());
+        ctx.Services.AddSingleton<ITimeService>(timeService);
     }
 
     [Fact]
@@ -30,15 +31,29 @@
     }
 
     [Fact]
-    public void GiftCardsShouldSortByName()
+    public void GiftCardsShouldSortByNameAndFilterByEndDate20241210()
     {
+        timeService.CurrentDate = new DateTime(2024, 12, 10);
         var cut = ctx.Render(@<GiftCards />);
         var elements = getElements(cut);
 
-        Assert.Equal(40, elements.ChildElementCount);
+        Assert.Equal(31, elements.ChildElementCount);
         Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
-        Assert.Equal("Wild Bill Sports Saloon", elements.Children[39].Children[0].InnerHtml);
+        Assert.Equal("Wild Bill Sports Saloon", elements.Children[30].Children[0].InnerHtml);
     }
+
+    [Fact]
+    public void GiftCardsShouldSortByNameAndFilterByEndDate20241201()
+    {
+        timeService.CurrentDate = new DateTime(2024, 12, 01);
+        var cut = ctx.Render(@<GiftCards />);
+        var elements = getElements(cut);
+
+        Assert.Equal(38, elements.ChildElementCount);
+        Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
+        Assert.Equal("Wild Bill Sports Saloon", elements.Children[37].Children[0].InnerHtml);
+    }
+
     private IElement getElements(IRenderedFragment cut)
     {
         cut.WaitForElement("#giftcards_table_body", TimeSpan.FromSeconds(5));
