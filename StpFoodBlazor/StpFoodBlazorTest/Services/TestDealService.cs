@@ -10,7 +10,7 @@ namespace StpFoodBlazorTest.Services
 {
     public class TestDealService : IDealService
     {
-        private static readonly string DEAL_FIXTURES_PATH = Path.Combine(Directory.GetCurrentDirectory(), "fixtures", "deals.json");
+        private static readonly string DEAL_FIXTURES_PATH = Path.Combine(Directory.GetCurrentDirectory(), "Fixtures", "deals.json");
 
         public async Task<DealEvent[]> GetDealsAsync()
         {
