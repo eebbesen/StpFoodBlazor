@@ -3,6 +3,7 @@
 @using StpFoodBlazor.Models
 @using StpFoodBlazor.Components.Layout.GiftCards
 @inject IGiftCardService GiftCardServiceImpl
+@inject ITimeService TimeServiceImpl
 
 @page "/giftcards"
 @rendermode InteractiveServer
@@ -33,6 +34,7 @@ else
         if (firstRender)
         {
             giftcards = await GiftCardServiceImpl.GetGiftCardsAsync();
+            FilterGiftCards();
             SortGiftCards();
             StateHasChanged();
         }
@@ -41,5 +43,12 @@ else
     private void SortGiftCards()
     {
         giftcards = GiftCardSorter.Sort(giftcards);
+    }
+
+    private void FilterGiftCards()
+    {
+        GiftCardFilter giftCardFilter = new GiftCardFilter(TimeServiceImpl);
+        giftCardFilter.GiftCards = giftcards;
+        giftcards = giftCardFilter.Filter();
     }
 }
