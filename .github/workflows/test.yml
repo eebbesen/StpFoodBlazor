@@ -5,6 +5,8 @@ name: test
 
 on:
   push:
+    branches:
+      - '!main' # will run tests with main_stpfoodblazor.yml
   workflow_dispatch:
 
 jobs:
