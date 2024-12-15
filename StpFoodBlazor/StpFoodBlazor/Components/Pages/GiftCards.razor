@@ -1,0 +1,54 @@
+﻿@using StpFoodBlazor.Helpers
+@using StpFoodBlazor.Services
+@using StpFoodBlazor.Models
+@using StpFoodBlazor.Components.Layout.GiftCards
+@inject IGiftCardService GiftCardServiceImpl
+@inject ITimeService TimeServiceImpl
+
+@page "/giftcards"
+@rendermode InteractiveServer
+@attribute [StreamRendering]
+
+<PageTitle>Gift Cards</PageTitle>
+
+<div class="container mb-5">
+@if (giftcards == null)
+{
+    <div class="row">
+        <p><em>Loading...</em></p>
+    </div>
+}
+else
+{
+    <GiftCardsTableHeader />
+
+    <GiftCardsTableBody giftcards="@giftcards"/>
+}
+</div>
+
+@code {
+    private GiftCard[]? giftcards;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            giftcards = await GiftCardServiceImpl.GetGiftCardsAsync();
+            FilterGiftCards();
+            SortGiftCards();
+            StateHasChanged();
+        }
+    }
+
+    private void SortGiftCards()
+    {
+        giftcards = GiftCardSorter.Sort(giftcards);
+    }
+
+    private void FilterGiftCards()
+    {
+        GiftCardFilter giftCardFilter = new GiftCardFilter(TimeServiceImpl);
+        giftCardFilter.GiftCards = giftcards;
+        giftcards = giftCardFilter.Filter();
+    }
+}

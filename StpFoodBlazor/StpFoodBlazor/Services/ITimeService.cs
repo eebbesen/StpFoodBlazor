@@ -6,5 +6,10 @@ namespace StpFoodBlazor.Services
         {
             return DateTime.Now.DayOfWeek.ToString();
         }
+
+        public DateTime GetCurrentDate()
+        {
+            return DateTime.Now.Date;
+        }
     }
 }

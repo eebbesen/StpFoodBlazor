@@ -1,0 +1,23 @@
+@inherits LayoutComponentBase
+@using StpFoodBlazor.Models
+
+<div id="giftcards_table_body">
+    @{var rowCounter = 0;}
+    @foreach (var giftcard in giftcards)
+    {
+    <div class="row@(rowCounter % 2 == 0 ? "" : " rounded bg-secondary bg-opacity-25")">
+        <div class="col-2">@giftcard.Name</div>
+        <div class="col-4">@giftcard.Deal</div>
+        <div class="col-4">@giftcard.Terms</div>
+        <div class="col">@giftcard.Start</div>
+        <div class="col">@giftcard.End</div>
+    </div>
+    rowCounter++;
+    }
+</div>
+
+@code
+{
+    [Parameter]
+    public required GiftCard[] giftcards { get; set; }
+}

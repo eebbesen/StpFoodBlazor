@@ -1,9 +1,12 @@
 ﻿@inherits LayoutComponentBase
+@inject NavigationManager NavMan
 
 <div class="page">
     <main>
-        <div class="top-row px-4">
-            <a href="about" target="_blank">About</a>
+        <div class="top-row px-4" id="navbar">
+            <a id="root-nav" href="/" class=@(classValues(""))>Deals</a>
+            <a id="giftcard-nav" href="giftcards" class=@(classValues("giftcards"))>Gift Cards</a>
+            <a id="about-nav" href="about" class=@(classValues("about")) target="_blank">About</a>
         </div>
 
         <article class="content px-4">
@@ -17,3 +20,21 @@
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+
+@code {
+    private string uri;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        uri = NavMan.Uri;NavMan.ToBaseRelativePath(NavMan.Uri);
+    }
+
+    private string classValues(string uriTest) {
+        if (uriTest == NavMan.ToBaseRelativePath(uri)) {
+            return "d-none";
+        }
+
+        return "";
+    }
+}

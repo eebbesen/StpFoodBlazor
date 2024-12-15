@@ -10,6 +10,21 @@ https://learn.microsoft.com/en-us/aspnet/core/blazor/test?view=aspnetcore-8.0
 
     $ dotnet test --collect "XPlat Code Coverage"
 
+To view tests in HTML, install `reportgenerator` https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-code-coverage?tabs=linux
+
+    $ dotnet tool install -g dotnet-reportgenerator-globaltool
+
+and add it to your path
+
+    $ export PATH="$PATH:/Users/username/.dotnet/tools"
+
+Then run the following to convert the XML into HTML in the `coveragereport` directory
+
+    $ reportgenerator \
+      -reports:"Path\To\TestProject\TestResults\{guid}\coverage.cobertura.xml" \
+      -targetdir:"coveragereport" \
+      -reporttypes:Html
+
 
 ## General
 
