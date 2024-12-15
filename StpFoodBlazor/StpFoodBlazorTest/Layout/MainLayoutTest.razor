@@ -1,0 +1,68 @@
+@using StpFoodBlazor.Components.Layout
+@using AngleSharp.Html.Dom
+@using AngleSharp.Dom
+
+@code {
+    private TestContext ctx;
+    private NavigationManager navMan;
+
+    public MainLayoutTest()
+    {
+        ctx = new TestContext();
+        navMan = ctx.Services.GetRequiredService<FakeNavigationManager>();
+    }
+
+    [Fact]
+    public void ShouldHideDealNavElementWhenRootRoute()
+    {
+        var cut = RenderMainLayout("");
+
+        var navbar = cut.Find("#navbar");
+
+        Assert.Equal(3, navbar.Children.Length);
+        Assert.Equal("root-nav", navbar.Children[0].Id);
+        Assert.Equal("d-none", navbar.Children[0].ClassName);
+        Assert.Equal("giftcard-nav", navbar.Children[1].Id);
+        Assert.Equal("", navbar.Children[1].ClassName);
+        Assert.Equal("about-nav", navbar.Children[2].Id);
+        Assert.Equal("", navbar.Children[2].ClassName);
+    }
+
+    [Fact]
+    public void ShouldHideAboutNavElementWhenAboutRoute()
+    {
+        var cut = RenderMainLayout("about");
+
+        var navbar = cut.Find("#navbar");
+
+        Assert.Equal(3, navbar.Children.Length);
+        Assert.Equal("root-nav", navbar.Children[0].Id);
+        Assert.Equal("", navbar.Children[0].ClassName);
+        Assert.Equal("giftcard-nav", navbar.Children[1].Id);
+        Assert.Equal("", navbar.Children[1].ClassName);
+        Assert.Equal("about-nav", navbar.Children[2].Id);
+        Assert.Equal("d-none", navbar.Children[2].ClassName);
+    }
+
+    [Fact]
+    public void ShouldHideGiftcardNavElementWhenGiftcardsRoute()
+    {
+        var cut = RenderMainLayout("giftcards");
+
+        var navbar = cut.Find("#navbar");
+
+        Assert.Equal(3, navbar.Children.Length);
+        Assert.Equal("root-nav", navbar.Children[0].Id);
+        Assert.Equal("", navbar.Children[0].ClassName);
+        Assert.Equal("giftcard-nav", navbar.Children[1].Id);
+        Assert.Equal("d-none", navbar.Children[1].ClassName);
+        Assert.Equal("about-nav", navbar.Children[2].Id);
+        Assert.Equal("", navbar.Children[2].ClassName);
+    }
+
+    private IRenderedFragment RenderMainLayout(string route)
+    {
+        navMan.NavigateTo(route);
+        return ctx.Render(@<MainLayout />);
+    }
+}
