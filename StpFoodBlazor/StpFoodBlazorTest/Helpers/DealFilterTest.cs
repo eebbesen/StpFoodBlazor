@@ -103,6 +103,42 @@ namespace StpFoodBlazorTest.Helpers {
                 Assert.True(string.IsNullOrWhiteSpace(deal.HappyHour)));
         }
 
+        [Fact]
+        public void ShouldFilterDealsThatEnded() {
+            filter.HappyHour = true;
+
+            var yesterday = DateTime.Now.AddDays(-1).ToString("MM/dd/yyyy");
+            var dealY = deals[0];
+            dealY.End = yesterday;
+            var tomorrow = DateTime.Now.AddDays(1).ToString("MM/dd/yyyy");
+            var dealT = deals[1];
+            dealT.End = tomorrow;
+            filter.Deals = [dealY, dealT];
+
+            DealEvent[] filteredDeals = filter.Filter();
+
+            Assert.Single(filteredDeals);
+            Assert.Equal(tomorrow, filteredDeals[0].End);
+        }
+
+        [Fact]
+        public void ShouldFilterDealsThatHaveNotStarted() {
+            filter.HappyHour = true;
+
+            var today = DateTime.Now.ToString("MM/dd/yyyy");
+            var dealToday = deals[0];
+            dealToday.Start = today;
+            var tomorrow = DateTime.Now.AddDays(1).ToString("MM/dd/yyyy");
+            var dealTomorrow = deals[1];
+            dealTomorrow.Start = tomorrow;
+            filter.Deals = [dealToday, dealTomorrow];
+
+            DealEvent[] filteredDeals = filter.Filter();
+
+            Assert.Single(filteredDeals);
+            Assert.Equal(today, filteredDeals[0].Start);
+        }
+
         private static async Task<DealEvent[]> getDeals() {
             return await new TestDealService().GetDealsAsync();
         }

@@ -17,6 +17,8 @@ namespace StpFoodBlazor.Helpers {
 
             DealEvent[] filteredDeals = Deals;
 
+            filteredDeals = FilterByEndAndStartDates(filteredDeals);
+
             if (!string.IsNullOrWhiteSpace(Day))
             {
                 filteredDeals = FilterByDay(filteredDeals, Day);
@@ -72,6 +74,13 @@ namespace StpFoodBlazor.Helpers {
 
             return deals.Where(deal =>
                     deal.HappyHour == null || deal.HappyHour.Trim() == "").ToArray();
+        }
+
+        private static DealEvent[] FilterByEndAndStartDates(DealEvent[] deals) {
+            return deals.Where(deal =>
+                (string.IsNullOrEmpty(deal.End) || DateTime.Parse(deal.End) >= DateTime.Now) &&
+                (string.IsNullOrEmpty(deal.Start) || DateTime.Parse(deal.Start) <= DateTime.Now)
+            ).ToArray();
         }
     }
 }
