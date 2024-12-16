@@ -3,7 +3,9 @@
 
 @if (!string.IsNullOrEmpty(Deal.HappyHour))
 {
-    <i class="bi bi-clock me-1" data-bs-toggle="tooltip" title=@Deal.HappyHour></i>
+    <div class="d-inline-block">
+        <i class="bi bi-clock me-1 d-none d-md-block" data-bs-toggle="tooltip" title=@Deal.HappyHour></i><div class="d-sm-block d-md-none me-1 fw-bold">@Deal.HappyHour</div>
+    </div>
 }
 @if (!string.IsNullOrEmpty(Deal.Alcohol))
 {
