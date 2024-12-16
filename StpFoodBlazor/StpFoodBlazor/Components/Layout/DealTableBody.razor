@@ -14,7 +14,7 @@
         <div class="col">
             @if (!string.IsNullOrEmpty(deal.URL))
             {
-                <NavLink href=@deal.URL target="_blank">
+                <NavLink href=@deal.URL target="_blank" class="text-decoration-none">
                     <DealEventRowDeal Deal=deal></DealEventRowDeal>
                 </NavLink>
             }
