@@ -1,5 +1,4 @@
 @using StpFoodBlazor.Components.Layout.GiftCards
-@using StpFoodBlazor.Models
 @using AngleSharp.Html.Dom
 @using AngleSharp.Dom
 @using StpFoodBlazor.Components
@@ -20,15 +19,16 @@
         var header = cut.Find("#giftcards_table_header");
 
         Assert.Equal("row bg-dark text-light rounded", header.ClassName);
-        header.Children[0].MarkupMatches("<div class=\"col-2\">Place</div>");
-        header.Children[1].MarkupMatches("<div class=\"col-4\">Deal</div>");
-        header.Children[2].MarkupMatches("<div class=\"col-4\">Terms</div>");
-        header.Children[3].MarkupMatches("<div class=\"col\">Start</div>");
-        header.Children[4].MarkupMatches("<div class=\"col\">End</div>");
+        Assert.Equal(5, header.ChildElementCount);
+        header.Children[0].MarkupMatches("<div class=\"col-5 col-md-2\">Place</div>");
+        header.Children[1].MarkupMatches("<div class=\"col-7 col-md-4\">Deal</div>");
+        header.Children[2].MarkupMatches("<div class=\"col-md-4 d-none d-md-block\">Terms</div>");
+        header.Children[3].MarkupMatches("<div class=\"col-md d-none d-md-block\">Start</div>");
+        header.Children[4].MarkupMatches("<div class=\"col-md d-none d-md-block\">End</div>");
     }
 
-    private IRenderedFragment RenderGiftCardTableHead()
+    private IRenderedComponent<GiftCardsTableHeader> RenderGiftCardTableHead()
     {
-        return ctx.Render(@<GiftCardsTableHeader />);
+        return ctx.RenderComponent<GiftCardsTableHeader>();
     }
 }
