@@ -33,6 +33,8 @@
         Assert.Equal(30, elements.ChildElementCount);
         Assert.Equal("<span class=\"col-12 rounded placeholder bg-white\">&nbsp;</span>",
             elements.Children[0].InnerHtml);
+        Assert.Equal("<span class=\"col-12 rounded placeholder\">&nbsp;</span>",
+            elements.Children[1].InnerHtml);
     }
 
     [Fact]
