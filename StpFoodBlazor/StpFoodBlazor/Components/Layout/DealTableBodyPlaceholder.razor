@@ -6,7 +6,7 @@
     @foreach (var deal in Enumerable.Range(1, 30))
     {
         <div class="row rounded placeholder-glow">
-            <span class="col-12 rounded placeholder@(rowCounter % 2 == 0 ? " bg-white" : "")"></span>
+            <span class="col-12 rounded placeholder@(rowCounter % 2 == 0 ? " bg-white" : "")">&nbsp;</span>
         </div>
         rowCounter++;
     }

@@ -31,7 +31,7 @@
         var elements = cut.Find("#deals_table_body_placeholder");
 
         Assert.Equal(30, elements.ChildElementCount);
-        Assert.Equal("<span class=\"col-12 rounded placeholder bg-white\"></span>",
+        Assert.Equal("<span class=\"col-12 rounded placeholder bg-white\">&nbsp;</span>",
             elements.Children[0].InnerHtml);
     }
 
