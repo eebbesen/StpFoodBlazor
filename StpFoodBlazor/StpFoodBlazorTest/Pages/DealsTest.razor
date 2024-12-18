@@ -27,7 +27,7 @@
         ctx.Services.AddSingleton<IDealService>(testDealService);
 
         var cut = ctx.Render(@<Deals />);
-        cut.WaitForElement("#deals_table_body_placeholder", TimeSpan.FromSeconds(5));
+        cut.WaitForElement("#deals_table_body_placeholder");
         var elements = cut.Find("#deals_table_body_placeholder");
 
         Assert.Equal(30, elements.ChildElementCount);

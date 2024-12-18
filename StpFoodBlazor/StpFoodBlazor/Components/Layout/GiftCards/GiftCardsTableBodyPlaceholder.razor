@@ -1,0 +1,12 @@
+@inherits LayoutComponentBase
+
+<div id="giftcards_table_body_placeholder">
+    @{var rowCounter = 0;}
+    @foreach (var giftcard in Enumerable.Range(1, 30))
+    {
+    <div class="row rounded placeholder-glow">
+        <span class="col-12 rounded placeholder@(rowCounter % 2 == 0 ? " bg-white" : "")">&nbsp;</span>
+    </div>
+    rowCounter++;
+    }
+</div>

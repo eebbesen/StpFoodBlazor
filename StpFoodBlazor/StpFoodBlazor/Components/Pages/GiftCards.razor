@@ -12,18 +12,15 @@
 <PageTitle>Gift Cards</PageTitle>
 
 <div class="container mb-5">
-@if (giftcards == null)
-{
-    <div class="row">
-        <p><em>Loading...</em></p>
-    </div>
-}
-else
-{
     <GiftCardsTableHeader />
-
-    <GiftCardsTableBody giftcards="@giftcards"/>
-}
+    @if (giftcards == null)
+    {
+        <GiftCardsTableBodyPlaceholder/>
+    }
+    else
+    {
+        <GiftCardsTableBody giftcards="@giftcards"/>
+    }
 </div>
 
 @code {

@@ -5,7 +5,6 @@ using System.IO;
 using System.Threading.Tasks;
 using System;
 
-
 namespace StpFoodBlazorTest.Services
 {
     public class TestDealService : IDealService
