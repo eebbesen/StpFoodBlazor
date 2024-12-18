@@ -5,15 +5,20 @@ using System.IO;
 using System.Threading.Tasks;
 using System;
 
-
 namespace StpFoodBlazorTest.Services
 {
     public class TestGiftCardService : IGiftCardService
     {
         private static readonly string GIFTCARD_FIXTURES_PATH = Path.Combine(Directory.GetCurrentDirectory(), "fixtures", "giftcards.json");
+        public Boolean LongRunning { get; set; } = false;
 
         public async Task<GiftCard[]> GetGiftCardsAsync()
         {
+            if (LongRunning)
+            {
+                await Task.Delay(7000);
+            }
+
             if (File.Exists(GIFTCARD_FIXTURES_PATH))
             {
                 string jsonContent = await File.ReadAllTextAsync(GIFTCARD_FIXTURES_PATH);

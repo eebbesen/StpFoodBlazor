@@ -11,24 +11,19 @@
 @attribute [StreamRendering]
 
 <PageTitle>Deals</PageTitle>
-
-<div class="container mb-5">
+    <div class="container mb-5">
+        <DealFilterBar selectedDayOfWeek="@selectedDayOfWeek" OnSelectedDayChanged="OnSelectedDayChanged"
+            happyHour="@happyHour" OnHappyHourChanged="OnHappyHourChanged" />
+        <DealTableHeader selectedDayOfWeek="@selectedDayOfWeek" />
 @if (deals == null)
 {
-    <div class="row">
-        <p><em>Loading...</em></p>
-    </div>
+        <DealTableBodyPlaceholder />
 }
 else
 {
-    <DealFilterBar selectedDayOfWeek="@selectedDayOfWeek" OnSelectedDayChanged="OnSelectedDayChanged"
-        happyHour="@happyHour" OnHappyHourChanged="OnHappyHourChanged" />
-
-    <DealTableHeader selectedDayOfWeek="@selectedDayOfWeek" />
-
-    <DealTableBody deals="@deals" selectedDayOfWeek="@selectedDayOfWeek" />
+        <DealTableBody deals="@deals" selectedDayOfWeek="@selectedDayOfWeek" />
 }
-</div>
+    </div>
 
 @code {
     private DealEvent[]? deals;

@@ -1,0 +1,13 @@
+@inherits LayoutComponentBase
+@using StpFoodBlazor.Models
+
+<span id="deals_table_body_placeholder" aria-hidden="true">
+    @{var rowCounter = 0;}
+    @foreach (var deal in Enumerable.Range(1, 30))
+    {
+        <div class="row rounded placeholder-glow">
+            <span class="col-12 rounded placeholder@(rowCounter % 2 == 0 ? " bg-white" : "")">&nbsp;</span>
+        </div>
+        rowCounter++;
+    }
+</span>

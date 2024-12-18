@@ -18,6 +18,24 @@
     }
 
     [Fact]
+    public void GiftCardsShouldDisplayPlaceholderWhenLoading()
+    {
+        TestGiftCardService testGiftCardService = new TestGiftCardService();
+        testGiftCardService.LongRunning = true;
+        ctx.Services.AddSingleton<IGiftCardService>(testGiftCardService);
+
+        var cut = ctx.Render(@<GiftCards />);
+        cut.WaitForElement("#giftcards_table_body_placeholder");
+        var elements = cut.Find("#giftcards_table_body_placeholder");
+
+        Assert.Equal(30, elements.ChildElementCount);
+        Assert.Equal("<span class=\"col-12 rounded placeholder bg-white\">&nbsp;</span>",
+            elements.Children[0].InnerHtml);
+        Assert.Equal("<span class=\"col-12 rounded placeholder\">&nbsp;</span>",
+            elements.Children[1].InnerHtml);
+    }
+
+    [Fact]
     public void GiftCardsShouldRenderRecords()
     {
         var cut = ctx.Render(@<GiftCards />);

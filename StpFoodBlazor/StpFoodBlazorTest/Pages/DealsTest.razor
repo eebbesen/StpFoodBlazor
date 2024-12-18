@@ -19,6 +19,25 @@
     }
 
     [Fact]
+    public void DealsShouldDisplayPlaceholderWhenLoading()
+    {
+        timeService.DayOfWeek = DayOfWeek.Wednesday.ToString();
+        TestDealService testDealService = new TestDealService();
+        testDealService.LongRunning = true;
+        ctx.Services.AddSingleton<IDealService>(testDealService);
+
+        var cut = ctx.Render(@<Deals />);
+        cut.WaitForElement("#deals_table_body_placeholder");
+        var elements = cut.Find("#deals_table_body_placeholder");
+
+        Assert.Equal(30, elements.ChildElementCount);
+        Assert.Equal("<span class=\"col-12 rounded placeholder bg-white\">&nbsp;</span>",
+            elements.Children[0].InnerHtml);
+        Assert.Equal("<span class=\"col-12 rounded placeholder\">&nbsp;</span>",
+            elements.Children[1].InnerHtml);
+    }
+
+    [Fact]
     public void DealsShouldDisplayTwoColumnsWednesday()
     {
         timeService.DayOfWeek = DayOfWeek.Wednesday.ToString();
@@ -77,6 +96,7 @@
         ctx.Services.AddSingleton<ITimeService>(timeService);
         var cut = ctx.Render(@<Deals />);
         var dowSelect = (IHtmlSelectElement)cut.WaitForElement("#day-of-week-select");
+        getElements(cut); // just to make sure table is rendered
 
         Assert.Equal(DateTime.Today.DayOfWeek.ToString(), dowSelect.Value);
     }
