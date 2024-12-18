@@ -11,9 +11,15 @@ namespace StpFoodBlazorTest.Services
     public class TestDealService : IDealService
     {
         private static readonly string DEAL_FIXTURES_PATH = Path.Combine(Directory.GetCurrentDirectory(), "fixtures", "deals.json");
+        public Boolean LongRunning { get; set; } = false;
 
         public async Task<DealEvent[]> GetDealsAsync()
         {
+            if (LongRunning)
+            {
+                await Task.Delay(7000);
+            }
+
             if (File.Exists(DEAL_FIXTURES_PATH))
             {
                 string jsonContent = await File.ReadAllTextAsync(DEAL_FIXTURES_PATH);

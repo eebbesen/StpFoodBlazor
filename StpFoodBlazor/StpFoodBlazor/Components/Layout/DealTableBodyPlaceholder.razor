@@ -1,0 +1,24 @@
+@inherits LayoutComponentBase
+@using StpFoodBlazor.Models
+
+<span id="deals_table_body_placeholder" class="placeholder-glow" aria-hidden="true">
+    @{var rowCounter = 0;}
+    @foreach (var deal in Enumerable.Range(1, 30))
+    {
+        <div class="row rounded@(rowCounter % 2 == 0 ? " bg-secondary opacity-25" : "")">
+            @if (string.IsNullOrEmpty(selectedDayOfWeek))
+            {
+                <span class="col-1 placeholder"></span>
+            }
+            <span class="col-3 placeholder"></span>
+            <span class="col placeholder"></span>
+        </div>
+        rowCounter++;
+    }
+</span>
+
+@code
+{
+    [Parameter]
+    public string selectedDayOfWeek { get; set; }
+}
