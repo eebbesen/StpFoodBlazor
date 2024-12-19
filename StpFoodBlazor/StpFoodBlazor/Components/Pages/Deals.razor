@@ -14,13 +14,14 @@
     <div class="container mb-5">
         <DealFilterBar selectedDayOfWeek="@selectedDayOfWeek" OnSelectedDayChanged="OnSelectedDayChanged"
             happyHour="@happyHour" OnHappyHourChanged="OnHappyHourChanged" />
-        <DealTableHeader selectedDayOfWeek="@selectedDayOfWeek" />
 @if (deals == null)
 {
+        <DealTableHeader selectedDayOfWeek="@TimeServiceImpl.GetDayOfWeek()" />
         <DealTableBodyPlaceholder />
 }
 else
 {
+        <DealTableHeader selectedDayOfWeek="@selectedDayOfWeek" />
         <DealTableBody deals="@deals" selectedDayOfWeek="@selectedDayOfWeek" />
 }
     </div>

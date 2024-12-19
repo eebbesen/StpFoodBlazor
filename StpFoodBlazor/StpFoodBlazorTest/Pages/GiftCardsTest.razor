@@ -25,9 +25,10 @@
         ctx.Services.AddSingleton<IGiftCardService>(testGiftCardService);
 
         var cut = ctx.Render(@<GiftCards />);
-        cut.WaitForElement("#giftcards_table_body_placeholder");
-        var elements = cut.Find("#giftcards_table_body_placeholder");
+        var header = cut.WaitForElement("#giftcards_table_header");
+        var elements = cut.WaitForElement("#giftcards_table_body_placeholder");
 
+        Assert.Equal("Place", header.Children[0].InnerHtml);
         Assert.Equal(30, elements.ChildElementCount);
         Assert.Equal("<span class=\"col-12 rounded placeholder bg-white\">&nbsp;</span>",
             elements.Children[0].InnerHtml);
@@ -74,7 +75,6 @@
 
     private IElement getElements(IRenderedFragment cut)
     {
-        cut.WaitForElement("#giftcards_table_body", TimeSpan.FromSeconds(5));
-        return cut.Find("#giftcards_table_body");
+        return cut.WaitForElement("#giftcards_table_body", TimeSpan.FromSeconds(5));
     }
 }
