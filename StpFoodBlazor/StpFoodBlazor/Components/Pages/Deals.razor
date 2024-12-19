@@ -12,16 +12,16 @@
 
 <PageTitle>Deals</PageTitle>
     <div class="container mb-5">
-        <DealFilterBar selectedDayOfWeek="@selectedDayOfWeek" OnSelectedDayChanged="OnSelectedDayChanged"
+        <DealFilterBar selectedDayOfWeek="@(selectedDayOfWeek == null ? @TimeServiceImpl.GetDayOfWeek() : selectedDayOfWeek)" OnSelectedDayChanged="OnSelectedDayChanged"
             happyHour="@happyHour" OnHappyHourChanged="OnHappyHourChanged" />
+        <DealTableHeader selectedDayOfWeek="@(selectedDayOfWeek == null ? @TimeServiceImpl.GetDayOfWeek() : selectedDayOfWeek)" />
+
 @if (deals == null)
 {
-        <DealTableHeader selectedDayOfWeek="@TimeServiceImpl.GetDayOfWeek()" />
         <DealTableBodyPlaceholder />
 }
 else
 {
-        <DealTableHeader selectedDayOfWeek="@selectedDayOfWeek" />
         <DealTableBody deals="@deals" selectedDayOfWeek="@selectedDayOfWeek" />
 }
     </div>
