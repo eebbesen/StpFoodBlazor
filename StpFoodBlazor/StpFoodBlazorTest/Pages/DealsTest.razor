@@ -27,9 +27,11 @@
         ctx.Services.AddSingleton<IDealService>(testDealService);
 
         var cut = ctx.Render(@<Deals />);
+        var select = cut.WaitForElement("#day-of-week-select");
         var header = cut.WaitForElement("#deals_table_header");
         var elements = cut.WaitForElement("#deals_table_body_placeholder");
 
+        Assert.Equal(timeService.DayOfWeek, select.GetAttribute("value"));
         Assert.Equal("Place", header.Children[0].InnerHtml);
         Assert.Equal(30, elements.ChildElementCount);
         Assert.Equal("<span class=\"col-12 rounded placeholder bg-white\">&nbsp;</span>",
