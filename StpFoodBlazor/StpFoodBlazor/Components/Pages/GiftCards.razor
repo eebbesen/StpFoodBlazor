@@ -39,7 +39,10 @@
 
     private void SortGiftCards()
     {
-        giftcards = GiftCardSorter.Sort(giftcards);
+        if (giftcards != null)
+        {
+            giftcards = GiftCardSorter.Sort(giftcards);
+        }
     }
 
     private void FilterGiftCards()

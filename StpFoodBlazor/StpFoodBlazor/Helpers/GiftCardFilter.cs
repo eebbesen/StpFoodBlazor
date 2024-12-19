@@ -1,5 +1,6 @@
 using StpFoodBlazor.Models;
 using StpFoodBlazor.Services;
+using System.Globalization;
 
 namespace StpFoodBlazor.Helpers {
     public class GiftCardFilter {
@@ -12,11 +13,14 @@ namespace StpFoodBlazor.Helpers {
         public GiftCard[]? GiftCards { get; set; }
 
         public GiftCard[] Filter() {
+            if (GiftCards == null) {
+                return [];
+            }
             return FilterByExpiryDate(GiftCards);
         }
 
         private static DateTime convertStringToDate(string date) {
-            return DateTime.Parse(date);
+            return DateTime.Parse(date, CultureInfo.InvariantCulture);
         }
 
         private GiftCard[] FilterByExpiryDate(GiftCard[] giftcards) {

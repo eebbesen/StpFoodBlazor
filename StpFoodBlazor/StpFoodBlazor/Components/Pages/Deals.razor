@@ -73,6 +73,9 @@ else
 
     private void SortDeals()
     {
-        deals = DealSorter.Sort(deals);
+        if (deals != null)
+        {
+            deals = DealSorter.Sort(deals);
+        }
     }
 }
