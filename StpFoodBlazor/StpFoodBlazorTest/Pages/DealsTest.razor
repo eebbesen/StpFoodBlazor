@@ -27,9 +27,10 @@
         ctx.Services.AddSingleton<IDealService>(testDealService);
 
         var cut = ctx.Render(@<Deals />);
-        cut.WaitForElement("#deals_table_body_placeholder");
-        var elements = cut.Find("#deals_table_body_placeholder");
+        var header = cut.WaitForElement("#deals_table_header");
+        var elements = cut.WaitForElement("#deals_table_body_placeholder");
 
+        Assert.Equal("Place", header.Children[0].InnerHtml);
         Assert.Equal(30, elements.ChildElementCount);
         Assert.Equal("<span class=\"col-12 rounded placeholder bg-white\">&nbsp;</span>",
             elements.Children[0].InnerHtml);
@@ -188,7 +189,6 @@
 
     private IElement getElements(IRenderedFragment cut)
     {
-        cut.WaitForElement("#deals_table_body", TimeSpan.FromSeconds(5));
-        return cut.Find("#deals_table_body");
+        return cut.WaitForElement("#deals_table_body", TimeSpan.FromSeconds(5));
     }
 }
