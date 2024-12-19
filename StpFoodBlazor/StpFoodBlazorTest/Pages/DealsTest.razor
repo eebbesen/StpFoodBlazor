@@ -18,6 +18,10 @@
         ctx.Services.AddSingleton<ITimeService>(timeService);
     }
 
+    public void Dispose(){
+        // so that TestDealService attributes are reset
+    }
+
     [Fact]
     public void DealsShouldDisplayPlaceholderWhenLoading()
     {
@@ -98,7 +102,8 @@
     {
         ctx.Services.AddSingleton<ITimeService>(timeService);
         var cut = ctx.Render(@<Deals />);
-        var dowSelect = (IHtmlSelectElement)cut.WaitForElement("#day-of-week-select");
+        cut.WaitForElement("#day-of-week-select");
+        var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
         getElements(cut); // just to make sure table is rendered
 
         Assert.Equal(DateTime.Today.DayOfWeek.ToString(), dowSelect.Value);
@@ -108,9 +113,11 @@
     public void DealsShouldChangeWhenNewValueSelectedMonday()
     {
         var cut = ctx.Render(@<Deals />);
-        var dowSelect = (IHtmlSelectElement)cut.WaitForElement("#day-of-week-select");
+        cut.WaitForElement("#day-of-week-select");
+        var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change("Monday");
+        @* cut.WaitForState(() => cut.Find("#day-of-week-select").TextContent == "Monday"); *@
 
         var elements = getElements(cut);
         Assert.Equal(16, elements.ChildElementCount);
@@ -120,7 +127,8 @@
     public void DealsShouldChangeWhenNewValueSelectedFriday()
     {
         var cut = ctx.Render(@<Deals />);
-        var dowSelect = (IHtmlSelectElement)cut.WaitForElement("#day-of-week-select");
+        cut.WaitForElement("#day-of-week-select");
+        var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change("Friday");
 
@@ -132,7 +140,8 @@
     public void DealsShouldSortByDay()
     {
         var cut = ctx.Render(@<Deals />);
-        var dowSelect = (IHtmlSelectElement)cut.WaitForElement("#day-of-week-select");
+        cut.WaitForElement("#day-of-week-select");
+        var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change(""); // All value in the select is ""
 
@@ -146,7 +155,8 @@
     public void DealsShouldShowDayColumnWhenAllDays()
     {
         var cut = ctx.Render(@<Deals />);
-        var dowSelect = (IHtmlSelectElement)cut.WaitForElement("#day-of-week-select");
+        cut.WaitForElement("#day-of-week-select");
+        var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change(""); // All value in the select is ""
 
@@ -161,7 +171,8 @@
     public void DealsShouldNotShowDayColumnWhenNotAllDays()
     {
         var cut = ctx.Render(@<Deals />);
-        var dowSelect = (IHtmlSelectElement)cut.WaitForElement("#day-of-week-select");
+        cut.WaitForElement("#day-of-week-select");
+        var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change("Friday");
 
@@ -191,6 +202,7 @@
 
     private IElement getElements(IRenderedFragment cut)
     {
-        return cut.WaitForElement("#deals_table_body", TimeSpan.FromSeconds(5));
+        cut.WaitForElement("#deals_table_body", TimeSpan.FromSeconds(5));
+        return cut.Find("#deals_table_body");
     }
 }
