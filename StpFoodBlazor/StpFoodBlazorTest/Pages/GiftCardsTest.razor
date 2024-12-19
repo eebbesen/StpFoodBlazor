@@ -17,6 +17,10 @@
         ctx.Services.AddSingleton<ITimeService>(timeService);
     }
 
+    public void Dispose(){
+        // so that TestDealService attributes are reset
+    }
+
     [Fact]
     public void GiftCardsShouldDisplayPlaceholderWhenLoading()
     {
