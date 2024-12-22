@@ -3,11 +3,12 @@ using StpFoodBlazor.Models;
 
 namespace StpFoodBlazor.Services
 {
-    public class HttpGiftCardService(HttpClient httpClient) : IGiftCardService
+    public class HttpGiftCardService(HttpClient httpClient, ILogger<HttpDealService> logger) : IGiftCardService
     {
         public async Task<GiftCard[]> GetGiftCardsAsync()
         {
             GiftCard[]? result = await httpClient.GetFromJsonAsync<GiftCard[]>(GetUrl());
+            logger.LogInformation("retrieved giftcards: {Url}", GetUrl());
             return result ?? [];
         }
 
