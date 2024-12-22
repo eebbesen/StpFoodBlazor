@@ -1,5 +1,6 @@
 using StpFoodBlazor.Components;
 using StpFoodBlazor.Services;
+using Azure.Monitor.OpenTelemetry.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddEnvironmentVariables();
@@ -8,6 +9,8 @@ builder.Configuration.AddEnvironmentVariables();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+builder.Services.AddOpenTelemetry().UseAzureMonitor();
+
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<IDealService, HttpDealService>();
 builder.Services.AddScoped<ITimeService, TimeService>();
