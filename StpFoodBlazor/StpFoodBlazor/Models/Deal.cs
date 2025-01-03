@@ -12,9 +12,7 @@ namespace StpFoodBlazor.Models
 
         [JsonPropertyName("Happy Hour")]
         public string? HappyHour { get; set; }
-        [JsonPropertyName("Start Date")]
         public string? Start { get; set; }
-        [JsonPropertyName("End Date")]
         public string? End { get; set; }
     }
 }
