@@ -41,8 +41,9 @@
     }
 
     [Fact]
-    public void GiftCardsShouldRenderRecords()
+    public void GiftCardsShouldRenderRecords20241210()
     {
+        timeService.CurrentDate = new DateTime(2024, 12, 10);
         var cut = ctx.Render(@<GiftCards />);
         var elements = getElements(cut);
 
@@ -50,7 +51,7 @@
         Assert.Equal("Buy $100 get $20", elements.Children[0].Children[1].InnerHtml);
         Assert.Equal("$20 valid 01/01/2025 - 04/30/2025", elements.Children[0].Children[2].InnerHtml);
         Assert.Equal("", elements.Children[0].Children[3].InnerHtml);
-        Assert.Equal("12/24", elements.Children[0].Children[4].InnerHtml);
+        Assert.Equal("12/24/2024", elements.Children[0].Children[4].InnerHtml);
     }
 
     [Fact]
@@ -60,9 +61,9 @@
         var cut = ctx.Render(@<GiftCards />);
         var elements = getElements(cut);
 
-        Assert.Equal(31, elements.ChildElementCount);
+        Assert.Equal(30, elements.ChildElementCount);
         Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
-        Assert.Equal("Wild Bill Sports Saloon", elements.Children[30].Children[0].InnerHtml);
+        Assert.Equal("Wild Bill Sports Saloon", elements.Children[29].Children[0].InnerHtml);
     }
 
     [Fact]
@@ -72,9 +73,9 @@
         var cut = ctx.Render(@<GiftCards />);
         var elements = getElements(cut);
 
-        Assert.Equal(38, elements.ChildElementCount);
+        Assert.Equal(37, elements.ChildElementCount);
         Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
-        Assert.Equal("Wild Bill Sports Saloon", elements.Children[37].Children[0].InnerHtml);
+        Assert.Equal("Wild Bill Sports Saloon", elements.Children[36].Children[0].InnerHtml);
     }
 
     private IElement getElements(IRenderedFragment cut)

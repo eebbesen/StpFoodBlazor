@@ -16,17 +16,17 @@ namespace StpFoodBlazor.Helpers {
             if (GiftCards == null) {
                 return [];
             }
-            return FilterByExpiryDate(GiftCards);
+            return FilterByDates(GiftCards);
         }
 
         private static DateTime convertStringToDate(string date) {
             return DateTime.Parse(date, CultureInfo.InvariantCulture);
         }
 
-        private GiftCard[] FilterByExpiryDate(GiftCard[] giftcards) {
+        private GiftCard[] FilterByDates(GiftCard[] giftcards) {
             return giftcards.Where(giftcard =>
-                string.IsNullOrWhiteSpace(giftcard.End) ||
-                convertStringToDate(giftcard.End).Date > _timeService.GetCurrentDate().Date
+                (string.IsNullOrWhiteSpace(giftcard.Start) || convertStringToDate(giftcard.Start).Date <= _timeService.GetCurrentDate().Date) &&
+                (string.IsNullOrWhiteSpace(giftcard.End) || convertStringToDate(giftcard.End).Date >= _timeService.GetCurrentDate().Date)
             ).ToArray();
         }
     }
