@@ -35,13 +35,46 @@
         var header = cut.WaitForElement("#deals_table_header");
         var elements = cut.WaitForElement("#deals_table_body_placeholder");
 
-        Assert.Equal(timeService.DayOfWeek, select.GetAttribute("value"));
+        Assert.Equal(timeService.DayOfWeek.ToLower(), select.GetAttribute("value"));
         Assert.Equal("Place", header.Children[0].InnerHtml);
         Assert.Equal(30, elements.ChildElementCount);
         Assert.Equal("<span class=\"col-12 rounded placeholder bg-white\">&nbsp;</span>",
             elements.Children[0].InnerHtml);
         Assert.Equal("<span class=\"col-12 rounded placeholder\">&nbsp;</span>",
             elements.Children[1].InnerHtml);
+    }
+
+    [Fact]
+    public void DealsShouldAcceptDowParameterCaseInsensitiveSunday()
+    {
+        var navigationManager = ctx.Services.GetRequiredService<NavigationManager>();
+        var uri = navigationManager.GetUriWithQueryParameter("dOw", "sUndAY");
+        navigationManager.NavigateTo(uri);
+
+        var cut = ctx.Render(@<Deals />);
+        var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
+        var elements = getElements(cut);
+
+        Assert.Equal(6, elements.ChildElementCount);
+        Assert.Equal("sunday", dowSelect.Value);
+        Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
+    }
+
+    [Fact]
+    public void DealsShouldAcceptHhParameterCaseInsensitiveSunday()
+    {
+        timeService.DayOfWeek = DayOfWeek.Sunday.ToString();
+        var navigationManager = ctx.Services.GetRequiredService<NavigationManager>();
+        var uri = navigationManager.GetUriWithQueryParameter("HH", true);
+        navigationManager.NavigateTo(uri);
+
+        var cut = ctx.Render(@<Deals />);
+        var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
+        var elements = getElements(cut);
+
+        Assert.Equal(24, elements.ChildElementCount);
+        Assert.Equal("sunday", dowSelect.Value);
+        Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
     }
 
     [Fact]
@@ -106,7 +139,7 @@
         var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
         getElements(cut); // just to make sure table is rendered
 
-        Assert.Equal(DateTime.Today.DayOfWeek.ToString(), dowSelect.Value);
+        Assert.Equal(DateTime.Today.DayOfWeek.ToString().ToLower(), dowSelect.Value);
     }
 
     [Fact]
