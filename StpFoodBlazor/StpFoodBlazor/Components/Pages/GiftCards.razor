@@ -12,14 +12,22 @@
 <PageTitle>Gift Cards</PageTitle>
 
 <div class="container mb-5">
-    <GiftCardsTableHeader />
     @if (giftcards == null)
     {
+        <GiftCardsTableHeader />
         <GiftCardsTableBodyPlaceholder/>
     }
     else
     {
-        <GiftCardsTableBody giftcards="@giftcards"/>
+        @if (giftcards.Length == 0)
+        {
+            <GiftCardsNoRecords/>
+        }
+        else
+        {
+            <GiftCardsTableHeader />
+            <GiftCardsTableBody giftcards="@giftcards"/>
+        }
     }
 </div>
 

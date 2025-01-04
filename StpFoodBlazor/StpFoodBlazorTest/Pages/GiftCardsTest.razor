@@ -78,6 +78,19 @@
         Assert.Equal("Wild Bill Sports Saloon", elements.Children[36].Children[0].InnerHtml);
     }
 
+    [Fact]
+    public void GiftCardsShouldDisplayMessageWhenNoRecords()
+    {
+        TestGiftCardService testGiftCardService = new TestGiftCardService();
+        testGiftCardService.NoRecords = true;
+        ctx.Services.AddSingleton<IGiftCardService>(testGiftCardService);
+
+        var cut = ctx.Render(@<GiftCards />);
+        var elements = cut.WaitForElement("#giftcards_no_records", TimeSpan.FromSeconds(5));
+
+        Assert.Contains("No active gift card deals. These deals are most common in December.", elements.InnerHtml);
+    }
+
     private IElement getElements(IRenderedFragment cut)
     {
         return cut.WaitForElement("#giftcards_table_body", TimeSpan.FromSeconds(5));
