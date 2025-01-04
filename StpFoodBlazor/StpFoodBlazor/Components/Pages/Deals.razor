@@ -33,12 +33,16 @@ else
 
     private bool happyHour = false;
 
+    [SupplyParameterFromQuery]
+    public string? Dow { get; set; }
+    [SupplyParameterFromQuery]
+    public bool? Hh { get; set; }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
             allDeals = await DealServiceImpl.GetDealsAsync();
-            selectedDayOfWeek = TimeServiceImpl.GetDayOfWeek();
             FilterDeals();
             SortDeals();
             StateHasChanged();
@@ -60,6 +64,13 @@ else
         }
         FilterDeals();
         SortDeals();
+    }
+
+    protected override void OnParametersSet()
+    {
+        selectedDayOfWeek =
+            String.IsNullOrEmpty(Dow) ? TimeServiceImpl.GetDayOfWeek().ToLower() : Dow.ToLower();
+        happyHour = Hh == true;
     }
 
     private void FilterDeals()

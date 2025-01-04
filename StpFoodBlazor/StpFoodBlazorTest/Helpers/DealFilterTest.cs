@@ -44,6 +44,50 @@ namespace StpFoodBlazorTest.Helpers {
         }
 
         [Fact]
+        public void ShouldReturnFilteredByDayDealMissingDay() {
+            String day = "MonDAY";
+            filter.Day = day;
+            filter.Deals = new DealEvent[] {
+                new DealEvent {
+                    Name = "Pino's Pizza",
+                    Day = null,
+                    Deal = "No day"
+                },
+                new DealEvent {
+                    Name = "Pino's Pizza",
+                    Day = "",
+                    Deal = "Empty string day"
+                },
+                new DealEvent {
+                    Name = "Pino's Pizza",
+                    Day = "   ",
+                    Deal = "White space day"
+                },
+                new DealEvent {
+                    Name = "Pino's Pizza",
+                    Day = "Monday",
+                    Deal = "Monday deal"
+                }
+            };
+
+            DealEvent[] filteredDeals = filter.Filter();
+
+            Assert.Single(filteredDeals);
+            Assert.Equal("Monday deal", filteredDeals[0].Deal);
+        }
+
+        [Fact]
+        public void ShouldReturnFilteredByDayCaseInsensitive() {
+            String day = "mondAy";
+            filter.Day = day;
+
+            DealEvent[] filteredDeals = filter.Filter();
+
+            Assert.Equal(45, filteredDeals.Length);
+            Array.ForEach(filteredDeals, deal => Assert.Equal("Monday", deal.Day));
+        }
+
+        [Fact]
         public void ShouldReturnFilteredByName() {
             String name = "Pino's Pizza";
             filter.Name = name;

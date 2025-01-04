@@ -43,7 +43,10 @@ namespace StpFoodBlazor.Helpers {
         }
 
         private static DealEvent[] FilterByDay(DealEvent[] deals, String day) {
-            return deals.Where(deal => deal.Day == day).ToArray();
+            return deals.Where(deal =>
+               !string.IsNullOrWhiteSpace(deal.Day) &&
+                deal.Day.Equals(day, StringComparison.OrdinalIgnoreCase)
+            ).ToArray();
         }
 
         private static DealEvent[] FilterByName(DealEvent[] deals, String name) {

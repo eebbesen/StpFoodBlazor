@@ -7,7 +7,7 @@
             <option value="">All</option>
             @foreach (var dow in daysOfWeek)
             {
-                <option value="@dow">@dow</option>
+                <option value="@dow.ToString().ToLower()">@dow</option>
             }
         </select>
         <div class="form-check-inline ms-3 d-flex flex-row-reverse">
