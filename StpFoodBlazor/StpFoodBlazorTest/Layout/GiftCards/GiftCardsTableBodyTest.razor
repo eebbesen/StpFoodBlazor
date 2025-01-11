@@ -38,8 +38,7 @@
         Assert.Equal("Buy $25 get $25", body.Children[0].Children[1].TextContent);
         Assert.Equal("Must purchase in $25 increments to get deal. Full $50 goes to recipient.",
           body.Children[0].Children[2].TextContent);
-        Assert.Equal("11/22/2024", body.Children[0].Children[3].TextContent);
-        Assert.Equal("12/02/2024", body.Children[0].Children[4].TextContent);
+        Assert.Equal("12/02/2024", body.Children[0].Children[3].TextContent);
         Assert.Equal("row rounded bg-secondary bg-opacity-25", body.Children[1].ClassName);
         Assert.Equal("row", body.Children[2].ClassName);
         Assert.Equal("row rounded bg-secondary bg-opacity-25", body.Children[3].ClassName);
