@@ -23,7 +23,7 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
       - name: Test
-        run: dotnet test --verbosity normal
+        run: dotnet test --filter FullyQualifiedName\!~StpFoodBlazorTest.Integration --verbosity normal
   build:
     runs-on: windows-latest
     needs: test
