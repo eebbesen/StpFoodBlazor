@@ -5,10 +5,15 @@
     $ dotnet run
 
 ## Test
+Unit tests and Selenium functional tests are available.
 
 https://learn.microsoft.com/en-us/aspnet/core/blazor/test?view=aspnetcore-8.0
 
     $ dotnet test --collect "XPlat Code Coverage"
+
+If you don't have an instance of the app running on localhost you can exclude them from the run
+
+    $ dotnet test --filter FullyQualifiedName\!~StpFoodBlazorTest.Integration --collect "XPlat Code Coverage"
 
 To view tests in HTML, install `reportgenerator` https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-code-coverage?tabs=linux
 
