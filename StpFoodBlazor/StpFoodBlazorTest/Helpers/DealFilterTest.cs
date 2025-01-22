@@ -148,6 +148,25 @@ namespace StpFoodBlazorTest.Helpers {
         }
 
         [Fact]
+        public void ShouldShowDealsThatAreOneDayOnly()
+        {
+            filter.Deals = new DealEvent[] {
+                new DealEvent {
+                    Name = "Pino's Pizza",
+                    Day = DateTime.Now.DayOfWeek.ToString(),
+                    Deal = "Free Oone day only",
+                    Start = DateTime.Now.ToString("MM/dd/yyyy"),
+                    End = DateTime.Now.ToString("MM/dd/yyyy")
+                }
+            };
+            filter.Day = DateTime.Now.DayOfWeek.ToString();
+
+            DealEvent[] filteredDeals = filter.Filter();
+
+            Assert.Single(filteredDeals);
+        }
+
+        [Fact]
         public void ShouldFilterDealsThatEnded() {
             filter.HappyHour = true;
 

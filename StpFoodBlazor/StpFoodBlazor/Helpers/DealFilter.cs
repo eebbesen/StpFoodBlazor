@@ -81,8 +81,8 @@ namespace StpFoodBlazor.Helpers {
 
         private static DealEvent[] FilterByEndAndStartDates(DealEvent[] deals) {
             return deals.Where(deal =>
-                (string.IsNullOrEmpty(deal.End) || DateTime.Parse(deal.End) >= DateTime.Now) &&
-                (string.IsNullOrEmpty(deal.Start) || DateTime.Parse(deal.Start) <= DateTime.Now)
+                (string.IsNullOrEmpty(deal.End) || DateTime.Parse(deal.End) >= DateTime.Now.Date) &&
+                (string.IsNullOrEmpty(deal.Start) || DateTime.Parse(deal.Start) <= DateTime.Now.Date)
             ).ToArray();
         }
     }
