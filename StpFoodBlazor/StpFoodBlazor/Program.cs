@@ -1,8 +1,10 @@
 using StpFoodBlazor.Components;
 using StpFoodBlazor.Services;
+using Microsoft.Extensions.Logging.AzureAppServices;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddEnvironmentVariables();
+builder.Logging.AddAzureWebAppDiagnostics();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
@@ -12,6 +14,12 @@ builder.Services.AddHttpClient();
 builder.Services.AddScoped<IDealService, HttpDealService>();
 builder.Services.AddScoped<ITimeService, TimeService>();
 builder.Services.AddScoped<IGiftCardService, HttpGiftCardService>();
+builder.Services.Configure<AzureFileLoggerOptions>(options =>
+{
+    options.FileName = "azure-diagnostics-";
+    options.FileSizeLimit = 50 * 1024;
+    options.RetainedFileCountLimit = 5;
+});
 
 var app = builder.Build();
 
