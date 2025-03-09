@@ -30,6 +30,15 @@ Then run the following to convert the XML into HTML in the `coveragereport` dire
       -targetdir:"coveragereport" \
       -reporttypes:Html
 
+## Azure
+
+### Logging
+When deployed on Azure, info-level logs can be available to stream. To enable:
+* navigate to your application in https://portal.azure.com
+* turn Application Logging (Filesystem) to On
+* set the Level to Information or Verbose
+
+Refer to appsettings.json for more granular control.
 
 ## General
 
