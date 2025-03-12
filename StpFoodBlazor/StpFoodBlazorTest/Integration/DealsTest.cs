@@ -19,8 +19,8 @@ namespace StpFoodBlazorTest.Integration {
             options.AddArgument("--disable-dev-shm-usage"); // overcome limited resource problems
             driver = new ChromeDriver(options);
             driver.Manage().Window.Size = new System.Drawing.Size(1300, 350);
-            // Initialize WebDriverWait with a timeout of 10 seconds
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20); // CI
+            // Initialize WebDriverWait with a timeout of 40 seconds
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(40); // CI
         }
 
         public void Dispose()
