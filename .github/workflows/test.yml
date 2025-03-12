@@ -24,5 +24,9 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+    - name: run app
+      run: |
+        dotnet run --project StpFoodBlazor/StpFoodBlazor/StpFoodBlazor.csproj --no-build &
+        sleep 10  # Give the application some time to start
     - name: Test
-      run: dotnet test --no-build --filter DisplayName\!~Integration  --collect "XPlat Code Coverage"
+      run: dotnet test --no-build --collect "XPlat Code Coverage"
