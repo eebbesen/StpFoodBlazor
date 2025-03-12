@@ -13,7 +13,9 @@ namespace StpFoodBlazorTest.Integration {
 
         public DealsTest()
         {
-            driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            options.AddArgument("--headless");
+            driver = new ChromeDriver(options);
             driver.Manage().Window.Size = new System.Drawing.Size(1300, 350);
         }
 
