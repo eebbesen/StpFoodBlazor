@@ -19,7 +19,7 @@ namespace StpFoodBlazorTest.Integration {
             // options.AddArgument("--disable-dev-shm-usage"); // overcome limited resource problems
             driver = new ChromeDriver(options);
             driver.Manage().Window.Size = new System.Drawing.Size(1300, 350);
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20); // especailly for CI
+            // driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20); // especailly for CI
         }
 
         public void Dispose()
@@ -49,6 +49,7 @@ namespace StpFoodBlazorTest.Integration {
         [Fact]
         public void DealsTableBodyLoads()
         {
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
             driver.Navigate().GoToUrl(BASE_URL);
             Assert.True( 3 < driver.FindElement(By.Id("deals_table_body")).FindElements(By.ClassName("row")).Count);
         }
