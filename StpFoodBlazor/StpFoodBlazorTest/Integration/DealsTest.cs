@@ -15,12 +15,11 @@ namespace StpFoodBlazorTest.Integration {
         {
             ChromeOptions options = new ChromeOptions();
             options.AddArgument("--headless");
-            // options.AddArgument("--no-sandbox"); // Bypass OS security model
-            // options.AddArgument("--disable-dev-shm-usage"); // overcome limited resource problems
+            options.AddArgument("--no-sandbox"); // Bypass OS security model
+            options.AddArgument("--disable-dev-shm-usage"); // overcome limited resource problems
             driver = new ChromeDriver(options);
             driver.Manage().Window.Size = new System.Drawing.Size(1300, 350);
-            // Initialize WebDriverWait with a timeout of 40 seconds
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20); // CI
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10); // especailly for CI
         }
 
         public void Dispose()
