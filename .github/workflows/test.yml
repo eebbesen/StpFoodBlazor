@@ -24,7 +24,6 @@ jobs:
     #   with:
     #     install-chromedriver: true
     #     install-dependencies: true
-    - run: chrome --version
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
