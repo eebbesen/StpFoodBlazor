@@ -11,6 +11,9 @@ on:
 
 jobs:
   build:
+    env:
+      ASPNETCORE_APPCONFIG__SHEETID: ${{ secrets.ASPNETCORE_APPCONFIG__SHEETID }}
+      ASPNETCORE_APPCONFIG__SHEETSURL: ${{ secrets.ASPNETCORE_APPCONFIG__SHEETSURL }}
 
     runs-on: ubuntu-latest
 
