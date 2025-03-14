@@ -26,3 +26,7 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --filter DisplayName\!~Integration  --collect "XPlat Code Coverage"
+    - uses: actions/upload-artifact@v4
+      with:
+        name: cobertura
+        path: /home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestResults/**/coverage.cobertura.xml
