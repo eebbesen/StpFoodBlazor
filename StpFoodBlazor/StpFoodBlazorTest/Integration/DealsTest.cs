@@ -19,7 +19,7 @@ namespace StpFoodBlazorTest.Integration {
             ChromeOptions options = new ChromeOptions();
             options.AddArgument("--headless");
             options.AddArgument("--no-sandbox"); // Bypass OS security model
-            options.AddArgument("--disable-dev-shm-usage"); // overcome limited resource problems
+            // options.AddArgument("--disable-dev-shm-usage"); // overcome limited resource problems
             driver = new ChromeDriver(options);
             driver.Manage().Window.Size = new System.Drawing.Size(1300, 350);
         }
@@ -63,7 +63,7 @@ namespace StpFoodBlazorTest.Integration {
             try {
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
                 driver.Navigate().GoToUrl(BASE_URL);
-                tableBody = driver.FindElement(By.Id("deals_table_bodys"));
+                tableBody = driver.FindElement(By.Id("deals_table_body"));
                 Assert.True( 3 < tableBody.FindElements(By.ClassName("row")).Count);
             } catch (Exception) {
                 SeleniumScreenShot("DealsTableBodyLoads.png");

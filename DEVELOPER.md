@@ -33,7 +33,8 @@ Then run the following to convert the XML into HTML in the `coveragereport` dire
 ### GitHub Actions locally using [act](https://github.com/nektos/act)
 Not working the same on an M1 Mac as it is in GitHub, but close
 
-    act -W '.github/workflows/test.yml' --container-architecture linux/amd64 -P ubuntu-latest=catthehacker/ubuntu:act-latest
+    act -W '.github/workflows/test.yml' --container-architecture linux/amd64 -P \
+    ubuntu-latest=catthehacker/ubuntu:act-latest
 
 ## Azure
 
