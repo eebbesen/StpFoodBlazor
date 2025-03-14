@@ -67,7 +67,7 @@ namespace StpFoodBlazorTest.Integration {
         {
             try {
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-                driver.Navigate().GoToUrl(BASE_URL);;
+                driver.Navigate().GoToUrl(BASE_URL);
                 Assert.True( 3 < driver.FindElement(By.Id("deals_table_body")).FindElements(By.ClassName("row")).Count);
             } catch (Exception) {
                 SeleniumScreenShot("DealsTableBodyLoads.png");
