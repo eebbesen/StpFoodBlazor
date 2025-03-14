@@ -29,12 +29,11 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: run app
+    - name: Test
       run: |
         dotnet run --project StpFoodBlazor/StpFoodBlazor/StpFoodBlazor.csproj --no-build &
-        sleep 10  # Give the application some time to start
-    - name: Test
-      run: dotnet test --no-build  --collect "XPlat Code Coverage"
+        sleep 10  # Give the application some time to start &
+        dotnet test --no-build  --collect "XPlat Code Coverage"
     - uses: actions/upload-artifact@v4
       if: always()
       with:
