@@ -19,11 +19,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    # - uses: browser-actions/setup-chrome@v1
-    #   with:
-    #     install-chromedriver: true
-    #     install-dependencies: true
-    # - run: chrome --version
+    - uses: browser-actions/setup-chrome@v1
+      with:
+        install-chromedriver: true
+        install-dependencies: true
+    - run: chrome --version
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
