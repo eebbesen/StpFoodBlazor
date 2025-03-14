@@ -15,8 +15,8 @@ namespace StpFoodBlazorTest.Integration {
         {
             ChromeOptions options = new ChromeOptions();
             options.AddArgument("--headless");
-            // options.AddArgument("--no-sandbox"); // Bypass OS security model
-            // options.AddArgument("--disable-dev-shm-usage"); // overcome limited resource problems
+            options.AddArgument("--no-sandbox"); // Bypass OS security model
+            options.AddArgument("--disable-dev-shm-usage"); // overcome limited resource problems
             driver = new ChromeDriver(options);
             driver.Manage().Window.Size = new System.Drawing.Size(1300, 350);
         }
