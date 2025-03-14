@@ -7,7 +7,8 @@ namespace StpFoodBlazor.Services
     {
         public async Task<DealEvent[]> GetDealsAsync()
         {
-
+            logger.LogInformation("ID: " + Environment.GetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETID") + " doneid");
+            logger.LogInformation("URL: " + Environment.GetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETSURL") + " doneURL");
             DealEvent[]? result = await httpClient.GetFromJsonAsync<DealEvent[]>(GetUrl());
             logger.LogInformation("retrieved deals: {Url}", GetUrl());
             return result ?? [];
