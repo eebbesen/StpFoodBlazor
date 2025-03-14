@@ -7,7 +7,6 @@ namespace StpFoodBlazor.Services
     {
         public async Task<DealEvent[]> GetDealsAsync()
         {
-            logger.LogInformation("getting url: " + Environment.GetEnvironmentVariable("ASPNETCORE_AppConfig__SheetsUrl") + " doneURL");
 
             DealEvent[]? result = await httpClient.GetFromJsonAsync<DealEvent[]>(GetUrl());
             logger.LogInformation("retrieved deals: {Url}", GetUrl());
@@ -16,8 +15,8 @@ namespace StpFoodBlazor.Services
 
         private static String GetUrl()
         {
-            string? sheetId = Environment.GetEnvironmentVariable("ASPNETCORE_AppConfig__SheetId");
-            string? sheetsUrl = Environment.GetEnvironmentVariable("ASPNETCORE_AppConfig__SheetsUrl");
+            string? sheetId = Environment.GetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETID");
+            string? sheetsUrl = Environment.GetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETSURL");
 
             return $"{sheetsUrl}/?sheet_id={sheetId}&tab_name=Deals";
         }

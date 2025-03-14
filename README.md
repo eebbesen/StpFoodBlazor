@@ -28,10 +28,10 @@ The backing Google Sheet requires the following tabs and corresponding column he
 
 
 ## Environment Variables
-`SheetId` is the Google Sheet ID from which data will be read. `SheetsUrl` is the URL of the service that retrieves the data from the Google Sheet.
+`SHEETID` is the Google Sheet ID from which data will be read. `SHEETSURL` is the URL of the service that retrieves the data from the Google Sheet.
 
-    ASPNETCORE_AppConfig__SheetId
-    ASPNETCORE_AppConfig__SheetsUrl
+    ASPNETCORE_APPCONFIG__SHEETID
+    ASPNETCORE_APPCONFIG__SHEETSURL
 
 ## Run
 
