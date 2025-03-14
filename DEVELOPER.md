@@ -31,7 +31,8 @@ Then run the following to convert the XML into HTML in the `coveragereport` dire
       -reporttypes:Html
 
 ### GitHub Actions locally using [act](https://github.com/nektos/act)
-Not working the same on an M1 Mac as it is in GitHub, in particular I'm seeing Selenium tests fail
+Not working the same on an M1 Mac as it is in GitHub, in particular I'm seeing Selenium tests fail.
+You'll need to uncomment the job in test.yml that installs Chrome.
 
     act -W '.github/workflows/test.yml' --container-architecture linux/amd64 \
     --secret ASPNETCORE_APPCONFIG__SHEETSURL=$ASPNETCORE_APPCONFIG__SHEETSURL \
