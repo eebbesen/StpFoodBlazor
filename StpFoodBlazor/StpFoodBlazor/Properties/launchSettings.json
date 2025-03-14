@@ -15,8 +15,8 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_AppConfig__SheetId": "1BkHc8rY9CwGHNMvWhQL3l3GmSshLrjUNq_lD3RpqNJI",
-        "ASPNETCORE_AppConfig__SheetsUrl": "https://k5zzr6uhrlhbfobhcaxx4calki0pmzoh.lambda-url.us-east-1.on.aws/"
+        "ASPNETCORE_APPCONFIG__SHEETID": "${ASPNETCORE_APPCONFIG__SHEETID}",
+        "ASPNETCORE_APPCONFIG__SHEETSURL": "${ASPNETCORE_APPCONFIG__SHEETSURL}",
       },
       "dotnetRunMessages": true,
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",

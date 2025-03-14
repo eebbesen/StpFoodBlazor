@@ -14,8 +14,8 @@ namespace StpFoodBlazor.Services
 
         private static String GetUrl()
         {
-            string? sheetId = Environment.GetEnvironmentVariable("ASPNETCORE_AppConfig__SheetId");
-            string? sheetsUrl = Environment.GetEnvironmentVariable("ASPNETCORE_AppConfig__SheetsUrl");
+            string? sheetId = Environment.GetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETID");
+            string? sheetsUrl = Environment.GetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETSURL");
 
             return $"{sheetsUrl}/?sheet_id={sheetId}&tab_name=Deals";
         }

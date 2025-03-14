@@ -1,7 +1,11 @@
+using AngleSharp.Dom;
+using Microsoft.AspNetCore.Components.Web.Virtualization;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
 using System;
+using Xunit.Sdk;
 
 namespace StpFoodBlazorTest.Integration {
     public class DealsTest : IDisposable
@@ -13,7 +17,11 @@ namespace StpFoodBlazorTest.Integration {
 
         public DealsTest()
         {
-            driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            options.AddArgument("--headless");
+            options.AddArgument("--no-sandbox"); // Bypass OS security model
+            // options.AddArgument("--disable-dev-shm-usage"); // overcome limited resource problems
+            driver = new ChromeDriver(options);
             driver.Manage().Window.Size = new System.Drawing.Size(1300, 350);
         }
 
@@ -33,20 +41,38 @@ namespace StpFoodBlazorTest.Integration {
             Assert.Equal("About", driver.FindElement(By.Id("about-nav")).Text);
         }
 
-        [Fact]
-        public void DealsPlaceholder()
+        void SeleniumScreenShot(String name)
         {
-            driver.Navigate().GoToUrl(BASE_URL);
-            assertCommon();
-            driver.FindElement(By.Id("deals_table_body_placeholder"));
+            Screenshot ss = driver.TakeScreenshot();
+            string path = System.IO.Directory.GetCurrentDirectory();
+            ss.SaveAsFile(path + "../../../../TestResults/" + name);
+        }
+
+        [Fact]
+        public void DealsTableBodyPlaceholder()
+        {
+            try {
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+                driver.Navigate().GoToUrl(BASE_URL);
+                assertCommon();
+                driver.FindElement(By.Id("deals_table_body_placeholder"));
+            }catch (Exception) {
+                SeleniumScreenShot("DealsTableBodyPlaceholder.png");
+                throw;
+            }
         }
 
         [Fact]
         public void DealsTableBodyLoads()
         {
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
-            driver.Navigate().GoToUrl(BASE_URL);
-            Assert.True( 3 < driver.FindElement(By.Id("deals_table_body")).FindElements(By.ClassName("row")).Count);
+            try {
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                driver.Navigate().GoToUrl(BASE_URL);;
+                Assert.True( 3 < driver.FindElement(By.Id("deals_table_body")).FindElements(By.ClassName("row")).Count);
+            } catch (Exception) {
+                SeleniumScreenShot("DealsTableBodyLoads.png");
+                throw;
+            }
         }
     }
 }

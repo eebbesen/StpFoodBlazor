@@ -11,11 +11,19 @@ on:
 
 jobs:
   build:
+    env:
+      ASPNETCORE_APPCONFIG__SHEETID: ${{ secrets.ASPNETCORE_APPCONFIG__SHEETID }}
+      ASPNETCORE_APPCONFIG__SHEETSURL: ${{ secrets.ASPNETCORE_APPCONFIG__SHEETSURL }}
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
+    # - uses: browser-actions/setup-chrome@v1
+    #   with:
+    #     install-chromedriver: true
+    #     install-dependencies: true
+    # - run: chrome --version
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
@@ -25,8 +33,17 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --filter DisplayName\!~Integration  --collect "XPlat Code Coverage"
+      run: |
+        dotnet run --project StpFoodBlazor/StpFoodBlazor/StpFoodBlazor.csproj --no-build &
+        sleep 10  # Give the application some time to start &
+        dotnet test --no-build  --collect "XPlat Code Coverage"
     - uses: actions/upload-artifact@v4
+      if: always()
       with:
-        name: cobertura
+        name: Cobertura
         path: /home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestResults/**/coverage.cobertura.xml
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: Selenium
+        path: /home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestResults/*.png
