@@ -1,4 +1,5 @@
 using AngleSharp.Dom;
+using Microsoft.AspNetCore.Components.Web.Virtualization;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.Extensions;
@@ -48,23 +49,26 @@ namespace StpFoodBlazorTest.Integration {
         }
 
         [Fact]
-        public void DealsPlaceholder()
+        public void DealsTableBodyPlaceholder()
         {
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
-            driver.Navigate().GoToUrl(BASE_URL);
-            assertCommon();
-            driver.FindElement(By.Id("deals_table_body_placeholder"));
+            try {
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
+                driver.Navigate().GoToUrl(BASE_URL);
+                assertCommon();
+                driver.FindElement(By.Id("deals_table_body_placeholder"));
+            }catch (Exception) {
+                SeleniumScreenShot("DealsTableBodyPlaceholder.png");
+                throw;
+            }
         }
 
         [Fact]
         public void DealsTableBodyLoads()
         {
-            IWebElement tableBody;
             try {
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-                driver.Navigate().GoToUrl(BASE_URL);
-                tableBody = driver.FindElement(By.Id("deals_table_body"));
-                Assert.True( 3 < tableBody.FindElements(By.ClassName("row")).Count);
+                driver.Navigate().GoToUrl(BASE_URL);;
+                Assert.True( 3 < driver.FindElement(By.Id("deals_table_body")).FindElements(By.ClassName("row")).Count);
             } catch (Exception) {
                 SeleniumScreenShot("DealsTableBodyLoads.png");
                 throw;
