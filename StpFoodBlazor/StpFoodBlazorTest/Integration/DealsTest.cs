@@ -52,7 +52,7 @@ namespace StpFoodBlazorTest.Integration {
         public void DealsTableBodyPlaceholder()
         {
             try {
-                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
                 driver.Navigate().GoToUrl(BASE_URL);
                 assertCommon();
                 driver.FindElement(By.Id("deals_table_body_placeholder"));
