@@ -79,3 +79,7 @@ Link the project and the test project
 
     $ dotnet sln StpFoodBlazor.sln add StpFoodBlazor/StpFoodBlazorTest/StpFoodBlazorTest.csproj
     $ dotnet add StpFoodBlazor/StpFoodBlazorTest/StpFoodBlazorTest.csproj reference StpFoodBlazor/StpFoodBlazor.csproj
+
+### Check for outdated packages
+
+    $ dotnet list package --outdated
