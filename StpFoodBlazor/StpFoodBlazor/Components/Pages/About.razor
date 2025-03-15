@@ -1,4 +1,6 @@
-﻿@page "/about"
+﻿@using StpFoodBlazor.Helpers
+
+@page "/about"
 
 <PageTitle>About</PageTitle>
 
@@ -15,7 +17,14 @@
       Also gift card deals :).
     </div>
     <div>
+      <p></p>
+    </div>
+    <div>
       See the code <a href="https://github.com/eebbesen/StpFoodBlazor"> here</a>
+    </div>
+    <div>
+      version: @Helper.GetVersion()
     </div>
   </div>
 </div>
+
