@@ -54,12 +54,17 @@ You'll need to uncomment the job in test.yml that installs Chrome.
 ## Azure
 
 ### Logging
-When deployed on Azure, info-level logs can be available to stream. To enable:
+Refer to appsettings.json for more granular control of logging.
+
+When deployed on Azure logs aree available to stream. To enable:
 * navigate to your application in https://portal.azure.com
 * turn Application Logging (Filesystem) to On
 * set the Level to Information or Verbose
 
-Refer to appsettings.json for more granular control.
+You can also view the log stream using Azure CLI
+
+    $ func azure functionapp logstream StpFoodBlazor
+
 
 ## General
 
