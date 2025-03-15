@@ -19,6 +19,12 @@ builder.Services.Configure<AzureBlobLoggerOptions>(options =>
     options.BlobName = "logs.txt";
 });
 
+builder.Logging.AddApplicationInsights(
+    configureTelemetryConfiguration: (config) =>
+        config.ConnectionString = builder.Configuration.GetConnectionString("AppInsights"),
+        configureApplicationInsightsLoggerOptions: (options) => { }
+);
+
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
