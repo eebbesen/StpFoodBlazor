@@ -1,6 +1,6 @@
 using StpFoodBlazor.Components;
 using StpFoodBlazor.Services;
-// using Microsoft.Extensions.Logging.ApplicationInsights;
+using Microsoft.Extensions.Logging.ApplicationInsights;
 using Microsoft.Extensions.Logging.AzureAppServices;
 
 var builder = WebApplication.CreateBuilder(args);
