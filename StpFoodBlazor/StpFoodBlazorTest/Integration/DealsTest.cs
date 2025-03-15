@@ -1,15 +1,16 @@
-using AngleSharp.Dom;
-using Microsoft.AspNetCore.Components.Web.Virtualization;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
 using System;
-using Xunit.Sdk;
+using System.IO;
 
-namespace StpFoodBlazorTest.Integration {
+namespace StpFoodBlazorTest.Integration
+{
     public class DealsTest : IDisposable
     {
+        private bool disposedValue;
+
         // move this to config file
         private static readonly string BASE_URL = "http://localhost:5020";
         //move to superclass
@@ -25,13 +26,32 @@ namespace StpFoodBlazorTest.Integration {
             driver.Manage().Window.Size = new System.Drawing.Size(1300, 350);
         }
 
-        public void Dispose()
+        protected virtual void Dispose(bool disposing)
         {
-            driver.Quit();
-            driver.Dispose();
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    driver.Quit();
+                    driver.Dispose();
+                }
+
+                disposedValue = true;
+            }
         }
 
-        private void assertCommon()
+        ~DealsTest()
+        {
+            Dispose(disposing: false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void AssertCommon()
         {
             driver.FindElement(By.Id("deals_table_header"));
             SelectElement select = new SelectElement(driver.FindElement(By.Id("day-of-week-select")));
@@ -41,23 +61,38 @@ namespace StpFoodBlazorTest.Integration {
             Assert.Equal("About", driver.FindElement(By.Id("about-nav")).Text);
         }
 
+        private static string ArtifactDir()
+        {
+            return "{System.IO.Directory.GetCurrentDirectory()}../../../../../TestResults/";
+        }
+
         void SeleniumScreenShot(String name)
         {
-            Screenshot ss = driver.TakeScreenshot();
-            string path = System.IO.Directory.GetCurrentDirectory();
-            ss.SaveAsFile(path + "../../../../TestResults/" + name);
+            driver.TakeScreenshot().SaveAsFile(ArtifactDir() + name);
+        }
+
+        void SeleniumSource(String name)
+        {
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(ArtifactDir(), name)))
+            {
+                outputFile.WriteLine(driver.PageSource);
+            }
         }
 
         [Fact]
         public void DealsTableBodyPlaceholder()
         {
-            try {
+            try
+            {
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
                 driver.Navigate().GoToUrl(BASE_URL);
-                assertCommon();
+                AssertCommon();
                 driver.FindElement(By.Id("deals_table_body_placeholder"));
-            }catch (Exception) {
+            }
+            catch (Exception)
+            {
                 SeleniumScreenShot("DealsTableBodyPlaceholder.png");
+                SeleniumSource("DealsTableBodyPlaceholder.html");
                 throw;
             }
         }
@@ -65,11 +100,14 @@ namespace StpFoodBlazorTest.Integration {
         [Fact]
         public void DealsTableBodyLoads()
         {
-            try {
+            try
+            {
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
                 driver.Navigate().GoToUrl(BASE_URL);
-                Assert.True( 3 < driver.FindElement(By.Id("deals_table_body")).FindElements(By.ClassName("row")).Count);
-            } catch (Exception) {
+                Assert.True(3 < driver.FindElement(By.Id("deals_table_body")).FindElements(By.ClassName("row")).Count);
+            }
+            catch (Exception)
+            {
                 SeleniumScreenShot("DealsTableBodyLoads.png");
                 throw;
             }
