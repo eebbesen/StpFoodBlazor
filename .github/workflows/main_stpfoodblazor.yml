@@ -11,19 +11,9 @@ on:
 
 jobs:
   test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.0.x
-      - name: Restore dependencies
-        run: dotnet restore
-      - name: Build
-        run: dotnet build --no-restore
-      - name: Test
-        run: dotnet test --filter DisplayName\!~Integration
+      - uses: ./.github/workflows/test.yml@test
 
   build:
     runs-on: windows-latest
@@ -36,6 +26,15 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.x'
+
+      - name: Cache NuGet packages
+        id: nuget-packages
+        uses: actions/cache@v3
+        env:
+          cache-name: nuget-package-cache
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-${{ env.cache-name }}
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
