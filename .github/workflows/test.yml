@@ -8,6 +8,7 @@ on:
     branches-ignore:
       - main
   workflow_dispatch:
+  workflow_call:
 
 jobs:
   test:
@@ -20,14 +21,23 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     # need to uncomment this if you want to run act
-    - uses: browser-actions/setup-chrome@v1
-      with:
-        install-chromedriver: true
-        install-dependencies: true
+    # - uses: browser-actions/setup-chrome@v1
+    #   with:
+    #     install-chromedriver: true
+    #     install-dependencies: true
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+        cache: true
+    - name: Cache NuGet packages
+      id: nuget-packages
+      uses: actions/cache@v3
+      env:
+        cache-name: nuget-package-cache
+      with:
+        path: ~/.nuget/packages
+        key: ${{ runner.os }}-${{ env.cache-name }}
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
