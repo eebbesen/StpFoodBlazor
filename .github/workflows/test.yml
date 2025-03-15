@@ -35,7 +35,7 @@ jobs:
     - name: Test
       run: |
         dotnet run --project StpFoodBlazor/StpFoodBlazor/StpFoodBlazor.csproj --no-build &
-        sleep 10  # Give the application some time to start &
+        sleep 10  &
         dotnet test --no-build  --collect "XPlat Code Coverage"
     - name: ReportGenerator
       uses: danielpalme/ReportGenerator-GitHub-Action@5.4.4
