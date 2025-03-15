@@ -50,7 +50,7 @@ namespace StpFoodBlazorTest.Helpers
         [Fact]
         public void Sort_EmptyArray()
         {
-            var sortedGiftCards = GiftCardSorter.Sort(new GiftCard[]{});
+            var sortedGiftCards = GiftCardSorter.Sort(new GiftCard[] { });
 
             Assert.Empty(sortedGiftCards);
         }

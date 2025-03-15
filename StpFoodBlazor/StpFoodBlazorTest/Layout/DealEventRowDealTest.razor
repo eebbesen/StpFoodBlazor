@@ -4,15 +4,15 @@
 @code {
     private TestContext ctx;
     private DealEvent deal = new DealEvent
-        {
-            Deal = "Great Deal",
-            Name = "Great Place",
-            Day = "Monday"
-        };
+    {
+        Deal = "Great Deal",
+        Name = "Great Place",
+        Day = "Monday"
+    };
     private static string alcoholIcon =
-        "<i class=\"bi bi-cup-straw me-1\" data-bs-toggle=\"tooltip\" title=\"alcohol\"></i>";
+    "<i class=\"bi bi-cup-straw me-1\" data-bs-toggle=\"tooltip\" title=\"alcohol\"></i>";
     private static string happyHourIcon =
-        "<i class=\"bi bi-clock me-1 d-none d-md-block\" data-bs-toggle=\"tooltip\" title=\"16:00 - 18:00\"></i>";
+    "<i class=\"bi bi-clock me-1 d-none d-md-block\" data-bs-toggle=\"tooltip\" title=\"16:00 - 18:00\"></i>";
 
     private static string happyHourTime = "<div class=\"d-sm-block d-md-none me-1 fw-bold\">16:00 - 18:00</div>";
 
@@ -35,7 +35,7 @@
 
         var cut = ctx.Render(@<DealEventRowDeal Deal=deal />);
         Assert.Equal(alcoholIcon + @deal.Deal,
-            cut.Markup);
+        cut.Markup);
     }
 
     [Fact]
@@ -45,8 +45,8 @@
 
         var cut = ctx.Render(@<DealEventRowDeal Deal=deal />);
         Assert.Equal("<div class=\"d-inline-block\">" +
-            happyHourIcon + happyHourTime + "</div>" +  @deal.Deal,
-            cut.Markup);
+        happyHourIcon + happyHourTime + "</div>" + @deal.Deal,
+        cut.Markup);
     }
 
     [Fact]
@@ -57,7 +57,7 @@
 
         var cut = ctx.Render(@<DealEventRowDeal Deal=deal />);
         Assert.Equal("<div class=\"d-inline-block\">" +
-            happyHourIcon + happyHourTime + "</div>" + alcoholIcon + @deal.Deal,
-            cut.Markup);
+        happyHourIcon + happyHourTime + "</div>" + alcoholIcon + @deal.Deal,
+        cut.Markup);
     }
 }

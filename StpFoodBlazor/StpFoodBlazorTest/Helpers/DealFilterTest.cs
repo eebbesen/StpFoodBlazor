@@ -4,26 +4,31 @@ using System.Threading.Tasks;
 using System;
 using StpFoodBlazorTest.Services;
 
-namespace StpFoodBlazorTest.Helpers {
+namespace StpFoodBlazorTest.Helpers
+{
 
-    public class DealFilterTest {
+    public class DealFilterTest
+    {
         private readonly DealEvent[] deals;
         private readonly DealFilter filter;
-        public DealFilterTest() {
+        public DealFilterTest()
+        {
             deals = getDeals().Result;
             filter = new DealFilter();
             filter.Deals = deals;
         }
 
         [Fact]
-        public void ShouldHandleEmptyDeals() {
+        public void ShouldHandleEmptyDeals()
+        {
             DealEvent[] filteredDeals = new DealFilter().Filter();
 
             Assert.Empty(filteredDeals);
         }
 
         [Fact]
-        public void ShouldReturnInputWhenNoFilterConditions() {
+        public void ShouldReturnInputWhenNoFilterConditions()
+        {
             int dealsLength = deals.Length;
 
             DealEvent[] filteredDeals = filter.Filter();
@@ -33,7 +38,8 @@ namespace StpFoodBlazorTest.Helpers {
         }
 
         [Fact]
-        public void ShouldReturnFilteredByDay() {
+        public void ShouldReturnFilteredByDay()
+        {
             String day = "Monday";
             filter.Day = day;
 
@@ -44,7 +50,8 @@ namespace StpFoodBlazorTest.Helpers {
         }
 
         [Fact]
-        public void ShouldReturnFilteredByDayDealMissingDay() {
+        public void ShouldReturnFilteredByDayDealMissingDay()
+        {
             String day = "MonDAY";
             filter.Day = day;
             filter.Deals = new DealEvent[] {
@@ -77,7 +84,8 @@ namespace StpFoodBlazorTest.Helpers {
         }
 
         [Fact]
-        public void ShouldReturnFilteredByDayCaseInsensitive() {
+        public void ShouldReturnFilteredByDayCaseInsensitive()
+        {
             String day = "mondAy";
             filter.Day = day;
 
@@ -88,7 +96,8 @@ namespace StpFoodBlazorTest.Helpers {
         }
 
         [Fact]
-        public void ShouldReturnFilteredByName() {
+        public void ShouldReturnFilteredByName()
+        {
             String name = "Pino's Pizza";
             filter.Name = name;
 
@@ -99,7 +108,8 @@ namespace StpFoodBlazorTest.Helpers {
         }
 
         [Fact]
-        public void ShouldReturnFilteredByNameAndDay() {
+        public void ShouldReturnFilteredByNameAndDay()
+        {
             String name = "Pino's Pizza";
             String day = "Tuesday";
             filter.Name = name;
@@ -108,14 +118,16 @@ namespace StpFoodBlazorTest.Helpers {
             DealEvent[] filteredDeals = filter.Filter();
 
             Assert.Single(filteredDeals);
-            Array.ForEach(filteredDeals, deal => {
+            Array.ForEach(filteredDeals, deal =>
+            {
                 Assert.Equal(name, deal.Name);
                 Assert.Equal(day, deal.Day);
             });
         }
 
         [Fact]
-        public void ShouldReturnFilteredByHappyHourExclusive() {
+        public void ShouldReturnFilteredByHappyHourExclusive()
+        {
             filter.HappyHour = true;
             filter.Inclusive = false;
 
@@ -137,7 +149,8 @@ namespace StpFoodBlazorTest.Helpers {
         }
 
         [Fact]
-        public void ShouldReturnFilteredByHappyHourFalse() {
+        public void ShouldReturnFilteredByHappyHourFalse()
+        {
             filter.HappyHour = false;
 
             DealEvent[] filteredDeals = filter.Filter();
@@ -167,7 +180,8 @@ namespace StpFoodBlazorTest.Helpers {
         }
 
         [Fact]
-        public void ShouldFilterDealsThatEnded() {
+        public void ShouldFilterDealsThatEnded()
+        {
             filter.HappyHour = true;
 
             var yesterday = DateTime.Now.AddDays(-1).ToString("MM/dd/yyyy");
@@ -185,7 +199,8 @@ namespace StpFoodBlazorTest.Helpers {
         }
 
         [Fact]
-        public void ShouldFilterDealsThatHaveNotStarted() {
+        public void ShouldFilterDealsThatHaveNotStarted()
+        {
             filter.HappyHour = true;
 
             var today = DateTime.Now.ToString("MM/dd/yyyy");
@@ -202,7 +217,8 @@ namespace StpFoodBlazorTest.Helpers {
             Assert.Equal(today, filteredDeals[0].Start);
         }
 
-        private static async Task<DealEvent[]> getDeals() {
+        private static async Task<DealEvent[]> getDeals()
+        {
             return await new TestDealService().GetDealsAsync();
         }
     }

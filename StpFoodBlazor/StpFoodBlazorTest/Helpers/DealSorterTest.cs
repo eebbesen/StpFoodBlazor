@@ -33,7 +33,7 @@ namespace StpFoodBlazorTest.Helpers
         public void Sort_EmptyArray()
         {
             // Arrange
-            var dealEvents = new DealEvent[]{};
+            var dealEvents = new DealEvent[] { };
 
             // Act
             var sortedDealEvents = DealSorter.Sort(dealEvents);

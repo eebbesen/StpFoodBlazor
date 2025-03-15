@@ -39,7 +39,7 @@ namespace StpFoodBlazorTest.Helpers
             }
         }
 
-            [Fact]
+        [Fact]
         public void Filter_FiltersNotStarted()
         {
             var expected = new GiftCard[]{
