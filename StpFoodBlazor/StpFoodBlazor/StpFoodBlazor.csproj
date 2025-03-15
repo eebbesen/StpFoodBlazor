@@ -4,8 +4,9 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <InformationalVersion>0.3.1</InformationalVersion>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <InformationalVersion>0.3.1</InformationalVersion>
+    <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
   </PropertyGroup>
 
   <ItemGroup>
