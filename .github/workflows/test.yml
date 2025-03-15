@@ -39,6 +39,7 @@ jobs:
         dotnet test --no-build  --collect "XPlat Code Coverage"
     - name: ReportGenerator
       uses: danielpalme/ReportGenerator-GitHub-Action@5.4.4
+      if: always()
       with:
         reports: /home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestResults/**/coverage.cobertura.xml
         targetdir: /home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestResults/coveragereport
@@ -46,12 +47,12 @@ jobs:
     - uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: Cobertura
-        path: /home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestResults/coveragereport/**
+        name: Coverage Report HTML
+        path: /home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestResults/coveragereport
     - uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: Coverage Report HTML
+        name: Cobertura
         path: /home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestResults/**/coverage.cobertura.xml
     - uses: actions/upload-artifact@v4
       if: always()
