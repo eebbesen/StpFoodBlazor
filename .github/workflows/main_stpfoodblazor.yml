@@ -24,6 +24,7 @@ jobs:
         run: dotnet build --no-restore
       - name: Test
         run: dotnet test --filter DisplayName\!~Integration
+
   build:
     runs-on: windows-latest
     needs: test
