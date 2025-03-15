@@ -29,14 +29,6 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-    - name: Cache NuGet packages
-      id: nuget-packages
-      uses: actions/cache@v3
-      env:
-        cache-name: nuget-package-cache
-      with:
-        path: ~/.nuget/packages
-        key: ${{ runner.os }}-${{ env.cache-name }}
     - name: Restore dependencies
       run: dotnet restore
     - name: Build

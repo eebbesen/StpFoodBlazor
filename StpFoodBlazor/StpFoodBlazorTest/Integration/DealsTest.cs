@@ -8,7 +8,6 @@ namespace StpFoodBlazorTest.Integration
     {
         ~DealsTest()
         {
-            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             Dispose(disposing: false);
         }
 
@@ -25,6 +24,7 @@ namespace StpFoodBlazorTest.Integration
         [Fact]
         public void DealsTableBodyPlaceholder()
         {
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
             try
             {
                 Driver.Navigate().GoToUrl(BASE_URL);

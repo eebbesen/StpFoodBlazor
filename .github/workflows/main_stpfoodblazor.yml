@@ -11,9 +11,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: ./.github/workflows/test.yml@test
+    uses: ./.github/workflows/test.yml
 
   build:
     runs-on: windows-latest
@@ -26,15 +24,6 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.x'
-
-      - name: Cache NuGet packages
-        id: nuget-packages
-        uses: actions/cache@v3
-        env:
-          cache-name: nuget-package-cache
-        with:
-          path: ~/.nuget/packages
-          key: ${{ runner.os }}-${{ env.cache-name }}
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
