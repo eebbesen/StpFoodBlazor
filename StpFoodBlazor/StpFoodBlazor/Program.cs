@@ -1,6 +1,6 @@
 using StpFoodBlazor.Components;
 using StpFoodBlazor.Services;
-using Microsoft.Extensions.Logging.ApplicationInsights;
+using Microsoft.Extensions.Logging.Console;
 using Microsoft.Extensions.Logging.AzureAppServices;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +23,10 @@ builder.Logging.AddApplicationInsights(
     configureTelemetryConfiguration: (config) =>
         config.ConnectionString = builder.Configuration.GetConnectionString("AppInsights"),
         configureApplicationInsightsLoggerOptions: (options) => { }
+);
+
+builder.Logging.AddConsole(
+    configure: (options) => {}
 );
 
 // Add services to the container.
