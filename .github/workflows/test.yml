@@ -45,5 +45,10 @@ jobs:
     - uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: Selenium
+        name: Selenium PNG
         path: /home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestResults/*.png
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: Selenium HTML
+        path: /home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestResults/*.html
