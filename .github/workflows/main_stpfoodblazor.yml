@@ -25,6 +25,7 @@ jobs:
         with:
           dotnet-version: '8.x'
           cache: true
+          cache-dependency-path: '**/package-lock.json'
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
