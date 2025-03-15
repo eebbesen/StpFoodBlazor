@@ -26,7 +26,7 @@ namespace StpFoodBlazorTest.Integration
         {
             try
             {
-                Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+                Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
                 Driver.Navigate().GoToUrl(BASE_URL);
                 AssertCommon();
                 Driver.FindElement(By.Id("deals_table_body_placeholder"));
