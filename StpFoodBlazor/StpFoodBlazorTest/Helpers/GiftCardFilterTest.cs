@@ -39,7 +39,7 @@ namespace StpFoodBlazorTest.Helpers
             }
         }
 
-            [Fact]
+        [Fact]
         public void Filter_FiltersNotStarted()
         {
             var expected = new GiftCard[]{
@@ -96,6 +96,19 @@ namespace StpFoodBlazorTest.Helpers
             GiftCardFilter GiftCardFilter = new(timeService)
             {
                 GiftCards = []
+            };
+
+            var filteredGiftCards = GiftCardFilter.Filter();
+
+            Assert.Empty(filteredGiftCards);
+        }
+
+        [Fact]
+        public void Filter_NullArray()
+        {
+            GiftCardFilter GiftCardFilter = new(timeService)
+            {
+                GiftCards = null
             };
 
             var filteredGiftCards = GiftCardFilter.Filter();

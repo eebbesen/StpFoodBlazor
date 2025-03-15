@@ -37,17 +37,33 @@ jobs:
         dotnet run --project StpFoodBlazor/StpFoodBlazor/StpFoodBlazor.csproj --no-build &
         sleep 10  # Give the application some time to start &
         dotnet test --no-build  --collect "XPlat Code Coverage"
-    - uses: actions/upload-artifact@v4
+    - name: ReportGenerator
+      uses: danielpalme/ReportGenerator-GitHub-Action@5.4.4
+      if: always()
+      with:
+        reports: /home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestResults/**/coverage.cobertura.xml
+        targetdir: /home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestResults/coveragereport
+        reporttypes: Html;Html_Dark
+    - name: Upload HTML coverage report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: Coverage Report HTML
+        path: /home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestResults/coveragereport
+    - name: Upload Cobertura XML
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: Cobertura
         path: /home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestResults/**/coverage.cobertura.xml
-    - uses: actions/upload-artifact@v4
+    - name: Upload Selenium screenshots
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: Selenium PNG
         path: /home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestResults/*.png
-    - uses: actions/upload-artifact@v4
+    - name: Upload Selenium HTML
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: Selenium HTML

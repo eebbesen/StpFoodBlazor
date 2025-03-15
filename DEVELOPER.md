@@ -23,18 +23,30 @@ and add it to your path
 
     $ export PATH="$PATH:/Users/username/.dotnet/tools"
 
-Then run the following to convert the XML into HTML in the `coveragereport` directory
+This HTML artifact is also stored during GitHub Actions runs.
+
+Then run the following to convert the XML into HTML in the `coveragereport` directory.
+Run from the StpFoodBlazorTest directory or modify the reports path
 
     $ reportgenerator \
-      -reports:"Path\To\TestProject\TestResults\{guid}\coverage.cobertura.xml" \
+      -reports:"./TestResults/{guid}/coverage.cobertura.xml" \
       -targetdir:"coveragereport" \
       -reporttypes:Html
 
-### GitHub Actions locally using [act](https://github.com/nektos/act)
+
+### GitHub Actions
+
+test.yml runs unit and integration tests. It will upload the following artifacts
+* Cobertura coverage report in XML
+* HTML version of the coverage report using https://reportgenerator.io/
+* PNG screenshot for each failed integration test
+* HTML source code for each failed integration test (does not include CSS or JS)
+
+#### GitHub Actions locally using [act](https://github.com/nektos/act)
 Not working the same on an M1 Mac as it is in GitHub, in particular I'm seeing Selenium tests fail.
 You'll need to uncomment the job in test.yml that installs Chrome.
 
-    act -W '.github/workflows/test.yml' --container-architecture linux/amd64 \
+    $ act -W '.github/workflows/test.yml' --container-architecture linux/amd64 \
     --secret ASPNETCORE_APPCONFIG__SHEETSURL=$ASPNETCORE_APPCONFIG__SHEETSURL \
     --secret ASPNETCORE_APPCONFIG__SHEETID=$ASPNETCORE_APPCONFIG__SHEETID \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest
@@ -51,7 +63,7 @@ Refer to appsettings.json for more granular control.
 
 ## General
 
-### bunit setup
+### bunit setup used to create this project
 
 https://bunit.dev/docs/getting-started/create-test-project.html?tabs=xunit
 
@@ -67,8 +79,3 @@ Link the project and the test project
 
     $ dotnet sln StpFoodBlazor.sln add StpFoodBlazor/StpFoodBlazorTest/StpFoodBlazorTest.csproj
     $ dotnet add StpFoodBlazor/StpFoodBlazorTest/StpFoodBlazorTest.csproj reference StpFoodBlazor/StpFoodBlazor.csproj
-
-### Bootstrap icons
-
-    $ cd StpFoodBlazor/StpFoodBlazor
-    $ dotnet add package BootstrapIcons.AspNetCore --version 1.11.0

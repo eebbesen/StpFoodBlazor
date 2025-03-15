@@ -6,7 +6,7 @@
 @code {
     private TestContext ctx;
 
-    void OnChangeStub(ChangeEventArgs e){}
+    void OnChangeStub(ChangeEventArgs e) { }
 
     public DealFilterBarTest()
     {
@@ -43,10 +43,8 @@
 
     private IRenderedFragment RenderDealFilterBar(string dow, bool hh, bool alc)
     {
-        return ctx.Render(@<DealFilterBar selectedDayOfWeek=@dow
-          OnSelectedDayChanged="OnChangeStub"
-          OnHappyHourChanged="OnChangeStub"
-          happyHour=@hh />);
+        return ctx.Render(@<DealFilterBar selectedDayOfWeek=@dow OnSelectedDayChanged="OnChangeStub" OnHappyHourChanged="OnChangeStub"
+            happyHour=@hh />);
     }
 
 }
