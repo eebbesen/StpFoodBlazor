@@ -25,10 +25,20 @@ and add it to your path
 
 Then run the following to convert the XML into HTML in the `coveragereport` directory
 
+Here's an example for Windows using an absolute path
+
     $ reportgenerator \
       -reports:"Path\To\TestProject\TestResults\{guid}\coverage.cobertura.xml" \
       -targetdir:"coveragereport" \
       -reporttypes:Html
+
+and here's one for other platforms showing you can run it from StpFoodBlazorTest
+
+    $ reportgenerator \
+      -reports:"./TestResults/{guid}/coverage.cobertura.xml" \
+      -targetdir:"coveragereport" \
+      -reporttypes:Html
+
 
 ### GitHub Actions locally using [act](https://github.com/nektos/act)
 Not working the same on an M1 Mac as it is in GitHub, in particular I'm seeing Selenium tests fail.

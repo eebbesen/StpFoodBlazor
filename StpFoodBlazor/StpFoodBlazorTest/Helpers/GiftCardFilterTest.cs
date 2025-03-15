@@ -102,5 +102,18 @@ namespace StpFoodBlazorTest.Helpers
 
             Assert.Empty(filteredGiftCards);
         }
+
+        [Fact]
+        public void Filter_NullArray()
+        {
+            GiftCardFilter GiftCardFilter = new(timeService)
+            {
+                GiftCards = null
+            };
+
+            var filteredGiftCards = GiftCardFilter.Filter();
+
+            Assert.Empty(filteredGiftCards);
+        }
     }
 }
