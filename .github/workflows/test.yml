@@ -38,7 +38,7 @@ jobs:
       run: |
         dotnet run --project StpFoodBlazor/StpFoodBlazor/StpFoodBlazor.csproj --no-build &
         sleep 8  &
-        dotnet test --settings ../StpFoodBlazor/StpFoodBlazorTest/tests.runsettings --no-build --collect "XPlat Code Coverage"
+        dotnet test --settings ../StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/tests.runsettings --no-build --collect "XPlat Code Coverage"
     - name: ReportGenerator
       uses: danielpalme/ReportGenerator-GitHub-Action@5.4.4
       if: always()
