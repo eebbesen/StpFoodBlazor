@@ -37,7 +37,7 @@ jobs:
     - name: Test
       run: |
         dotnet run --project StpFoodBlazor/StpFoodBlazor/StpFoodBlazor.csproj --no-build &
-        sleep 8  &
+        sleep 10  &&
         dotnet test --settings ../StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/tests.runsettings --no-build --collect "XPlat Code Coverage"
     - name: ReportGenerator
       uses: danielpalme/ReportGenerator-GitHub-Action@5.4.4
@@ -50,7 +50,8 @@ jobs:
     - name: Copy coverage report due to Irongut bug
       if: always()
       run: |
-        mkdir -p ./coverage
+        mkdir -p ./coverage &&
+        ls -ltra "${{ env.TEST_RESULTS_PATH }}/**/ &&
         cp "${{ env.TEST_RESULTS_PATH }}/**/coverage.cobertura.xml" ./coverage/coverage.cobertura.xml
     - name: Code Coverage Analysis
       uses: irongut/CodeCoverageSummary@v1.3.0
