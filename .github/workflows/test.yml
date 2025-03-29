@@ -47,10 +47,15 @@ jobs:
         reports: "${{ env.TEST_RESULTS_PATH }}/**/coverage.cobertura.xml"
         targetdir: "${{ env.TEST_RESULTS_PATH }}/coveragereport"
         reporttypes: Html;Html_Dark
-    - name: Code Coverage Report
+    - name: Copy coverage report due to Irongut bug
+      run: |
+        mkdir -p ./coverage
+        cp "${{ env.TEST_RESULTS_PATH }}/**/coverage.cobertura.xml" ./coverage/coverage.cobertura.xml
+    - name: Code Coverage Analysis
       uses: irongut/CodeCoverageSummary@v1.3.0
+      if: always()
       with:
-        filename: "${{ env.TEST_RESULTS_PATH }}/**/coverage.cobertura.xml"
+        filename: coverage/coverage.cobertura.xml
         badge: true
         fail_below_min: true
         format: markdown
