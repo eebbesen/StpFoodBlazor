@@ -5,11 +5,11 @@ namespace StpFoodBlazor.Services
 {
     public class HttpGiftCardService(HttpClient httpClient, ILogger<HttpDealService> logger) : IGiftCardService
     {
-        private static readonly string URL = Helper.GetUrl("giftcards");
+        private static readonly string Url = Helper.GetUrl("giftcards");
         public async Task<GiftCard[]> GetGiftCardsAsync()
         {
-            GiftCard[]? result = await httpClient.GetFromJsonAsync<GiftCard[]>(URL);
-            logger.LogInformation("retrieved giftcards: {Url}", URL);
+            GiftCard[]? result = await httpClient.GetFromJsonAsync<GiftCard[]>(Url);
+            logger.LogInformation("retrieved giftcards: {Url}", Url);
             return result ?? [];
         }
     }
