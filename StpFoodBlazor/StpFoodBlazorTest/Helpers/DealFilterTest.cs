@@ -149,6 +149,41 @@ namespace StpFoodBlazorTest.Helpers
         }
 
         [Fact]
+        public void ShouldReturnFilteredByAlcoholOnlyTrue()
+        {
+            filter.AlcoholOnly = true;
+
+            DealEvent[] filteredDeals = filter.Filter();
+
+            Assert.Equal(109, filteredDeals.Length);
+            Array.ForEach(filteredDeals, deal =>
+                Assert.Equal("x", deal.Alcohol));
+        }
+
+        [Fact]
+        public void ShouldReturnFilteredByAlcoholOnlyTrueHappyHourTrue()
+        {
+            filter.AlcoholOnly = true;
+            filter.HappyHour = true;
+
+            DealEvent[] filteredDeals = filter.Filter();
+
+            Assert.Equal(109, filteredDeals.Length);
+            Array.ForEach(filteredDeals, deal =>
+                Assert.Equal("x", deal.Alcohol));
+        }
+
+        [Fact]
+        public void ShouldReturnFilteredByAlcoholOnlyFalse()
+        {
+            filter.AlcoholOnly = false;
+
+            DealEvent[] filteredDeals = filter.Filter();
+
+            Assert.Equal(299, filteredDeals.Length);
+        }
+
+        [Fact]
         public void ShouldReturnFilteredByHappyHourFalse()
         {
             filter.HappyHour = false;

@@ -7,7 +7,7 @@ namespace StpFoodBlazor.Helpers
         public DealEvent[]? Deals { get; set; }
         public string? Day { get; set; }
         public string? Name { get; set; }
-        public bool? Alcohol { get; set; }
+        public bool? AlcoholOnly { get; set; }
         public bool? HappyHour { get; set; }
         public bool? Inclusive { get; set; }
 
@@ -32,9 +32,9 @@ namespace StpFoodBlazor.Helpers
                 filteredDeals = FilterByName(filteredDeals, Name);
             }
 
-            if (Alcohol.HasValue)
+            if (AlcoholOnly.HasValue && AlcoholOnly.Value)
             {
-                filteredDeals = FilterByAlcohol(filteredDeals, Alcohol.Value, Inclusive ?? true);
+                filteredDeals = FilterByAlcohol(filteredDeals, AlcoholOnly.Value);
             }
 
             if (HappyHour.HasValue)
@@ -58,14 +58,10 @@ namespace StpFoodBlazor.Helpers
             return [.. deals.Where(deal => deal.Name == name)];
         }
 
-        private static DealEvent[] FilterByAlcohol(DealEvent[] deals, Boolean alcohol, Boolean inclusive)
+        private static DealEvent[] FilterByAlcohol(DealEvent[] deals, Boolean alcoholOnly)
         {
-            if (alcohol)
+            if (alcoholOnly)
             {
-                if (inclusive)
-                {
-                    return deals;
-                }
                 return [.. deals.Where(deal => !string.IsNullOrWhiteSpace(deal.Alcohol))];
             }
 

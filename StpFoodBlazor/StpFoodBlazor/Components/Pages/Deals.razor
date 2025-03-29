@@ -32,11 +32,14 @@ else
     private string? selectedDayOfWeek = null;
 
     private bool happyHour = false;
+    private bool alcoholOnly = false;
 
     [SupplyParameterFromQuery]
     public string? Dow { get; set; }
     [SupplyParameterFromQuery]
     public bool? Hh { get; set; }
+    [SupplyParameterFromQuery]
+    public bool? AlcoholOnly { get; set; }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -71,6 +74,7 @@ else
         selectedDayOfWeek =
             String.IsNullOrEmpty(Dow) ? TimeServiceImpl.GetDayOfWeek().ToLower() : Dow.ToLower();
         happyHour = Hh == true;
+        alcoholOnly = AlcoholOnly == true;
     }
 
     private void FilterDeals()
@@ -79,6 +83,7 @@ else
         filter.Deals = allDeals;
         filter.Day = selectedDayOfWeek;
         filter.HappyHour = happyHour;
+        filter.AlcoholOnly = alcoholOnly;
         deals = filter.Filter();
     }
 
