@@ -5,6 +5,13 @@ Display downtown Saint Paul food and drink deals
 
 [See it in action!](stpfoodblazor-d3f0aqbuf5bxfugt.centralus-01.azurewebsites.net)
 
+## Parameterized Endpoints
+Happy hour and alcohol only parameters are respected and available on the About page:
+* `alcoholOnly` will limit results to deals with alcohol when true; when false deals including those with alcohol will be returned
+* `hh` will return all deals _including_ happy hour (default is not to include happy hour deals)
+
+Both parameters can be used with each other.
+
 ## Requirements
 
 You can modify this code to use other data services and data attributes but this code assumes you are using [sheet_zoukas-lambda](https://github.com/eebbesen/sheet_zoukas-lambda/) deployed on AWS to expose a Google Sheet.
