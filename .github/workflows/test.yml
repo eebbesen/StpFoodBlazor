@@ -37,7 +37,7 @@ jobs:
     - name: Test
       run: |
         dotnet run --project StpFoodBlazor/StpFoodBlazor/StpFoodBlazor.csproj --no-build &
-        sleep 8  &&
+        sleep 10  &&
         dotnet test --settings ../StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/tests.runsettings --no-build --collect "XPlat Code Coverage"
     - name: ReportGenerator
       uses: danielpalme/ReportGenerator-GitHub-Action@5.4.4
@@ -49,6 +49,7 @@ jobs:
         reporttypes: Html;Html_Dark
     - name: Produce the coverage report
       uses: insightsengineering/coverage-action@v2
+      if: always()
       with:
         path: "${{ env.TEST_RESULTS_PATH }}/**/coverage.cobertura.xml"
         threshold: 85
