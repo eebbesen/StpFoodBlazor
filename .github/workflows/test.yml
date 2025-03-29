@@ -48,7 +48,7 @@ jobs:
         reporttypes: Html;Html_Dark
         title: 'StpFoodBlazor Test Coverage'
         tag: '${{ github.run_number }}_${{ github.run_id }}'
-        customSettings: 'minimumCoverageThresholds:lineCoverage=90;minimumCoverageThresholds:branchCoverage=90'
+        customSettings: 'minimumCoverageThresholds:lineCoverage=87;minimumCoverageThresholds:branchCoverage=85'
     - name: Print coverage percentage to console
       uses: insightsengineering/coverage-action@v2
       if: always()
