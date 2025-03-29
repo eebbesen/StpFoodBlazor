@@ -48,6 +48,7 @@ jobs:
         targetdir: "${{ env.TEST_RESULTS_PATH }}/coveragereport"
         reporttypes: Html;Html_Dark
     - name: Copy coverage report due to Irongut bug
+      if: always()
       run: |
         mkdir -p ./coverage
         cp "${{ env.TEST_RESULTS_PATH }}/**/coverage.cobertura.xml" ./coverage/coverage.cobertura.xml
