@@ -1,22 +1,16 @@
-﻿using StpFoodBlazor.Models;
+﻿using StpFoodBlazor.Helpers;
+using StpFoodBlazor.Models;
 
 namespace StpFoodBlazor.Services
 {
     public class HttpDealService(HttpClient httpClient, ILogger<HttpDealService> logger) : IDealService
     {
+        private static readonly string URL = Helper.GetUrl("Deals");
         public async Task<DealEvent[]> GetDealsAsync()
         {
-            DealEvent[]? result = await httpClient.GetFromJsonAsync<DealEvent[]>(GetUrl());
-            logger.LogInformation("retrieved deals: {Url}", GetUrl());
+            DealEvent[]? result = await httpClient.GetFromJsonAsync<DealEvent[]>(URL);
+            logger.LogInformation("retrieved deals: {Url}", URL);
             return result ?? [];
-        }
-
-        private static String GetUrl()
-        {
-            string? sheetId = Environment.GetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETID");
-            string? sheetsUrl = Environment.GetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETSURL");
-
-            return $"{sheetsUrl}/?sheet_id={sheetId}&tab_name=Deals";
         }
     }
 }
