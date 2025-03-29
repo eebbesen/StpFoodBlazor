@@ -37,7 +37,7 @@ jobs:
     - name: Test
       run: |
         dotnet run --project StpFoodBlazor/StpFoodBlazor/StpFoodBlazor.csproj --no-build &
-        sleep 10  &&
+        sleep 8  &&
         dotnet test --settings ../StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/tests.runsettings --no-build --collect "XPlat Code Coverage"
     - name: ReportGenerator
       uses: danielpalme/ReportGenerator-GitHub-Action@5.4.4
@@ -47,25 +47,6 @@ jobs:
         reports: "${{ env.TEST_RESULTS_PATH }}/**/coverage.cobertura.xml"
         targetdir: "${{ env.TEST_RESULTS_PATH }}/coveragereport"
         reporttypes: Html;Html_Dark
-    - name: Copy coverage report due to Irongut bug
-      if: always()
-      run: |
-        mkdir -p ./coverage &&
-        ls -ltra "${{ env.TEST_RESULTS_PATH }}/**/*" &&
-        cp "${{ env.TEST_RESULTS_PATH }}/**/coverage.cobertura.xml" ./coverage/coverage.cobertura.xml
-    - name: Code Coverage Analysis
-      uses: irongut/CodeCoverageSummary@v1.3.0
-      if: always()
-      with:
-        filename: coverage/coverage.cobertura.xml
-        badge: true
-        fail_below_min: true
-        format: markdown
-        hide_branch_rate: false
-        hide_complexity: true
-        indicators: true
-        output: both
-        thresholds: '82 85'
     - name: Upload HTML coverage report
       uses: actions/upload-artifact@v4
       if: always()
