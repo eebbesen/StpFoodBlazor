@@ -47,22 +47,21 @@ jobs:
         reports: "${{ env.TEST_RESULTS_PATH }}/**/coverage.cobertura.xml"
         targetdir: "${{ env.TEST_RESULTS_PATH }}/coveragereport"
         reporttypes: Html;Html_Dark
-    - name: Produce the coverage report
+    - name: Gate for coverage percentage
       uses: insightsengineering/coverage-action@v2
       if: always()
       with:
         path: "${{ env.TEST_RESULTS_PATH }}/**/coverage.cobertura.xml"
         threshold: 85
         fail: true
-        # Publish the rendered output as a PR comment
-        publish: true
-        diff: true
-        diff-branch: main
-        # This is where the coverage reports for the
-        # `diff-branch` are stored.
-        # Branch is created if it doesn't already exist'.
-        diff-storage: _xml_coverage_reports
         coverage-summary-title: "StpFoodBlazor Coverage"
+        # Publish the rendered output as a PR comment
+        # Disabling due to repo permissions issue
+        publish: false
+        # Skipping difing
+        diff: false
+        diff-branch: main
+        diff-storage: _xml_coverage_reports
     - name: Upload HTML coverage report
       uses: actions/upload-artifact@v4
       if: always()
