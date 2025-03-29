@@ -39,15 +39,17 @@ jobs:
         dotnet run --project StpFoodBlazor/StpFoodBlazor/StpFoodBlazor.csproj --no-build &
         sleep 10  &&
         dotnet test --settings ../StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/tests.runsettings --no-build --collect "XPlat Code Coverage"
-    - name: ReportGenerator
+    - name: ReportGenerator with coverage gaate
       uses: danielpalme/ReportGenerator-GitHub-Action@5.4.4
       if: always()
-      continue-on-error: true
       with:
         reports: "${{ env.TEST_RESULTS_PATH }}/**/coverage.cobertura.xml"
         targetdir: "${{ env.TEST_RESULTS_PATH }}/coveragereport"
         reporttypes: Html;Html_Dark
-    - name: Gate for coverage percentage
+        title: 'StpFoodBlazor Test Coverage'
+        tag: '${{ github.run_number }}_${{ github.run_id }}'
+        customSettings: 'Settings.CoverageThreshold=90'
+    - name: Print coverage percentage to console
       uses: insightsengineering/coverage-action@v2
       if: always()
       # This action will not fail, just used for printing the coverage percentage
