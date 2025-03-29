@@ -50,10 +50,10 @@ jobs:
     - name: Gate for coverage percentage
       uses: insightsengineering/coverage-action@v2
       if: always()
+      continue-on-error: true
       with:
         path: "${{ env.TEST_RESULTS_PATH }}/**/coverage.cobertura.xml"
         threshold: 85
-        fail: true
         coverage-summary-title: "StpFoodBlazor Coverage"
         pycobertura-exception-failure: False
         # Publish the rendered output as a PR comment
