@@ -1,22 +1,16 @@
-﻿using StpFoodBlazor.Models;
+﻿using StpFoodBlazor.Helpers;
+using StpFoodBlazor.Models;
 
 namespace StpFoodBlazor.Services
 {
-    public class HttpGiftCardService(HttpClient httpClient, ILogger<HttpDealService> logger) : IGiftCardService
+    public class HttpGiftCardService(HttpClient httpClient, ILogger<HttpGiftCardService> logger) : IGiftCardService
     {
+        private static readonly string Url = Helper.GetUrl("giftcards");
         public async Task<GiftCard[]> GetGiftCardsAsync()
         {
-            GiftCard[]? result = await httpClient.GetFromJsonAsync<GiftCard[]>(GetUrl());
-            logger.LogInformation("retrieved giftcards: {Url}", GetUrl());
+            GiftCard[]? result = await httpClient.GetFromJsonAsync<GiftCard[]>(Url);
+            logger.LogInformation("retrieved giftcards: {Url}", Url);
             return result ?? [];
-        }
-
-        private static String GetUrl()
-        {
-            string? sheetId = Environment.GetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETID");
-            string? sheetsUrl = Environment.GetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETSURL");
-
-            return $"{sheetsUrl}/?sheet_id={sheetId}&tab_name=giftcards";
         }
     }
 }
