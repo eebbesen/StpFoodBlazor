@@ -50,17 +50,12 @@ jobs:
     - name: Gate for coverage percentage
       uses: insightsengineering/coverage-action@v2
       if: always()
+      # This action will not fail, just used for printing the coverage percentage
       continue-on-error: true
       with:
         path: "${{ env.TEST_RESULTS_PATH }}/**/coverage.cobertura.xml"
         threshold: 85
         coverage-summary-title: "StpFoodBlazor Coverage"
-        pycobertura-exception-failure: False
-        # Publish the rendered output as a PR comment
-        # Disabling due to repo permissions issue
-        publish: False
-        # Skipping diffing
-        diff: False
     - name: Upload HTML coverage report
       uses: actions/upload-artifact@v4
       if: always()
