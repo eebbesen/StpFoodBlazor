@@ -55,12 +55,12 @@ jobs:
         threshold: 85
         fail: true
         coverage-summary-title: "StpFoodBlazor Coverage"
-        pycobertura-exception-failure: false
+        pycobertura-exception-failure: False
         # Publish the rendered output as a PR comment
         # Disabling due to repo permissions issue
-        publish: false
-        # Skipping difing
-        diff: false
+        publish: False
+        # Skipping diffing
+        diff: False
     - name: Upload HTML coverage report
       uses: actions/upload-artifact@v4
       if: always()
