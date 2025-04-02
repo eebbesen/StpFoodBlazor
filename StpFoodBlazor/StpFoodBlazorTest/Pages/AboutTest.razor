@@ -9,7 +9,8 @@
         var paraElm = cut.Find("div.container");
 
         var paraElmText = paraElm.InnerHtml;
-        paraElmText.Contains("Downtown Saint Paul food and drink deals compiled by");
-        paraElmText.Contains("version");
+        Assert.Contains("Downtown Saint Paul food and drink deals compiled by", paraElmText);
+        Assert.Contains("Sharable links", paraElmText);
+        Assert.Contains("version", paraElmText);
     }
 }
