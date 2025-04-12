@@ -1,6 +1,5 @@
 using StpFoodBlazor.Components;
 using StpFoodBlazor.Services;
-using Microsoft.Extensions.Logging.Console;
 using Microsoft.Extensions.Logging.AzureAppServices;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,6 +36,7 @@ builder.Services.AddHttpClient();
 builder.Services.AddScoped<IDealService, HttpDealService>();
 builder.Services.AddScoped<ITimeService, TimeService>();
 builder.Services.AddScoped<IGiftCardService, HttpGiftCardService>();
+builder.Services.AddScoped<IHolidayService, HttpHolidayService>();
 
 var app = builder.Build();
 

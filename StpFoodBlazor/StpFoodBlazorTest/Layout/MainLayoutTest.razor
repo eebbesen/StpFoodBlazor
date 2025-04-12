@@ -19,13 +19,15 @@
 
         var navbar = cut.Find("#navbar");
 
-        Assert.Equal(3, navbar.Children.Length);
-        Assert.Equal("root-nav", navbar.Children[0].Id);
-        Assert.Equal("d-none", navbar.Children[0].ClassName);
-        Assert.Equal("giftcard-nav", navbar.Children[1].Id);
-        Assert.Equal("", navbar.Children[1].ClassName);
-        Assert.Equal("about-nav", navbar.Children[2].Id);
+        Assert.Equal(4, navbar.Children.Length);
+        Assert.Equal("messages", navbar.Children[0].Id);
+        Assert.Equal("messages w-100 text-center", navbar.Children[0].ClassName);
+        Assert.Equal("root-nav", navbar.Children[1].Id);
+        Assert.Equal("d-none", navbar.Children[1].ClassName);
+        Assert.Equal("giftcard-nav", navbar.Children[2].Id);
         Assert.Equal("", navbar.Children[2].ClassName);
+        Assert.Equal("about-nav", navbar.Children[3].Id);
+        Assert.Equal("", navbar.Children[3].ClassName);
     }
 
     [Fact]
@@ -35,13 +37,15 @@
 
         var navbar = cut.Find("#navbar");
 
-        Assert.Equal(3, navbar.Children.Length);
-        Assert.Equal("root-nav", navbar.Children[0].Id);
-        Assert.Equal("", navbar.Children[0].ClassName);
-        Assert.Equal("giftcard-nav", navbar.Children[1].Id);
+        Assert.Equal(4, navbar.Children.Length);
+        Assert.Equal("messages", navbar.Children[0].Id);
+        Assert.Equal("messages w-100 text-center", navbar.Children[0].ClassName);
+        Assert.Equal("root-nav", navbar.Children[1].Id);
         Assert.Equal("", navbar.Children[1].ClassName);
-        Assert.Equal("about-nav", navbar.Children[2].Id);
-        Assert.Equal("d-none", navbar.Children[2].ClassName);
+        Assert.Equal("giftcard-nav", navbar.Children[2].Id);
+        Assert.Equal("", navbar.Children[2].ClassName);
+        Assert.Equal("about-nav", navbar.Children[3].Id);
+        Assert.Equal("d-none", navbar.Children[3].ClassName);
     }
 
     [Fact]
@@ -51,13 +55,15 @@
 
         var navbar = cut.Find("#navbar");
 
-        Assert.Equal(3, navbar.Children.Length);
-        Assert.Equal("root-nav", navbar.Children[0].Id);
-        Assert.Equal("", navbar.Children[0].ClassName);
-        Assert.Equal("giftcard-nav", navbar.Children[1].Id);
-        Assert.Equal("d-none", navbar.Children[1].ClassName);
-        Assert.Equal("about-nav", navbar.Children[2].Id);
-        Assert.Equal("", navbar.Children[2].ClassName);
+        Assert.Equal(4, navbar.Children.Length);
+        Assert.Equal("messages", navbar.Children[0].Id);
+        Assert.Equal("messages w-100 text-center", navbar.Children[0].ClassName);
+        Assert.Equal("root-nav", navbar.Children[1].Id);
+        Assert.Equal("", navbar.Children[1].ClassName);
+        Assert.Equal("giftcard-nav", navbar.Children[2].Id);
+        Assert.Equal("d-none", navbar.Children[2].ClassName);
+        Assert.Equal("about-nav", navbar.Children[3].Id);
+        Assert.Equal("", navbar.Children[3].ClassName);
     }
 
     private IRenderedFragment RenderMainLayout(string route)
