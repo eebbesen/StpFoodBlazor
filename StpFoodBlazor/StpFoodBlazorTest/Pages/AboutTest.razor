@@ -1,6 +1,21 @@
 @using StpFoodBlazor.Components.Pages
+@using StpFoodBlazor.Services
+@using StpFoodBlazorTest.Services
 
 @code {
+    private TestContext ctx;
+    public AboutTest()
+    {
+        ctx = new TestContext();
+        ctx.Services.AddSingleton<IDealService>(new TestDealService());
+        ctx.Services.AddSingleton<IHolidayService>(new TestHolidayService());
+        ctx.Services.AddSingleton<ITimeService>(new TestTimeService());
+    }
+
+    void Dispose()
+    {
+    }
+
     [Fact]
     public void AboutShouldDisplayText()
     {

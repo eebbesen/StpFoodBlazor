@@ -4,6 +4,8 @@
     $ cd StpFoodBlazor/StpFoodBlazor/
     $ dotnet run
 
+https://localhost:7073/
+
 ## Test
 Unit tests and Selenium functional tests are available.
 

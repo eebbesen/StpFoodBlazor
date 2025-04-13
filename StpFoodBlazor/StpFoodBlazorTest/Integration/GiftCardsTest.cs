@@ -39,22 +39,26 @@ namespace StpFoodBlazorTest.Integration
             }
         }
 
-        // will fail when records are there
-        // [Fact]
-        // public void GiftCardsNoRecordsLoads()
-        // {
-        //     try
-        //     {
-        //         Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-        //         Driver.Navigate().GoToUrl(BaseUrl());
-        //         IWebElement noRecords = Driver.FindElement(By.Id("giftcards_no_records"));
-        //         Assert.Contains("No active gift card deals.", noRecords.Text);
-        //     }
-        //     catch (Exception)
-        //     {
-        //         SeleniumArtifactts("GiftCardsNoRecordsLoads");
-        //         throw;
-        //     }
-        // }
+        [Fact]
+        public void GiftCards()
+        {
+            try
+            {
+                Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                Driver.Navigate().GoToUrl(BaseUrl());
+                // Will fail if there are any active gift cards in the database
+                // IWebElement noRecords = Driver.FindElement(By.Id("giftcards_no_records"));
+                // Assert.Contains("No active gift card deals.", noRecords.Text);
+
+                var messages = Driver.FindElement(By.Id("messages"));
+                Assert.True(messages.Text.Length > 10);
+                Assert.StartsWith("Today: ", messages.Text);
+            }
+            catch (Exception)
+            {
+                SeleniumArtifactts("GiftCardsNoRecordsLoads");
+                throw;
+            }
+        }
     }
 }

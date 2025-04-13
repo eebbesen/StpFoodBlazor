@@ -1,4 +1,5 @@
 ﻿using StpFoodBlazor.Models;
+using System.Text.Json;
 
 namespace StpFoodBlazor.Services
 {
@@ -8,9 +9,11 @@ namespace StpFoodBlazor.Services
             ?? throw new InvalidOperationException("Environment variable 'APPCONFIG__HOLIDAYURL' is not set.");
         public async Task<Holiday[]> GetTodaysHolidaysAsync()
         {
-            Holiday[]? result = await httpClient.GetFromJsonAsync<Holiday[]>(URL);
+            var result = await httpClient.GetFromJsonAsync<Dictionary<string,string[]>>(URL);
             logger.LogInformation("retrieved Holidays: {Url}", URL);
-            return result ?? [];
+            logger.LogDebug("retrieved Holidays: {Result}", result);
+
+            return ((IHolidayService)this).TransformJson(result);
         }
     }
 }

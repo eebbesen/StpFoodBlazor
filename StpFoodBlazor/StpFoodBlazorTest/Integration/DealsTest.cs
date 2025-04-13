@@ -46,6 +46,10 @@ namespace StpFoodBlazorTest.Integration
                 Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
                 Driver.Navigate().GoToUrl(BASE_URL);
                 Assert.True(3 < Driver.FindElement(By.Id("deals_table_body")).FindElements(By.ClassName("row")).Count);
+
+                var messages = Driver.FindElement(By.Id("messages"));
+                Assert.True(messages.Text.Length > 10);
+                Assert.StartsWith("Today: ", messages.Text);
             }
             catch (Exception)
             {

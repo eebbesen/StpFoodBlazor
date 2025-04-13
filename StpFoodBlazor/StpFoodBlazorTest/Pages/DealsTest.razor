@@ -15,11 +15,12 @@
     {
         ctx = new TestContext();
         ctx.Services.AddSingleton<IDealService>(new TestDealService());
+        ctx.Services.AddSingleton<IHolidayService>(new TestHolidayService());
         ctx.Services.AddSingleton<ITimeService>(timeService);
     }
 
-    void Dispose(){
-        // so that TestDealService attributes are reset
+    void Dispose()
+    {
     }
 
     [Fact]

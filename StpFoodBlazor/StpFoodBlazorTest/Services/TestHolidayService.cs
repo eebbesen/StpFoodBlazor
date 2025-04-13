@@ -13,17 +13,23 @@ namespace StpFoodBlazorTest.Services
             Path.Combine(Directory.GetCurrentDirectory(), "fixtures", "holidays.json");
         public Boolean LongRunning { get; set; } = false;
         public Boolean NoRecords { get; set; } = false;
+        public Holiday[] Data { get; set; } = [];
 
         public async Task<Holiday[]> GetTodaysHolidaysAsync()
         {
             if (NoRecords)
             {
-                return Array.Empty<Holiday>();
+                return [];
             }
 
             if (LongRunning)
             {
                 await Task.Delay(7000);
+            }
+
+            if (Data.Length > 0)
+            {
+                return Data;
             }
 
             if (File.Exists(HOLIDAY_FIXTURES_PATH))
