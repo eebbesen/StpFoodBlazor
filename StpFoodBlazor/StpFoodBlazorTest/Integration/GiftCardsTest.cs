@@ -48,6 +48,8 @@ namespace StpFoodBlazorTest.Integration
                 Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
                 Driver.Navigate().GoToUrl(BaseUrl());
 
+                AssertCommon();
+
                 // Will fail if there are any active gift cards in the database
                 // IWebElement noRecords = Driver.FindElement(By.Id("giftcards_no_records"));
                 // Assert.Contains("No active gift card deals.", noRecords.Text);
