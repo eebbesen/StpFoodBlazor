@@ -6,7 +6,11 @@
 <div class="page">
     <main>
         <div class="top-row px-4" id="navbar">
-            <div id="messages" class="messages w-100 text-center">@holidays</div>
+            <div id="messages" class="messages w-100 text-center marquee">
+                <div class="marquee-content">
+                    <span class="mx-3">@holidays</span>
+                </div>
+            </div>
             <a id="root-nav" href="/" class=@(classValues(""))>Deals</a>
             <a id="giftcard-nav" href="giftcards" class=@(classValues("giftcards"))>Gift Cards</a>
             <a id="about-nav" href="about" class=@(classValues("about")) target="_blank">About</a>

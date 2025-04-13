@@ -24,6 +24,30 @@ h1:focus {
     outline: none;
 }
 
+@keyframes scroll-left {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+.marquee {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.marquee-content {
+    display: inline-block;
+    padding-left: 59%;
+    animation: scroll-left 40s linear infinite;
+    animation-delay: -1s;
+}
+
+/* Pause animation on hover */
+ .marquee-content:hover {
+    animation-play-state: paused;
+}
+
 .valid.modified:not([type=checkbox]) {
     outline: 1px solid #26b050;
 }
