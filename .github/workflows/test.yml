@@ -90,6 +90,7 @@ jobs:
         path: "${{ env.TEST_RESULTS_PATH }}/*.html"
   sonar:
     name: SonarQube build and analyze
+    needs: test
     runs-on: windows-latest
     steps:
       - name: Set up JDK 17
