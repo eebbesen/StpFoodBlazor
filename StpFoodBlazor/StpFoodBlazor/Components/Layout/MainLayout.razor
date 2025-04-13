@@ -1,4 +1,6 @@
-﻿@using StpFoodBlazor.Services
+﻿@using StpFoodBlazor.Helpers
+@using StpFoodBlazor.Models
+@using StpFoodBlazor.Services
 @inherits LayoutComponentBase
 @inject NavigationManager NavMan
 @inject IHolidayService HolidayServiceImpl
@@ -45,12 +47,8 @@
 
         try
         {
-            var holidayArray = await HolidayServiceImpl.GetTodaysHolidaysAsync();
-            if (holidayArray != null && holidayArray.Length > 0)
-            {
-                holidays = string.Join(", ", holidayArray.Select(h => h.Text));
-                holidays = $"Today: {holidays}";
-            }
+            Holiday[] holidayArray = await HolidayServiceImpl.GetTodaysHolidaysAsync();
+            holidays = Helper.BuildHolidayString(holidayArray);
         }
         catch (Exception ex)
         {

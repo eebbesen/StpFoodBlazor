@@ -1,11 +1,18 @@
 using System;
 using System.Text.RegularExpressions;
 using StpFoodBlazor.Helpers;
+using StpFoodBlazor.Models;
 
 namespace StpFoodBlazorTest.Helpers
 {
     public partial class HelperTest
     {
+        private Holiday[] holidays = new[]
+            {
+                new Holiday { Day = "2025-04-13", Text = "Make Lunch Count Day" },
+                new Holiday { Day = "2025-04-13", Text = "National Peach Cobbler Day" }
+            };
+
         [Theory]
         [InlineData("")]
         [InlineData(null)]
@@ -39,5 +46,38 @@ namespace StpFoodBlazorTest.Helpers
 
         [GeneratedRegex(@"^(\d+\.\d+\.\d+)\+([a-f0-9]{40})$")]
         private static partial Regex MyRegex();
+
+        [Fact]
+        public void BuildHolidayString_WithNullOrEmptyHolidays_ReturnsEmptyString()
+        {
+            var result = Helper.BuildHolidayString(null);
+            Assert.Equal(string.Empty, result);
+
+            result = Helper.BuildHolidayString([]);
+            Assert.Equal(string.Empty, result);
+        }
+
+        [Fact]
+        public void BuildHolidayString_WithHoliday()
+        {
+            var result = Helper.BuildHolidayString([holidays[0]]);
+            Assert.Equal("Today: Make Lunch Count Day", result);
+        }
+
+        [Fact]
+        public void BuildHolidayString_WithHolidays()
+        {
+            var result = Helper.BuildHolidayString(holidays);
+
+            Assert.Equal("Today: Make Lunch Count Day, National Peach Cobbler Day", result);
+        }
+
+        [Fact]
+        public void BuildHolidayString_WithHolidaysAndLabel()
+        {
+            var result = Helper.BuildHolidayString(holidays, "Tomorrow");
+
+            Assert.Equal("Tomorrow: Make Lunch Count Day, National Peach Cobbler Day", result);
+        }
     }
 }

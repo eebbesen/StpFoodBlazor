@@ -1,4 +1,6 @@
 using System.Reflection;
+using System.Text;
+using StpFoodBlazor.Models;
 
 namespace StpFoodBlazor.Helpers
 {
@@ -10,7 +12,7 @@ namespace StpFoodBlazor.Helpers
             return attribute?.InformationalVersion ?? string.Empty;
         }
 
-        public static String GetUrl(string tabName)
+        public static string GetUrl(string tabName)
         {
             if (string.IsNullOrEmpty(tabName))
             {
@@ -21,6 +23,19 @@ namespace StpFoodBlazor.Helpers
             string? sheetsUrl = Environment.GetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETSURL");
 
             return $"{sheetsUrl}/?sheet_id={sheetId}&tab_name={tabName}";
+        }
+
+        public static string BuildHolidayString(Holiday[] holidays, string day = "Today")
+        {
+            if (holidays == null || holidays.Length == 0)
+            {
+                return string.Empty;
+            }
+
+            var holidayString = new StringBuilder($"{day}: ");
+            holidayString.Append(string.Join(", ", holidays.Select(h => h.Text)));
+
+            return holidayString.ToString();
         }
     }
 }
