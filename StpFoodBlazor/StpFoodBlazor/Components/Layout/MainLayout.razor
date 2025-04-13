@@ -1,9 +1,12 @@
-﻿@inherits LayoutComponentBase
+﻿@using StpFoodBlazor.Services
+@inherits LayoutComponentBase
 @inject NavigationManager NavMan
+@inject IHolidayService HolidayServiceImpl
 
 <div class="page">
     <main>
         <div class="top-row px-4" id="navbar">
+            <div id="messages" class="messages w-100 text-center">@holidays</div>
             <a id="root-nav" href="/" class=@(classValues(""))>Deals</a>
             <a id="giftcard-nav" href="giftcards" class=@(classValues("giftcards"))>Gift Cards</a>
             <a id="about-nav" href="about" class=@(classValues("about")) target="_blank">About</a>
@@ -23,11 +26,33 @@
 
 @code {
     private string uri = string.Empty;
+    private string holidays = string.Empty;
+    private Boolean initialized = false;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        base.OnInitialized();
-        uri = NavMan.Uri;NavMan.ToBaseRelativePath(NavMan.Uri);
+        await base.OnInitializedAsync();
+        uri = NavMan.Uri;
+
+        if (initialized)
+        {
+            return;
+        }
+
+        try
+        {
+            var holidayArray = await HolidayServiceImpl.GetTodaysHolidaysAsync();
+            if (holidayArray != null && holidayArray.Length > 0)
+            {
+                holidays = string.Join(", ", holidayArray.Select(h => h.Text));
+                holidays = $"Today: {holidays}";
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching holidays: {ex.Message}");
+        }
+        initialized = true;
     }
 
     private string classValues(string uriTest) {

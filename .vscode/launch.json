@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "coreclr",
+        "request": "launch",
+        "name": "Debug StpFoodBlazor",
+        "program": "${workspaceFolder}/StpFoodBlazor/StpFoodBlazor/bin/Debug/net8.0/StpFoodBlazor.dll",
+        "args": [],
+        "cwd": "${workspaceFolder}/StpFoodBlazor/StpFoodBlazor",
+        "stopAtEntry": false,
+        "serverReadyAction": {
+          "action": "openExternally",
+          "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+        },
+        "env": {
+          "ASPNETCORE_ENVIRONMENT": "Development",
+          "ASPNETCORE_APPCONFIG__SHEETID": "${env:ASPNETCORE_APPCONFIG__SHEETID}",
+          "ASPNETCORE_APPCONFIG__SHEETSURL": "${env:ASPNETCORE_APPCONFIG__SHEETSURL}",
+          "APPCONFIG__HOLIDAYURL": "${env:APPCONFIG__HOLIDAYURL}"
+        },
+        "preLaunchTask": "build"
+      }
+    ]
+  }
