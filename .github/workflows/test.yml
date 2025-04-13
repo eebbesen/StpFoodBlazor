@@ -17,6 +17,8 @@ jobs:
       ASPNETCORE_APPCONFIG__SHEETID: ${{ secrets.ASPNETCORE_APPCONFIG__SHEETID }}
       ASPNETCORE_APPCONFIG__SHEETSURL: ${{ secrets.ASPNETCORE_APPCONFIG__SHEETSURL }}
       TEST_RESULTS_PATH: "/home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestResults"
+      MIN_LINE_COVERAGE: 90
+      MIN_BRANCH_COVERAGE: 87
 
     steps:
     - uses: actions/checkout@v4
@@ -48,7 +50,7 @@ jobs:
         reporttypes: Html;Html_Dark
         title: 'StpFoodBlazor Test Coverage'
         tag: '${{ github.run_number }}_${{ github.run_id }}'
-        customSettings: 'minimumCoverageThresholds:lineCoverage=87;minimumCoverageThresholds:branchCoverage=85'
+        customSettings: 'minimumCoverageThresholds:lineCoverage=${{ env.MIN_LINE_COVERAGE }};minimumCoverageThresholds:branchCoverage=${{ env.MIN_BRANCH_COVERAGE }}'
     - name: Print coverage percentage to console
       uses: insightsengineering/coverage-action@v2
       if: always()
