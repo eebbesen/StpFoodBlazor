@@ -13,7 +13,7 @@ namespace StpFoodBlazor.Services
         public async Task<Holiday[]> GetTodaysHolidaysAsync()
         {
             string url = $"{URL}{TODAY_URL}";
-            var result = await httpClient.GetFromJsonAsync<Dictionary<string,string[]>>(url);
+            var result = await httpClient.GetFromJsonAsync<Dictionary<string, string[]>>(url);
             logger.LogInformation("retrieved Holidays: {Url}", url);
             logger.LogDebug("retrieved Holidays: {Result}", result);
 
@@ -23,7 +23,7 @@ namespace StpFoodBlazor.Services
         public async Task<Holiday[]> GetHolidaysRangeAsync(string startDate, string endDate)
         {
             string url = $"{URL}{RANGE_URL}?{START_DATE}={startDate}&{END_DATE}={endDate}";
-            var result = await httpClient.GetFromJsonAsync<Dictionary<string,string[]>>(url);
+            var result = await httpClient.GetFromJsonAsync<Dictionary<string, string[]>>(url);
             logger.LogInformation("retrieved Holidays: {Url}", url);
             logger.LogDebug("retrieved Holidays: {Result}", result);
 

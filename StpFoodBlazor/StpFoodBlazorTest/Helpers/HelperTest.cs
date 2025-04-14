@@ -7,11 +7,11 @@ namespace StpFoodBlazorTest.Helpers
 {
     public partial class HelperTest
     {
-        private Holiday[] holidays = new[]
-            {
+        private Holiday[] holidays =
+            [
                 new Holiday { Day = "2025-04-13", Text = "Make Lunch Count Day" },
                 new Holiday { Day = "2025-04-13", Text = "National Peach Cobbler Day" }
-            };
+            ];
 
         [Theory]
         [InlineData("")]

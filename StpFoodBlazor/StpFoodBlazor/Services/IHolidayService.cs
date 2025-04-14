@@ -14,7 +14,6 @@ namespace StpFoodBlazor.Services
                 string dateKey = kvp.Key;
                 string[] holidayNames = kvp.Value;
 
-                // For each holiday name in the array, create a Holiday object
                 foreach (string holidayName in holidayNames)
                 {
                     var holiday = new Holiday
