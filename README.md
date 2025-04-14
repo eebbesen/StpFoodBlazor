@@ -41,7 +41,7 @@ The backing Google Sheet requires the following tabs and corresponding column he
 
     ASPNETCORE_APPCONFIG__SHEETID
     ASPNETCORE_APPCONFIG__SHEETSURL
-    APPCONFIG__HOLIDAYURL
+    APPCONFIG__HOLIDAYURL root (e.g., https://DOMAIN.azurewebsites.net/api)
 
 ## Run
 
