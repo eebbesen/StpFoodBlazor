@@ -25,17 +25,33 @@ namespace StpFoodBlazor.Helpers
             return $"{sheetsUrl}/?sheet_id={sheetId}&tab_name={tabName}";
         }
 
-        public static string BuildHolidayString(Holiday[] holidays, string day = "Today")
+        public static string[] BuildHolidayStrings(Dictionary<string, string[]> holidays)
         {
-            if (holidays == null || holidays.Length == 0)
+            if (holidays == null || holidays.Count == 0)
             {
-                return string.Empty;
+                return [];
             }
 
-            var holidayString = new StringBuilder($"{day}: ");
-            holidayString.Append(string.Join(", ", holidays.Select(h => h.Text)));
+            var holidayStrings = new List<string>();
 
-            return holidayString.ToString();
+            var sortedHolidays = holidays
+                .GroupBy(h => h.Key)
+                .OrderBy(h => h.Key)
+                .ToArray();
+
+            foreach (var holiday in sortedHolidays)
+            {
+                var holidayString = new StringBuilder();
+                holidayString.Append(
+                    DateTime.Parse(holiday.Key).ToString("MM-dd")
+                    .Equals(DateTime.Now.ToString("MM-dd"))
+                        ? "Today: "
+                        : DateTime.Parse(holiday.Key).ToString("MM-dd") + ": ");
+                holidayString.Append(holiday.First().Value[0]);
+                holidayStrings.Add(holidayString.ToString());
+            }
+
+            return holidayStrings.ToArray();
         }
     }
 }

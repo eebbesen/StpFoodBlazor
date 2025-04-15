@@ -18,21 +18,12 @@
         navMan = ctx.Services.GetRequiredService<FakeNavigationManager>();
     }
 
-    private Holiday[] CreateHolidays()
+    private Dictionary<string, string[]> CreateHolidays()
     {
-        Holiday h1 = new Holiday
+        return new Dictionary<string, string[]>
         {
-            Text = "Make Lunch Count Day",
-            Day = "2025-04-13",
+            { DateTime.Now.ToString("MM-dd"), new[] { "Make Lunch Count Day", "National Peach Cobbler Day" } },
         };
-
-        Holiday h2 = new Holiday
-        {
-            Text = "National Peach Cobbler Day",
-            Day = "2025-04-13",
-        };
-
-        return [h1, h2];
     }
 
     [Fact]

@@ -1,5 +1,4 @@
-﻿using StpFoodBlazor.Models;
-
+﻿
 namespace StpFoodBlazor.Services
 {
     public class HttpHolidayService(HttpClient httpClient, ILogger<HttpHolidayService> logger) : IHolidayService
@@ -10,24 +9,24 @@ namespace StpFoodBlazor.Services
         private static readonly string RANGE_URL = URL + "/range/";
         private static readonly string START_DATE = "startDate";
         private static readonly string END_DATE = "endDate";
-        public async Task<Holiday[]> GetTodaysHolidaysAsync()
+
+        public async Task<Dictionary<string, string[]>> GetTodaysHolidaysAsync()
         {
-            string url = $"{URL}{TODAY_URL}";
-            var result = await httpClient.GetFromJsonAsync<Dictionary<string, string[]>>(url);
-            logger.LogInformation("retrieved Holidays: {Url}", url);
+            var result = await httpClient.GetFromJsonAsync<Dictionary<string, string[]>>(TODAY_URL);
+            logger.LogInformation("retrieved Holidays: {Url}", TODAY_URL);
             logger.LogDebug("retrieved Holidays: {Result}", result);
 
-            return ((IHolidayService)this).TransformJson(result);
+            return result;
         }
 
-        public async Task<Holiday[]> GetHolidaysRangeAsync(string startDate, string endDate)
+        public async Task<Dictionary<string, string[]>> GetHolidaysRangeAsync(string startDate, string endDate)
         {
-            string url = $"{URL}{RANGE_URL}?{START_DATE}={startDate}&{END_DATE}={endDate}";
+            string url = $"{RANGE_URL}?{START_DATE}={startDate}&{END_DATE}={endDate}";
             var result = await httpClient.GetFromJsonAsync<Dictionary<string, string[]>>(url);
             logger.LogInformation("retrieved Holidays: {Url}", url);
             logger.LogDebug("retrieved Holidays: {Result}", result);
 
-            return ((IHolidayService)this).TransformJson(result);
+            return result;
         }
     }
 }
