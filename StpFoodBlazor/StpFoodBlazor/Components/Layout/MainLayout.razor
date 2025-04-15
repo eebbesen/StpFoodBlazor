@@ -1,4 +1,6 @@
-﻿@using StpFoodBlazor.Services
+﻿@using StpFoodBlazor.Helpers
+@using StpFoodBlazor.Models
+@using StpFoodBlazor.Services
 @inherits LayoutComponentBase
 @inject NavigationManager NavMan
 @inject IHolidayService HolidayServiceImpl
@@ -7,8 +9,11 @@
     <main>
         <div class="top-row px-4" id="navbar">
             <div id="messages" class="messages w-100 text-center marquee">
-                <div class="marquee-content">
-                    <span class="mx-3">@holidays</span>
+                <div class="marquee-content container d-flex align-items-stretch">
+                    @foreach (var holiday in holidayStrings)
+                    {
+                        <span class="holiday m-auto">@holiday</span>
+                    }
                 </div>
             </div>
             <a id="root-nav" href="/" class=@(classValues(""))>Deals</a>
@@ -30,7 +35,8 @@
 
 @code {
     private string uri = string.Empty;
-    private string holidays = string.Empty;
+    private string holidays = String.Empty;
+    private string[] holidayStrings = Array.Empty<string>();
     private Boolean initialized = false;
 
     protected override async Task OnInitializedAsync()
@@ -45,12 +51,12 @@
 
         try
         {
-            var holidayArray = await HolidayServiceImpl.GetTodaysHolidaysAsync();
-            if (holidayArray != null && holidayArray.Length > 0)
-            {
-                holidays = string.Join(", ", holidayArray.Select(h => h.Text));
-                holidays = $"Today: {holidays}";
-            }
+            var today = DateTime.Now;
+            var twoMoreDays = today.AddDays(2);
+            Dictionary<string, string[]> holidayData = await HolidayServiceImpl.GetHolidaysRangeAsync(
+            today.ToString("MM-dd"),
+            twoMoreDays.ToString("MM-dd"));
+            holidayStrings = Helper.BuildHolidayStrings(holidayData);
         }
         catch (Exception ex)
         {
@@ -59,8 +65,10 @@
         initialized = true;
     }
 
-    private string classValues(string uriTest) {
-        if (uriTest == NavMan.ToBaseRelativePath(uri)) {
+    private string classValues(string uriTest)
+    {
+        if (uriTest == NavMan.ToBaseRelativePath(uri))
+        {
             return "d-none";
         }
 

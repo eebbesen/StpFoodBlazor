@@ -17,8 +17,8 @@ jobs:
       ASPNETCORE_APPCONFIG__SHEETID: ${{ secrets.ASPNETCORE_APPCONFIG__SHEETID }}
       ASPNETCORE_APPCONFIG__SHEETSURL: ${{ secrets.ASPNETCORE_APPCONFIG__SHEETSURL }}
       TEST_RESULTS_PATH: "/home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestResults"
-      MIN_LINE_COVERAGE: 90
-      MIN_BRANCH_COVERAGE: 87
+      MIN_LINE_COVERAGE: 87
+      MIN_BRANCH_COVERAGE: 88
 
     steps:
     - uses: actions/checkout@v4

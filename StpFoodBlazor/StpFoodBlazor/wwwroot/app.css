@@ -26,7 +26,7 @@ h1:focus {
 
 @keyframes scroll-left {
     0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+    100% { transform: translateX(-120%); }
 }
 
 .marquee {
@@ -37,10 +37,12 @@ h1:focus {
 }
 
 .marquee-content {
-    display: inline-block;
-    padding-left: 59%;
-    animation: scroll-left 40s linear infinite;
+    animation: scroll-left 45s linear infinite;
     animation-delay: -1s;
+}
+
+.holiday {
+  margin-right: 7em;
 }
 
 /* Pause animation on hover */

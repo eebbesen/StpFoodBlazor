@@ -3,6 +3,8 @@ Display downtown Saint Paul food and drink deals
 
 ![tests](https://github.com/eebbesen/StpFoodBlazor/actions/workflows/test.yml/badge.svg)
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=eebbesen_StpFoodBlazor&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=eebbesen_StpFoodBlazor)
+
 [See it in action!](stpfoodblazor-d3f0aqbuf5bxfugt.centralus-01.azurewebsites.net)
 
 ## Parameterized Endpoints
@@ -39,7 +41,7 @@ The backing Google Sheet requires the following tabs and corresponding column he
 
     ASPNETCORE_APPCONFIG__SHEETID
     ASPNETCORE_APPCONFIG__SHEETSURL
-    APPCONFIG__HOLIDAYURL
+    APPCONFIG__HOLIDAYURL root (e.g., https://DOMAIN.azurewebsites.net/api)
 
 ## Run
 
