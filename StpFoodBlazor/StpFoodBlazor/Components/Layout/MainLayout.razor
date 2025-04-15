@@ -10,7 +10,10 @@
         <div class="top-row px-4" id="navbar">
             <div id="messages" class="messages w-100 text-center marquee">
                 <div class="marquee-content">
-                    <span class="mx-3">@holidays</span>
+                    @foreach (var holiday in holidayStrings)
+                    {
+                        <span class="holiday mx-5">@holiday</span>
+                    }
                 </div>
             </div>
             <a id="root-nav" href="/" class=@(classValues(""))>Deals</a>
@@ -50,10 +53,10 @@
         {
             var today = DateTime.Now;
             var twoMoreDays = today.AddDays(2);
-            Dictionary<string, string[]> holidays = await HolidayServiceImpl.GetHolidaysRangeAsync(
-                today.ToString("MM-dd"),
-                twoMoreDays.ToString("MM-dd"));
-            holidayStrings = Helper.BuildHolidayStrings(holidays);
+            Dictionary<string, string[]> holidayData = await HolidayServiceImpl.GetHolidaysRangeAsync(
+            today.ToString("MM-dd"),
+            twoMoreDays.ToString("MM-dd"));
+            holidayStrings = Helper.BuildHolidayStrings(holidayData);
         }
         catch (Exception ex)
         {
@@ -62,8 +65,10 @@
         initialized = true;
     }
 
-    private string classValues(string uriTest) {
-        if (uriTest == NavMan.ToBaseRelativePath(uri)) {
+    private string classValues(string uriTest)
+    {
+        if (uriTest == NavMan.ToBaseRelativePath(uri))
+        {
             return "d-none";
         }
 

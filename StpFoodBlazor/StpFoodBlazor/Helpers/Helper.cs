@@ -1,6 +1,5 @@
 using System.Reflection;
 using System.Text;
-using StpFoodBlazor.Models;
 
 namespace StpFoodBlazor.Helpers
 {
@@ -47,11 +46,11 @@ namespace StpFoodBlazor.Helpers
                     .Equals(DateTime.Now.ToString("MM-dd"))
                         ? "Today: "
                         : DateTime.Parse(holiday.Key).ToString("MM-dd") + ": ");
-                holidayString.Append(holiday.First().Value[0]);
+                holidayString.Append(string.Join(", ", holiday.First().Value));
                 holidayStrings.Add(holidayString.ToString());
             }
 
-            return holidayStrings.ToArray();
+            return [.. holidayStrings];
         }
     }
 }
