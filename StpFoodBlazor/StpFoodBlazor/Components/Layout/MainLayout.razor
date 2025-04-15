@@ -9,10 +9,10 @@
     <main>
         <div class="top-row px-4" id="navbar">
             <div id="messages" class="messages w-100 text-center marquee">
-                <div class="marquee-content">
+                <div class="marquee-content container d-flex align-items-stretch">
                     @foreach (var holiday in holidayStrings)
                     {
-                        <span class="holiday mx-5">@holiday</span>
+                        <span class="holiday m-auto">@holiday</span>
                     }
                 </div>
             </div>
