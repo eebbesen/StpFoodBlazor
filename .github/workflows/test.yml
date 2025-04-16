@@ -134,9 +134,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"eebbesen_StpFoodBlazor" /o:"eebbesen" \
-          /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" \
-          /d:sonar.cs.cobertura.reportsPaths="**\coverage.coberturas.xml" /d:sonar.scanner.skipJreProvisioning=true \
-          /d:sonar.verbose=true
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"eebbesen_StpFoodBlazor" /o:"eebbesen" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.cobertura.reportsPaths="**\coverage.coberturas.xml" /d:sonar.scanner.skipJreProvisioning=true /d:sonar.verbose=true
           dotnet build
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
