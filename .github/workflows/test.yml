@@ -135,6 +135,15 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"eebbesen_StpFoodBlazor" /o:"eebbesen" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="**\coverage.opencover.xml" /d:sonar.scanner.skipJreProvisioning=true /d:sonar.verbose=true
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"eebbesen_StpFoodBlazor" /o:"eebbesen" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="**\coverage.opencover.xml" /d:sonar.sources="StpFoodBlazor" /d:sonar.inclusions="**/*.cs,**/*.cshtml,**/*.razor" /d:sonar.exclusions="**/obj/**,**/*.dll,**/wwwroot/lib/**,**/*Test*/**" /d:sonar.scanner.skipJreProvisioning=true /d:sonar.verbose=true
+
+          # Display the generated properties for debugging
+          Write-Host "Checking generated SonarQube properties..."
+          if (Test-Path -Path .\.sonarqube\out\sonar-project.properties) {
+            Get-Content -Path .\.sonarqube\out\sonar-project.properties
+          } else {
+            Write-Host "sonar-project.properties not found!"
+          }
+
           dotnet build
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
