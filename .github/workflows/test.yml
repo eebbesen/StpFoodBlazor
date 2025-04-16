@@ -92,7 +92,7 @@ jobs:
   sonar:
     name: SonarQube build and analyze
     needs: test
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -119,8 +119,8 @@ jobs:
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell
         run: |
-          New-Item -Path .\.sonar\scanner -ItemType Directory
-          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+          New-Item -Path ./.sonar/scanner -ItemType Directory
+          dotnet tool update dotnet-sonarscanner --tool-path ./.sonar/scanner
       - name: Download coverage xml
         uses: actions/download-artifact@v4
         with:
@@ -133,17 +133,13 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"eebbesen_StpFoodBlazor" /o:"eebbesen" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="**\coverage.opencover.xml" /d:sonar.sources="StpFoodBlazor" /d:sonar.inclusions="**/*.cs,**/*.cshtml,**/*.razor" /d:sonar.exclusions="**/obj/**,**/*.dll,**/wwwroot/lib/**,**/*Test*/**" /d:sonar.scanner.skipJreProvisioning=true /d:sonar.verbose=true
-
-          # Display the generated properties for debugging
-          Write-Host "Checking generated SonarQube properties..."
-          if (Test-Path -Path .\.sonarqube\out\sonar-project.properties) {
-            Get-Content -Path .\.sonarqube\out\sonar-project.properties
-          } else {
-            Write-Host "sonar-project.properties not found!"
-          }
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"eebbesen_StpFoodBlazor" /o:"eebbesen" \
+          /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" \
+          /d:sonar.cs.opencover.reportsPaths="**\coverage.opencover.xml" \
+          /d:sonar.inclusions="**/*.cs,**/*.cshtml,**/*.razor" \
+          /d:sonar.exclusions="**/obj/**,**/*.dll,**/wwwroot/lib/**,**/*Test*/**" \
+          /d:sonar.scanner.skipJreProvisioning=true /d:sonar.verbose=true
 
           dotnet build
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          ./.sonar/scanner/dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
