@@ -49,7 +49,9 @@ namespace StpFoodBlazorTest.Integration
 
         protected static string ArtifactDir()
         {
-            return "{System.IO.Directory.GetCurrentDirectory()}../../../../../TestResults/";
+            // return "{System.IO.Directory.GetCurrentDirectory()}../../../../../TestResults/";
+            return Path.Combine(Directory.GetCurrentDirectory(), "..", "..", "..", "..", "..", "TestResults");    
+
         }
 
         protected void SeleniumScreenShot(String name)
@@ -59,11 +61,11 @@ namespace StpFoodBlazorTest.Integration
 
         protected void SeleniumSource(String name)
         {
-            using StreamWriter outputFile = new StreamWriter(Path.Combine(ArtifactDir(), name));
+            using StreamWriter outputFile = new(Path.Combine(ArtifactDir(), name));
             outputFile.WriteLine(Driver.PageSource);
         }
 
-        protected void SeleniumArtifactts(String name)
+        protected void SeleniumArtifacts(String name)
         {
             SeleniumScreenShot(name + ".png");
             SeleniumSource(name + ".html");

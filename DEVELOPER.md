@@ -31,7 +31,7 @@ Then run the following to convert the XML into HTML in the `coveragereport` dire
 Run from the StpFoodBlazorTest directory or modify the reports path
 
     $ reportgenerator \
-      -reports:"./TestResults/{guid}/coverage.cobertura.xml" \
+      -reports:"./TestResults/{guid}/coverage.opencover.xml" \
       -targetdir:"coveragereport" \
       -reporttypes:Html
 
@@ -39,7 +39,7 @@ Run from the StpFoodBlazorTest directory or modify the reports path
 ### GitHub Actions
 
 test.yml runs unit and integration tests. It will upload the following artifacts
-* Cobertura coverage report in XML
+* Opencover coverage report in XML
 * HTML version of the coverage report using https://reportgenerator.io/
 * PNG screenshot for each failed integration test
 * HTML source code for each failed integration test (does not include CSS or JS)
