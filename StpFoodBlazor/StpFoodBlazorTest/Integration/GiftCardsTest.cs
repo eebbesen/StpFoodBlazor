@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -33,8 +34,9 @@ namespace StpFoodBlazorTest.Integration
                 Driver.FindElement(By.Id("giftcards_table_body_placeholder"));
                 Driver.FindElement(By.Id("giftcards_table_header"));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 SeleniumArtifacts("GiftCardsTableBodyPlaceholder");
                 throw;
             }
@@ -62,8 +64,9 @@ namespace StpFoodBlazorTest.Integration
                 // Assert.True(messages.Text.Length > 10);
                 // Assert.StartsWith("Today: ", messages.Text);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 SeleniumArtifacts("GiftCardsNoRecordsLoads");
                 throw;
             }
