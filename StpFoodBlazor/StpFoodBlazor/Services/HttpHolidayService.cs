@@ -16,7 +16,7 @@ namespace StpFoodBlazor.Services
             logger.LogInformation("retrieved Holidays: {Url}", TODAY_URL);
             logger.LogDebug("retrieved Holidays: {Result}", result);
 
-            return result;
+            return result ?? [];
         }
 
         public async Task<Dictionary<string, string[]>> GetHolidaysRangeAsync(string startDate, string endDate)
@@ -26,7 +26,7 @@ namespace StpFoodBlazor.Services
             logger.LogInformation("retrieved Holidays: {Url}", url);
             logger.LogDebug("retrieved Holidays: {Result}", result);
 
-            return result;
+            return result ?? [];
         }
     }
 }
