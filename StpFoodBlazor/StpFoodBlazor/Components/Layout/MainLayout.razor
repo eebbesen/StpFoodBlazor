@@ -8,8 +8,8 @@
 <div class="page">
     <main>
         <div class="top-row px-4" id="navbar">
-            <div class="container d-flex" id="navbar-items">
-                <div id="messages" class="messages text-center marquee w-100">
+            <div class="container d-md-flex" id="navbar-items">
+                <div id="messages" class="messages text-center marquee w-100 d-none d-md-block">
                     <div class="marquee-content d-flex align-items-stretch">
                         @foreach (var holiday in holidayStrings)
                         {
@@ -17,9 +17,11 @@
                         }
                     </div>
                 </div>
-                <a id="root-nav" href="/" class=@(classValues(""))>Deals</a>
-                <a id="giftcard-nav" href="giftcards" class=@(classValues("giftcards"))>Gift Cards</a>
-                <a id="about-nav" href="about" class=@(classValues("about"))>About</a>
+                <div class="nav-links d-flex">
+                    <a id="root-nav" href="/" class=@(classValues(""))>Deals</a>
+                    <a id="giftcard-nav" href="giftcards" class=@(classValues("giftcards"))>Gift Cards</a>
+                    <a id="about-nav" href="about" class=@(classValues("about"))>About</a>
+                </div>
             </div>
         </div>
 
@@ -71,9 +73,9 @@
     {
         if (uriTest == NavMan.ToBaseRelativePath(uri))
         {
-            return "d-none";
+            return " d-none";
         }
 
-        return "";
+        return " flex-fill";
     }
 }
