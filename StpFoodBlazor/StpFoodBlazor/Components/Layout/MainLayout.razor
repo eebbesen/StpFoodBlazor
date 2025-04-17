@@ -17,7 +17,7 @@
                         }
                     </div>
                 </div>
-                <div class="nav-links d-flex">
+                <div class="d-flex" id="nav-links">
                     <a id="root-nav" href="/" class=@(classValues(""))>Deals</a>
                     <a id="giftcard-nav" href="giftcards" class=@(classValues("giftcards"))>Gift Cards</a>
                     <a id="about-nav" href="about" class=@(classValues("about"))>About</a>
@@ -71,9 +71,17 @@
 
     private string classValues(string uriTest)
     {
-        if (uriTest == NavMan.ToBaseRelativePath(uri))
+        var current = NavMan.ToBaseRelativePath(uri);
+
+        if (uriTest == current)
         {
             return " d-none";
+        }
+
+        if (((current == "giftcards" || current == "") && uriTest == "about") ||
+            (current == "about" && uriTest == "giftcards"))
+        {
+            return " justify-content-end";
         }
 
         return " flex-fill";
