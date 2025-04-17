@@ -117,24 +117,17 @@ jobs:
           restore-keys: ${{ runner.os }}-sonar-scanner
       - name: Install SonarQube Cloud scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
-        shell: powershell
         run: |
-          New-Item -Path ./.sonar/scanner -ItemType Directory
-          dotnet tool update dotnet-sonarscanner --tool-path ./.sonar/scanner
+          ./.sonar/scanner/dotnet tool update dotnet-sonarscanner --tool-path ./.sonar/scanner
       - name: Download coverage xml
         uses: actions/download-artifact@v4
         with:
           name: coverage_report_xml
-      - name: List coverage files
-        shell: powershell
-        run: |
-          Write-Host "Looking for coverage files..."
-          Get-ChildItem -Path . -Recurse -Filter "*.xml" | Where-Object { $_.Name -like "*coverage*" } | ForEach-Object { Write-Host $_.FullName }
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"eebbesen_StpFoodBlazor" /o:"eebbesen" \
+          ./.sonar/scanner\dotnet-sonarscanner begin /k:"eebbesen_StpFoodBlazor" /o:"eebbesen" \
           /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" \
           /d:sonar.cs.opencover.reportsPaths="**\coverage.opencover.xml" \
           /d:sonar.inclusions="**/*.cs,**/*.cshtml,**/*.razor" \
