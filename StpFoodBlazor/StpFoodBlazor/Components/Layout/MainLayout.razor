@@ -8,17 +8,19 @@
 <div class="page">
     <main>
         <div class="top-row px-4" id="navbar">
-            <div id="messages" class="messages w-100 text-center marquee">
-                <div class="marquee-content container d-flex align-items-stretch">
-                    @foreach (var holiday in holidayStrings)
-                    {
-                        <span class="holiday m-auto">@holiday</span>
-                    }
+            <div class="container d-flex">
+                <div id="messages" class="messages text-center marquee w-100">
+                    <div class="marquee-content d-flex align-items-stretch">
+                        @foreach (var holiday in holidayStrings)
+                        {
+                            <span class="holiday m-auto">@holiday</span>
+                        }
+                    </div>
                 </div>
+                <a id="root-nav" href="/" class=@(classValues(""))>Deals</a>
+                <a id="giftcard-nav" href="giftcards" class=@(classValues("giftcards"))>Gift Cards</a>
+                <a id="about-nav" href="about" class=@(classValues("about")) target="_blank">About</a>
             </div>
-            <a id="root-nav" href="/" class=@(classValues(""))>Deals</a>
-            <a id="giftcard-nav" href="giftcards" class=@(classValues("giftcards"))>Gift Cards</a>
-            <a id="about-nav" href="about" class=@(classValues("about")) target="_blank">About</a>
         </div>
 
         <article class="content px-4">
