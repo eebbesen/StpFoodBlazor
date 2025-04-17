@@ -1,10 +1,8 @@
 using Microsoft.Extensions.Logging;
 using NSubstitute;
-using StpFoodBlazor.Models;
 using StpFoodBlazor.Services;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -19,14 +17,14 @@ namespace StpFoodBlazorTest.Services
         private readonly ILogger<HttpHolidayService> _logger;
         private static readonly string URL_BASE = Environment.GetEnvironmentVariable("APPCONFIG__HOLIDAYURL");
         private static readonly string HOLIDAY_DATA = @"
-            [{
+            {
                 ""2023-10-01"": [
-                    ""National Homemade Cookies Day"",
+                    ""National Homemade Cookies Day""
                 ],
                 ""2023-10-02"": [
-                    ""National Fried Scallops Day"",
+                    ""National Fried Scallops Day""
                 ]
-            }]";
+            }";
 
         public HttpHolidayServiceTests()
         {
@@ -40,7 +38,7 @@ namespace StpFoodBlazorTest.Services
             var response = new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.OK,
-                Content = JsonContent.Create(GetFixtureContent().First())
+                Content = JsonContent.Create(GetFixtureContent())
             };
 
             messageHandlerMock.SetResponse(URL_BASE + "/today/", response);
