@@ -31,7 +31,7 @@
     {
         var cut = RenderMainLayout("");
 
-        var navbar = cut.Find("#navbar");
+        var navbar = cut.Find("#navbar-items");
 
         Assert.Equal("d-none", navbar.Children[1].ClassName);
         Assert.Equal("", navbar.Children[2].ClassName);
@@ -43,7 +43,7 @@
     {
         var cut = RenderMainLayout("about");
 
-        var navbar = cut.Find("#navbar");
+        var navbar = cut.Find("#navbar-items");
 
         Assert.Equal("", navbar.Children[1].ClassName);
         Assert.Equal("", navbar.Children[2].ClassName);
@@ -55,22 +55,22 @@
     {
         var cut = RenderMainLayout("giftcards");
 
-        var navbar = cut.Find("#navbar");
+        var navbar = cut.Find("#navbar-items");
 
         Assert.Equal("", navbar.Children[1].ClassName);
         Assert.Equal("d-none", navbar.Children[2].ClassName);
         Assert.Equal("", navbar.Children[3].ClassName);
     }
 
-    private void AssertCommon(IElement navbar)
+    private void AssertCommon(IElement navbarItems)
     {
-        Assert.Equal(4, navbar.Children.Length);
-        Assert.Equal("messages", navbar.Children[0].Id);
-        Assert.Equal("messages w-100 text-center", navbar.Children[0].ClassName);
-        Assert.Equal("Today: Make Lunch Count Day, National Peach Cobbler Day", navbar.Children[0].InnerHtml);
-        Assert.Equal("root-nav", navbar.Children[1].Id);
-        Assert.Equal("giftcard-nav", navbar.Children[2].Id);
-        Assert.Equal("about-nav", navbar.Children[3].Id);
+        Assert.Equal(4, navbarItems.Children.Length);
+        Assert.Equal("messages", navbarItems.Children[0].Id);
+        Assert.Equal("messages w-100 text-center", navbarItems.Children[0].ClassName);
+        Assert.Equal("Today: Make Lunch Count Day, National Peach Cobbler Day", navbarItems.Children[0].InnerHtml);
+        Assert.Equal("root-nav", navbarItems.Children[1].Id);
+        Assert.Equal("giftcard-nav", navbarItems.Children[2].Id);
+        Assert.Equal("about-nav", navbarItems.Children[3].Id);
     }
 
     private IRenderedFragment RenderMainLayout(string route)
