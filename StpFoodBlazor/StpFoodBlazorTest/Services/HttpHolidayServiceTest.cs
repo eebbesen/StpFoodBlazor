@@ -15,7 +15,11 @@ namespace StpFoodBlazorTest.Services
     public class HttpHolidayServiceTests
     {
         private readonly ILogger<HttpHolidayService> _logger;
+        private readonly HttpHolidayService _service;
+        private readonly MockHttpMessageHandler _messageHandlerMock;
         private static readonly string URL_BASE = Environment.GetEnvironmentVariable("APPCONFIG__HOLIDAYURL");
+        private static readonly string URL_TODAY = URL_BASE + "/today/";
+        private static readonly string URL_RANGE = URL_BASE + "/range/?startDate=10-01&endDate=10-02";
         private static readonly string HOLIDAY_DATA = @"
             {
                 ""2023-10-01"": [
@@ -29,25 +33,23 @@ namespace StpFoodBlazorTest.Services
         public HttpHolidayServiceTests()
         {
             _logger = Substitute.For<ILogger<HttpHolidayService>>();
+            _messageHandlerMock = new MockHttpMessageHandler();
+            _service = new HttpHolidayService(new HttpClient(_messageHandlerMock), _logger);
         }
 
         [Fact]
         public async Task GetTodaysHolidaysAsync_ShouldReturnHolidays_WhenApiReturnsData()
         {
             var expectedResult = GetFixtureContent(1);
-            var messageHandlerMock = new MockHttpMessageHandler();
             var response = new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.OK,
                 Content = JsonContent.Create(expectedResult)
             };
 
-            messageHandlerMock.SetResponse(URL_BASE + "/today/", response);
+            _messageHandlerMock.SetResponse(URL_TODAY, response);
 
-            var httpClient = new HttpClient(messageHandlerMock);
-            var service = new HttpHolidayService(httpClient, _logger);
-
-            var result = await service.GetTodaysHolidaysAsync();
+            var result = await _service.GetTodaysHolidaysAsync();
 
             Assert.NotNull(result);
             Assert.Equal(expectedResult, result);
@@ -56,19 +58,15 @@ namespace StpFoodBlazorTest.Services
         [Fact]
         public async Task GetTodaysHolidaysAsync_ShouldReturnEmptyArray_WhenApiReturnsNull()
         {
-            var messageHandlerMock = new MockHttpMessageHandler();
             var response = new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.OK,
                 Content = JsonContent.Create((string[])null)
             };
 
-            messageHandlerMock.SetResponse(URL_BASE + "/today/", response);
+            _messageHandlerMock.SetResponse(URL_TODAY, response);
 
-            var httpClient = new HttpClient(messageHandlerMock);
-            var service = new HttpHolidayService(httpClient, _logger);
-
-            var result = await service.GetTodaysHolidaysAsync();
+            var result = await _service.GetTodaysHolidaysAsync();
 
             Assert.NotNull(result);
             Assert.Empty(result);
@@ -77,36 +75,28 @@ namespace StpFoodBlazorTest.Services
         [Fact]
         public async Task GetTodaysHolidaysAsync_ShouldLogAndRethrow_WhenApiThrowsException()
         {
-            var messageHandlerMock = new MockHttpMessageHandler();
-            messageHandlerMock.SetResponse(URL_BASE + "/today/", new HttpResponseMessage
+            _messageHandlerMock.SetResponse(URL_TODAY, new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.InternalServerError,
                 Content = new StringContent("Test exception")
             });
 
-            var httpClient = new HttpClient(messageHandlerMock);
-            var service = new HttpHolidayService(httpClient, _logger);
-
-            await Assert.ThrowsAsync<HttpRequestException>(() => service.GetTodaysHolidaysAsync());
+            await Assert.ThrowsAsync<HttpRequestException>(() => _service.GetTodaysHolidaysAsync());
         }
 
         [Fact]
         public async Task GetHolidaysRangeAsync_ShouldReturnHolidays_WhenApiReturnsData()
         {
             var expectedResult = GetFixtureContent();
-            var messageHandlerMock = new MockHttpMessageHandler();
             var response = new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.OK,
                 Content = JsonContent.Create(expectedResult)
             };
 
-            messageHandlerMock.SetResponse(URL_BASE + "/range/?startDate=10-01&endDate=10-02", response);
+            _messageHandlerMock.SetResponse(URL_RANGE, response);
 
-            var httpClient = new HttpClient(messageHandlerMock);
-            var service = new HttpHolidayService(httpClient, _logger);
-
-            var result = await service.GetHolidaysRangeAsync("10-01", "10-02");
+            var result = await _service.GetHolidaysRangeAsync("10-01", "10-02");
 
             Assert.NotNull(result);
             Assert.Equal(expectedResult, result);
@@ -115,19 +105,15 @@ namespace StpFoodBlazorTest.Services
         [Fact]
         public async Task GetHolidaysRangeAsync_ShouldReturnEmptyArray_WhenApiReturnsNull()
         {
-            var messageHandlerMock = new MockHttpMessageHandler();
             var response = new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.OK,
                 Content = JsonContent.Create((string[])null)
             };
 
-            messageHandlerMock.SetResponse(URL_BASE + "/range/?startDate=10-01&endDate=10-02", response);
+            _messageHandlerMock.SetResponse(URL_RANGE, response);
 
-            var httpClient = new HttpClient(messageHandlerMock);
-            var service = new HttpHolidayService(httpClient, _logger);
-
-            var result = await service.GetHolidaysRangeAsync("10-01", "10-02");
+            var result = await _service.GetHolidaysRangeAsync("10-01", "10-02");
 
             Assert.NotNull(result);
             Assert.Empty(result);
@@ -136,17 +122,13 @@ namespace StpFoodBlazorTest.Services
         [Fact]
         public async Task GetHolidaysRangeAsync_ShouldLogAndRethrow_WhenApiThrowsException()
         {
-            var messageHandlerMock = new MockHttpMessageHandler();
-            messageHandlerMock.SetResponse(URL_BASE + "/range/?startDate=10-01&endDate=10-02", new HttpResponseMessage
+            _messageHandlerMock.SetResponse(URL_RANGE, new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.InternalServerError,
                 Content = new StringContent("Test exception")
             });
 
-            var httpClient = new HttpClient(messageHandlerMock);
-            var service = new HttpHolidayService(httpClient, _logger);
-
-            await Assert.ThrowsAsync<HttpRequestException>(() => service.GetHolidaysRangeAsync("10-01", "10-02"));
+            await Assert.ThrowsAsync<HttpRequestException>(() => _service.GetHolidaysRangeAsync("10-01", "10-02"));
         }
 
         private static Dictionary<string, string[]> GetFixtureContent(int limit = -1)

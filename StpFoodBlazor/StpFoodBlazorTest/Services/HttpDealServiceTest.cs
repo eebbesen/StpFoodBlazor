@@ -16,6 +16,8 @@ namespace StpFoodBlazorTest.Services
     public class HttpDealServiceTests
     {
         private readonly ILogger<HttpDealService> _logger;
+        private readonly MockHttpMessageHandler _messageHandlerMock;
+        private readonly HttpDealService _service;
         private readonly string _testUrl;
         private static readonly string DEAL_FIXTURES_PATH = Path.Combine(Directory.GetCurrentDirectory(), "fixtures", "deals.json");
 
@@ -23,26 +25,24 @@ namespace StpFoodBlazorTest.Services
         {
             _testUrl = Helper.GetUrl("Deals");
             _logger = Substitute.For<ILogger<HttpDealService>>();
+            _messageHandlerMock = new MockHttpMessageHandler();
+            _service = new HttpDealService(new HttpClient(_messageHandlerMock), _logger);
         }
 
         [Fact]
         public async Task GetDealsAsync_ShouldReturnDeals_WhenApiReturnsData()
         {
             var expectedDeals = GetFixtureContent();
-            var messageHandlerMock = new MockHttpMessageHandler();
+            
             var response = new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.OK,
                 Content = JsonContent.Create(GetFixtureContent())
             };
 
-            messageHandlerMock.SetResponse(_testUrl, response);
+            _messageHandlerMock.SetResponse(_testUrl, response);
 
-            var httpClient = new HttpClient(messageHandlerMock);
-            var service = new HttpDealService(httpClient, _logger);
-
-
-            var result = await service.GetDealsAsync();
+            var result = await _service.GetDealsAsync();
 
             Assert.NotNull(result);
             Assert.Equal(expectedDeals.Length, result.Length);
@@ -55,19 +55,15 @@ namespace StpFoodBlazorTest.Services
         [Fact]
         public async Task GetDealsAsync_ShouldReturnEmptyArray_WhenApiReturnsNull()
         {
-            var messageHandlerMock = new MockHttpMessageHandler();
             var response = new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.OK,
                 Content = JsonContent.Create((DealEvent[])null)
             };
 
-            messageHandlerMock.SetResponse(_testUrl, response);
+            _messageHandlerMock.SetResponse(_testUrl, response);
 
-            var httpClient = new HttpClient(messageHandlerMock);
-            var service = new HttpDealService(httpClient, _logger);
-
-            var result = await service.GetDealsAsync();
+            var result = await _service.GetDealsAsync();
 
             Assert.NotNull(result);
             Assert.Empty(result);
@@ -76,17 +72,13 @@ namespace StpFoodBlazorTest.Services
         [Fact]
         public async Task GetDealsAsync_ShouldLogAndRethrow_WhenApiThrowsException()
         {
-            var messageHandlerMock = new MockHttpMessageHandler();
-            messageHandlerMock.SetResponse(_testUrl, new HttpResponseMessage
+            _messageHandlerMock.SetResponse(_testUrl, new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.InternalServerError,
                 Content = new StringContent("Test exception")
             });
 
-            var httpClient = new HttpClient(messageHandlerMock);
-            var service = new HttpDealService(httpClient, _logger);
-
-            await Assert.ThrowsAsync<HttpRequestException>(() => service.GetDealsAsync());
+            await Assert.ThrowsAsync<HttpRequestException>(() => _service.GetDealsAsync());
         }
 
         private static DealEvent[] GetFixtureContent()

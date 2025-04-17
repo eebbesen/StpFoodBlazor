@@ -33,7 +33,7 @@ namespace StpFoodBlazorTest.Integration
             }
             catch (Exception)
             {
-                SeleniumArtifactts("DealsTableBodyPlaceholder");
+                SeleniumArtifacts("DealsTableBodyPlaceholder");
                 throw;
             }
         }
@@ -57,7 +57,7 @@ namespace StpFoodBlazorTest.Integration
             }
             catch (Exception)
             {
-                SeleniumArtifactts("DealsTableBodyLoads");
+                SeleniumArtifacts("DealsTableBodyLoads");
                 throw;
             }
         }
