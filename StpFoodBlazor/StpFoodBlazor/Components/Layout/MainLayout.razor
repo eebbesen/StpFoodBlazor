@@ -13,7 +13,7 @@
                     <div class="marquee-content d-flex align-items-stretch">
                         @foreach (var holiday in holidayStrings)
                         {
-                            <span class="holiday m-auto">@holiday</span>
+                            <span class="holiday m-auto p-3">@holiday</span>
                         }
                     </div>
                 </div>
@@ -71,7 +71,7 @@
 
     private string classValues(string uriTest)
     {
-        var current = NavMan.ToBaseRelativePath(uri);
+        var current = NavMan.ToBaseRelativePath(uri).Split('?')[0];
 
         if (uriTest == current)
         {
@@ -79,7 +79,7 @@
         }
 
         if (((current == "giftcards" || current == "") && uriTest == "about") ||
-            (current == "about" && uriTest == "giftcards"))
+        (current == "about" && uriTest == "giftcards"))
         {
             return " justify-content-end";
         }
