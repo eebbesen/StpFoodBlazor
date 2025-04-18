@@ -76,6 +76,10 @@ main {
     }
 }
 
+#nav-links {
+    align-items: center;
+}
+
 #blazor-error-ui {
     background: lightyellow;
     bottom: 0;
