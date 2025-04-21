@@ -560,14 +560,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Components.WebAssembly.Server": "[8.0.14, )",
           "Microsoft.Extensions.Logging.ApplicationInsights": "[2.23.0, )",
-          "Microsoft.Extensions.Logging.AzureAppServices": "[9.0.3, )",
-          "StpFoodBlazor.Client": "[1.0.0, )"
-        }
-      },
-      "stpfoodblazor.client": {
-        "type": "Project",
-        "dependencies": {
-          "Microsoft.AspNetCore.Components.WebAssembly": "[8.0.10, )"
+          "Microsoft.Extensions.Logging.AzureAppServices": "[9.0.3, )"
         }
       }
     }
