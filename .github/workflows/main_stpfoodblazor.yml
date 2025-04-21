@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Test, build and deploy ASP.Net Core app to Azure Web App - StpFoodBlazor
+name: Test, assess, build and deploy ASP.Net Core app to Azure Web App - StpFoodBlazor
 
 on:
   push:
@@ -14,9 +14,14 @@ jobs:
     uses: ./.github/workflows/test.yml
     secrets: inherit
 
+  sonar:
+    uses: ./.github/workflows/sonar.yml
+    secrets: inherit
+    needs: test
+
   build:
     runs-on: windows-latest
-    needs: test
+    needs: sonar
 
     steps:
       - uses: actions/checkout@v4
