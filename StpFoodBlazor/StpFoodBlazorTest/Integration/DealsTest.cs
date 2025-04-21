@@ -22,22 +22,22 @@ namespace StpFoodBlazorTest.Integration
         }
 
         // need to review -- consistently failing in GitHub Actions only
-        // [Fact]
-        // public void DealsTableBodyPlaceholder()
-        // {
-        //     Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
-        //     try
-        //     {
-        //         Driver.Navigate().GoToUrl(BASE_URL);
-        //         AssertCommon();
-        //         Driver.FindElement(By.Id("deals_table_body_placeholder"));
-        //     }
-        //     catch (Exception)
-        //     {
-        //         SeleniumArtifacts("DealsTableBodyPlaceholder");
-        //         throw;
-        //     }
-        // }
+        [Fact]
+        public void DealsTableBodyPlaceholder()
+        {
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+            try
+            {
+                Driver.Navigate().GoToUrl(BASE_URL);
+                AssertCommon();
+                Driver.FindElement(By.Id("deals_table_body_placeholder"));
+            }
+            catch (Exception)
+            {
+                SeleniumArtifacts("DealsTableBodyPlaceholder");
+                throw;
+            }
+        }
 
         [Fact]
         public void DealsTableBodyLoads()
@@ -48,13 +48,13 @@ namespace StpFoodBlazorTest.Integration
                 Driver.Navigate().GoToUrl(BASE_URL);
                 Assert.True(3 < Driver.FindElement(By.Id("deals_table_body")).FindElements(By.ClassName("row")).Count);
 
-                // WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
-                // wait.Until  (
-                //     d => d.FindElement(By.Id("messages")).Text.Length > 10
-                // );
-                // var messages = Driver.FindElement(By.Id("messages"));
-                // Assert.True(messages.Text.Length > 10);
-                // Assert.StartsWith("Today: ", messages.Text);
+                WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+                wait.Until  (
+                    d => d.FindElement(By.Id("messages")).Text.Length > 10
+                );
+                var messages = Driver.FindElement(By.Id("messages"));
+                Assert.True(messages.Text.Length > 10);
+                Assert.StartsWith("Today: ", messages.Text);
             }
             catch (Exception)
             {
