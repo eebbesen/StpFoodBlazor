@@ -18,6 +18,7 @@ jobs:
       ASPNETCORE_APPCONFIG__SHEETSURL: ${{ secrets.ASPNETCORE_APPCONFIG__SHEETSURL }}
       APPCONFIG__HOLIDAYURL: ${{ secrets.APPCONFIG__HOLIDAYURL }}
       TEST_RESULTS_PATH: "/home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestResults"
+      TEST_ARTIFACTS_PATH: "/home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestArtifacts"
       MIN_LINE_COVERAGE: 87
       MIN_BRANCH_COVERAGE: 88
 
@@ -82,11 +83,11 @@ jobs:
       continue-on-error: true
       with:
         name: selenium_png
-        path: "${{ env.TEST_RESULTS_PATH }}/*.png"
+        path: "${{ env.TEST_ARTIFACTS_PATH }}/*.png"
     - name: Upload Selenium HTML
       uses: actions/upload-artifact@v4
       if: always()
       continue-on-error: true
       with:
         name: selenium_html
-        path: "${{ env.TEST_RESULTS_PATH }}/*.html"
+        path: "${{ env.TEST_ARTIFACTS_PATH }}/*.html"
