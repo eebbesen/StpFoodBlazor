@@ -14,8 +14,8 @@ namespace StpFoodBlazorTest.Integration
         private void AssertCommon()
         {
             Driver.FindElement(By.Id("deals_table_header"));
-            SelectElement select = new(Driver.FindElement(By.Id("day-of-week-select")));
-            Assert.Equal(DateTime.Now.DayOfWeek.ToString(), select.SelectedOption.Text);
+            // SelectElement select = new(Driver.FindElement(By.Id("day-of-week-select")));
+            Assert.Equal(DateTime.Now.DayOfWeek.ToString(), ((SelectElement)Driver.FindElement(By.Id("day-of-week-select"))).SelectedOption.Text);
             Driver.FindElement(By.Id("happy-hour-checkbox"));
             Assert.Equal("Gift Cards", Driver.FindElement(By.Id("giftcard-nav")).Text);
             Assert.Equal("About", Driver.FindElement(By.Id("about-nav")).Text);
