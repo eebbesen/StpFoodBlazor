@@ -51,7 +51,7 @@ namespace StpFoodBlazorTest.Integration
         protected static string ArtifactDir()
         {
             // return "{System.IO.Directory.GetCurrentDirectory()}../../../../../TestResults/";
-            return Path.Combine(Directory.GetCurrentDirectory(), "..", "..", "..", "..", "..", "TestResults");    
+            return Path.Combine(Directory.GetCurrentDirectory(), "..", "..", "..", "TestArtifacts");    
 
         }
 

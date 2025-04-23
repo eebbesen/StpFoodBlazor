@@ -51,18 +51,18 @@
       },
       "Selenium.Support": {
         "type": "Direct",
-        "requested": "[4.29.0, )",
-        "resolved": "4.29.0",
-        "contentHash": "Edeldo2R/H4mfh1CW1YNr8g8ASnF/5d9YlvBKtAW93dMImnzaQ47eHbMjoJp4kU4CeyQ22UA300d7VFutzddmw==",
+        "requested": "[4.31.0, )",
+        "resolved": "4.31.0",
+        "contentHash": "dAGFDnl5rGc7eG12PJfrEU25+LMWUkBcCzp9VsJh+L4xfa6aQ7/7KSnCWDJUxiK9CjWgWJGkNYWVR7OawGvb1Q==",
         "dependencies": {
-          "Selenium.WebDriver": "4.29.0"
+          "Selenium.WebDriver": "4.31.0"
         }
       },
       "Selenium.WebDriver": {
         "type": "Direct",
-        "requested": "[4.29.0, )",
-        "resolved": "4.29.0",
-        "contentHash": "bxUeeyGPoPFqqZX/RQAmcuE8fvdi08ep9519rFpONfC/rmBemezfCbbwDKPLE0xkb/cW1asH5WbDYLXs5giVeg=="
+        "requested": "[4.31.0, )",
+        "resolved": "4.31.0",
+        "contentHash": "RT5Pg6UVyxe/+S/H808VAbfXX4kHQdvo/U28oViwUcCpC4WL7zHq2GgxY/b9zNLTcwJ8zfqu+WmHPifkTx+BCQ=="
       },
       "xunit": {
         "type": "Direct",
