@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 using StpFoodBlazor.Helpers;
@@ -17,6 +18,7 @@ namespace StpFoodBlazorTest.Services
     {
         private readonly ILogger<HttpDealService> _logger;
         private readonly MockHttpMessageHandler _messageHandlerMock;
+        private readonly IMemoryCache _memoryCache;
         private readonly HttpDealService _service;
         private readonly string _testUrl;
         private static readonly string DEAL_FIXTURES_PATH = Path.Combine(Directory.GetCurrentDirectory(), "fixtures", "deals.json");
@@ -26,7 +28,8 @@ namespace StpFoodBlazorTest.Services
             _testUrl = Helper.GetUrl("Deals");
             _logger = Substitute.For<ILogger<HttpDealService>>();
             _messageHandlerMock = new MockHttpMessageHandler();
-            _service = new HttpDealService(new HttpClient(_messageHandlerMock), _logger);
+            _memoryCache = Substitute.For<IMemoryCache>();
+            _service = new HttpDealService(_memoryCache, new HttpClient(_messageHandlerMock), _logger);
         }
 
         [Fact]
