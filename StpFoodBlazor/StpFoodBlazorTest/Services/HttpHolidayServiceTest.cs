@@ -1,3 +1,5 @@
+using AngleSharp.Common;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 using StpFoodBlazor.Services;
@@ -15,6 +17,7 @@ namespace StpFoodBlazorTest.Services
     public class HttpHolidayServiceTests
     {
         private readonly ILogger<HttpHolidayService> _logger;
+        private readonly IMemoryCache _memoryCache;
         private readonly HttpHolidayService _service;
         private readonly MockHttpMessageHandler _messageHandlerMock;
         private static readonly string URL_BASE = Environment.GetEnvironmentVariable("APPCONFIG__HOLIDAYURL");
@@ -33,8 +36,9 @@ namespace StpFoodBlazorTest.Services
         public HttpHolidayServiceTests()
         {
             _logger = Substitute.For<ILogger<HttpHolidayService>>();
+            _memoryCache = new MemoryCache(new MemoryCacheOptions());
             _messageHandlerMock = new MockHttpMessageHandler();
-            _service = new HttpHolidayService(new HttpClient(_messageHandlerMock), _logger);
+            _service = new HttpHolidayService(_memoryCache, new HttpClient(_messageHandlerMock), _logger);
         }
 
         [Fact]
@@ -53,6 +57,23 @@ namespace StpFoodBlazorTest.Services
 
             Assert.NotNull(result);
             Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
+        public async Task GetTodaysHolidaysAsync_ShouldReturnCachedHolidays_WhenCacheReturnsData()
+        {
+            var expectedResult = GetFixtureContent(1);
+
+            Dictionary<string, string[]> cachedHolidays = expectedResult.First().Value.ToDictionary(k => k, v => new[] { v });
+            _memoryCache.Set("holidays", cachedHolidays, new MemoryCacheEntryOptions
+            {
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(400)
+            });
+
+            var result = await _service.GetTodaysHolidaysAsync();
+
+            Assert.Single(result);
+            Assert.Equal(expectedResult.First().Value, result.First().Value);
         }
 
         [Fact]
@@ -99,6 +120,24 @@ namespace StpFoodBlazorTest.Services
             var result = await _service.GetHolidaysRangeAsync("10-01", "10-02");
 
             Assert.NotNull(result);
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
+        public async Task GetHolidaysRangeAsync_ShouldReturnCachedHolidays_WhenCacheReturnsData()
+        {
+            var expectedResult = GetFixtureContent(1);
+
+            Dictionary<string, string[]> cachedHolidays = expectedResult;
+
+            _memoryCache.Set("holidays", cachedHolidays, new MemoryCacheEntryOptions
+            {
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(400)
+            });
+
+            var result = await _service.GetHolidaysRangeAsync("10-01", "10-02");
+
+            Assert.Single(result);
             Assert.Equal(expectedResult, result);
         }
 

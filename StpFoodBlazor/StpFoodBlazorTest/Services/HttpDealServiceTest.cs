@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 using StpFoodBlazor.Helpers;
@@ -17,6 +18,7 @@ namespace StpFoodBlazorTest.Services
     {
         private readonly ILogger<HttpDealService> _logger;
         private readonly MockHttpMessageHandler _messageHandlerMock;
+        private readonly IMemoryCache _memoryCache;
         private readonly HttpDealService _service;
         private readonly string _testUrl;
         private static readonly string DEAL_FIXTURES_PATH = Path.Combine(Directory.GetCurrentDirectory(), "fixtures", "deals.json");
@@ -26,7 +28,8 @@ namespace StpFoodBlazorTest.Services
             _testUrl = Helper.GetUrl("Deals");
             _logger = Substitute.For<ILogger<HttpDealService>>();
             _messageHandlerMock = new MockHttpMessageHandler();
-            _service = new HttpDealService(new HttpClient(_messageHandlerMock), _logger);
+            _memoryCache = new MemoryCache(new MemoryCacheOptions());
+            _service = new HttpDealService(_memoryCache, new HttpClient(_messageHandlerMock), _logger);
         }
 
         [Fact]
@@ -45,6 +48,25 @@ namespace StpFoodBlazorTest.Services
             var result = await _service.GetDealsAsync();
 
             Assert.NotNull(result);
+            Assert.Equal(expectedDeals.Length, result.Length);
+            Assert.Equal(expectedDeals[0].Name, result[0].Name);
+            Assert.Equal(expectedDeals[0].Deal, result[0].Deal);
+            Assert.Equal(expectedDeals[1].Name, result[1].Name);
+            Assert.Equal(expectedDeals[1].Deal, result[1].Deal);
+        }
+
+        [Fact]
+        public async Task GetDealsAsync_ShouldReturnCachedDeals_WhenCacheReturnsData()
+        {
+            DealEvent[] expectedDeals = GetFixtureContent()[0..2];
+            _memoryCache.Set("deals", expectedDeals, new MemoryCacheEntryOptions
+            {
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(200)
+            });
+
+            var result = await _service.GetDealsAsync();
+
+            Assert.Equal(2, result.Length);
             Assert.Equal(expectedDeals.Length, result.Length);
             Assert.Equal(expectedDeals[0].Name, result[0].Name);
             Assert.Equal(expectedDeals[0].Deal, result[0].Deal);

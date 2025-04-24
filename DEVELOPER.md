@@ -17,6 +17,10 @@ If you don't have an instance of the app running on localhost you can exclude Se
 
     $ dotnet test --settings tests.runsettings --filter FullyQualifiedName\!~StpFoodBlazorTest.Integration --collect "XPlat Code Coverage"
 
+on Windows
+
+    $ dotnet test --settings tests.runsettings --filter "FullyQualifiedName!~StpFoodBlazorTest.Integration" --collect "XPlat Code Coverage"
+
 To view tests in HTML, install `reportgenerator` https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-code-coverage?tabs=linux
 
     $ dotnet tool install -g dotnet-reportgenerator-globaltool

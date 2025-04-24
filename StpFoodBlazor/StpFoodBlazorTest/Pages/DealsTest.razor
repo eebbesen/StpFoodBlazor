@@ -18,7 +18,6 @@
         ctx.Services.AddSingleton<IHolidayService>(new TestHolidayService());
         ctx.Services.AddSingleton<ITimeService>(timeService);
     }
-
     void Dispose()
     {
     }
@@ -151,7 +150,8 @@
         var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change("Monday");
-        @* cut.WaitForState(() => cut.Find("#day-of-week-select").TextContent == "Monday"); *@
+        cut.WaitForState(() => ((IHtmlSelectElement)cut.Find("#day-of-week-select")).Value == "monday", 
+            TimeSpan.FromSeconds(5));
 
         var elements = getElements(cut);
         Assert.Equal(16, elements.ChildElementCount);
@@ -165,6 +165,8 @@
         var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change("Friday");
+        cut.WaitForState(() => ((IHtmlSelectElement)cut.Find("#day-of-week-select")).Value == "friday", 
+            TimeSpan.FromSeconds(5));
 
         var elements = getElements(cut);
         Assert.Equal(20, elements.ChildElementCount);
@@ -178,6 +180,8 @@
         var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change(""); // All value in the select is ""
+        cut.WaitForState(() => ((IHtmlSelectElement)cut.Find("#day-of-week-select")).Value == "", 
+            TimeSpan.FromSeconds(5));
 
         var elements = getElements(cut);
         Assert.Equal(108, elements.ChildElementCount);
@@ -209,6 +213,8 @@
         var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change("Friday");
+        cut.WaitForState(() => ((IHtmlSelectElement)cut.Find("#day-of-week-select")).Value == "friday", 
+            TimeSpan.FromSeconds(5));
 
         var elements = getElements(cut);
         Assert.Equal(20, elements.ChildElementCount);

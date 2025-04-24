@@ -33,6 +33,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 builder.Services.AddHttpClient();
+builder.Services.AddMemoryCache();
 builder.Services.AddScoped<IDealService, HttpDealService>();
 builder.Services.AddScoped<ITimeService, TimeService>();
 builder.Services.AddScoped<IGiftCardService, HttpGiftCardService>();
