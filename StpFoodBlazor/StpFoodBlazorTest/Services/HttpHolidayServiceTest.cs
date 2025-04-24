@@ -123,6 +123,23 @@ namespace StpFoodBlazorTest.Services
         }
 
         [Fact]
+        public async Task GetHolidaysRangeAsync_ShouldReturnCachedHolidays_WhenCacheReturnsData()
+        {
+            var expectedResult = GetFixtureContent(1);
+
+            Dictionary<string, string[]> cachedHolidays = expectedResult.First().Value.ToDictionary(k => k, v => new[] { v });
+            _memoryCache.Set("holidays", cachedHolidays, new MemoryCacheEntryOptions
+            {
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(400)
+            });
+
+            var result = await _service.GetHolidaysRangeAsync("10-01", "10-02");
+
+            Assert.Single(result);
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
         public async Task GetHolidaysRangeAsync_ShouldReturnEmptyArray_WhenApiReturnsNull()
         {
             var response = new HttpResponseMessage
