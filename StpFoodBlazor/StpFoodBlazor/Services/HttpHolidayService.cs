@@ -16,7 +16,7 @@ namespace StpFoodBlazor.Services
         public async Task<Dictionary<string, string[]>> GetTodaysHolidaysAsync()
         {
             Dictionary<string, string[]> result;
-            
+
             if (_cache.TryGetValue(CACHE_KEY, out Dictionary<string, string[]>? cachedHolidays))
             {
                 result = cachedHolidays;
@@ -38,9 +38,9 @@ namespace StpFoodBlazor.Services
         public async Task<Dictionary<string, string[]>> GetHolidaysRangeAsync(string startDate, string endDate)
         {
             Dictionary<string, string[]> result;
-            
+
             if (_cache.TryGetValue(CACHE_KEY, out Dictionary<string, string[]>? cachedHolidays))
-            {                
+            {
                 result = cachedHolidays;
                 _logger.LogInformation("retrieved holidays from cache using key: {CacheKey}", CACHE_KEY);
             }

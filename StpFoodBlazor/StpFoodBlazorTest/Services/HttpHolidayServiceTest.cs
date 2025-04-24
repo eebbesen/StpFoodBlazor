@@ -1,3 +1,4 @@
+using AngleSharp.Common;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
@@ -127,7 +128,8 @@ namespace StpFoodBlazorTest.Services
         {
             var expectedResult = GetFixtureContent(1);
 
-            Dictionary<string, string[]> cachedHolidays = expectedResult.First().Value.ToDictionary(k => k, v => new[] { v });
+            Dictionary<string, string[]> cachedHolidays = expectedResult;
+
             _memoryCache.Set("holidays", cachedHolidays, new MemoryCacheEntryOptions
             {
                 AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(400)
