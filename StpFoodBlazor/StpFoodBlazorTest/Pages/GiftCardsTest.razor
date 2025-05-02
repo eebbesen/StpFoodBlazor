@@ -87,7 +87,7 @@
         var cut = ctx.Render(@<GiftCards />);
         var elements = cut.WaitForElement("#giftcards_no_records", TimeSpan.FromSeconds(5));
 
-        Assert.Contains("No active gift card deals. These deals are most common in December.", elements.InnerHtml);
+        Assert.Contains("No active gift card deals. These deals are most common in May/June and December.", elements.InnerHtml);
     }
 
     private IElement getElements(IRenderedFragment cut)
