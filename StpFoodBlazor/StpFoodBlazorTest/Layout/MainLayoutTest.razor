@@ -9,21 +9,33 @@
     private TestContext ctx;
     private NavigationManager navMan;
     private TestHolidayService holidayService = new TestHolidayService();
+    private TestGiftCardService giftCardService = new TestGiftCardService();
 
     public MainLayoutTest()
     {
         ctx = new TestContext();
         holidayService.Data = CreateHolidays();
+        giftCardService.Data = CreateGiftCards();
         ctx.Services.AddSingleton<IHolidayService>(holidayService);
+        ctx.Services.AddSingleton<IGiftCardService>(giftCardService);
         navMan = ctx.Services.GetRequiredService<FakeNavigationManager>();
     }
 
     private Dictionary<string, string[]> CreateHolidays()
     {
-        return new Dictionary<string, string[]>
-{
-{ DateTime.Now.ToString("MM-dd"), new[] { "Make Lunch Count Day", "National Peach Cobbler Day" } },
-};
+        return new Dictionary<string, string[]>{ { DateTime.Now.ToString("MM-dd"), new[] { "Make Lunch Count Day", "National Peach Cobbler Day" } } };
+    }
+
+    private GiftCard[] CreateGiftCards()
+    {
+        return new[]
+        {
+            new GiftCard
+            {
+                Deal = "great deal",
+                Name = "Gift Card 1"
+            }
+        };
     }
 
     [Fact]
@@ -67,9 +79,8 @@
         Assert.Equal("messages text-center marquee w-100 d-none d-md-block", navbar.Children[0].ClassName);
         Assert.Equal("marquee-content d-flex align-items-stretch", navbar.Children[0].Children[0].ClassName);
         Assert.Equal(" flex-fill", navlinks.Children[0].ClassName);
-        Assert.Equal(" d-none position-relative", navlinks.Children[1].ClassName);
-        Assert.Equal(" justify-content-end", navlinks.Children[2].ClassName);
     }
+
 
     [Fact]
     public void ShouldHideDealsNavElementWhenGiftcardsRouteWithParams()
@@ -84,6 +95,33 @@
         Assert.Equal(" d-none", navlinks.Children[0].ClassName);
         Assert.Equal(" flex-fill position-relative", navlinks.Children[1].ClassName);
         Assert.Equal(" justify-content-end", navlinks.Children[2].ClassName);
+    }
+
+    [Fact]
+    public void ShouldDecorateGiftCardNavElementWhenGiftCardsExist()
+    {
+        giftCardService.NoRecords = false;
+        var cut = RenderMainLayout("deals");
+
+        var navbarItems = cut.Find("#navbar-items");
+        var giftCardNav = cut.Find("#giftcard-nav");
+        var giftCardExist = cut.WaitForElement("#giftcards-exist");
+
+        Assert.Equal("position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle", giftCardExist.ClassName);
+        Assert.Equal(" flex-fill position-relative", giftCardNav.ClassName);
+    }
+
+    [Fact]
+    public void ShouldNotDecorateGiftCardNavElementWhenNoGiftCards()
+    {
+        giftCardService.NoRecords = true;
+        var cut = RenderMainLayout("deals");
+
+        var navbarItems = cut.Find("#navbar-items");
+        var giftCardNav = cut.Find("#giftcard-nav");
+
+        Assert.DoesNotContain("giftcards-exist", giftCardNav.InnerHtml);
+        Assert.Equal(" flex-fill position-relative", giftCardNav.ClassName);
     }
 
     private void AssertCommon(IElement navbarItems)
