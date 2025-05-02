@@ -4,7 +4,11 @@ using StpFoodBlazor.Models;
 
 namespace StpFoodBlazor.Services
 {
-    public class HttpGiftCardService(IMemoryCache memoryCache, HttpClient httpClient, ILogger<HttpGiftCardService> logger) : IGiftCardService
+    public class HttpGiftCardService(
+        IMemoryCache memoryCache,
+        HttpClient httpClient,
+        ILogger<HttpGiftCardService> logger,
+        IHostEnvironment environment) : IGiftCardService
     {
         private static readonly string Url = Helper.GetUrl("giftcards");
         private readonly IMemoryCache _cache = memoryCache;
@@ -14,6 +18,11 @@ namespace StpFoodBlazor.Services
         public async Task<GiftCard[]> GetGiftCardsAsync()
         {
             GiftCard[]? result;
+
+            if (!environment.Equals("Test"))
+            {
+                Thread.Sleep(1000);
+            }
 
             if (_cache.TryGetValue(CACHE_KEY, out GiftCard[]? cachedGiftcards))
             {

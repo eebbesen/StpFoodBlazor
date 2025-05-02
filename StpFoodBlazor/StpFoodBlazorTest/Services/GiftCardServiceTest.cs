@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 using StpFoodBlazor.Helpers;
@@ -29,7 +30,9 @@ namespace StpFoodBlazorTest.Services
             _logger = Substitute.For<ILogger<HttpGiftCardService>>();
             _memoryCache = new MemoryCache(new MemoryCacheOptions());
             _messageHandlerMock = new MockHttpMessageHandler();
-            _service = new HttpGiftCardService(_memoryCache, new HttpClient(_messageHandlerMock), _logger);
+            IHostEnvironment environment = Substitute.For<IHostEnvironment>();
+            environment.EnvironmentName = "Test";
+            _service = new HttpGiftCardService(_memoryCache, new HttpClient(_messageHandlerMock), _logger, environment);
         }
 
         [Fact]

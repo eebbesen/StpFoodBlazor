@@ -4,7 +4,11 @@ using StpFoodBlazor.Models;
 
 namespace StpFoodBlazor.Services
 {
-    public class HttpDealService(IMemoryCache memoryCache, HttpClient httpClient, ILogger<HttpDealService> logger) : IDealService
+    public class HttpDealService(
+        IMemoryCache memoryCache,
+        HttpClient httpClient,
+        ILogger<HttpDealService> logger,
+        IHostEnvironment environment) : IDealService
     {
         private static readonly string Url = Helper.GetUrl("Deals");
         private readonly IMemoryCache _cache = memoryCache;
@@ -15,11 +19,16 @@ namespace StpFoodBlazor.Services
         {
             DealEvent[]? result;
 
+            if (!environment.Equals("Test"))
+            {
+                Thread.Sleep(1000);
+            }
+
             if (_cache.TryGetValue(CACHE_KEY, out DealEvent[]? cachedDeals))
             {
                 result = cachedDeals;
                 _logger.LogInformation("retrieved deals from cache using key: {CacheKey}", CACHE_KEY);
-            } 
+            }
             else
             {
                 result = await httpClient.GetFromJsonAsync<DealEvent[]>(Url);
@@ -29,7 +38,7 @@ namespace StpFoodBlazor.Services
                 });
                 _logger.LogInformation("retrieved deals via HTTP call: {Url}", Url);
             }
-            
+
             return result ?? [];
         }
     }
