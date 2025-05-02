@@ -16,10 +16,12 @@ x64/
 [Oo]bj/
 **/[Cc]ompiled
 
-# MSTest test Results
+# Test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
 coveragereport
+*/**/TestArtifacts/*.png
+*/**/TestArtifacts/*.html
 
 *_i.c
 *_p.c

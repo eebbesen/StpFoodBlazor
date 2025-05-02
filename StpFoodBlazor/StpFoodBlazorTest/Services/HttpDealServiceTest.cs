@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Hosting;
 
 namespace StpFoodBlazorTest.Services
 {
@@ -29,14 +30,16 @@ namespace StpFoodBlazorTest.Services
             _logger = Substitute.For<ILogger<HttpDealService>>();
             _messageHandlerMock = new MockHttpMessageHandler();
             _memoryCache = new MemoryCache(new MemoryCacheOptions());
-            _service = new HttpDealService(_memoryCache, new HttpClient(_messageHandlerMock), _logger);
+            IHostEnvironment environment = Substitute.For<IHostEnvironment>();
+            environment.EnvironmentName = "Test";
+            _service = new HttpDealService(_memoryCache, new HttpClient(_messageHandlerMock), _logger, environment);
         }
 
         [Fact]
         public async Task GetDealsAsync_ShouldReturnDeals_WhenApiReturnsData()
         {
             var expectedDeals = GetFixtureContent();
-            
+
             var response = new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.OK,
