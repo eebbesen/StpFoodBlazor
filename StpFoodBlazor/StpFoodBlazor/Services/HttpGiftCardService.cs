@@ -19,8 +19,9 @@ namespace StpFoodBlazor.Services
         {
             GiftCard[]? result;
 
-            if (!environment.Equals("Test"))
+            if (environment.EnvironmentName.Equals("Development"))
             {
+                _logger.LogError("${Env} environment detected, simulating delay.", environment.EnvironmentName);
                 Thread.Sleep(1000);
             }
 

@@ -19,8 +19,9 @@ namespace StpFoodBlazor.Services
         {
             DealEvent[]? result;
 
-            if (!environment.Equals("Test"))
+            if (environment.EnvironmentName.Equals("Development"))
             {
+                _logger.LogError("Development environment detected, simulating delay.");
                 Thread.Sleep(1000);
             }
 
