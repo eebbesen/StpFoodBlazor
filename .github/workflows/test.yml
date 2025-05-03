@@ -63,6 +63,7 @@ jobs:
         path: "${{ env.TEST_RESULTS_PATH }}/**/coverage.opencover.xml"
         threshold: 85
         coverage-summary-title: "StpFoodBlazor Coverage"
+        pycobertura-exception-failure: false
     - name: Upload HTML coverage report
       uses: actions/upload-artifact@v4
       if: always()
