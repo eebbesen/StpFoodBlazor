@@ -1,7 +1,7 @@
 
 ## Run
 
-    $ cd StpFoodBlazor/StpFoodBlazor/
+    $ cd StpFoodBlazor/
     $ dotnet run
 
 https://localhost:7073/
@@ -84,12 +84,12 @@ Install bunit template for initializing new projects with bunit. This only needs
 
 Create your new test project
 
-    $ dotnet new bunit --framework xunit -o StpFoodBlazor/StpFoodBlazorTest
+    $ dotnet new bunit --framework xunit -o StpFoodBlazorTest
 
 Link the project and the test project
 
-    $ dotnet sln StpFoodBlazor.sln add StpFoodBlazor/StpFoodBlazorTest/StpFoodBlazorTest.csproj
-    $ dotnet add StpFoodBlazor/StpFoodBlazorTest/StpFoodBlazorTest.csproj reference StpFoodBlazor/StpFoodBlazor.csproj
+    $ dotnet sln StpFoodBlazor.sln add tpFoodBlazorTest/StpFoodBlazorTest.csproj
+    $ dotnet add StpFoodBlazorTest/StpFoodBlazorTest.csproj reference StpFoodBlazor/StpFoodBlazor.csproj
 
 ### Check for outdated packages
 

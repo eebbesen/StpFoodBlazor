@@ -17,8 +17,8 @@ jobs:
       ASPNETCORE_APPCONFIG__SHEETID: ${{ secrets.ASPNETCORE_APPCONFIG__SHEETID }}
       ASPNETCORE_APPCONFIG__SHEETSURL: ${{ secrets.ASPNETCORE_APPCONFIG__SHEETSURL }}
       APPCONFIG__HOLIDAYURL: ${{ secrets.APPCONFIG__HOLIDAYURL }}
-      TEST_RESULTS_PATH: "/home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestResults"
-      TEST_ARTIFACTS_PATH: "/home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestArtifacts"
+      TEST_RESULTS_PATH: "/home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestResults"
+      TEST_ARTIFACTS_PATH: "/home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestArtifacts"
       MIN_LINE_COVERAGE: 87
       MIN_BRANCH_COVERAGE: 88
 
@@ -40,9 +40,9 @@ jobs:
     # single step so app server logs will stream to the console during test run
     - name: Test
       run: |
-        dotnet run --project StpFoodBlazor/StpFoodBlazor/StpFoodBlazor.csproj --no-build &
+        dotnet run --project StpFoodBlazor/StpFoodBlazor.csproj --no-build &
         sleep 5  &&
-        dotnet test --settings ../StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/tests.runsettings \
+        dotnet test --settings ../StpFoodBlazor/StpFoodBlazorTest/tests.runsettings \
         --no-build --collect "XPlat Code Coverage"
     - name: ReportGenerator with coverage gate
       uses: danielpalme/ReportGenerator-GitHub-Action@5.4.4
