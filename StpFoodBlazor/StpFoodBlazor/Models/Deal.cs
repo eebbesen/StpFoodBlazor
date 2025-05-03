@@ -14,5 +14,21 @@ namespace StpFoodBlazor.Models
         public string? HappyHour { get; set; }
         public string? Start { get; set; }
         public string? End { get; set; }
+
+        public string DisplayTextEnd()
+        {
+            if (string.IsNullOrEmpty(End))
+            {
+                return Deal;
+            }
+
+            string ret = Deal.TrimEnd();
+            if (!ret.EndsWith('.'))
+            {
+                ret += ".";
+            }
+
+            return $"{ret} Ends {End}.";
+        }
     }
 }
