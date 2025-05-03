@@ -54,16 +54,6 @@ jobs:
         title: 'StpFoodBlazor Test Coverage'
         tag: '${{ github.run_number }}_${{ github.run_id }}'
         customSettings: 'minimumCoverageThresholds:lineCoverage=${{ env.MIN_LINE_COVERAGE }};minimumCoverageThresholds:branchCoverage=${{ env.MIN_BRANCH_COVERAGE }}'
-    - name: Print coverage percentage to console
-      uses: insightsengineering/coverage-action@v2
-      if: always()
-      # This action will not fail, just used for printing the coverage percentage
-      continue-on-error: true
-      with:
-        path: "${{ env.TEST_RESULTS_PATH }}/**/coverage.opencover.xml"
-        threshold: 85
-        coverage-summary-title: "StpFoodBlazor Coverage"
-        pycobertura-exception-failure: false
     - name: Upload HTML coverage report
       uses: actions/upload-artifact@v4
       if: always()
