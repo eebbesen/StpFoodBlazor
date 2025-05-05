@@ -10,17 +10,19 @@ namespace StpFoodBlazor.Helpers
         public bool? AlcoholOnly { get; set; }
         public bool? HappyHour { get; set; }
         public bool? Inclusive { get; set; }
+        public bool StartInfinity { get; set; } = false;
+        public bool EndInfinity { get; set; } = false;
 
         public DealEvent[] Filter()
         {
             if (Deals == null)
             {
-                return Array.Empty<DealEvent>();
+                return [];
             }
 
             DealEvent[] filteredDeals = Deals;
 
-            filteredDeals = FilterByEndAndStartDates(filteredDeals);
+            filteredDeals = FilterByEndAndStartDates(filteredDeals, StartInfinity, EndInfinity);
 
             if (!string.IsNullOrWhiteSpace(Day))
             {
@@ -85,11 +87,14 @@ namespace StpFoodBlazor.Helpers
                     deal.HappyHour == null || deal.HappyHour.Trim() == "")];
         }
 
-        private static DealEvent[] FilterByEndAndStartDates(DealEvent[] deals)
+        private static DealEvent[] FilterByEndAndStartDates(
+            DealEvent[] deals,
+            Boolean startInfinity = false,
+            Boolean endInfinity = false)
         {
             return [.. deals.Where(deal =>
-                (string.IsNullOrEmpty(deal.End) || DateTime.Parse(deal.End) >= DateTime.Now.Date) &&
-                (string.IsNullOrEmpty(deal.Start) || DateTime.Parse(deal.Start) <= DateTime.Now.Date)
+                (endInfinity || string.IsNullOrEmpty(deal.End) || DateTime.Parse(deal.End) >= DateTime.Now.Date) &&
+                (startInfinity || string.IsNullOrEmpty(deal.Start) || DateTime.Parse(deal.Start) <= DateTime.Now.Date)
             )];
         }
     }

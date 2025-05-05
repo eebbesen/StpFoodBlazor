@@ -2778,9 +2778,20 @@
   {
     "PlaceID": "7",
     "Day": "Friday",
+    "End": "2024-10-20",
     "Name": "Potbelly",
     "Deal": "Free drink with Smokestack Pork & Mac until 10/20",
     "Address": "444 Cedar St Ste 201 Ste 201, St Paul, MN 55101",
+    "Happy Hour": null,
+    "Alcohol": null
+  },
+  {
+    "PlaceID": "999",
+    "Day": "Friday",
+    "Start": "2063-04-05",
+    "Name": "Saint Dinette",
+    "Deal": "Free doner kabob on World Kebab Day",
+    "Address": "261 E 5th St, Saint Paul, MN 55101",
     "Happy Hour": null,
     "Alcohol": null
   }

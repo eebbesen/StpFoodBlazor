@@ -3,6 +3,7 @@ using StpFoodBlazor.Models;
 using System.Threading.Tasks;
 using System;
 using StpFoodBlazorTest.Services;
+using System.Linq;
 
 namespace StpFoodBlazorTest.Helpers
 {
@@ -13,9 +14,11 @@ namespace StpFoodBlazorTest.Helpers
         private readonly DealFilter filter;
         public DealFilterTest()
         {
-            deals = getDeals().Result;
-            filter = new DealFilter();
-            filter.Deals = deals;
+            deals = GetDeals().Result;
+            filter = new DealFilter
+            {
+                Deals = deals
+            };
         }
 
         [Fact]
@@ -33,8 +36,9 @@ namespace StpFoodBlazorTest.Helpers
 
             DealEvent[] filteredDeals = filter.Filter();
 
-            Assert.Equal(299, dealsLength);
-            Assert.Equal(dealsLength, filteredDeals.Length);
+            Assert.Equal(300, dealsLength);
+            // one deal done and another not started
+            Assert.Equal(dealsLength - 2, filteredDeals.Length);
         }
 
         [Fact]
@@ -145,7 +149,7 @@ namespace StpFoodBlazorTest.Helpers
 
             DealEvent[] filteredDeals = filter.Filter();
 
-            Assert.Equal(299, filteredDeals.Length);
+            Assert.Equal(298, filteredDeals.Length);
         }
 
         [Fact]
@@ -180,7 +184,7 @@ namespace StpFoodBlazorTest.Helpers
 
             DealEvent[] filteredDeals = filter.Filter();
 
-            Assert.Equal(299, filteredDeals.Length);
+            Assert.Equal(298, filteredDeals.Length);
         }
 
         [Fact]
@@ -190,7 +194,7 @@ namespace StpFoodBlazorTest.Helpers
 
             DealEvent[] filteredDeals = filter.Filter();
 
-            Assert.Equal(108, filteredDeals.Length);
+            Assert.Equal(107, filteredDeals.Length);
             Array.ForEach(filteredDeals, deal =>
                 Assert.True(string.IsNullOrWhiteSpace(deal.HappyHour)));
         }
@@ -252,7 +256,51 @@ namespace StpFoodBlazorTest.Helpers
             Assert.Equal(today, filteredDeals[0].Start);
         }
 
-        private static async Task<DealEvent[]> getDeals()
+        [Fact]
+        public void ShouldGetAllPastDealsWhenEndInfinity()
+        {
+            DateTime endDate;
+            filter.EndInfinity = true;
+
+            DealEvent[] filteredDeals = filter.Filter();
+
+            bool pastDeals = filteredDeals.Any(deal =>
+            {
+                endDate = GetDateTimeForTests(deal.End);
+                return endDate < DateTime.Now.AddDays(-1);
+            });
+
+            Assert.True(pastDeals);
+            Assert.Equal(299, filteredDeals.Length);
+        }
+
+        [Fact]
+        public void ShouldGetAllFutureDealsWhenStartInfinity()
+        {
+            DateTime startDate;
+            filter.StartInfinity = true;
+
+            DealEvent[] filteredDeals = filter.Filter();
+
+            bool futureDeals = filteredDeals.Any(deal =>
+            {
+                startDate = GetDateTimeForTests(deal.Start);
+                return startDate > DateTime.Now.AddDays(+1);
+            });
+
+            Assert.True(futureDeals);
+        }
+
+        private static DateTime GetDateTimeForTests(string? date)
+        {
+            if (string.IsNullOrWhiteSpace(date))
+            {
+                return DateTime.Now.AddDays(1);
+            }
+            return DateTime.Parse(date, System.Globalization.CultureInfo.InvariantCulture);
+        }
+
+        private static async Task<DealEvent[]> GetDeals()
         {
             return await new TestDealService().GetDealsAsync();
         }
