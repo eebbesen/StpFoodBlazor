@@ -3,6 +3,7 @@
 @using AngleSharp.Dom
 @using AngleSharp.Html.Dom
 @using StpFoodBlazor.Components.Pages
+@using StpFoodBlazor.Models
 @using StpFoodBlazor.Services
 @using StpFoodBlazorTest.Services
 
@@ -118,6 +119,32 @@
         cut.Find("#happy-hour-checkbox").Change(true);
 
         Assert.Contains("bi-clock", elements.InnerHtml);
+    }
+
+    [Fact]
+    public void DealsShouldIncludeUpcomingWhenChecked()
+    {
+        timeService.DayOfWeek = DayOfWeek.Saturday.ToString();
+        TestDealService testDealService = new TestDealService();
+        testDealService.Deals = new DealEvent[]
+        {
+            new DealEvent
+            {
+                Name = "Test Place",
+                Deal = "Test description",
+                Day = DayOfWeek.Saturday.ToString(),
+                Start = "2100-05-15"
+            }
+        };
+        ctx.Services.AddSingleton<IDealService>(testDealService);
+
+        var cut = ctx.Render(@<Deals />);
+        var elements = getElements(cut);
+        Assert.Equal(0, elements.ChildElementCount);
+
+        cut.Find("#upcoming-checkbox").Change(true);
+
+        Assert.Equal(1, elements.ChildElementCount);
     }
 
     [Fact]
