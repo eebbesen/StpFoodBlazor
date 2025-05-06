@@ -56,7 +56,12 @@
 
     private IRenderedFragment RenderDealFilterBar(string dow, bool hh, bool future, bool alc)
     {
-        return ctx.Render(@<DealFilterBar selectedDayOfWeek=@dow happyHour=@hh upcoming=@future OnSelectedDayChanged="OnChangeStub"
-            OnHappyHourChanged="OnChangeStub" OnUpComingChanged="OnChangeStub" />);
+        return ctx.Render(@<DealFilterBar
+            selectedDayOfWeek=@dow
+            happyHour=@hh
+            upcoming=@future
+            OnSelectedDayChanged="OnChangeStub"
+            OnHappyHourChanged="OnChangeStub"
+            OnUpcomingChanged="OnChangeStub" />);
     }
 }
