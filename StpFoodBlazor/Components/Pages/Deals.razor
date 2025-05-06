@@ -11,8 +11,11 @@
 
 <PageTitle>Deals</PageTitle>
     <div class="container mb-5">
-        <DealFilterBar selectedDayOfWeek="@(selectedDayOfWeek == null ? @TimeServiceImpl.GetDayOfWeek() : selectedDayOfWeek)" OnSelectedDayChanged="OnSelectedDayChanged"
-            happyHour="@happyHour" OnHappyHourChanged="OnHappyHourChanged" />
+        <DealFilterBar selectedDayOfWeek="@(selectedDayOfWeek == null ?
+                @TimeServiceImpl.GetDayOfWeek() : selectedDayOfWeek)"
+            OnSelectedDayChanged="OnSelectedDayChanged"
+            happyHour="@happyHour" OnHappyHourChanged="OnHappyHourChanged"
+            upcoming="@upcoming" OnUpcomingChanged="OnUpcomingChanged" />
         <DealTableHeader selectedDayOfWeek="@(selectedDayOfWeek == null ? @TimeServiceImpl.GetDayOfWeek() : selectedDayOfWeek)" />
 
 @if (deals == null)
@@ -31,12 +34,15 @@ else
     private string? selectedDayOfWeek = null;
 
     private bool happyHour = false;
+    private bool upcoming = false;
     private bool alcoholOnly = false;
 
     [SupplyParameterFromQuery]
     public string? Dow { get; set; }
     [SupplyParameterFromQuery]
     public bool? Hh { get; set; }
+    [SupplyParameterFromQuery]
+    public bool? Upcoming { get; set; }
     [SupplyParameterFromQuery]
     public bool? AlcoholOnly { get; set; }
 
@@ -64,6 +70,18 @@ else
         {
             happyHour = value;
         }
+
+        FilterDeals();
+        SortDeals();
+    }
+
+    void OnUpcomingChanged(ChangeEventArgs e)
+    {
+        if (e.Value is bool value)
+        {
+            upcoming = value;
+        }
+
         FilterDeals();
         SortDeals();
     }
@@ -73,6 +91,7 @@ else
         selectedDayOfWeek =
             String.IsNullOrEmpty(Dow) ? TimeServiceImpl.GetDayOfWeek().ToLower() : Dow.ToLower();
         happyHour = Hh == true;
+        upcoming = Upcoming == true;
         alcoholOnly = AlcoholOnly == true;
     }
 
@@ -83,6 +102,7 @@ else
         filter.Day = selectedDayOfWeek;
         filter.HappyHour = happyHour;
         filter.AlcoholOnly = alcoholOnly;
+        filter.StartInfinity = upcoming;
         deals = filter.Filter();
     }
 
