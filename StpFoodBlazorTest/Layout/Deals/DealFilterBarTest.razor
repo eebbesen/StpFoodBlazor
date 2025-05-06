@@ -16,17 +16,21 @@
     [Fact]
     public void ShouldRenderComponents()
     {
-        var cut = RenderDealFilterBar("Tuesday", false, false);
+        var cut = RenderDealFilterBar("Tuesday", false, false, false);
 
         cut.Find("#filter-bar");
-        cut.Find("#day-of-week-select");
-        cut.Find("#happy-hour-checkbox");
+        var dow = cut.Find("#day-of-week-select");
+        Assert.Equal("Tuesday", dow.GetAttribute("value"));
+        var hh = cut.Find("#happy-hour-checkbox");
+        Assert.False(((IHtmlInputElement)hh).IsChecked);
+        var upcoming = cut.Find("#upcoming-checkbox");
+        Assert.False(((IHtmlInputElement)upcoming).IsChecked);
     }
 
     [Fact]
     public void ShouldRenderDayOfWeek()
     {
-        var cut = RenderDealFilterBar("Tuesday", false, false);
+        var cut = RenderDealFilterBar("Tuesday", false, false, false);
 
         var dow = cut.Find("#day-of-week-select");
         Assert.Equal("Tuesday", dow.GetAttribute("value"));
@@ -35,16 +39,29 @@
     [Fact]
     public void ShouldRenderHappyHour()
     {
-        var cut = RenderDealFilterBar("Tuesday", true, false);
+        var cut = RenderDealFilterBar("Tuesday", true, false, false);
 
         var hh = cut.Find("#happy-hour-checkbox");
         Assert.True(((IHtmlInputElement)hh).IsChecked);
     }
 
-    private IRenderedFragment RenderDealFilterBar(string dow, bool hh, bool alc)
+    [Fact]
+    public void ShouldRenderUpcoming()
     {
-        return ctx.Render(@<DealFilterBar selectedDayOfWeek=@dow OnSelectedDayChanged="OnChangeStub" OnHappyHourChanged="OnChangeStub"
-            happyHour=@hh />);
+        var cut = RenderDealFilterBar("Tuesday", false, true, false);
+
+        var upcoming = cut.Find("#upcoming-checkbox");
+        Assert.True(((IHtmlInputElement)upcoming).IsChecked);
     }
 
+    private IRenderedFragment RenderDealFilterBar(string dow, bool hh, bool future, bool alc)
+    {
+        return ctx.Render(@<DealFilterBar
+            selectedDayOfWeek=@dow
+            happyHour=@hh
+            upcoming=@future
+            OnSelectedDayChanged="OnChangeStub"
+            OnHappyHourChanged="OnChangeStub"
+            OnUpcomingChanged="OnChangeStub" />);
+    }
 }

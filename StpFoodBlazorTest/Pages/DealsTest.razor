@@ -3,6 +3,7 @@
 @using AngleSharp.Dom
 @using AngleSharp.Html.Dom
 @using StpFoodBlazor.Components.Pages
+@using StpFoodBlazor.Models
 @using StpFoodBlazor.Services
 @using StpFoodBlazorTest.Services
 
@@ -121,6 +122,32 @@
     }
 
     [Fact]
+    public void DealsShouldIncludeUpcomingWhenChecked()
+    {
+        timeService.DayOfWeek = DayOfWeek.Saturday.ToString();
+        TestDealService testDealService = new TestDealService();
+        testDealService.Deals = new DealEvent[]
+        {
+            new DealEvent
+            {
+                Name = "Test Place",
+                Deal = "Test description",
+                Day = DayOfWeek.Saturday.ToString(),
+                Start = "2100-05-15"
+            }
+        };
+        ctx.Services.AddSingleton<IDealService>(testDealService);
+
+        var cut = ctx.Render(@<Deals />);
+        var elements = getElements(cut);
+        Assert.Equal(0, elements.ChildElementCount);
+
+        cut.Find("#upcoming-checkbox").Change(true);
+
+        Assert.Equal(1, elements.ChildElementCount);
+    }
+
+    [Fact]
     public void DealsShouldDisplayOnlyDealsForSelectedDayWednesday()
     {
         timeService.DayOfWeek = DayOfWeek.Wednesday.ToString();
@@ -150,7 +177,7 @@
         var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change("Monday");
-        cut.WaitForState(() => ((IHtmlSelectElement)cut.Find("#day-of-week-select")).Value == "monday", 
+        cut.WaitForState(() => ((IHtmlSelectElement)cut.Find("#day-of-week-select")).Value == "monday",
             TimeSpan.FromSeconds(5));
 
         var elements = getElements(cut);
@@ -165,11 +192,11 @@
         var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change("Friday");
-        cut.WaitForState(() => ((IHtmlSelectElement)cut.Find("#day-of-week-select")).Value == "friday", 
+        cut.WaitForState(() => ((IHtmlSelectElement)cut.Find("#day-of-week-select")).Value == "friday",
             TimeSpan.FromSeconds(5));
 
         var elements = getElements(cut);
-        Assert.Equal(20, elements.ChildElementCount);
+        Assert.Equal(19, elements.ChildElementCount);
     }
 
     [Fact]
@@ -180,13 +207,13 @@
         var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change(""); // All value in the select is ""
-        cut.WaitForState(() => ((IHtmlSelectElement)cut.Find("#day-of-week-select")).Value == "", 
+        cut.WaitForState(() => ((IHtmlSelectElement)cut.Find("#day-of-week-select")).Value == "",
             TimeSpan.FromSeconds(5));
 
         var elements = getElements(cut);
-        Assert.Equal(108, elements.ChildElementCount);
+        Assert.Equal(107, elements.ChildElementCount);
         Assert.Equal("Sunday", elements.Children[0].Children[0].InnerHtml);
-        Assert.Equal("Saturday", elements.Children[107].Children[0].InnerHtml);
+        Assert.Equal("Saturday", elements.Children[106].Children[0].InnerHtml);
     }
 
     [Fact]
@@ -199,7 +226,7 @@
         dowSelect.Change(""); // All value in the select is ""
 
         var elements = getElements(cut);
-        Assert.Equal(108, elements.ChildElementCount);
+        Assert.Equal(107, elements.ChildElementCount);
         Assert.Equal("Sunday", elements.Children[0].Children[0].InnerHtml);
         Assert.Equal("Friday", elements.Children[96].Children[0].InnerHtml);
         Assert.Equal("Day", cut.Find("#deals_table_header").Children[0].InnerHtml);
@@ -213,13 +240,13 @@
         var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change("Friday");
-        cut.WaitForState(() => ((IHtmlSelectElement)cut.Find("#day-of-week-select")).Value == "friday", 
+        cut.WaitForState(() => ((IHtmlSelectElement)cut.Find("#day-of-week-select")).Value == "friday",
             TimeSpan.FromSeconds(5));
 
         var elements = getElements(cut);
-        Assert.Equal(20, elements.ChildElementCount);
+        Assert.Equal(19, elements.ChildElementCount);
         Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
-        Assert.Equal("Subway", elements.Children[17].Children[0].InnerHtml);
+        Assert.Equal("Tom Reid's Hockey City Pub", elements.Children[17].Children[0].InnerHtml);
         Assert.Equal("Place", cut.Find("#deals_table_header").Children[0].InnerHtml);
     }
 
