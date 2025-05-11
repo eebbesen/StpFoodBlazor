@@ -6,7 +6,11 @@
     @foreach (var deal in deals)
     {
     <div class="row@(rowCounter % 2 == 0 ? "" : " rounded bg-secondary bg-opacity-25")">
-        @if (string.IsNullOrEmpty(selectedDayOfWeek))
+        @if (upcoming)
+        {
+            <div class="col-1">@deal.Start</div>
+        }
+        else if (string.IsNullOrEmpty(selectedDayOfWeek))
         {
             <div class="col-1">@deal.Day</div>
         }
@@ -34,4 +38,7 @@
 
     [Parameter]
     public required string selectedDayOfWeek { get; set; }
+
+    [Parameter]
+    public required bool upcoming { get; set; }
 }

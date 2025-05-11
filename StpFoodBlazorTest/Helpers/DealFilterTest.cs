@@ -291,6 +291,23 @@ namespace StpFoodBlazorTest.Helpers
             Assert.True(futureDeals);
         }
 
+        [Fact]
+        public void ShouldGetAllFutureDealsWhenOnlyStartInfinity()
+        {
+            DateTime startDate;
+            filter.OnlyStartInfinity = true;
+
+            DealEvent[] filteredDeals = filter.Filter();
+
+            var futureDeals = filteredDeals.Select(deal =>
+            {
+                startDate = GetDateTimeForTests(deal.Start);
+                return startDate > DateTime.Now.AddDays(+1);
+            });
+
+            Assert.Single(futureDeals);
+        }
+
         private static DateTime GetDateTimeForTests(string? date)
         {
             if (string.IsNullOrWhiteSpace(date))

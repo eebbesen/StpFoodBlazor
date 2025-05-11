@@ -4,9 +4,9 @@ using System;
 
 namespace StpFoodBlazorTest.Integration
 {
-    public class DealsTest : IntegrationTest
+    public class UpcomingDealsTest : IntegrationTest
     {
-        ~DealsTest()
+        ~UpcomingDealsTest()
         {
             Dispose(disposing: false);
         }
@@ -63,7 +63,7 @@ namespace StpFoodBlazorTest.Integration
                 Assert.True(3 < Driver.FindElement(By.Id("deals_table_body")).FindElements(By.ClassName("row")).Count);
 
                 WebDriverWait wait = new(Driver, TimeSpan.FromSeconds(5));
-                wait.Until(
+                wait.Until  (
                     d => d.FindElement(By.Id("messages")).Text.Length > 10
                 );
 
