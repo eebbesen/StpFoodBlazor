@@ -8,7 +8,7 @@
   private DealEvent[] sharedDeals = new DealEvent[]
   {
       new DealEvent { Name = "Urban Wok", Day = "Wednesday",
-      Deal = "$0.75 wings", URL = "https://www.google.com/1" },
+      Deal = "$0.75 wings", URL = "https://www.google.com/1", Start = "2063-04-05" },
       new DealEvent { Name = "Pino's Pizza", Day = "Wednesday",
       Deal = "$9 for two slices and a drink or one calzone and a drink",
       URL = "https://www.google.com/2" },
@@ -26,7 +26,7 @@
   [Fact]
   public void ShouldRendernComponentsNoDaySelected()
   {
-      var cut = RenderDealTableBody("", sharedDeals);
+      var cut = RenderDealTableBody("", false, sharedDeals);
 
       var body = cut.Find("#deals_table_body");
 
@@ -43,7 +43,7 @@
   [Fact]
   public void ShouldRenderComponentsDaySelected()
   {
-      var cut = RenderDealTableBody("Wednesday", sharedDeals);
+      var cut = RenderDealTableBody("Wednesday", false, sharedDeals);
 
       var body = cut.Find("#deals_table_body");
 
@@ -56,8 +56,27 @@
       Assert.Equal("row rounded bg-secondary bg-opacity-25", body.Children[3].ClassName);
   }
 
-  private IRenderedFragment RenderDealTableBody(string dow, DealEvent[] deals)
+  [Fact]
+  public void ShouldRenderComponentsUpcoming()
   {
-      return ctx.Render(@<DealTableBody selectedDayOfWeek=@dow deals=@deals />);
+      DealEvent[] deal = new DealEvent[]
+      {
+          new DealEvent { Name = "Saint Dinette", Day = "Wednesday",
+          Deal = "Free doner kabob on World Kebab Day", URL = "https://www.google.com/1", Start = "2063-04-05" }
+      };
+
+      var cut = RenderDealTableBody("", true, deal);
+
+      var body = cut.Find("#deals_table_body");
+
+      Assert.Equal("row", body.Children[0].ClassName);
+      Assert.Equal("2063-04-05", body.Children[0].Children[0].TextContent);
+      Assert.Equal("Saint Dinette", body.Children[0].Children[1].TextContent);
+      Assert.Equal("Free doner kabob on World Kebab Day", body.Children[0].Children[2].TextContent);
+  }
+
+  private IRenderedFragment RenderDealTableBody(string dow, bool upcoming, DealEvent[] deals)
+  {
+      return ctx.Render(@<DealTableBody selectedDayOfWeek=@dow deals=@deals upcoming=upcoming />);
   }
 }

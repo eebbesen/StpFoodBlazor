@@ -1,0 +1,57 @@
+﻿@using StpFoodBlazor.Helpers
+@using StpFoodBlazor.Services
+@using StpFoodBlazor.Models
+@using StpFoodBlazor.Components.Layout.Deals
+@inject IDealService DealServiceImpl
+@inject ITimeService TimeServiceImpl
+
+@page "/upcoming-deals"
+@rendermode InteractiveServer
+@attribute [StreamRendering]
+
+<PageTitle>Upcoming Deals</PageTitle>
+    <div class="container mb-5">
+        <DealTableHeader selectedDayOfWeek="" upcoming=true />
+
+@if (deals == null)
+{
+        <DealTableBodyPlaceholder />
+}
+else
+{
+        <DealTableBody deals="@deals" selectedDayOfWeek="" upcoming=true/>
+}
+    </div>
+
+@code {
+    private DealEvent[]? deals;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            deals = await DealServiceImpl.GetDealsAsync();
+            FilterDeals();
+            SortDeals();
+            StateHasChanged();
+        }
+    }
+
+
+    private void FilterDeals()
+    {
+        DealFilter filter = new DealFilter();
+        filter.Deals = deals;
+        filter.Day = "";
+        filter.OnlyStartInfinity = true;
+        deals = filter.Filter();
+    }
+
+    private void SortDeals()
+    {
+        if (deals != null)
+        {
+            deals = DealSorter.Sort(deals);
+        }
+    }
+}

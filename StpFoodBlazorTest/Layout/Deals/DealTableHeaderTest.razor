@@ -14,7 +14,7 @@
     [Fact]
     public void ShouldRenderComponentsDaySelected()
     {
-        var cut = RenderDealTableHead("Sundeay");
+        var cut = RenderDealTableHead("Sunday");
 
         var header = cut.Find("#deals_table_header");
 
@@ -36,8 +36,21 @@
         header.Children[2].MarkupMatches("<div class=\"col\">Deal</div>");
     }
 
-    private IRenderedFragment RenderDealTableHead(string dow)
+    [Fact]
+    public void ShouldRenderComponentsUpcoming()
     {
-        return ctx.Render(@<DealTableHeader selectedDayOfWeek=@dow />);
+        var cut = RenderDealTableHead("", true);
+
+        var header = cut.Find("#deals_table_header");
+
+        Assert.Equal("row bg-dark text-light rounded", header.ClassName);
+        header.Children[0].MarkupMatches("<div class=\"col-1\">Start</div>");
+        header.Children[1].MarkupMatches("<div class=\"col-3\">Place</div>");
+        header.Children[2].MarkupMatches("<div class=\"col\">Deal</div>");
+    }
+
+    private IRenderedFragment RenderDealTableHead(string dow, bool upcoming = false)
+    {
+        return ctx.Render(@<DealTableHeader selectedDayOfWeek=@dow upcoming=@upcoming />);
     }
 }
