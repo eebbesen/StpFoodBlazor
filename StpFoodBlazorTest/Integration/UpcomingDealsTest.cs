@@ -6,6 +6,12 @@ namespace StpFoodBlazorTest.Integration
 {
     public class UpcomingDealsTest : IntegrationTest
     {
+
+        private static string BaseUrl()
+        {
+            return $"{BASE_URL}/upcoming-deals";
+        }
+
         ~UpcomingDealsTest()
         {
             Dispose(disposing: false);
@@ -13,25 +19,7 @@ namespace StpFoodBlazorTest.Integration
 
         private void AssertCommon()
         {
-            int retryCount = 5;
-            for (int i = 0; i < retryCount; i++)
-            {
-                try
-                {
-                    SelectElement select = new(Driver.FindElement(By.Id("day-of-week-select")));
-                    Assert.Equal(DateTime.Now.DayOfWeek.ToString(), select.SelectedOption.Text);
-                }
-                catch (StaleElementReferenceException)
-                {
-                    if (i == retryCount)
-                    {
-                        throw;
-                    }
-                }
-            }
-
             Driver.FindElement(By.Id("deals_table_header"));
-            Driver.FindElement(By.Id("happy-hour-checkbox"));
             Assert.Equal("Gift Cards", Driver.FindElement(By.Id("giftcard-nav")).Text);
             Assert.Equal("About", Driver.FindElement(By.Id("about-nav")).Text);
         }
@@ -42,13 +30,13 @@ namespace StpFoodBlazorTest.Integration
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
             try
             {
-                Driver.Navigate().GoToUrl(BASE_URL);
+                Driver.Navigate().GoToUrl(BaseUrl());
                 AssertCommon();
                 Driver.FindElement(By.Id("deals_table_body_placeholder"));
             }
             catch (Exception)
             {
-                SeleniumArtifacts("DealsTableBodyPlaceholder");
+                SeleniumArtifacts("UpcomingDealsTableBodyPlaceholder");
                 throw;
             }
         }
@@ -59,8 +47,8 @@ namespace StpFoodBlazorTest.Integration
             try
             {
                 Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-                Driver.Navigate().GoToUrl(BASE_URL);
-                Assert.True(3 < Driver.FindElement(By.Id("deals_table_body")).FindElements(By.ClassName("row")).Count);
+                Driver.Navigate().GoToUrl(BaseUrl());
+                Assert.Single(Driver.FindElement(By.Id("deals_table_body")).FindElements(By.ClassName("row")));
 
                 WebDriverWait wait = new(Driver, TimeSpan.FromSeconds(5));
                 wait.Until  (
@@ -73,7 +61,7 @@ namespace StpFoodBlazorTest.Integration
             }
             catch (Exception)
             {
-                SeleniumArtifacts("DealsTableBodyLoads");
+                SeleniumArtifacts("UpcomingDealsTableBodyLoads");
                 throw;
             }
         }
