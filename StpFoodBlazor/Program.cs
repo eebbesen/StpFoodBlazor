@@ -47,7 +47,6 @@ var app = builder.Build();
 
 app.Use(async (context, next) =>
 {
-    // Generate a cryptographically secure random nonce
     var nonceBytes = new byte[16];
     using (var rng = RandomNumberGenerator.Create())
     {
@@ -55,10 +54,8 @@ app.Use(async (context, next) =>
     }
     var nonce = WebEncoders.Base64UrlEncode(nonceBytes);
 
-    // Store nonce in HttpContext.Items for retrieval in components
     context.Items["csp-nonce"] = nonce;
 
-    // Set CSP header with nonce
     context.Response.Headers.Append(
         "Content-Security-Policy",
         $"default-src 'self'; " +
@@ -72,16 +69,19 @@ app.Use(async (context, next) =>
         $"frame-ancestors 'none';" +
         $"form-action 'self'; " +
         $"base-uri 'self'; " +
-        $"object-src 'none';");
+        $"object-src 'none';" +
+        $"frame-src 'self'; " +
+        $"media-src 'self'; " +
+        $"manifest-src 'self'");
 
     context.Response.Headers.Append("X-Frame-Options", "DENY");
     context.Response.Headers.Append("X-Content-Type-Options", "nosniff");
     context.Response.Headers.Append("Referrer-Policy", "strict-origin-when-cross-origin");
+    context.Response.Headers.Append("Permissions-Policy", "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()");
 
     await next();
 });
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseWebAssemblyDebugging();
@@ -89,7 +89,6 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
