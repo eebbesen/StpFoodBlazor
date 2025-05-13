@@ -1,0 +1,22 @@
+@inject IHttpContextAccessor HttpContextAccessor
+
+@if (!string.IsNullOrEmpty(Href))
+{
+    <link rel="stylesheet" href="@Href" nonce="@Nonce" />
+}
+else
+{
+    <style nonce="@Nonce">
+        @ChildContent
+    </style>
+}
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public string? Href { get; set; }
+
+    private string? Nonce => HttpContextAccessor.HttpContext?.Items["csp-nonce"]?.ToString();
+}
