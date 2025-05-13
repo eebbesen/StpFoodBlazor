@@ -65,10 +65,18 @@ app.Use(async (context, next) =>
         $"script-src 'self'; " +
         $"style-src 'self' 'nonce-{nonce}' 'unsafe-hashes' " +
         $"'sha256-phSae2Ud+nJs666rsURzxXg7FV5Tg7c+iiSFDGd3tAw=' " +
-        $"'sha256-oLiTjTy/4afiaW/t7b0OVz122l2am89Dh+080MmksZM='; " + // Added the new hash
+        $"'sha256-oLiTjTy/4afiaW/t7b0OVz122l2am89Dh+080MmksZM='; " +
         $"img-src 'self' data:; " +
         $"font-src 'self' data:; " +
-        $"connect-src 'self';");
+        $"connect-src 'self';" +
+        $"frame-ancestors 'none';" +
+        $"form-action 'self'; " +
+        $"base-uri 'self'; " +
+        $"object-src 'none';");
+
+    context.Response.Headers.Append("X-Frame-Options", "DENY");
+    context.Response.Headers.Append("X-Content-Type-Options", "nosniff");
+    context.Response.Headers.Append("Referrer-Policy", "strict-origin-when-cross-origin");
 
     await next();
 });
