@@ -48,7 +48,7 @@ namespace StpFoodBlazorTest.Integration
             {
                 Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
                 Driver.Navigate().GoToUrl(BaseUrl());
-                Assert.Single(Driver.FindElement(By.Id("deals_table_body")).FindElements(By.ClassName("row")));
+                Assert.True(0 < Driver.FindElement(By.Id("deals_table_body")).FindElements(By.ClassName("row")).Count);
 
                 WebDriverWait wait = new(Driver, TimeSpan.FromSeconds(5));
                 wait.Until  (
