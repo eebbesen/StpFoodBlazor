@@ -5,7 +5,7 @@ Display downtown Saint Paul food and drink deals
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=eebbesen_StpFoodBlazor&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=eebbesen_StpFoodBlazor)
 
-[See it in action!](stpfoodblazor-d3f0aqbuf5bxfugt.centralus-01.azurewebsites.net)
+[See it in action!](https://stpfoodblazor-d3f0aqbuf5bxfugt.centralus-01.azurewebsites.net)
 
 ## Parameterized Endpoints
 Happy hour and alcohol only parameters are respected and available on the About page:
