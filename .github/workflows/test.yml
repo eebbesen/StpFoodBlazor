@@ -21,6 +21,7 @@ jobs:
       TEST_ARTIFACTS_PATH: "/home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestArtifacts"
       MIN_LINE_COVERAGE: 87
       MIN_BRANCH_COVERAGE: 86
+      ASPNETCORE_ENVIRONMENT: "Development"
 
     steps:
     - uses: actions/checkout@v4
