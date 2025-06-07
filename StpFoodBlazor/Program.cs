@@ -7,7 +7,7 @@ using System.Security.Cryptography;
 
 var builder = WebApplication.CreateBuilder(args);
 
-if (!builder.Environment.IsDevelopment())
+if (builder.Environment.IsProduction())
 {
     // In production, use managed identity to access Key Vault
     var keyVaultEndpoint = new Uri($"https://feastival.vault.azure.net/");
