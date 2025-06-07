@@ -1,3 +1,4 @@
+using Azure.Identity;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging.AzureAppServices;
 using StpFoodBlazor.Components;
@@ -5,6 +6,20 @@ using StpFoodBlazor.Services;
 using System.Security.Cryptography;
 
 var builder = WebApplication.CreateBuilder(args);
+
+if (!builder.Environment.IsDevelopment())
+{
+    // In production, use managed identity to access Key Vault
+    var keyVaultEndpoint = new Uri($"https://feastival.vault.azure.net/");
+    builder.Configuration.AddAzureKeyVault(
+        keyVaultEndpoint,
+        new DefaultAzureCredential());
+}
+else
+{
+    // In development, use user secrets or environment variables
+    // dotnet user-secrets set "ApplicationInsights:ConnectionString" "your-connection-string"
+}
 
 builder.Configuration.AddEnvironmentVariables();
 
@@ -23,8 +38,11 @@ builder.Services.Configure<AzureBlobLoggerOptions>(options =>
 
 builder.Logging.AddApplicationInsights(
     configureTelemetryConfiguration: (config) =>
-        config.ConnectionString = builder.Configuration.GetConnectionString("AppInsights"),
-        configureApplicationInsightsLoggerOptions: (options) => { }
+        config.ConnectionString = builder.Configuration["AppInsights-ConnectionString"],
+    configureApplicationInsightsLoggerOptions: (options) => {
+        options.IncludeScopes = true;
+        options.TrackExceptionsAsExceptionTelemetry = true;
+    }
 );
 
 builder.Logging.AddConsole(
@@ -42,6 +60,9 @@ builder.Services.AddScoped<ITimeService, TimeService>();
 builder.Services.AddScoped<IGiftCardService, HttpGiftCardService>();
 builder.Services.AddScoped<IHolidayService, HttpHolidayService>();
 builder.Services.AddHttpContextAccessor();
+builder.Configuration.AddAzureKeyVault(
+    new Uri($"https://feastival.vault.azure.net/"),
+    new DefaultAzureCredential());
 
 var app = builder.Build();
 
