@@ -40,7 +40,7 @@ jobs:
     # single step so app server logs will stream to the console during test run
     - name: Test
       run: |
-        dotnet run --project StpFoodBlazor/StpFoodBlazor.csproj --no-build &
+        dotnet run --environment Development --project StpFoodBlazor/StpFoodBlazor.csproj --no-build &
         sleep 5  &&
         dotnet test --settings ../StpFoodBlazor/StpFoodBlazorTest/tests.runsettings \
         --no-build --collect "XPlat Code Coverage"
