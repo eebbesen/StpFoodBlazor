@@ -11,14 +11,19 @@ namespace StpFoodBlazorTest.Services
     {
         private static readonly string DEAL_FIXTURES_PATH = Path.Combine(Directory.GetCurrentDirectory(), "fixtures", "deals.json");
         public Boolean LongRunning { get; set; } = false;
-
         public DealEvent[] Deals { get; set; } = [];
+        public Boolean NoRecords { get; set; } = false;
 
         public async Task<DealEvent[]> GetDealsAsync()
         {
             if (LongRunning)
             {
                 await Task.Delay(7000);
+            }
+
+            if (NoRecords)
+            {
+                return [];
             }
 
             if (Deals.Length > 0)

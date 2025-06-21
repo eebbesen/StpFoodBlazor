@@ -19,7 +19,14 @@
 }
 else
 {
+    @if (deals.Length == 0)
+    {
+        <UpcomingDealsNoRecords/>
+    }
+    else
+    {
         <DealTableBody deals="@deals" selectedDayOfWeek="" upcoming=true/>
+    }
 }
     </div>
 
