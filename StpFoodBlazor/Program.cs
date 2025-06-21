@@ -16,6 +16,14 @@ if (builder.Environment.IsProduction())
     builder.Configuration.AddAzureKeyVault(
         keyVaultEndpoint,
         new DefaultAzureCredential());
+
+    builder.Logging.AddApplicationInsights(
+        configureTelemetryConfiguration: (config) =>
+            config.ConnectionString = builder.Configuration["AppInsights"],
+        configureApplicationInsightsLoggerOptions: (options) => {
+            options.IncludeScopes = true;
+            options.TrackExceptionsAsExceptionTelemetry = true;
+        });
 }
 else
 {
@@ -35,15 +43,6 @@ builder.Services.Configure<AzureBlobLoggerOptions>(options =>
 {
     options.BlobName = "logs.txt";
 });
-
-builder.Logging.AddApplicationInsights(
-    configureTelemetryConfiguration: (config) =>
-        config.ConnectionString = builder.Configuration["AppInsights"],
-    configureApplicationInsightsLoggerOptions: (options) => {
-        options.IncludeScopes = true;
-        options.TrackExceptionsAsExceptionTelemetry = true;
-    }
-);
 
 builder.Logging.AddConsole(
     configure: (options) => {}
