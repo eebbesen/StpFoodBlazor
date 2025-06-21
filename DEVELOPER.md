@@ -66,6 +66,7 @@ When deployed on Azure logs aree available to stream. To enable:
 * navigate to your application in https://portal.azure.com
 * turn Application Logging (Filesystem) to On
 * set the Level to Information or Verbose
+* navigate to Log Stream
 
 You can also view the log stream using Azure CLI
 
