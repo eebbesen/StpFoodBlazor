@@ -47,6 +47,8 @@ jobs:
     # single step so app server logs will stream to the console during test run
     - name: Test
       run: |
+        echo "SKIP_AZURE_KEYVAULT: $SKIP_AZURE_KEYVAULT"
+        echo "ASPNETCORE_ENVIRONMENT: $ASPNETCORE_ENVIRONMENT"
         dotnet run --environment Development --project StpFoodBlazor/StpFoodBlazor.csproj --no-build &
         sleep 5  &&
         dotnet test --settings ../StpFoodBlazor/StpFoodBlazorTest/tests.runsettings \

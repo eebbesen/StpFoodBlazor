@@ -7,6 +7,8 @@ using System.Security.Cryptography;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddEnvironmentVariables();
+
 if (builder.Environment.IsProduction())
 {
     // In production, use managed identity to access Key Vault
@@ -20,8 +22,6 @@ else
     // In development, use user secrets or environment variables
     // dotnet user-secrets set "ApplicationInsights:ConnectionString" "your-connection-string"
 }
-
-builder.Configuration.AddEnvironmentVariables();
 
 builder.Logging.AddAzureWebAppDiagnostics();
 builder.Services.Configure<AzureFileLoggerOptions>(options =>
