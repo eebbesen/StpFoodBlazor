@@ -38,7 +38,7 @@ builder.Services.Configure<AzureBlobLoggerOptions>(options =>
 
 builder.Logging.AddApplicationInsights(
     configureTelemetryConfiguration: (config) =>
-        config.ConnectionString = builder.Configuration["AppInsights-ConnectionString"],
+        config.ConnectionString = builder.Configuration["AppInsights"],
     configureApplicationInsightsLoggerOptions: (options) => {
         options.IncludeScopes = true;
         options.TrackExceptionsAsExceptionTelemetry = true;
