@@ -1,3 +1,4 @@
+using Azure.Identity;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging.AzureAppServices;
 using StpFoodBlazor.Components;
@@ -7,6 +8,28 @@ using System.Security.Cryptography;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddEnvironmentVariables();
+
+if (builder.Environment.IsProduction())
+{
+    // In production, use managed identity to access Key Vault
+    var keyVaultEndpoint = new Uri($"https://feastival.vault.azure.net/");
+    builder.Configuration.AddAzureKeyVault(
+        keyVaultEndpoint,
+        new DefaultAzureCredential());
+
+    builder.Logging.AddApplicationInsights(
+        configureTelemetryConfiguration: (config) =>
+            config.ConnectionString = builder.Configuration["AppInsights"],
+        configureApplicationInsightsLoggerOptions: (options) => {
+            options.IncludeScopes = true;
+            options.TrackExceptionsAsExceptionTelemetry = true;
+        });
+}
+else
+{
+    // In development, use user secrets or environment variables
+    // dotnet user-secrets set "ApplicationInsights:ConnectionString" "your-connection-string"
+}
 
 builder.Logging.AddAzureWebAppDiagnostics();
 builder.Services.Configure<AzureFileLoggerOptions>(options =>
@@ -20,12 +43,6 @@ builder.Services.Configure<AzureBlobLoggerOptions>(options =>
 {
     options.BlobName = "logs.txt";
 });
-
-builder.Logging.AddApplicationInsights(
-    configureTelemetryConfiguration: (config) =>
-        config.ConnectionString = builder.Configuration.GetConnectionString("AppInsights"),
-        configureApplicationInsightsLoggerOptions: (options) => { }
-);
 
 builder.Logging.AddConsole(
     configure: (options) => {}

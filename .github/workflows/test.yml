@@ -21,6 +21,13 @@ jobs:
       TEST_ARTIFACTS_PATH: "/home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestArtifacts"
       MIN_LINE_COVERAGE: 87
       MIN_BRANCH_COVERAGE: 86
+      ASPNETCORE_ENVIRONMENT: "Development"
+      AZURE_IDENTITY_DISABLE_MULTITENANTAUTH: true
+      AZURE_IDENTITY_DISABLE_CP1: true
+      AZURE_IDENTITY_DISABLE_DEFAULTAZURECREDENTIAL: true
+      AZURE_IDENTITY_DISABLEINMEMORYCACHING: true
+      AZURE_IDENTITY_DISABLEIMDSAUTH: true  # Specifically disables managed identity
+      SKIP_AZURE_KEYVAULT: true
 
     steps:
     - uses: actions/checkout@v4
@@ -40,7 +47,9 @@ jobs:
     # single step so app server logs will stream to the console during test run
     - name: Test
       run: |
-        dotnet run --project StpFoodBlazor/StpFoodBlazor.csproj --no-build &
+        echo "SKIP_AZURE_KEYVAULT: $SKIP_AZURE_KEYVAULT"
+        echo "ASPNETCORE_ENVIRONMENT: $ASPNETCORE_ENVIRONMENT"
+        dotnet run --environment Development --project StpFoodBlazor/StpFoodBlazor.csproj --no-build &
         sleep 5  &&
         dotnet test --settings ../StpFoodBlazor/StpFoodBlazorTest/tests.runsettings \
         --no-build --collect "XPlat Code Coverage"
