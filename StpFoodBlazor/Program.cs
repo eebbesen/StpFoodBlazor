@@ -60,9 +60,6 @@ builder.Services.AddScoped<ITimeService, TimeService>();
 builder.Services.AddScoped<IGiftCardService, HttpGiftCardService>();
 builder.Services.AddScoped<IHolidayService, HttpHolidayService>();
 builder.Services.AddHttpContextAccessor();
-builder.Configuration.AddAzureKeyVault(
-    new Uri($"https://feastival.vault.azure.net/"),
-    new DefaultAzureCredential());
 
 var app = builder.Build();
 
