@@ -10,8 +10,8 @@ namespace StpFoodBlazorTest.Services
     public class TestGiftCardService : IGiftCardService
     {
         private static readonly string GIFTCARD_FIXTURES_PATH = Path.Combine(Directory.GetCurrentDirectory(), "fixtures", "giftcards.json");
-        public Boolean LongRunning { get; set; } = false;
-        public Boolean NoRecords { get; set; } = false;
+        public bool LongRunning { get; set; } = false;
+        public bool NoRecords { get; set; } = false;
         public GiftCard[] Data { get; set; } = [];
 
         public async Task<GiftCard[]> GetGiftCardsAsync()
