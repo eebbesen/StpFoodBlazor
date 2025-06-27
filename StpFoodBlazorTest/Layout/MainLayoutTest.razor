@@ -107,7 +107,7 @@
         var giftCardNav = cut.Find("#giftcard-nav");
         var giftCardExist = cut.WaitForElement("#giftcards-exist", TimeSpan.FromSeconds(5));
 
-        Assert.Equal("position-absolute top-0 start-40 translate-middle p-1 bg-danger border border-light rounded-circle", giftCardExist.ClassName);
+        Assert.Equal("position-absolute top-0 translate-middle p-1 bg-danger border border-light rounded-circle", giftCardExist.ClassName);
         Assert.Equal(" flex-fill position-relative", giftCardNav.ClassName);
     }
 
