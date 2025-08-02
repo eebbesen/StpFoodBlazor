@@ -10,12 +10,20 @@
     <main>
         <div class="top-row px-4" id="navbar">
             <div class="container d-md-flex" id="navbar-items">
-                <div id="messages" class="messages text-center marquee w-100 d-none d-md-block">
-                    <div class="marquee-content d-flex align-items-stretch">
-                        @foreach (var holiday in holidayStrings)
-                        {
-                            <span class="holiday m-auto p-3">@holiday</span>
-                        }
+                <div id="messages" class="marquee-container d-none d-md-block">
+                    <div class="marquee-inner">
+                        <span class="holiday m-auto p-3">
+                            @foreach (var holiday in holidayStrings)
+                            {
+                               <span>@holiday</span>
+                            }
+                        </span>
+                        <span class="holiday m-auto p-3">
+                            @foreach (var holiday in holidayStrings)
+                            {
+                                <span>@holiday</span>
+                            }
+                        </span>
                     </div>
                 </div>
                 <div class="d-flex" id="nav-links" style="align-items: center;">
