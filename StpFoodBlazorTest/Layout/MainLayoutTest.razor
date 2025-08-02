@@ -46,8 +46,8 @@
         var navbar = cut.Find("#navbar-items");
         var navlinks = cut.Find("#nav-links");
 
-        Assert.Equal("messages text-center marquee w-100 d-none d-md-block", navbar.Children[0].ClassName);
-        Assert.Equal("marquee-content d-flex align-items-stretch", navbar.Children[0].Children[0].ClassName);
+        Assert.Equal("marquee-container d-none d-md-block", navbar.Children[0].ClassName);
+        Assert.Equal("marquee-inner", navbar.Children[0].Children[0].ClassName);
         Assert.Equal(" d-none", navlinks.Children[0].ClassName);
         Assert.Equal(" flex-fill position-relative", navlinks.Children[1].ClassName);
         Assert.Equal(" justify-content-end", navlinks.Children[2].ClassName);
@@ -61,8 +61,8 @@
         var navbar = cut.Find("#navbar-items");
         var navlinks = cut.Find("#nav-links");
 
-        Assert.Equal("messages text-center marquee w-100 d-none d-md-block", navbar.Children[0].ClassName);
-        Assert.Equal("marquee-content d-flex align-items-stretch", navbar.Children[0].Children[0].ClassName);
+        Assert.Equal("marquee-container d-none d-md-block", navbar.Children[0].ClassName);
+        Assert.Equal("marquee-inner", navbar.Children[0].Children[0].ClassName);
         Assert.Equal(" flex-fill", navlinks.Children[0].ClassName);
         Assert.Equal(" justify-content-end position-relative", navlinks.Children[1].ClassName);
         Assert.Equal(" d-none", navlinks.Children[2].ClassName);
@@ -76,8 +76,8 @@
         var navbar = cut.Find("#navbar-items");
         var navlinks = cut.Find("#nav-links");
 
-        Assert.Equal("messages text-center marquee w-100 d-none d-md-block", navbar.Children[0].ClassName);
-        Assert.Equal("marquee-content d-flex align-items-stretch", navbar.Children[0].Children[0].ClassName);
+        Assert.Equal("marquee-container d-none d-md-block", navbar.Children[0].ClassName);
+        Assert.Equal("marquee-inner", navbar.Children[0].Children[0].ClassName);
         Assert.Equal(" flex-fill", navlinks.Children[0].ClassName);
     }
 
@@ -90,8 +90,8 @@
         var navbar = cut.Find("#navbar-items");
         var navlinks = cut.Find("#nav-links");
 
-        Assert.Equal("messages text-center marquee w-100 d-none d-md-block", navbar.Children[0].ClassName);
-        Assert.Equal("marquee-content d-flex align-items-stretch", navbar.Children[0].Children[0].ClassName);
+        Assert.Equal("marquee-container d-none d-md-block", navbar.Children[0].ClassName);
+        Assert.Equal("marquee-inner", navbar.Children[0].Children[0].ClassName);
         Assert.Equal(" d-none", navlinks.Children[0].ClassName);
         Assert.Equal(" flex-fill position-relative", navlinks.Children[1].ClassName);
         Assert.Equal(" justify-content-end", navlinks.Children[2].ClassName);

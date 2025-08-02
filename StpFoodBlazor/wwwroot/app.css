@@ -24,20 +24,34 @@ h1:focus {
     outline: none;
 }
 
-@keyframes scroll-left {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-120%); }
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-.marquee {
-    white-space: nowrap;
-    overflow: hidden;
-    box-sizing: border-box;
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  /* Optional styling */
+  background: #f9f9f9;
+  white-space: nowrap;
 }
 
-.marquee-content {
-    animation: scroll-left 45s linear infinite;
-    animation-delay: -1s;
+.marquee-inner {
+  display: inline-block;
+  /* Set width to fit content of both spans */
+  white-space: nowrap;
+  /* Animation */
+  animation: marquee 25s linear infinite;
+}
+
+.marquee-inner span {
+  display: inline-block;
+  padding-right: 2rem; /* gap between repeats, adjust as needed */
 }
 
 .holiday {
