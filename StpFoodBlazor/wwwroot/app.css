@@ -36,6 +36,7 @@ h1:focus {
 .marquee-container {
   width: 100%;
   overflow: hidden;
+  border-bottom: 1px solid #d6d5d5;
   /* Optional styling */
   background: #f9f9f9;
   white-space: nowrap;
