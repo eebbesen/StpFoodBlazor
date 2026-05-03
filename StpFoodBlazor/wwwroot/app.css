@@ -66,6 +66,13 @@ h1:focus {
   margin: 0 0.5em; /* add some spacing */
 }
 
+.favicon-inline {
+  height: 0.8em; /* scales with h1 font size */
+  width: auto;
+  vertical-align: baseline;
+  margin-left: 0.3em;
+}
+
 /* Pause animation on hover */
  .marquee-content:hover {
     animation-play-state: paused;
