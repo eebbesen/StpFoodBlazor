@@ -102,5 +102,15 @@
             builder.AddContent(2, holiday);
             builder.CloseElement();
         }
+        
+        // Add separator only if there are holidays
+        if (holidayStrings.Length > 0)
+        {
+            builder.OpenElement(3, "img");
+            builder.AddAttribute(4, "src", "/favicon.png");
+            builder.AddAttribute(5, "alt", "separator");
+            builder.AddAttribute(6, "class", "holiday-separator");
+            builder.CloseElement();
+        }
     };
 }

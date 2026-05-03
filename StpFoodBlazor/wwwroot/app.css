@@ -59,6 +59,13 @@ h1:focus {
   margin-right: 7em;
 }
 
+.holiday-separator {
+  height: 1em;
+  width: auto; /* maintains aspect ratio */
+  vertical-align: middle;
+  margin: 0 0.5em; /* add some spacing */
+}
+
 /* Pause animation on hover */
  .marquee-content:hover {
     animation-play-state: paused;
