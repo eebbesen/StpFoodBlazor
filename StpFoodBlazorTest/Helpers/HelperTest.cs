@@ -7,13 +7,14 @@ namespace StpFoodBlazorTest.Helpers
 {
     public partial class HelperTest
     {
-        private static readonly string DATE_FORMAT = "MM-dd";
+        private static readonly string DATE_DASH_FORMAT = "MM-dd";
+        private static readonly string DATE_SLASH_FORMAT = "MM/dd";
+
         private readonly Dictionary<string, string[]> holidays = new Dictionary<string, string[]>
         {
-            { DateTime.Now.ToString(DATE_FORMAT), new[] { "Make Lunch Count Day", "National Peach Cobbler Day" } },
-            { DateTime.Now.AddDays(1).ToString(DATE_FORMAT), new[] { "McDonald's Day", "National Glazed Spiral Ham Day" } }
+            { DateTime.Now.ToString(DATE_DASH_FORMAT), new[] { "Make Lunch Count Day", "National Peach Cobbler Day" } },
+            { DateTime.Now.AddDays(1).ToString(DATE_DASH_FORMAT), new[] { "McDonald's Day", "National Glazed Spiral Ham Day" } }
         };
-        private static readonly string[] value = new[] { "National Burrito Day" };
 
         [Theory]
         [InlineData("")]
@@ -63,23 +64,29 @@ namespace StpFoodBlazorTest.Helpers
         public void BuildHolidayStrings_WithHoliday()
         {
             var holiday = new Dictionary<string, string[]>
-                { { DateTime.Now.ToString(DATE_FORMAT), ["National Burrito Day"] } };
+                { { DateTime.Now.ToString(DATE_DASH_FORMAT), ["National Burrito Day"] } };
 
             var result = Helper.BuildHolidayStrings(holiday);
-            Assert.Equal("Today: National Burrito Day", result[0]);
+            Assert.Equal("Today", result[0].DateText);
+            Assert.Equal("National Burrito Day", result[0].HolidayNames);
         }
 
         [Fact]
         public void BuildHolidayStrings_WithHolidays()
         {
             var today = DateTime.Now;
-            holidays.Add(today.AddDays(2).ToString(DATE_FORMAT), ["National Gyro Day"]);
+            holidays.Add(today.AddDays(2).ToString(DATE_DASH_FORMAT), ["National Gyro Day"]);
 
             var result = Helper.BuildHolidayStrings(holidays);
 
-            Assert.Equal("Today: Make Lunch Count Day, National Peach Cobbler Day", result[0]);
-            Assert.Equal($"{today.AddDays(1).ToString(DATE_FORMAT)}: McDonald's Day, National Glazed Spiral Ham Day", result[1]);
-            Assert.Equal($"{today.AddDays(2).ToString(DATE_FORMAT)}: National Gyro Day", result[2]);
+            Assert.Equal("Today", result[0].DateText);
+            Assert.Equal("Make Lunch Count Day, National Peach Cobbler Day", result[0].HolidayNames);
+
+            Assert.Equal(today.AddDays(1).ToString(DATE_SLASH_FORMAT), result[1].DateText);
+            Assert.Equal("McDonald's Day, National Glazed Spiral Ham Day", result[1].HolidayNames);
+
+            Assert.Equal(today.AddDays(2).ToString(DATE_SLASH_FORMAT), result[2].DateText);
+            Assert.Equal("National Gyro Day", result[2].HolidayNames);
         }
     }
 }

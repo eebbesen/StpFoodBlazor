@@ -1,6 +1,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Linq;
 
 namespace StpFoodBlazorTest.Integration
 {
@@ -69,7 +70,7 @@ namespace StpFoodBlazorTest.Integration
 
                 var messages = Driver.FindElement(By.Id("messages"));
                 Assert.True(messages.Text.Length > 10);
-                Assert.StartsWith("Today: ", messages.Text);
+                Assert.Equal("Today:", messages.FindElements(By.TagName("strong"))[0].GetAttribute("innerHTML"));
             }
             catch (Exception)
             {
