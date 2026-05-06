@@ -44,7 +44,7 @@
 @code {
     private string uri = string.Empty;
     private string holidays = String.Empty;
-    private string[] holidayStrings = Array.Empty<string>();
+    private HolidayDisplay[] holidayStrings = Array.Empty<HolidayDisplay>();
     private GiftCard[] giftCards = Array.Empty<GiftCard>();
     private Boolean initialized = false;
 
@@ -99,17 +99,22 @@
         {
             builder.OpenElement(0, "span");
             builder.AddAttribute(1, "class", "holiday m-auto p-3");
-            builder.AddContent(2, holiday);
+            builder.OpenElement(2, "strong");
+            builder.AddContent(3, holiday.DateText);
+            builder.AddContent(4, ":");
+            builder.CloseElement();
+            builder.AddContent(5, " ");
+            builder.AddContent(6, holiday.HolidayNames);
             builder.CloseElement();
         }
-        
+
         // Add separator only if there are holidays
         if (holidayStrings.Length > 0)
         {
-            builder.OpenElement(3, "img");
-            builder.AddAttribute(4, "src", "/favicon.png");
-            builder.AddAttribute(5, "alt", "separator");
-            builder.AddAttribute(6, "class", "holiday-separator");
+            builder.OpenElement(7, "img");
+            builder.AddAttribute(8, "src", "/favicon.png");
+            builder.AddAttribute(9, "alt", "separator");
+            builder.AddAttribute(10, "class", "holiday-separator");
             builder.CloseElement();
         }
     };

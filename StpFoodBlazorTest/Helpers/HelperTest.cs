@@ -67,7 +67,8 @@ namespace StpFoodBlazorTest.Helpers
                 { { DateTime.Now.ToString(DATE_DASH_FORMAT), ["National Burrito Day"] } };
 
             var result = Helper.BuildHolidayStrings(holiday);
-            Assert.Equal("Today: National Burrito Day", result[0]);
+            Assert.Equal("Today", result[0].DateText);
+            Assert.Equal("National Burrito Day", result[0].HolidayNames);
         }
 
         [Fact]
@@ -78,9 +79,14 @@ namespace StpFoodBlazorTest.Helpers
 
             var result = Helper.BuildHolidayStrings(holidays);
 
-            Assert.Equal("Today: Make Lunch Count Day, National Peach Cobbler Day", result[0]);
-            Assert.Equal($"{today.AddDays(1).ToString(DATE_SLASH_FORMAT)}: McDonald's Day, National Glazed Spiral Ham Day", result[1]);
-            Assert.Equal($"{today.AddDays(2).ToString(DATE_SLASH_FORMAT)}: National Gyro Day", result[2]);
+            Assert.Equal("Today", result[0].DateText);
+            Assert.Equal("Make Lunch Count Day, National Peach Cobbler Day", result[0].HolidayNames);
+
+            Assert.Equal(today.AddDays(1).ToString(DATE_SLASH_FORMAT), result[1].DateText);
+            Assert.Equal("McDonald's Day, National Glazed Spiral Ham Day", result[1].HolidayNames);
+
+            Assert.Equal(today.AddDays(2).ToString(DATE_SLASH_FORMAT), result[2].DateText);
+            Assert.Equal("National Gyro Day", result[2].HolidayNames);
         }
     }
 }
