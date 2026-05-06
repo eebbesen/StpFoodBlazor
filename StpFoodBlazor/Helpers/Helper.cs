@@ -5,6 +5,8 @@ namespace StpFoodBlazor.Helpers
 {
     public static class Helper
     {
+        private static readonly string DATE_DASH_FORMAT = "MM-dd";
+        private static readonly string DATE_SLASH_FORMAT = "MM/dd";
         public static string GetVersion()
         {
             var attribute = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>();
@@ -42,10 +44,10 @@ namespace StpFoodBlazor.Helpers
             {
                 var holidayString = new StringBuilder();
                 holidayString.Append(
-                    DateTime.Parse(holiday.Key).ToString("MM-dd")
-                    .Equals(DateTime.Now.ToString("MM-dd"))
+                    DateTime.Parse(holiday.Key).ToString(DATE_DASH_FORMAT)
+                    .Equals(DateTime.Now.ToString(DATE_DASH_FORMAT))
                         ? "Today: "
-                        : DateTime.Parse(holiday.Key).ToString("MM-dd") + ": ");
+                        : DateTime.Parse(holiday.Key).ToString(DATE_SLASH_FORMAT) + ": ");
                 holidayString.Append(string.Join(", ", holiday.First().Value));
                 holidayStrings.Add(holidayString.ToString());
             }
