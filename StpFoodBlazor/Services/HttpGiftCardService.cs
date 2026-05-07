@@ -12,7 +12,7 @@ namespace StpFoodBlazor.Services
         private static readonly string Url = Helper.GetUrl("giftcards");
         private readonly IMemoryCache _cache = memoryCache;
         private readonly ILogger<HttpGiftCardService> _logger = logger;
-        private static readonly string CACHE_KEY = "giftcards";
+        private static readonly string CACHE_KEY = CacheKeys.GiftCards;
 
         public async Task<GiftCard[]> GetGiftCardsAsync()
         {
