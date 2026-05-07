@@ -69,12 +69,32 @@ builder.Logging.AddConsole(
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
-builder.Services.AddHttpClient();
 builder.Services.AddMemoryCache();
-builder.Services.AddScoped<IDealService, HttpDealService>();
 builder.Services.AddScoped<ITimeService, TimeService>();
-builder.Services.AddScoped<IGiftCardService, HttpGiftCardService>();
-builder.Services.AddScoped<IHolidayService, HttpHolidayService>();
+
+builder.Services.AddHttpClient<HttpDealService>();
+builder.Services.AddHttpClient<HttpGiftCardService>();
+builder.Services.AddHttpClient<HttpHolidayService>();
+builder.Services.AddScoped<IHolidayService>(sp => sp.GetRequiredService<HttpHolidayService>());
+
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddScoped<IDealService>(sp =>
+        new DelayedDealService(
+            sp.GetRequiredService<HttpDealService>(),
+            sp.GetRequiredService<ILogger<DelayedDealService>>(),
+            sp.GetRequiredService<IHostEnvironment>()));
+    builder.Services.AddScoped<IGiftCardService>(sp =>
+        new DelayedGiftCardService(
+            sp.GetRequiredService<HttpGiftCardService>(),
+            sp.GetRequiredService<ILogger<DelayedGiftCardService>>(),
+            sp.GetRequiredService<IHostEnvironment>()));
+}
+else
+{
+    builder.Services.AddScoped<IDealService>(sp => sp.GetRequiredService<HttpDealService>());
+    builder.Services.AddScoped<IGiftCardService>(sp => sp.GetRequiredService<HttpGiftCardService>());
+}
 builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();

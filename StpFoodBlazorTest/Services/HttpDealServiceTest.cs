@@ -11,7 +11,6 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Hosting;
 
 namespace StpFoodBlazorTest.Services
 {
@@ -30,9 +29,7 @@ namespace StpFoodBlazorTest.Services
             _logger = Substitute.For<ILogger<HttpDealService>>();
             _messageHandlerMock = new MockHttpMessageHandler();
             _memoryCache = new MemoryCache(new MemoryCacheOptions());
-            IHostEnvironment environment = Substitute.For<IHostEnvironment>();
-            environment.EnvironmentName = "Test";
-            _service = new HttpDealService(_memoryCache, new HttpClient(_messageHandlerMock), _logger, environment);
+            _service = new HttpDealService(_memoryCache, new HttpClient(_messageHandlerMock), _logger);
         }
 
         [Fact]

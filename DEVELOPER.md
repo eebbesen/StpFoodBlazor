@@ -7,6 +7,7 @@
 https://localhost:7073/ or http://localhost:5020
 
 ## Test
+
 Unit tests and Selenium functional tests are available.
 
 https://learn.microsoft.com/en-us/aspnet/core/blazor/test?view=aspnetcore-8.0
@@ -31,14 +32,9 @@ and add it to your path
 
 This HTML artifact is also stored during GitHub Actions runs.
 
-Then run the following to convert the XML into HTML in the `coveragereport` directory.
-Run from the StpFoodBlazorTest directory or modify the reports path
+Then run the following to convert the XML into HTML in the `coveragereport` directory:
 
-    $ reportgenerator \
-      -reports:"./TestResults/{guid}/coverage.opencover.xml" \
-      -targetdir:"coveragereport" \
-      -reporttypes:Html
-
+    $ ./scripts/generate-coverage-report.sh
 
 ### GitHub Actions
 
@@ -49,6 +45,7 @@ test.yml runs unit and integration tests. It will upload the following artifacts
 * HTML source code for each failed integration test (does not include CSS or JS)
 
 #### GitHub Actions locally using [act](https://github.com/nektos/act)
+
 Not working the same on an M1 Mac as it is in GitHub, in particular I'm seeing Selenium tests fail.
 You'll need to uncomment the job in test.yml that installs Chrome.
 
@@ -60,6 +57,7 @@ You'll need to uncomment the job in test.yml that installs Chrome.
 ## Azure
 
 ### Logging
+
 Refer to appsettings.json for more granular control of logging.
 
 When deployed on Azure logs aree available to stream. To enable:
