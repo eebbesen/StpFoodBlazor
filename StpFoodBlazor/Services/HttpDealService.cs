@@ -7,8 +7,7 @@ namespace StpFoodBlazor.Services
     public class HttpDealService(
         IMemoryCache memoryCache,
         HttpClient httpClient,
-        ILogger<HttpDealService> logger,
-        IHostEnvironment environment) : IDealService
+        ILogger<HttpDealService> logger) : IDealService
     {
         private static readonly string Url = Helper.GetUrl("Deals");
         private readonly IMemoryCache _cache = memoryCache;
@@ -18,12 +17,6 @@ namespace StpFoodBlazor.Services
         public async Task<DealEvent[]> GetDealsAsync()
         {
             DealEvent[]? result;
-
-            if (environment.EnvironmentName.Equals("Development"))
-            {
-                _logger.LogError("Development environment detected, simulating delay.");
-                Thread.Sleep(1000);
-            }
 
             if (_cache.TryGetValue(CACHE_KEY, out DealEvent[]? cachedDeals))
             {
