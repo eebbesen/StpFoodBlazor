@@ -39,7 +39,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: 10.0.x
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
@@ -54,7 +54,7 @@ jobs:
         dotnet test --settings ../StpFoodBlazor/StpFoodBlazorTest/tests.runsettings \
         --no-build --collect "XPlat Code Coverage"
     - name: ReportGenerator with coverage gate
-      uses: danielpalme/ReportGenerator-GitHub-Action@5.4.4
+      uses: danielpalme/ReportGenerator-GitHub-Action@5.5.10
       if: always()
       with:
         reports: "${{ env.TEST_RESULTS_PATH }}/**/coverage.opencover.xml"
