@@ -11,7 +11,7 @@ namespace StpFoodBlazor.Services
         private static readonly string END_DATE = "endDate";
         private readonly IMemoryCache _cache = memoryCache;
         private readonly ILogger<HttpHolidayService> _logger = logger;
-        private static readonly string CACHE_KEY = "holidays";
+        private static readonly string CACHE_KEY = CacheKeys.Holidays;
 
         public async Task<Dictionary<string, string[]>> GetTodaysHolidaysAsync()
         {

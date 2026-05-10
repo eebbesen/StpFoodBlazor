@@ -12,7 +12,7 @@ namespace StpFoodBlazor.Services
         private static readonly string Url = Helper.GetUrl("Deals");
         private readonly IMemoryCache _cache = memoryCache;
         private readonly ILogger<HttpDealService> _logger = logger;
-        private readonly static string CACHE_KEY = "deals";
+        private readonly static string CACHE_KEY = CacheKeys.Deals;
 
         public async Task<DealEvent[]> GetDealsAsync()
         {

@@ -2,6 +2,7 @@ using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging.AzureAppServices;
+using StpFoodBlazor.Endpoints;
 using StpFoodBlazor.Components;
 using StpFoodBlazor.Services;
 using System.Security.Cryptography;
@@ -38,9 +39,6 @@ if (builder.Environment.IsProduction())
         logger.LogError(ex, "Failed to retrieve Application Insights connection string from Key Vault");
         throw;
     }
-
-
-
 }
 else
 {
@@ -154,5 +152,7 @@ app.UseAntiforgery();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode();
+
+CacheEndpoints.Map(app);
 
 app.Run();
