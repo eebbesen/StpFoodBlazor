@@ -19,6 +19,7 @@ namespace StpFoodBlazor.Endpoints
             IMemoryCache cache,
             ILoggerFactory loggerFactory,
             IConfiguration config,
+            ICacheRefreshService refreshService,
             string? key = null)
         {
             var logger = loggerFactory.CreateLogger(nameof(CacheEndpoints));
@@ -43,7 +44,9 @@ namespace StpFoodBlazor.Endpoints
             foreach (var k in keysToInvalidate)
                 cache.Remove(k);
 
-            logger.LogInformation("Cache invalidated for keys: {Keys}", string.Join(", ", keysToInvalidate));
+            _ = refreshService.RefreshAsync(keysToInvalidate);
+
+            logger.LogInformation("Cache invalidated and refresh triggered for keys: {Keys}", string.Join(", ", keysToInvalidate));
             return Results.Ok(new InvalidatedKeysResponse(keysToInvalidate));
         }
 
