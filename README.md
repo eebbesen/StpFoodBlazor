@@ -14,6 +14,10 @@ Happy hour and alcohol only parameters are respected and available on the About 
 
 Both parameters can be used with each other.
 
+## Development
+
+See [DEVELOPER.md](DEVELOPER.md) for more information on developing and running.
+
 ## Requirements
 
 You can modify this code to use other data services and data attributes but this code assumes you are using [sheet_zoukas-lambda](https://github.com/eebbesen/sheet_zoukas-lambda/) deployed on AWS to expose a Google Sheet.
@@ -37,16 +41,42 @@ The backing Google Sheet requires the following tabs and corresponding column he
 
 
 ## Environment Variables
-`SHEETID` is the Google Sheet ID from which data will be read. `SHEETSURL` is the URL of the service that retrieves the data from the Google Sheet. `HOLIDAYURL` is the URL of the service that retrieves holiday data.
+
+`SHEETID` is the Google Sheet ID from which data will be read.
+`SHEETSURL` is the URL of the service that retrieves the data from the Google Sheet.
+`HOLIDAYURL` is the URL of the service that retrieves holiday data.
+`CACHEINVALIDATIONKEY` is the secret that allows the cache to be invalidated.
 
     ASPNETCORE_APPCONFIG__SHEETID
     ASPNETCORE_APPCONFIG__SHEETSURL
     APPCONFIG__HOLIDAYURL root (e.g., https://DOMAIN.azurewebsites.net/api)
+    ASPNETCORE_APPCONFIG__CACHEINVALIDATIONKEY
 
 ## Run
 
     $ dotnet run
 
-## Development
+## Cache cleaning
+Caches can be invalidated when the underlying data changes if you add scripting to the Google Sheet.
 
-See [DEVELOPER.md](DEVELOPER.md) for more information on developing and running.
+### Google Sheets script
+
+See [scripts/sheets-cache-invalidation.gs](scripts/sheets-cache-invalidation.gs)
+
+### Invalidate all sheet caches
+
+    curl -X POST https://DOMAIN.azurewebsites.net/api/cache/invalidate \
+    -H "X-Cache-Invalidation-Key: SECRET"
+
+### Invalidate a specific cache
+
+    curl -X POST "https://DOMAIN.azurewebsites.net/api/cache/invalidate?key=deals" \
+    -H "X-Cache-Invalidation-Key: SECRET"
+
+    curl -X POST "https://DOMAIN.azurewebsites.net/api/cache/invalidate?key=giftcards" \
+    -H "X-Cache-Invalidation-Key: SECRET"
+
+### Check cache status
+
+    curl -X GET https://your-app.azurewebsites.net/api/cache \
+    -H "X-Cache-Invalidation-Key: SECRET"
