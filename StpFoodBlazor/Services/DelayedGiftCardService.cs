@@ -3,12 +3,11 @@ namespace StpFoodBlazor.Services
     public class DelayedGiftCardService(
         IGiftCardService inner,
         ILogger<DelayedGiftCardService> logger,
-        IHostEnvironment environment) : IGiftCardService
+        IHostEnvironment environment) : DelayedServiceBase(logger, environment), IGiftCardService
     {
         public async Task<Models.GiftCard[]> GetGiftCardsAsync()
         {
-            logger.LogError("{Env} environment detected, simulating delay.", environment.EnvironmentName);
-            await Task.Delay(1000);
+            await ApplyDelayAsync();
             return await inner.GetGiftCardsAsync();
         }
     }

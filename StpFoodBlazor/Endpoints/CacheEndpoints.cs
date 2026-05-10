@@ -22,19 +22,8 @@ namespace StpFoodBlazor.Endpoints
             string? key = null)
         {
             var logger = loggerFactory.CreateLogger(nameof(CacheEndpoints));
-            var expectedKey = config["APPCONFIG:CACHEINVALIDATIONKEY"];
-            if (string.IsNullOrEmpty(expectedKey))
-            {
-                logger.LogError("Cache invalidation key is not configured.");
-                return Results.StatusCode(503);
-            }
-
-            var providedKey = ctx.Request.Headers["X-Cache-Invalidation-Key"].FirstOrDefault();
-            if (!string.Equals(providedKey, expectedKey, StringComparison.Ordinal))
-            {
-                logger.LogWarning("Cache invalidation request rejected: invalid key. IP={IP}", ctx.Connection.RemoteIpAddress);
-                return Results.Unauthorized();
-            }
+            var authResult = ValidateAuth(ctx, config, logger);
+            if (authResult is not null) return authResult;
 
             string[] keysToInvalidate;
             if (key is null)
@@ -65,6 +54,17 @@ namespace StpFoodBlazor.Endpoints
             IConfiguration config)
         {
             var logger = loggerFactory.CreateLogger(nameof(CacheEndpoints));
+            var authResult = ValidateAuth(ctx, config, logger);
+            if (authResult is not null) return authResult;
+
+            var allKeys = CacheKeys.SheetKeys.Append(CacheKeys.Holidays);
+            var status = allKeys.ToDictionary(k => k, k => cache.TryGetValue(k, out _));
+
+            return Results.Ok(new CacheStatusResponse(status));
+        }
+
+        private static IResult? ValidateAuth(HttpContext ctx, IConfiguration config, ILogger logger)
+        {
             var expectedKey = config["APPCONFIG:CACHEINVALIDATIONKEY"];
             if (string.IsNullOrEmpty(expectedKey))
             {
@@ -75,14 +75,11 @@ namespace StpFoodBlazor.Endpoints
             var providedKey = ctx.Request.Headers["X-Cache-Invalidation-Key"].FirstOrDefault();
             if (!string.Equals(providedKey, expectedKey, StringComparison.Ordinal))
             {
-                logger.LogWarning("Cache status request rejected: invalid key. IP={IP}", ctx.Connection.RemoteIpAddress);
+                logger.LogWarning("Cache request rejected: invalid key. IP={IP}", ctx.Connection.RemoteIpAddress);
                 return Results.Unauthorized();
             }
 
-            var allKeys = CacheKeys.SheetKeys.Append(CacheKeys.Holidays);
-            var status = allKeys.ToDictionary(k => k, k => cache.TryGetValue(k, out _));
-
-            return Results.Ok(new CacheStatusResponse(status));
+            return null;
         }
     }
 }
