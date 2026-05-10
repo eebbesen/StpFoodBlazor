@@ -74,6 +74,7 @@ builder.Services.AddHttpClient<HttpDealService>().AddStandardResilienceHandler()
 builder.Services.AddHttpClient<HttpGiftCardService>().AddStandardResilienceHandler();
 builder.Services.AddHttpClient<HttpHolidayService>().AddStandardResilienceHandler();
 builder.Services.AddScoped<IHolidayService>(sp => sp.GetRequiredService<HttpHolidayService>());
+builder.Services.AddScoped<ICacheRefreshService, CacheRefreshService>();
 
 if (builder.Environment.IsDevelopment())
 {
