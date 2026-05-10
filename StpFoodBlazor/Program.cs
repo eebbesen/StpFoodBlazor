@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging.AzureAppServices;
 using StpFoodBlazor.Endpoints;
 using StpFoodBlazor.Components;
+using StpFoodBlazor.Middleware;
 using StpFoodBlazor.Services;
 using System.Security.Cryptography;
 
@@ -97,6 +98,8 @@ else
 builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
+
+app.UseMiddleware<PageAccessLoggingMiddleware>();
 
 app.Use(async (context, next) =>
 {
