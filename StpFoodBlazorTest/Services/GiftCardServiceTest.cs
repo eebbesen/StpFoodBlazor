@@ -1,10 +1,12 @@
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 using StpFoodBlazor.Helpers;
 using StpFoodBlazor.Models;
 using StpFoodBlazor.Services;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -25,11 +27,19 @@ namespace StpFoodBlazorTest.Services
 
         public HttpGiftCardServiceTests()
         {
+            Environment.SetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETSURL", "http://test-sheets-url");
+            Environment.SetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETID", "test-sheet-id");
             _testUrl = Helper.GetUrl("giftcards");
             _logger = Substitute.For<ILogger<HttpGiftCardService>>();
             _memoryCache = new MemoryCache(new MemoryCacheOptions());
             _messageHandlerMock = new MockHttpMessageHandler();
-            _service = new HttpGiftCardService(_memoryCache, new HttpClient(_messageHandlerMock), _logger);
+            var config = new ConfigurationBuilder()
+                .AddInMemoryCollection(new Dictionary<string, string?>
+                {
+                    ["CacheDuration:GiftCardsMinutes"] = "400"
+                })
+                .Build();
+            _service = new HttpGiftCardService(_memoryCache, new HttpClient(_messageHandlerMock), _logger, config);
         }
 
         [Fact]
@@ -57,7 +67,7 @@ namespace StpFoodBlazorTest.Services
             Assert.Equal(expectedGiftCards[1].URL, result[1].URL);
         }
 
-                [Fact]
+        [Fact]
         public async Task GetGiftCardsAsync_ShouldReturnGiftCardsFromCache_WhenCacheReturnsData()
         {
             var expectedGiftCards = GetFixtureContent();
@@ -97,7 +107,7 @@ namespace StpFoodBlazorTest.Services
         }
 
         [Fact]
-        public async Task GetGiftCardsAsync_ShouldLogAndRethrow_WhenApiThrowsException()
+        public async Task GetGiftCardsAsync_ShouldReturnEmptyArray_WhenApiThrowsException()
         {
             _messageHandlerMock.SetResponse(_testUrl, new HttpResponseMessage
             {
@@ -105,7 +115,10 @@ namespace StpFoodBlazorTest.Services
                 Content = new StringContent("Test exception")
             });
 
-            await Assert.ThrowsAsync<HttpRequestException>(() => _service.GetGiftCardsAsync());
+            var result = await _service.GetGiftCardsAsync();
+
+            Assert.NotNull(result);
+            Assert.Empty(result);
         }
 
         private static GiftCard[] GetFixtureContent()

@@ -70,9 +70,9 @@ builder.Services.AddRazorComponents()
 builder.Services.AddMemoryCache();
 builder.Services.AddScoped<ITimeService, TimeService>();
 
-builder.Services.AddHttpClient<HttpDealService>();
-builder.Services.AddHttpClient<HttpGiftCardService>();
-builder.Services.AddHttpClient<HttpHolidayService>();
+builder.Services.AddHttpClient<HttpDealService>().AddStandardResilienceHandler();
+builder.Services.AddHttpClient<HttpGiftCardService>().AddStandardResilienceHandler();
+builder.Services.AddHttpClient<HttpHolidayService>().AddStandardResilienceHandler();
 builder.Services.AddScoped<IHolidayService>(sp => sp.GetRequiredService<HttpHolidayService>());
 
 if (builder.Environment.IsDevelopment())

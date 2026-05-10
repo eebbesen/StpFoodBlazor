@@ -1,5 +1,6 @@
 using AngleSharp.Common;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 using StpFoodBlazor.Services;
@@ -20,7 +21,7 @@ namespace StpFoodBlazorTest.Services
         private readonly IMemoryCache _memoryCache;
         private readonly HttpHolidayService _service;
         private readonly MockHttpMessageHandler _messageHandlerMock;
-        private static readonly string URL_BASE = Environment.GetEnvironmentVariable("APPCONFIG__HOLIDAYURL");
+        private static readonly string URL_BASE = Environment.GetEnvironmentVariable("APPCONFIG__HOLIDAYURL") ?? "http://test-holiday-url";
         private static readonly string URL_TODAY = URL_BASE + "/today/";
         private static readonly string URL_RANGE = URL_BASE + "/range/?startDate=10-01&endDate=10-02";
         private static readonly string HOLIDAY_DATA = @"
@@ -38,7 +39,14 @@ namespace StpFoodBlazorTest.Services
             _logger = Substitute.For<ILogger<HttpHolidayService>>();
             _memoryCache = new MemoryCache(new MemoryCacheOptions());
             _messageHandlerMock = new MockHttpMessageHandler();
-            _service = new HttpHolidayService(_memoryCache, new HttpClient(_messageHandlerMock), _logger);
+            var config = new ConfigurationBuilder()
+                .AddInMemoryCollection(new Dictionary<string, string?>
+                {
+                    ["APPCONFIG:HOLIDAYURL"] = URL_BASE,
+                    ["CacheDuration:HolidaysMinutes"] = "400"
+                })
+                .Build();
+            _service = new HttpHolidayService(_memoryCache, new HttpClient(_messageHandlerMock), _logger, config);
         }
 
         [Fact]
@@ -77,7 +85,7 @@ namespace StpFoodBlazorTest.Services
         }
 
         [Fact]
-        public async Task GetTodaysHolidaysAsync_ShouldReturnEmptyArray_WhenApiReturnsNull()
+        public async Task GetTodaysHolidaysAsync_ShouldReturnEmptyDictionary_WhenApiReturnsNull()
         {
             var response = new HttpResponseMessage
             {
@@ -94,7 +102,7 @@ namespace StpFoodBlazorTest.Services
         }
 
         [Fact]
-        public async Task GetTodaysHolidaysAsync_ShouldLogAndRethrow_WhenApiThrowsException()
+        public async Task GetTodaysHolidaysAsync_ShouldReturnEmptyDictionary_WhenApiThrowsException()
         {
             _messageHandlerMock.SetResponse(URL_TODAY, new HttpResponseMessage
             {
@@ -102,7 +110,10 @@ namespace StpFoodBlazorTest.Services
                 Content = new StringContent("Test exception")
             });
 
-            await Assert.ThrowsAsync<HttpRequestException>(() => _service.GetTodaysHolidaysAsync());
+            var result = await _service.GetTodaysHolidaysAsync();
+
+            Assert.NotNull(result);
+            Assert.Empty(result);
         }
 
         [Fact]
@@ -142,7 +153,7 @@ namespace StpFoodBlazorTest.Services
         }
 
         [Fact]
-        public async Task GetHolidaysRangeAsync_ShouldReturnEmptyArray_WhenApiReturnsNull()
+        public async Task GetHolidaysRangeAsync_ShouldReturnEmptyDictionary_WhenApiReturnsNull()
         {
             var response = new HttpResponseMessage
             {
@@ -159,7 +170,7 @@ namespace StpFoodBlazorTest.Services
         }
 
         [Fact]
-        public async Task GetHolidaysRangeAsync_ShouldLogAndRethrow_WhenApiThrowsException()
+        public async Task GetHolidaysRangeAsync_ShouldReturnEmptyDictionary_WhenApiThrowsException()
         {
             _messageHandlerMock.SetResponse(URL_RANGE, new HttpResponseMessage
             {
@@ -167,7 +178,10 @@ namespace StpFoodBlazorTest.Services
                 Content = new StringContent("Test exception")
             });
 
-            await Assert.ThrowsAsync<HttpRequestException>(() => _service.GetHolidaysRangeAsync("10-01", "10-02"));
+            var result = await _service.GetHolidaysRangeAsync("10-01", "10-02");
+
+            Assert.NotNull(result);
+            Assert.Empty(result);
         }
 
         private static Dictionary<string, string[]> GetFixtureContent(int limit = -1)

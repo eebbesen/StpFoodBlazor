@@ -1,39 +1,32 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Caching.Memory;
 using StpFoodBlazor.Helpers;
 using StpFoodBlazor.Models;
 
 namespace StpFoodBlazor.Services
 {
-    public class HttpDealService(
-        IMemoryCache memoryCache,
-        HttpClient httpClient,
-        ILogger<HttpDealService> logger) : IDealService
+    public class HttpDealService : IDealService
     {
-        private static readonly string Url = Helper.GetUrl("Deals");
-        private readonly IMemoryCache _cache = memoryCache;
-        private readonly ILogger<HttpDealService> _logger = logger;
-        private readonly static string CACHE_KEY = CacheKeys.Deals;
+        private readonly IMemoryCache _memoryCache;
+        private readonly HttpClient _httpClient;
+        private readonly ILogger<HttpDealService> _logger;
+        private readonly TimeSpan _expiry;
+        private readonly string _url;
 
-        public async Task<DealEvent[]> GetDealsAsync()
+        public HttpDealService(IMemoryCache memoryCache, HttpClient httpClient, ILogger<HttpDealService> logger, IConfiguration config)
         {
-            DealEvent[]? result;
-
-            if (_cache.TryGetValue(CACHE_KEY, out DealEvent[]? cachedDeals))
-            {
-                result = cachedDeals;
-                _logger.LogInformation("retrieved deals from cache using key: {CacheKey}", CACHE_KEY);
-            }
-            else
-            {
-                result = await httpClient.GetFromJsonAsync<DealEvent[]>(Url);
-                _cache.Set(CACHE_KEY, result, new MemoryCacheEntryOptions
-                {
-                    AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(200)
-                });
-                _logger.LogInformation("retrieved deals via HTTP call: {Url}", Url);
-            }
-
-            return result ?? [];
+            _memoryCache = memoryCache;
+            _httpClient = httpClient;
+            _logger = logger;
+            _expiry = TimeSpan.FromMinutes(config.GetValue<int>("CacheDuration:DealsMinutes", 200));
+            _url = Helper.GetUrl("Deals");
         }
+
+        public async Task<DealEvent[]> GetDealsAsync() =>
+            await _memoryCache.GetOrFetchAsync(
+                CacheKeys.Deals,
+                () => _httpClient.GetFromJsonAsync<DealEvent[]>(_url),
+                _expiry,
+                _logger,
+                []);
     }
 }
