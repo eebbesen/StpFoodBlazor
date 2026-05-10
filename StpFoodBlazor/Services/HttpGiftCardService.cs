@@ -4,21 +4,29 @@ using StpFoodBlazor.Models;
 
 namespace StpFoodBlazor.Services
 {
-    public class HttpGiftCardService(
-        IMemoryCache memoryCache,
-        HttpClient httpClient,
-        ILogger<HttpGiftCardService> logger,
-        IConfiguration config) : IGiftCardService
+    public class HttpGiftCardService : IGiftCardService
     {
-        private static readonly string Url = Helper.GetUrl("giftcards");
-        private readonly TimeSpan _expiry = TimeSpan.FromMinutes(config.GetValue<int>("CacheDuration:GiftCardsMinutes", 400));
+        private readonly IMemoryCache _memoryCache;
+        private readonly HttpClient _httpClient;
+        private readonly ILogger<HttpGiftCardService> _logger;
+        private readonly TimeSpan _expiry;
+        private readonly string _url;
+
+        public HttpGiftCardService(IMemoryCache memoryCache, HttpClient httpClient, ILogger<HttpGiftCardService> logger, IConfiguration config)
+        {
+            _memoryCache = memoryCache;
+            _httpClient = httpClient;
+            _logger = logger;
+            _expiry = TimeSpan.FromMinutes(config.GetValue<int>("CacheDuration:GiftCardsMinutes", 400));
+            _url = Helper.GetUrl("giftcards");
+        }
 
         public async Task<GiftCard[]> GetGiftCardsAsync() =>
-            await memoryCache.GetOrFetchAsync(
+            await _memoryCache.GetOrFetchAsync(
                 CacheKeys.GiftCards,
-                () => httpClient.GetFromJsonAsync<GiftCard[]>(Url),
+                () => _httpClient.GetFromJsonAsync<GiftCard[]>(_url),
                 _expiry,
-                logger,
+                _logger,
                 []);
     }
 }

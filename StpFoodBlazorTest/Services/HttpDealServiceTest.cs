@@ -1,10 +1,12 @@
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 using StpFoodBlazor.Helpers;
 using StpFoodBlazor.Models;
 using StpFoodBlazor.Services;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -25,11 +27,19 @@ namespace StpFoodBlazorTest.Services
 
         public HttpDealServiceTests()
         {
+            Environment.SetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETSURL", "http://test-sheets-url");
+            Environment.SetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETID", "test-sheet-id");
             _testUrl = Helper.GetUrl("Deals");
             _logger = Substitute.For<ILogger<HttpDealService>>();
             _messageHandlerMock = new MockHttpMessageHandler();
             _memoryCache = new MemoryCache(new MemoryCacheOptions());
-            _service = new HttpDealService(_memoryCache, new HttpClient(_messageHandlerMock), _logger);
+            var config = new ConfigurationBuilder()
+                .AddInMemoryCollection(new Dictionary<string, string?>
+                {
+                    ["CacheDuration:DealsMinutes"] = "200"
+                })
+                .Build();
+            _service = new HttpDealService(_memoryCache, new HttpClient(_messageHandlerMock), _logger, config);
         }
 
         [Fact]
@@ -92,7 +102,7 @@ namespace StpFoodBlazorTest.Services
         }
 
         [Fact]
-        public async Task GetDealsAsync_ShouldLogAndRethrow_WhenApiThrowsException()
+        public async Task GetDealsAsync_ShouldReturnEmptyArray_WhenApiThrowsException()
         {
             _messageHandlerMock.SetResponse(_testUrl, new HttpResponseMessage
             {
@@ -100,7 +110,10 @@ namespace StpFoodBlazorTest.Services
                 Content = new StringContent("Test exception")
             });
 
-            await Assert.ThrowsAsync<HttpRequestException>(() => _service.GetDealsAsync());
+            var result = await _service.GetDealsAsync();
+
+            Assert.NotNull(result);
+            Assert.Empty(result);
         }
 
         private static DealEvent[] GetFixtureContent()
