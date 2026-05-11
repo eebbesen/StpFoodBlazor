@@ -98,16 +98,19 @@ namespace StpFoodBlazor.Helpers
             {
                 return [.. deals.Where(deal =>
                     !string.IsNullOrEmpty(deal.Start) &&
-                    DateTime.Parse(deal.Start) >= DateTime.Now.Date)];
+                    DateTime.TryParse(deal.Start, out var s) &&
+                    s >= DateTime.Now.Date)];
             }
 
             return [.. deals.Where(deal =>
                 (endInfinity ||
                     string.IsNullOrEmpty(deal.End) ||
-                    DateTime.Parse(deal.End) >= DateTime.Now.Date) &&
+                    !DateTime.TryParse(deal.End, out var endDate) ||
+                    endDate >= DateTime.Now.Date) &&
                 (startInfinity ||
                     string.IsNullOrEmpty(deal.Start) ||
-                    DateTime.Parse(deal.Start) <= DateTime.Now.Date)
+                    !DateTime.TryParse(deal.Start, out var startDate) ||
+                    startDate <= DateTime.Now.Date)
             )];
         }
     }

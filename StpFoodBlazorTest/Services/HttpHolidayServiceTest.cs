@@ -90,7 +90,7 @@ namespace StpFoodBlazorTest.Services
             var response = new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.OK,
-                Content = JsonContent.Create((string[])null)
+                Content = JsonContent.Create((string[]?)null)
             };
 
             _messageHandlerMock.SetResponse(URL_TODAY, response);
@@ -158,7 +158,7 @@ namespace StpFoodBlazorTest.Services
             var response = new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.OK,
-                Content = JsonContent.Create((string[])null)
+                Content = JsonContent.Create((string[]?)null)
             };
 
             _messageHandlerMock.SetResponse(URL_RANGE, response);

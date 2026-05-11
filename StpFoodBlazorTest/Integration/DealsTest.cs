@@ -59,14 +59,22 @@ namespace StpFoodBlazorTest.Integration
         {
             try
             {
-                Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
                 Driver.Navigate().GoToUrl(BASE_URL);
-                Assert.True(3 < Driver.FindElement(By.Id("deals_table_body")).FindElements(By.ClassName("row")).Count);
 
-                WebDriverWait wait = new(Driver, TimeSpan.FromSeconds(5));
-                wait.Until(
-                    d => d.FindElement(By.Id("messages")).Text.Length > 10
-                );
+                WebDriverWait wait = new(Driver, TimeSpan.FromSeconds(20));
+                var body = wait.Until(d => {
+                    try
+                    {
+                        var elem = d.FindElement(By.Id("deals_table_body"));
+                        return elem.FindElements(By.ClassName("row")).Count > 3 ? elem : null;
+                    }
+                    catch (NoSuchElementException) { return null; }
+                    catch (StaleElementReferenceException) { return null; }
+                });
+
+                Assert.NotNull(body);
+
+                wait.Until(d => d.FindElement(By.Id("messages")).Text.Length > 10);
 
                 var messages = Driver.FindElement(By.Id("messages"));
                 Assert.True(messages.Text.Length > 10);
