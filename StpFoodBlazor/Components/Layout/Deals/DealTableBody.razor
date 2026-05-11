@@ -1,25 +1,26 @@
 @inherits LayoutComponentBase
 @using StpFoodBlazor.Models
 
-<div id="deals_table_body">
+<div role="rowgroup" id="deals_table_body">
     @{var rowCounter = 0;}
     @foreach (var deal in deals)
     {
-    <div class="row@(rowCounter % 2 == 0 ? "" : " rounded bg-secondary bg-opacity-25")">
+    <div role="row" class="row@(rowCounter % 2 == 0 ? "" : " rounded bg-secondary bg-opacity-25")">
         @if (upcoming)
         {
-            <div class="col-1">@deal.Start</div>
+            <div role="cell" class="col-1">@deal.Start</div>
         }
         else if (string.IsNullOrEmpty(selectedDayOfWeek))
         {
-            <div class="col-1">@deal.Day</div>
+            <div role="cell" class="col-1">@deal.Day</div>
         }
-        <div class="col-3">@deal.Name</div>
-        <div class="col deal-text">
+        <div role="cell" class="col-3">@deal.Name</div>
+        <div role="cell" class="col deal-text">
             @if (!string.IsNullOrEmpty(deal.URL))
             {
-                <NavLink href=@deal.URL target="_blank" class="text-decoration-none">
+                <NavLink href=@deal.URL target="_blank" rel="noopener noreferrer" class="text-decoration-none">
                     <DealEventRowDeal Deal=deal></DealEventRowDeal>
+                    <span class="visually-hidden"> (opens in new tab)</span>
                 </NavLink>
             }
             else {

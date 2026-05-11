@@ -12,22 +12,27 @@
 <PageTitle>Gift Cards</PageTitle>
 
 <div class="container mb-5">
+    <div role="status" class="visually-hidden">
+        @(giftcards == null ? "Loading gift card deals, please wait." : $"{giftcards.Length} gift card deal{(giftcards.Length == 1 ? "" : "s")} loaded.")
+    </div>
+
     @if (giftcards == null)
     {
-        <GiftCardsTableHeader />
-        <GiftCardsTableBodyPlaceholder/>
+        <div role="table" aria-label="Gift card deals" aria-busy="true">
+            <GiftCardsTableHeader />
+            <GiftCardsTableBodyPlaceholder/>
+        </div>
+    }
+    else if (giftcards.Length == 0)
+    {
+        <GiftCardsNoRecords/>
     }
     else
     {
-        @if (giftcards.Length == 0)
-        {
-            <GiftCardsNoRecords/>
-        }
-        else
-        {
+        <div role="table" aria-label="Gift card deals">
             <GiftCardsTableHeader />
             <GiftCardsTableBody giftcards="@giftcards"/>
-        }
+        </div>
     }
 </div>
 

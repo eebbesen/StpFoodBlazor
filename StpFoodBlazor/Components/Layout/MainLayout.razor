@@ -8,37 +8,39 @@
 
 <div class="page">
     <main>
-        <div class="top-row px-4" id="navbar">
+        <nav class="top-row px-4" id="navbar" aria-label="Primary navigation">
             <div class="container d-md-flex" id="navbar-items">
-                <div id="messages" class="marquee-container d-none d-md-block">
+                <div id="messages" class="marquee-container d-none d-md-block" aria-live="off" aria-atomic="true">
                     <div class="marquee-inner">
                         @RenderHolidayStrings()
                         @RenderHolidayStrings()
                     </div>
                 </div>
                 <div class="d-flex" id="nav-links" style="align-items: center;">
-                    <a id="root-nav" href="/" class=@(classValuesPosition(""))>Deals</a>
-                    <a id="giftcard-nav" href="giftcards" class=@(classValuesPosition("giftcards") + " position-relative")>Gift Cards
+                    <a id="root-nav" href="/" class=@(classValuesPosition("")) aria-current=@(IsCurrentPage("") ? "page" : null)>Deals</a>
+                    <a id="giftcard-nav" href="giftcards" class=@(classValuesPosition("giftcards") + " position-relative") aria-current=@(IsCurrentPage("giftcards") ? "page" : null)>Gift Cards
                         @if(giftCards.Length > 0)
                         {
-                            <span id="giftcards-exist" class="position-absolute top-0 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
+                            <span id="giftcards-exist" class="position-absolute top-0 translate-middle p-1 bg-danger border border-light rounded-circle">
+                                <span class="visually-hidden">Active gift card deals available</span>
+                            </span>
                         }
                     </a>
-                    <a id="about-nav" href="about" class=@(classValuesPosition("about"))>About</a>
+                    <a id="about-nav" href="about" class=@(classValuesPosition("about")) aria-current=@(IsCurrentPage("about") ? "page" : null)>About</a>
                 </div>
             </div>
-        </div>
+        </nav>
 
-        <article class="content px-4">
+        <article class="content px-4" id="main-content" tabindex="-1">
             @Body
         </article>
     </main>
 </div>
 
-<div id="blazor-error-ui">
+<div id="blazor-error-ui" role="alert" aria-live="assertive">
     An unhandled error has occurred.
     <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
+    <button class="dismiss" aria-label="Dismiss error">🗙</button>
 </div>
 
 @code {
@@ -75,13 +77,18 @@
         initialized = true;
     }
 
+    private string CurrentPage() => NavMan.ToBaseRelativePath(uri).Split('?')[0];
+
+    private bool IsCurrentPage(string uriTest) => uriTest == CurrentPage();
+
     private string classValuesPosition(string uriTest)
     {
-        var current = NavMan.ToBaseRelativePath(uri).Split('?')[0];
+        var current = CurrentPage();
 
         if (uriTest == current)
         {
-            return " d-none";
+            // Keep visible with aria-current; style as non-interactive current-page indicator
+            return " nav-current";
         }
 
         if (((current == "giftcards" || current == "") && uriTest == "about") ||

@@ -22,11 +22,14 @@ namespace StpFoodBlazor.Helpers
             try
             {
                 var result = await fetch();
-                cache.Set(key, result, new MemoryCacheEntryOptions
+                if (result is not null)
                 {
-                    AbsoluteExpirationRelativeToNow = expiry
-                });
-                logger.LogInformation("Cache populated for key '{Key}'.", key);
+                    cache.Set(key, result, new MemoryCacheEntryOptions
+                    {
+                        AbsoluteExpirationRelativeToNow = expiry
+                    });
+                    logger.LogInformation("Cache populated for key '{Key}'.", key);
+                }
                 return result ?? defaultValue;
             }
             catch (Exception ex)

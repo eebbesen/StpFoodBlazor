@@ -21,6 +21,7 @@ namespace StpFoodBlazorTest.Services
         private readonly MockHttpMessageHandler _giftCardHandler;
         private readonly HttpDealService _dealService;
         private readonly HttpGiftCardService _giftCardService;
+        private readonly HttpHolidayService _holidayService;
         private readonly ILogger<CacheRefreshService> _logger;
         private readonly CacheRefreshService _service;
         private readonly string _dealUrl;
@@ -42,10 +43,18 @@ namespace StpFoodBlazorTest.Services
             var giftCardConfig = new ConfigurationBuilder()
                 .AddInMemoryCollection(new Dictionary<string, string?> { ["CacheDuration:GiftCardsMinutes"] = "400" })
                 .Build();
+            var holidayConfig = new ConfigurationBuilder()
+                .AddInMemoryCollection(new Dictionary<string, string?>
+                {
+                    ["APPCONFIG:HOLIDAYURL"] = "http://test-holiday-url",
+                    ["CacheDuration:HolidaysMinutes"] = "400"
+                })
+                .Build();
 
             _dealService = new HttpDealService(_cache, new HttpClient(_dealHandler), Substitute.For<ILogger<HttpDealService>>(), dealConfig);
             _giftCardService = new HttpGiftCardService(_cache, new HttpClient(_giftCardHandler), Substitute.For<ILogger<HttpGiftCardService>>(), giftCardConfig);
-            _service = new CacheRefreshService(_dealService, _giftCardService, _logger);
+            _holidayService = new HttpHolidayService(_cache, new HttpClient(new MockHttpMessageHandler()), Substitute.For<ILogger<HttpHolidayService>>(), holidayConfig);
+            _service = new CacheRefreshService(_dealService, _giftCardService, _holidayService, _logger);
 
             _dealUrl = StpFoodBlazor.Helpers.Helper.GetUrl("Deals");
             _giftCardUrl = StpFoodBlazor.Helpers.Helper.GetUrl("giftcards");

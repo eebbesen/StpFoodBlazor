@@ -1,15 +1,15 @@
 @inherits LayoutComponentBase
 @using StpFoodBlazor.Models
 
-<div id="giftcards_table_body">
+<div role="rowgroup" id="giftcards_table_body">
     @{var rowCounter = 0;}
     @foreach (var giftcard in giftcards)
     {
-    <div class="row@(rowCounter % 2 == 0 ? "" : " rounded bg-secondary bg-opacity-25")">
-        <div class="col-5 col-md-2">@giftcard.Name</div>
-        <div class="col-7 col-md-4">@giftcard.Deal</div>
-        <div class="col-md-4 d-none d-md-block">@giftcard.Terms</div>
-        <div class="col-md d-none d-md-block">@giftcard.End</div>
+    <div role="row" class="row@(rowCounter % 2 == 0 ? "" : " rounded bg-secondary bg-opacity-25")">
+        <div role="cell" class="col-5 col-md-2">@giftcard.Name</div>
+        <div role="cell" class="col-7 col-md-4">@giftcard.Deal</div>
+        <div role="cell" class="col-md-4 d-none d-md-block">@giftcard.Terms</div>
+        <div role="cell" class="col-md d-none d-md-block">@giftcard.End</div>
     </div>
     rowCounter++;
     }

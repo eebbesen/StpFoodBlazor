@@ -86,7 +86,7 @@
         var elements = getElements(cut);
 
         Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
-        Assert.Equal("<i class=\"bi bi-cup-straw me-1\" data-bs-toggle=\"tooltip\" title=\"alcohol\"></i>$10 select craft cocktail", elements.Children[0].Children[1].InnerHtml);
+        Assert.Equal("<i class=\"bi bi-cup-straw me-1\" role=\"img\" aria-label=\"Contains alcohol\" data-bs-toggle=\"tooltip\" title=\"alcohol\"></i>$10 select craft cocktail", elements.Children[0].Children[1].InnerHtml);
     }
 
     [Fact]
@@ -97,7 +97,7 @@
         var elements = getElements(cut);
 
         Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
-        Assert.Equal("<i class=\"bi bi-cup-straw me-1\" data-bs-toggle=\"tooltip\" title=\"alcohol\"></i>$10 select craft cocktail", elements.Children[0].Children[1].InnerHtml);
+        Assert.Equal("<i class=\"bi bi-cup-straw me-1\" role=\"img\" aria-label=\"Contains alcohol\" data-bs-toggle=\"tooltip\" title=\"alcohol\"></i>$10 select craft cocktail", elements.Children[0].Children[1].InnerHtml);
     }
 
     [Fact]
@@ -254,17 +254,20 @@
     public void DealsShouldWrapDealInURLSunday()
     {
         timeService.DayOfWeek = DayOfWeek.Sunday.ToString();
-        var expected = "<a href=\"https://static1.squarespace.com/static/5a2e198df09ca4a1b268ab29/t/6682be6dc1cace0a806d8ff5/1719844462234/PSP_HH_7.1.24.png\"" +
-            " target=\"_blank\" class=\"text-decoration-none\"><div class=\"d-inline-block\"><i class=\"bi bi-clock me-1 d-none d-md-block\"" +
-            " data-bs-toggle=\"tooltip\" title=\"16:00 - 18:00\"></i><div class=\"d-sm-block d-md-none me-1 fw-bold\">16:00 - 18:00</div></div>" +
-            "<i class=\"bi bi-cup-straw me-1\" data-bs-toggle=\"tooltip\" title=\"alcohol\"></i>$5 beer, $7 select wine, $9 cocktail of the day</a>";
         var cut = ctx.Render(@<Deals />);
         getElements(cut);
         cut.Find("#happy-hour-checkbox").Change(true);
         var elements = getElements(cut);
+        var dealCellHtml = elements.Children[10].Children[1].InnerHtml;
 
         Assert.Equal("Parlour", elements.Children[10].Children[0].InnerHtml);
-        Assert.Equal(expected, elements.Children[10].Children[1].InnerHtml);
+        Assert.Contains("PSP_HH_7.1.24.png", dealCellHtml);
+        Assert.Contains("rel=\"noopener noreferrer\"", dealCellHtml);
+        Assert.Contains("aria-label=\"16:00 - 18:00\"", dealCellHtml);
+        Assert.Contains("aria-label=\"Contains alcohol\"", dealCellHtml);
+        Assert.Contains("$5 beer, $7 select wine, $9 cocktail of the day", dealCellHtml);
+        Assert.Contains("visually-hidden", dealCellHtml);
+        Assert.Contains("opens in new tab", dealCellHtml);
     }
 
     private IElement getElements(IRenderedFragment cut)

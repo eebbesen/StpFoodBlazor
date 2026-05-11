@@ -19,9 +19,9 @@ namespace StpFoodBlazorTest.Integration
         {
             Assert.Equal("Deals", Driver.FindElement(By.Id("root-nav")).Text);
             Assert.Equal(" flex-fill", Driver.FindElement(By.Id("root-nav")).GetAttribute("class"));
-            Assert.Equal("Gift Cards", Driver.FindElement(By.Id("giftcard-nav")).Text);
+            Assert.StartsWith("Gift Cards", Driver.FindElement(By.Id("giftcard-nav")).Text);
             Assert.Equal(" justify-content-end position-relative", Driver.FindElement(By.Id("giftcard-nav")).GetAttribute("class"));
-            Assert.Equal(" d-none", Driver.FindElement(By.Id("about-nav")).GetAttribute("class"));
+            Assert.Equal(" nav-current", Driver.FindElement(By.Id("about-nav")).GetAttribute("class"));
             Assert.Contains("deals compiled by", Driver.FindElement(By.Id("about-content")).Text);
             Assert.Contains("version: ", Driver.FindElement(By.Id("about-content")).Text);
         }

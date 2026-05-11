@@ -2,6 +2,7 @@
 
 <div class="row align-items-center mb-2" id="filter-bar">
     <div class="d-flex align-items-center">
+        <label for="day-of-week-select" class="visually-hidden">Day of week</label>
         <select class="select-element form-select" style="max-width: 9rem" id="day-of-week-select"
             @onchange="OnSelectedDayChanged" value="@selectedDayOfWeek">
             <option value="">All</option>
@@ -12,18 +13,20 @@
         </select>
         <div class="form-check-inline ms-3 d-flex flex-row-reverse">
             <label for="happy-hour-checkbox" class="form-check-label d-flex">
-                <span class="d-none d-sm-block ms-2">Happy Hour</span>
-                <i class="bi bi-clock ms-1" data-bs-toggle="tooltip" title="happy hour"></i>
+                <span class="d-none d-sm-block ms-2" aria-hidden="true">Happy Hour</span>
+                <i class="bi bi-clock ms-1" aria-hidden="true" data-bs-toggle="tooltip" title="happy hour"></i>
             </label>
-            <input type="checkbox" class="form-check-input" id="happy-hour-checkbox" checked="@happyHour"
+            <input type="checkbox" class="form-check-input" id="happy-hour-checkbox"
+                aria-label="Happy Hour" checked="@happyHour"
                 @onchange="OnHappyHourChanged">
         </div>
         <div class="form-check-inline mr-3 d-flex flex-row-reverse">
             <label for="upcoming-checkbox" class="form-check-label d-flex">
-                <span class="d-none d-sm-block ms-2">Upcoming</span>
-                <i class="bi bi-binoculars ms-1" data-bs-toggle="tooltip" title="upcoming"></i>
+                <span class="d-none d-sm-block ms-2" aria-hidden="true">Upcoming</span>
+                <i class="bi bi-binoculars ms-1" aria-hidden="true" data-bs-toggle="tooltip" title="upcoming"></i>
             </label>
-            <input type="checkbox" class="form-check-input" id="upcoming-checkbox" checked="@upcoming"
+            <input type="checkbox" class="form-check-input" id="upcoming-checkbox"
+                aria-label="Upcoming deals" checked="@upcoming"
                 @onchange="OnUpcomingChanged">
         </div>
     </div>

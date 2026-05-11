@@ -44,7 +44,10 @@ namespace StpFoodBlazor.Endpoints
             foreach (var k in keysToInvalidate)
                 cache.Remove(k);
 
-            _ = refreshService.RefreshAsync(keysToInvalidate);
+            _ = refreshService.RefreshAsync(keysToInvalidate)
+                .ContinueWith(
+                    t => logger.LogError(t.Exception, "Background cache refresh failed for keys: {Keys}", string.Join(", ", keysToInvalidate)),
+                    TaskContinuationOptions.OnlyOnFaulted);
 
             logger.LogInformation("Cache invalidated and refresh triggered for keys: {Keys}", string.Join(", ", keysToInvalidate));
             return Results.Ok(new InvalidatedKeysResponse(keysToInvalidate));

@@ -24,7 +24,7 @@ namespace StpFoodBlazorTest.Integration
                 }
                 catch (StaleElementReferenceException)
                 {
-                    if (i == retryCount)
+                    if (i == retryCount - 1)
                     {
                         throw;
                     }
@@ -33,7 +33,7 @@ namespace StpFoodBlazorTest.Integration
 
             Driver.FindElement(By.Id("deals_table_header"));
             Driver.FindElement(By.Id("happy-hour-checkbox"));
-            Assert.Equal("Gift Cards", Driver.FindElement(By.Id("giftcard-nav")).Text);
+            Assert.StartsWith("Gift Cards", Driver.FindElement(By.Id("giftcard-nav")).Text);
             Assert.Equal("About", Driver.FindElement(By.Id("about-nav")).Text);
         }
 
