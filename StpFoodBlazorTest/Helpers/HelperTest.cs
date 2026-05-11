@@ -19,7 +19,7 @@ namespace StpFoodBlazorTest.Helpers
         [Theory]
         [InlineData("")]
         [InlineData(null)]
-        public void GetUrl_WithNullTabName_ThrowsArgumentNullException(string tabName)
+        public void GetUrl_WithNullTabName_ThrowsArgumentNullException(string? tabName)
         {
             var exception = Assert.Throws<ArgumentException>(() => Helper.GetUrl(tabName));
             Assert.Contains("tabName cannot be empty.", exception.Message);
@@ -53,7 +53,7 @@ namespace StpFoodBlazorTest.Helpers
         [Fact]
         public void BuildHolidayStrings_WithNullOrEmptyHolidays_ReturnsEmptyArray()
         {
-            var result = Helper.BuildHolidayStrings(null);
+            var result = Helper.BuildHolidayStrings(null!);
             Assert.Empty(result);
 
             result = Helper.BuildHolidayStrings([]);

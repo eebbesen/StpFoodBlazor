@@ -95,7 +95,7 @@ namespace StpFoodBlazorTest.Services
             var response = new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.OK,
-                Content = JsonContent.Create((GiftCard[])null)
+                Content = JsonContent.Create((GiftCard[]?)null)
             };
 
             _messageHandlerMock.SetResponse(_testUrl, response);

@@ -15,14 +15,14 @@ namespace StpFoodBlazor.Models
         public string? Start { get; set; }
         public string? End { get; set; }
 
-        public string DisplayTextEnd()
+        public string? DisplayTextEnd()
         {
             if (string.IsNullOrEmpty(End))
             {
                 return Deal;
             }
 
-            string ret = Deal.TrimEnd();
+            string ret = Deal?.TrimEnd() ?? string.Empty;
             if (!ret.EndsWith('.'))
             {
                 ret += ".";

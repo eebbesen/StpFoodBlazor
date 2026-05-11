@@ -19,7 +19,7 @@ namespace StpFoodBlazor.Helpers
             return attribute?.InformationalVersion ?? string.Empty;
         }
 
-        public static string GetUrl(string tabName)
+        public static string GetUrl(string? tabName)
         {
             if (string.IsNullOrEmpty(tabName))
             {
