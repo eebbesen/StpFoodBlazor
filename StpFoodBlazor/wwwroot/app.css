@@ -20,15 +20,6 @@ a, .btn-link {
     padding-top: 1.1rem;
 }
 
-/* Current-page nav link: visible to AT with aria-current="page",
-   styled as non-interactive text rather than hidden */
-a.nav-current {
-    opacity: 0.45;
-    pointer-events: none;
-    cursor: default;
-    text-decoration: none;
-}
-
 /* Dismiss button in blazor-error-ui should look like the original link */
 #blazor-error-ui button.dismiss {
     background: none;

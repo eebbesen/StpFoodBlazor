@@ -97,8 +97,7 @@
 
         if (uriTest == current)
         {
-            // Keep visible with aria-current; style as non-interactive current-page indicator
-            return " nav-current";
+            return " d-none";
         }
 
         if (((current == "giftcards" || current == "") && uriTest == "about") ||

@@ -48,7 +48,7 @@
 
         Assert.Equal("marquee-container d-none d-md-block", navbar.Children[0].ClassName);
         Assert.Equal("marquee-inner", navbar.Children[0].Children[0].ClassName);
-        Assert.Equal(" nav-current", navlinks.Children[0].ClassName);
+        Assert.Equal(" d-none", navlinks.Children[0].ClassName);
         Assert.Equal(" flex-fill position-relative", navlinks.Children[1].ClassName);
         Assert.Equal(" justify-content-end", navlinks.Children[2].ClassName);
     }
@@ -65,7 +65,7 @@
         Assert.Equal("marquee-inner", navbar.Children[0].Children[0].ClassName);
         Assert.Equal(" flex-fill", navlinks.Children[0].ClassName);
         Assert.Equal(" justify-content-end position-relative", navlinks.Children[1].ClassName);
-        Assert.Equal(" nav-current", navlinks.Children[2].ClassName);
+        Assert.Equal(" d-none", navlinks.Children[2].ClassName);
     }
 
     [Fact]
@@ -92,7 +92,7 @@
 
         Assert.Equal("marquee-container d-none d-md-block", navbar.Children[0].ClassName);
         Assert.Equal("marquee-inner", navbar.Children[0].Children[0].ClassName);
-        Assert.Equal(" nav-current", navlinks.Children[0].ClassName);
+        Assert.Equal(" d-none", navlinks.Children[0].ClassName);
         Assert.Equal(" flex-fill position-relative", navlinks.Children[1].ClassName);
         Assert.Equal(" justify-content-end", navlinks.Children[2].ClassName);
     }
