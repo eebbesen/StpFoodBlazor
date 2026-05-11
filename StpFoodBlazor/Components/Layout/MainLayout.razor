@@ -1,10 +1,12 @@
 ﻿@using StpFoodBlazor.Helpers
 @using StpFoodBlazor.Models
 @using StpFoodBlazor.Services
+@implements IDisposable
 @inherits LayoutComponentBase
 @inject NavigationManager NavMan
 @inject IHolidayService HolidayServiceImpl
 @inject IGiftCardService GiftCardServiceImpl
+@inject ILogger<MainLayout> Logger
 
 <div class="page">
     <main>
@@ -44,16 +46,14 @@
 </div>
 
 @code {
-    private string uri = string.Empty;
-    private string holidays = String.Empty;
     private HolidayDisplay[] holidayStrings = Array.Empty<HolidayDisplay>();
     private GiftCard[] giftCards = Array.Empty<GiftCard>();
-    private Boolean initialized = false;
+    private bool initialized = false;
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-        uri = NavMan.Uri;
+        NavMan.LocationChanged += OnLocationChanged;
 
         if (initialized)
         {
@@ -72,12 +72,22 @@
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error fetching holidays: {ex.Message}");
+            Logger.LogError(ex, "Error fetching holidays.");
         }
         initialized = true;
     }
 
-    private string CurrentPage() => NavMan.ToBaseRelativePath(uri).Split('?')[0];
+    private void OnLocationChanged(object? sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e)
+    {
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        NavMan.LocationChanged -= OnLocationChanged;
+    }
+
+    private string CurrentPage() => NavMan.ToBaseRelativePath(NavMan.Uri).Split('?')[0];
 
     private bool IsCurrentPage(string uriTest) => uriTest == CurrentPage();
 

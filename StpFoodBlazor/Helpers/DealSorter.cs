@@ -4,11 +4,12 @@ namespace StpFoodBlazor.Helpers
 {
     public static class DealSorter
     {
-        public static DealEvent[] Sort(DealEvent[] deals){
+        public static DealEvent[] Sort(DealEvent[] deals)
+        {
             return [.. deals.OrderBy(deal =>
-                string.IsNullOrEmpty(deal.Day) ? DayOfWeek.Sunday : Enum.Parse(typeof(DayOfWeek), deal.Day)
-            ).ThenBy(deal => deal.Name).
-              ThenBy(deal => deal.Deal)];
+                Enum.TryParse<DayOfWeek>(deal.Day, ignoreCase: true, out var dow) ? dow : DayOfWeek.Sunday
+            ).ThenBy(deal => deal.Name)
+              .ThenBy(deal => deal.Deal)];
         }
     }
 }

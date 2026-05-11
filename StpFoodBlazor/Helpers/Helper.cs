@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Reflection;
 using System.Text;
 
@@ -11,8 +12,8 @@ namespace StpFoodBlazor.Helpers
 
     public static class Helper
     {
-        private static readonly string DATE_DASH_FORMAT = "MM-dd";
-        private static readonly string DATE_SLASH_FORMAT = "MM/dd";
+        private const string DATE_DASH_FORMAT = "MM-dd";
+        private const string DATE_SLASH_FORMAT = "MM/dd";
         public static string GetVersion()
         {
             var attribute = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>();
@@ -42,19 +43,19 @@ namespace StpFoodBlazor.Helpers
             var holidayDisplays = new List<HolidayDisplay>();
 
             var sortedHolidays = holidays
-                .GroupBy(h => h.Key)
                 .OrderBy(h => h.Key)
                 .ToArray();
 
             foreach (var holiday in sortedHolidays)
             {
-                var isToday = DateTime.Parse(holiday.Key).ToString(DATE_DASH_FORMAT)
-                    .Equals(DateTime.Now.ToString(DATE_DASH_FORMAT));
+                var parsed = DateTime.Parse(holiday.Key, CultureInfo.InvariantCulture);
+                var isToday = parsed.ToString(DATE_DASH_FORMAT, CultureInfo.InvariantCulture)
+                    .Equals(DateTime.Now.ToString(DATE_DASH_FORMAT, CultureInfo.InvariantCulture));
 
                 var holidayDisplay = new HolidayDisplay
                 {
-                    DateText = isToday ? "Today" : DateTime.Parse(holiday.Key).ToString(DATE_SLASH_FORMAT),
-                    HolidayNames = string.Join(", ", holiday.First().Value)
+                    DateText = isToday ? "Today" : parsed.ToString(DATE_SLASH_FORMAT, CultureInfo.InvariantCulture),
+                    HolidayNames = string.Join(", ", holiday.Value)
                 };
 
                 holidayDisplays.Add(holidayDisplay);

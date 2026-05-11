@@ -24,7 +24,7 @@ namespace StpFoodBlazor.Helpers
             return FilterByDates(GiftCards);
         }
 
-        private static DateTime convertStringToDate(string date)
+        private static DateTime ConvertStringToDate(string date)
         {
             return DateTime.Parse(date, CultureInfo.InvariantCulture);
         }
@@ -32,8 +32,8 @@ namespace StpFoodBlazor.Helpers
         private GiftCard[] FilterByDates(GiftCard[] giftcards)
         {
             return [.. giftcards.Where(giftcard =>
-                (string.IsNullOrWhiteSpace(giftcard.Start) || convertStringToDate(giftcard.Start).Date <= _timeService.GetCurrentDate().Date) &&
-                (string.IsNullOrWhiteSpace(giftcard.End) || convertStringToDate(giftcard.End).Date >= _timeService.GetCurrentDate().Date)
+                (string.IsNullOrWhiteSpace(giftcard.Start) || ConvertStringToDate(giftcard.Start).Date <= _timeService.GetCurrentDate().Date) &&
+                (string.IsNullOrWhiteSpace(giftcard.End) || ConvertStringToDate(giftcard.End).Date >= _timeService.GetCurrentDate().Date)
             )];
         }
     }
