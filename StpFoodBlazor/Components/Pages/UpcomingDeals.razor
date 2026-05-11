@@ -11,23 +11,28 @@
 
 <PageTitle>Upcoming Deals</PageTitle>
     <div class="container mb-5">
-        <DealTableHeader selectedDayOfWeek="" upcoming=true />
+        <div role="status" class="visually-hidden">
+            @(deals == null ? "Loading upcoming deals, please wait." : $"{deals.Length} upcoming deal{(deals.Length == 1 ? "" : "s")} loaded.")
+        </div>
 
-@if (deals == null)
-{
-        <DealTableBodyPlaceholder />
-}
-else
-{
-    @if (deals.Length == 0)
-    {
-        <UpcomingDealsNoRecords/>
-    }
-    else
-    {
-        <DealTableBody deals="@deals" selectedDayOfWeek="" upcoming=true/>
-    }
-}
+        @if (deals == null)
+        {
+            <div role="table" aria-label="Upcoming deals" aria-busy="true">
+                <DealTableHeader selectedDayOfWeek="" upcoming=true />
+                <DealTableBodyPlaceholder />
+            </div>
+        }
+        else if (deals.Length == 0)
+        {
+            <UpcomingDealsNoRecords/>
+        }
+        else
+        {
+            <div role="table" aria-label="Upcoming deals">
+                <DealTableHeader selectedDayOfWeek="" upcoming=true />
+                <DealTableBody deals="@deals" selectedDayOfWeek="" upcoming=true/>
+            </div>
+        }
     </div>
 
 @code {

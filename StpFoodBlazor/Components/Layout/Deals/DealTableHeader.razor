@@ -1,19 +1,19 @@
 @inherits LayoutComponentBase
 
-<div class="row bg-dark text-light rounded" id="deals_table_header">
-    @if (upcoming)
-    {
-        <div class="col-1">Start</div>
-    }
-    else if (string.IsNullOrEmpty(selectedDayOfWeek))
-    {
-        <div class="col-1">Day</div>
-    }
+<div role="rowgroup">
+    <div role="row" class="row bg-dark text-light rounded" id="deals_table_header">
+        @if (upcoming)
+        {
+            <div role="columnheader" class="col-1">Start</div>
+        }
+        else if (string.IsNullOrEmpty(selectedDayOfWeek))
+        {
+            <div role="columnheader" class="col-1">Day</div>
+        }
 
-
-
-    <div class="col-3">Place</div>
-    <div class="col">Deal</div>
+        <div role="columnheader" class="col-3">Place</div>
+        <div role="columnheader" class="col">Deal</div>
+    </div>
 </div>
 
 @code {

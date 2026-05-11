@@ -1,13 +1,18 @@
 ﻿<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">StpFoodBlazor</a>
+        <button type="button"
+                class="navbar-toggler"
+                aria-label="Toggle navigation menu"
+                aria-controls="nav-menu-content"
+                aria-expanded="@navMenuOpen.ToString().ToLower()"
+                @onclick="ToggleNavMenu">
+        </button>
     </div>
 </div>
 
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
-
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="flex-column">
+<div id="nav-menu-content" class="nav-scrollable @(navMenuOpen ? "collapse show" : "collapse")">
+    <nav class="flex-column" aria-label="Site navigation">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="">
                 <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Deals
@@ -15,4 +20,9 @@
         </div>
     </nav>
 </div>
+
+@code {
+    private bool navMenuOpen = false;
+    private void ToggleNavMenu() => navMenuOpen = !navMenuOpen;
+}
 

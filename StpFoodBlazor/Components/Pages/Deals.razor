@@ -16,16 +16,22 @@
             OnSelectedDayChanged="OnSelectedDayChanged"
             happyHour="@happyHour" OnHappyHourChanged="OnHappyHourChanged"
             upcoming="@upcoming" OnUpcomingChanged="OnUpcomingChanged" />
-        <DealTableHeader selectedDayOfWeek="@(selectedDayOfWeek == null ? @TimeServiceImpl.GetDayOfWeek() : selectedDayOfWeek)" />
 
-@if (deals == null)
-{
-        <DealTableBodyPlaceholder />
-}
-else
-{
-        <DealTableBody deals="@deals" selectedDayOfWeek="@selectedDayOfWeek" upcoming="@upcoming" />
-}
+        <div role="status" class="visually-hidden">
+            @(deals == null ? "Loading deals, please wait." : $"{deals.Length} deal{(deals.Length == 1 ? "" : "s")} loaded.")
+        </div>
+
+        <div role="table" aria-label="Deals" aria-busy="@(deals == null ? "true" : "false")">
+            <DealTableHeader selectedDayOfWeek="@(selectedDayOfWeek == null ? @TimeServiceImpl.GetDayOfWeek() : selectedDayOfWeek)" />
+            @if (deals == null)
+            {
+                <DealTableBodyPlaceholder />
+            }
+            else
+            {
+                <DealTableBody deals="@deals" selectedDayOfWeek="@selectedDayOfWeek" upcoming="@upcoming" />
+            }
+        </div>
     </div>
 
 @code {

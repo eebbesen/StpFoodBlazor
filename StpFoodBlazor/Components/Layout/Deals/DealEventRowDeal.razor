@@ -3,13 +3,13 @@
 
 @if (!string.IsNullOrEmpty(Deal.HappyHour))
 {
-    <div class="d-inline-block">
-        <i class="bi bi-clock me-1 d-none d-md-block" data-bs-toggle="tooltip" title=@Deal.HappyHour></i><div class="d-sm-block d-md-none me-1 fw-bold">@Deal.HappyHour</div>
+    <div class="d-inline-block" role="img" aria-label="@Deal.HappyHour">
+        <i class="bi bi-clock me-1 d-none d-md-block" aria-hidden="true" data-bs-toggle="tooltip" title=@Deal.HappyHour></i><div class="d-sm-block d-md-none me-1 fw-bold" aria-hidden="true">@Deal.HappyHour</div>
     </div>
 }
 @if (!string.IsNullOrEmpty(Deal.Alcohol))
 {
-    <i class="bi bi-cup-straw me-1" data-bs-toggle="tooltip" title="alcohol"></i>
+    <i class="bi bi-cup-straw me-1" role="img" aria-label="Contains alcohol" data-bs-toggle="tooltip" title="alcohol"></i>
 }
 
 @Deal.DisplayTextEnd()

@@ -8,18 +8,21 @@ using System.Linq;
 namespace StpFoodBlazorTest.Helpers
 {
 
-    public class DealFilterTest
+    public class DealFilterTest : IAsyncLifetime
     {
-        private readonly DealEvent[] deals;
-        private readonly DealFilter filter;
-        public DealFilterTest()
+        private DealEvent[] deals = [];
+        private DealFilter filter = new();
+
+        public async Task InitializeAsync()
         {
-            deals = GetDeals().Result;
+            deals = await GetDeals();
             filter = new DealFilter
             {
                 Deals = deals
             };
         }
+
+        public Task DisposeAsync() => Task.CompletedTask;
 
         [Fact]
         public void ShouldHandleEmptyDeals()

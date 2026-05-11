@@ -13,6 +13,7 @@ namespace StpFoodBlazor.Helpers
         public bool StartInfinity { get; set; } = false;
         public bool OnlyStartInfinity { get; set; } = false;
         public bool EndInfinity { get; set; } = false;
+        public DateTime Today { get; set; } = DateTime.Now.Date;
 
         public DealEvent[] Filter()
         {
@@ -23,7 +24,7 @@ namespace StpFoodBlazor.Helpers
 
             DealEvent[] filteredDeals = Deals;
 
-            filteredDeals = FilterByEndAndStartDates(filteredDeals, StartInfinity, EndInfinity, OnlyStartInfinity);
+            filteredDeals = FilterByEndAndStartDates(filteredDeals, StartInfinity, EndInfinity, OnlyStartInfinity, Today);
 
             if (!string.IsNullOrWhiteSpace(Day))
             {
@@ -92,25 +93,28 @@ namespace StpFoodBlazor.Helpers
             DealEvent[] deals,
             bool startInfinity = false,
             bool endInfinity = false,
-            bool onlyStartInfinity = false)
+            bool onlyStartInfinity = false,
+            DateTime? today = null)
         {
+            var now = today ?? DateTime.Now.Date;
+
             if (onlyStartInfinity)
             {
                 return [.. deals.Where(deal =>
                     !string.IsNullOrEmpty(deal.Start) &&
                     DateTime.TryParse(deal.Start, out var s) &&
-                    s >= DateTime.Now.Date)];
+                    s >= now)];
             }
 
             return [.. deals.Where(deal =>
                 (endInfinity ||
                     string.IsNullOrEmpty(deal.End) ||
                     !DateTime.TryParse(deal.End, out var endDate) ||
-                    endDate >= DateTime.Now.Date) &&
+                    endDate >= now) &&
                 (startInfinity ||
                     string.IsNullOrEmpty(deal.Start) ||
                     !DateTime.TryParse(deal.Start, out var startDate) ||
-                    startDate <= DateTime.Now.Date)
+                    startDate <= now)
             )];
         }
     }

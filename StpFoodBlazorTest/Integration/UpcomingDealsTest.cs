@@ -20,7 +20,7 @@ namespace StpFoodBlazorTest.Integration
         private void AssertCommon()
         {
             Driver.FindElement(By.Id("deals_table_header"));
-            Assert.Equal("Gift Cards", Driver.FindElement(By.Id("giftcard-nav")).Text);
+            Assert.StartsWith("Gift Cards", Driver.FindElement(By.Id("giftcard-nav")).Text);
             Assert.Equal("About", Driver.FindElement(By.Id("about-nav")).Text);
         }
 

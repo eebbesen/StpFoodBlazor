@@ -20,10 +20,10 @@
 
         Assert.Equal("row bg-dark text-light rounded", header.ClassName);
         Assert.Equal(4, header.ChildElementCount);
-        header.Children[0].MarkupMatches("<div class=\"col-5 col-md-2\">Place</div>");
-        header.Children[1].MarkupMatches("<div class=\"col-7 col-md-4\">Deal</div>");
-        header.Children[2].MarkupMatches("<div class=\"col-md-4 d-none d-md-block\">Terms</div>");
-        header.Children[3].MarkupMatches("<div class=\"col-md d-none d-md-block\">Ends</div>");
+        header.Children[0].MarkupMatches("<div role=\"columnheader\" class=\"col-5 col-md-2\">Place</div>");
+        header.Children[1].MarkupMatches("<div role=\"columnheader\" class=\"col-7 col-md-4\">Deal</div>");
+        header.Children[2].MarkupMatches("<div role=\"columnheader\" class=\"col-md-4 d-none d-md-block\">Terms</div>");
+        header.Children[3].MarkupMatches("<div role=\"columnheader\" class=\"col-md d-none d-md-block\">Ends</div>");
     }
 
     private IRenderedComponent<GiftCardsTableHeader> RenderGiftCardTableHead()
