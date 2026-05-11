@@ -1,14 +1,14 @@
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
-using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging.AzureAppServices;
 using StpFoodBlazor.Endpoints;
 using StpFoodBlazor.Components;
 using StpFoodBlazor.Middleware;
 using StpFoodBlazor.Services;
-using System.Security.Cryptography;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.WebHost.ConfigureKestrel(o => o.AddServerHeader = false);
 
 builder.Configuration.AddEnvironmentVariables();
 
@@ -100,43 +100,7 @@ builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
 
 app.UseMiddleware<PageAccessLoggingMiddleware>();
-
-app.Use(async (context, next) =>
-{
-    var nonceBytes = new byte[16];
-    using (var rng = RandomNumberGenerator.Create())
-    {
-        rng.GetBytes(nonceBytes);
-    }
-    var nonce = WebEncoders.Base64UrlEncode(nonceBytes);
-
-    context.Items["csp-nonce"] = nonce;
-
-    context.Response.Headers.Append(
-        "Content-Security-Policy",
-        $"default-src 'self'; " +
-        $"script-src 'self'; " +
-        $"style-src 'self' 'nonce-{nonce}' 'unsafe-hashes' " +
-        $"'sha256-phSae2Ud+nJs666rsURzxXg7FV5Tg7c+iiSFDGd3tAw=' " +
-        $"'sha256-oLiTjTy/4afiaW/t7b0OVz122l2am89Dh+080MmksZM='; " +
-        $"img-src 'self' data:; " +
-        $"font-src 'self' data:; " +
-        $"connect-src 'self';" +
-        $"frame-ancestors 'none';" +
-        $"form-action 'self'; " +
-        $"base-uri 'self'; " +
-        $"object-src 'none';" +
-        $"frame-src 'self'; " +
-        $"media-src 'self'; " +
-        $"manifest-src 'self'");
-
-    context.Response.Headers.Append("X-Frame-Options", "DENY");
-    context.Response.Headers.Append("X-Content-Type-Options", "nosniff");
-    context.Response.Headers.Append("Referrer-Policy", "strict-origin-when-cross-origin");
-    context.Response.Headers.Append("Permissions-Policy", "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()");
-
-    await next();
-});
+app.UseMiddleware<SecurityHeadersMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {
