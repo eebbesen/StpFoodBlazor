@@ -95,7 +95,7 @@
     protected override void OnParametersSet()
     {
         selectedDayOfWeek =
-            String.IsNullOrEmpty(Dow) ? TimeServiceImpl.GetDayOfWeek().ToLower() : Dow.ToLower();
+            string.IsNullOrEmpty(Dow) ? TimeServiceImpl.GetDayOfWeek().ToLower() : Dow.ToLower();
         happyHour = Hh == true;
         upcoming = Upcoming == true;
         alcoholOnly = AlcoholOnly == true;
@@ -103,12 +103,14 @@
 
     private void FilterDeals()
     {
-        DealFilter filter = new DealFilter();
-        filter.Deals = allDeals;
-        filter.Day = selectedDayOfWeek;
-        filter.HappyHour = happyHour;
-        filter.AlcoholOnly = alcoholOnly;
-        filter.StartInfinity = upcoming;
+        var filter = new DealFilter
+        {
+            Deals = allDeals,
+            Day = selectedDayOfWeek,
+            HappyHour = happyHour,
+            AlcoholOnly = alcoholOnly,
+            StartInfinity = upcoming
+        };
         deals = filter.Filter();
     }
 

@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Caching.Memory;
 using StpFoodBlazor.Services;
+using System.Security.Cryptography;
 
 namespace StpFoodBlazor.Endpoints
 {
@@ -78,8 +79,10 @@ namespace StpFoodBlazor.Endpoints
                 return Results.StatusCode(503);
             }
 
-            var providedKey = ctx.Request.Headers["X-Cache-Invalidation-Key"].FirstOrDefault();
-            if (!string.Equals(providedKey, expectedKey, StringComparison.Ordinal))
+            var providedKey = ctx.Request.Headers["X-Cache-Invalidation-Key"].FirstOrDefault() ?? string.Empty;
+            var expectedBytes = System.Text.Encoding.UTF8.GetBytes(expectedKey);
+            var providedBytes = System.Text.Encoding.UTF8.GetBytes(providedKey);
+            if (!CryptographicOperations.FixedTimeEquals(providedBytes, expectedBytes))
             {
                 logger.LogWarning("Cache request rejected: invalid key. IP={IP}", ctx.Connection.RemoteIpAddress);
                 return Results.Unauthorized();

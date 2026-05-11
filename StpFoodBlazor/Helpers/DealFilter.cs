@@ -1,3 +1,4 @@
+using System.Globalization;
 using StpFoodBlazor.Models;
 
 namespace StpFoodBlazor.Helpers
@@ -49,7 +50,7 @@ namespace StpFoodBlazor.Helpers
             return filteredDeals;
         }
 
-        private static DealEvent[] FilterByDay(DealEvent[] deals, String day)
+        private static DealEvent[] FilterByDay(DealEvent[] deals, string day)
         {
             return [.. deals.Where(deal =>
                !string.IsNullOrWhiteSpace(deal.Day) &&
@@ -57,12 +58,12 @@ namespace StpFoodBlazor.Helpers
             )];
         }
 
-        private static DealEvent[] FilterByName(DealEvent[] deals, String name)
+        private static DealEvent[] FilterByName(DealEvent[] deals, string name)
         {
             return [.. deals.Where(deal => deal.Name == name)];
         }
 
-        private static DealEvent[] FilterByAlcohol(DealEvent[] deals, Boolean alcoholOnly)
+        private static DealEvent[] FilterByAlcohol(DealEvent[] deals, bool alcoholOnly)
         {
             if (alcoholOnly)
             {
@@ -73,7 +74,7 @@ namespace StpFoodBlazor.Helpers
         }
 
         // Need to convert column header with space to model attribute without one
-        private static DealEvent[] FilterByHappyHour(DealEvent[] deals, Boolean happyHour, Boolean inclusive)
+        private static DealEvent[] FilterByHappyHour(DealEvent[] deals, bool happyHour, bool inclusive)
         {
             if (happyHour)
             {
@@ -102,18 +103,18 @@ namespace StpFoodBlazor.Helpers
             {
                 return [.. deals.Where(deal =>
                     !string.IsNullOrEmpty(deal.Start) &&
-                    DateTime.TryParse(deal.Start, out var s) &&
+                    DateTime.TryParse(deal.Start, CultureInfo.InvariantCulture, DateTimeStyles.None, out var s) &&
                     s >= now)];
             }
 
             return [.. deals.Where(deal =>
                 (endInfinity ||
                     string.IsNullOrEmpty(deal.End) ||
-                    !DateTime.TryParse(deal.End, out var endDate) ||
+                    !DateTime.TryParse(deal.End, CultureInfo.InvariantCulture, DateTimeStyles.None, out var endDate) ||
                     endDate >= now) &&
                 (startInfinity ||
                     string.IsNullOrEmpty(deal.Start) ||
-                    !DateTime.TryParse(deal.Start, out var startDate) ||
+                    !DateTime.TryParse(deal.Start, CultureInfo.InvariantCulture, DateTimeStyles.None, out var startDate) ||
                     startDate <= now)
             )];
         }
