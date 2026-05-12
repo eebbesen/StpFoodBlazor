@@ -13,8 +13,8 @@ main {
 }
 
 .top-row {
-    background-color: #f7f7f7;
-    border-bottom: 1px solid #d6d5d5;
+    background-color: var(--app-marquee-bg);
+    border-bottom: 1px solid var(--app-border);
     justify-content: flex-end;
     height: 3.5rem;
     display: flex;
@@ -78,6 +78,30 @@ main {
 
 #nav-links {
     align-items: center;
+}
+
+.theme-toggle {
+    margin-left: 1rem;
+    text-decoration: none;
+    border: 1px solid var(--app-border);
+    border-radius: 999px;
+    color: var(--app-text);
+    width: 2.25rem;
+    height: 2.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.theme-toggle:hover {
+    color: var(--app-text);
+    border-color: var(--app-text);
+}
+
+.theme-toggle-icon {
+    font-size: 1rem;
+    line-height: 1;
 }
 
 #blazor-error-ui {

@@ -4,6 +4,7 @@
 @using StpFoodBlazorTest.Services
 @using AngleSharp.Html.Dom
 @using AngleSharp.Dom
+@using Bunit.JSInterop
 
 @code {
     private TestContext ctx;
@@ -14,6 +15,9 @@
     public MainLayoutTest()
     {
         ctx = new TestContext();
+        ctx.JSInterop.Mode = JSRuntimeMode.Loose;
+        ctx.JSInterop.Setup<bool>("themeManager.initialize").SetResult(false);
+        ctx.JSInterop.Setup<bool>("themeManager.toggle").SetResult(true);
         holidayService.Data = CreateHolidays();
         giftCardService.Data = CreateGiftCards();
         ctx.Services.AddSingleton<IHolidayService>(holidayService);
@@ -122,6 +126,18 @@
 
         Assert.DoesNotContain("giftcards-exist", giftCardNav.InnerHtml);
         Assert.Equal(" flex-fill position-relative", giftCardNav.ClassName);
+    }
+
+    [Fact]
+    public void ShouldRenderThemeToggleButton()
+    {
+        var cut = RenderMainLayout("");
+
+        var toggle = cut.Find("#theme-toggle");
+
+        Assert.Equal("button", toggle.TagName.ToLowerInvariant());
+        Assert.Equal("Switch to dark mode", toggle.GetAttribute("aria-label"));
+        Assert.Equal("false", toggle.GetAttribute("aria-pressed"));
     }
 
     private void AssertCommon(IElement navbarItems)

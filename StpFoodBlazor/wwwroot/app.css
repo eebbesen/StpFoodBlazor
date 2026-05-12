@@ -1,9 +1,30 @@
+:root {
+    --app-bg: #ffffff;
+    --app-text: #212529;
+    --app-link: #006bb7;
+    --app-border: #d6d5d5;
+    --app-marquee-bg: #f9f9f9;
+    --app-focus: #258cfb;
+}
+
+body.dark-mode {
+    --app-bg: #111827;
+    --app-text: #e5e7eb;
+    --app-link: #8ec5ff;
+    --app-border: #374151;
+    --app-marquee-bg: #1f2937;
+    --app-focus: #60a5fa;
+    color-scheme: dark;
+}
+
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--app-bg);
+    color: var(--app-text);
 }
 
 a, .btn-link {
-    color: #006bb7;
+    color: var(--app-link);
 }
 
 .btn-primary {
@@ -13,7 +34,7 @@ a, .btn-link {
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+  box-shadow: 0 0 0 0.1rem var(--app-bg), 0 0 0 0.25rem var(--app-focus);
 }
 
 .content {
@@ -48,9 +69,8 @@ h1:focus:not(:focus-visible) {
 .marquee-container {
   width: 100%;
   overflow: hidden;
-  border-bottom: 1px solid #d6d5d5;
-  /* Optional styling */
-  background: #f9f9f9;
+  border-bottom: 1px solid var(--app-border);
+  background: var(--app-marquee-bg);
   white-space: nowrap;
 }
 
