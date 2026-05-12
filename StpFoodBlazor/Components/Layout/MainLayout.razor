@@ -96,7 +96,16 @@
             return;
         }
 
-        isDarkMode = await JS.InvokeAsync<bool>("themeManager.initialize");
+        try
+        {
+            isDarkMode = await JS.InvokeAsync<bool>("themeManager.initialize");
+        }
+        catch (Exception ex)
+        {
+            Logger.LogWarning(ex, "Failed to initialize theme manager.");
+            isDarkMode = false;
+        }
+
         isThemeInitialized = true;
         StateHasChanged();
     }
@@ -113,7 +122,14 @@
 
     private async Task ToggleThemeAsync()
     {
-        isDarkMode = await JS.InvokeAsync<bool>("themeManager.toggle");
+        try
+        {
+            isDarkMode = await JS.InvokeAsync<bool>("themeManager.toggle");
+        }
+        catch (Exception ex)
+        {
+            Logger.LogWarning(ex, "Failed to toggle theme.");
+        }
     }
 
     private string CurrentPage() => NavMan.ToBaseRelativePath(NavMan.Uri).Split('?')[0];
