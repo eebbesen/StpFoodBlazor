@@ -1,0 +1,67 @@
+@using StpFoodBlazor.Components.Layout
+
+@code {
+    private readonly TestContext ctx;
+
+    public NavMenuTest()
+    {
+        ctx = new TestContext();
+    }
+
+    [Fact]
+    public void ShouldRenderCollapsedByDefault()
+    {
+        var cut = ctx.Render(@<NavMenu />);
+
+        var toggle = cut.Find("button.navbar-toggler");
+        var navMenuContent = cut.Find("#nav-menu-content");
+
+        Assert.Equal("false", toggle.GetAttribute("aria-expanded"));
+        Assert.Equal("nav-scrollable collapse", navMenuContent.ClassName);
+    }
+
+    [Fact]
+    public void ShouldExpandWhenToggleClicked()
+    {
+        var cut = ctx.Render(@<NavMenu />);
+
+        var toggle = cut.Find("button.navbar-toggler");
+        toggle.Click();
+
+        var navMenuContent = cut.Find("#nav-menu-content");
+
+        Assert.Equal("true", toggle.GetAttribute("aria-expanded"));
+        Assert.Equal("nav-scrollable collapse show", navMenuContent.ClassName);
+    }
+
+    [Fact]
+    public void ShouldCollapseWhenToggleClickedTwice()
+    {
+        var cut = ctx.Render(@<NavMenu />);
+
+        var toggle = cut.Find("button.navbar-toggler");
+        toggle.Click();
+        toggle.Click();
+
+        var navMenuContent = cut.Find("#nav-menu-content");
+
+        Assert.Equal("false", toggle.GetAttribute("aria-expanded"));
+        Assert.Equal("nav-scrollable collapse", navMenuContent.ClassName);
+    }
+
+    [Fact]
+    public void ShouldRenderSiteNavigationLink()
+    {
+        var cut = ctx.Render(@<NavMenu />);
+
+        var nav = cut.Find("nav[aria-label='Site navigation']");
+        var dealsLink = cut.Find("a.nav-link");
+        var href = dealsLink.GetAttribute("href");
+        var brandLink = cut.Find("a.navbar-brand");
+
+        Assert.NotNull(nav);
+        Assert.True(href is "" or "/");
+        Assert.Contains("Deals", dealsLink.TextContent);
+        Assert.Contains("StpFoodBlazor", brandLink.TextContent);
+    }
+}
