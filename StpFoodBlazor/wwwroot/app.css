@@ -5,6 +5,10 @@
     --app-border: #d6d5d5;
     --app-marquee-bg: #f9f9f9;
     --app-focus: #258cfb;
+  --app-control-bg: #f8f9fa;
+  --app-control-text: #212529;
+  --app-control-border: #c4c9cf;
+  --app-control-accent: #0d6efd;
 }
 
 body.dark-mode {
@@ -14,6 +18,10 @@ body.dark-mode {
     --app-border: #374151;
     --app-marquee-bg: #1f2937;
     --app-focus: #60a5fa;
+  --app-control-bg: #1f2937;
+  --app-control-text: #e5e7eb;
+  --app-control-border: #4b5563;
+  --app-control-accent: #3b82f6;
     color-scheme: dark;
 }
 
@@ -33,7 +41,7 @@ a, .btn-link {
     border-color: #1861ac;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-select:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem var(--app-bg), 0 0 0 0.25rem var(--app-focus);
 }
 
@@ -141,4 +149,26 @@ h1:focus:not(:focus-visible) {
 
 .darker-border-checkbox.form-check-input {
     border-color: #929292;
+}
+
+#day-of-week-select.form-select {
+  background-color: var(--app-control-bg);
+  color: var(--app-control-text);
+  border-color: var(--app-control-border);
+}
+
+body.dark-mode #day-of-week-select.form-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23e5e7eb' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+}
+
+#happy-hour-checkbox.form-check-input,
+#upcoming-checkbox.form-check-input {
+  background-color: var(--app-control-bg);
+  border-color: var(--app-control-border);
+}
+
+#happy-hour-checkbox.form-check-input:checked,
+#upcoming-checkbox.form-check-input:checked {
+  background-color: var(--app-control-accent);
+  border-color: var(--app-control-accent);
 }
