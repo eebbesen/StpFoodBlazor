@@ -10,15 +10,15 @@ namespace StpFoodBlazorTest.Services
     public class TestDealService : IDealService
     {
         private static readonly string DEAL_FIXTURES_PATH = Path.Combine(Directory.GetCurrentDirectory(), "fixtures", "deals.json");
-        public bool LongRunning { get; set; } = false;
+        public TaskCompletionSource<DealEvent[]>? PendingResult { get; set; }
         public DealEvent[] Deals { get; set; } = [];
         public bool NoRecords { get; set; } = false;
 
         public async Task<DealEvent[]> GetDealsAsync()
         {
-            if (LongRunning)
+            if (PendingResult != null)
             {
-                await Task.Delay(7000);
+                return await PendingResult.Task;
             }
 
             if (NoRecords)

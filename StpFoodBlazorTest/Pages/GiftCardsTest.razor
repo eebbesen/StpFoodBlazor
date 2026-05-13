@@ -3,6 +3,7 @@
 @using AngleSharp.Dom
 @using AngleSharp.Html.Dom
 @using StpFoodBlazor.Components.Pages
+@using StpFoodBlazor.Models
 @using StpFoodBlazor.Services
 @using StpFoodBlazorTest.Services
 
@@ -24,20 +25,34 @@
     [Fact]
     public void GiftCardsShouldDisplayPlaceholderWhenLoading()
     {
-        TestGiftCardService testGiftCardService = new TestGiftCardService();
-        testGiftCardService.LongRunning = true;
-        ctx.Services.AddSingleton<IGiftCardService>(testGiftCardService);
+        var tcs = new TaskCompletionSource<GiftCard[]>();
+        ctx.Services.AddSingleton<IGiftCardService>(new TestGiftCardService { PendingResult = tcs });
 
         var cut = ctx.Render(@<GiftCards />);
-        var header = cut.WaitForElement("#giftcards_table_header");
-        var elements = cut.WaitForElement("#giftcards_table_body_placeholder");
+        var header = cut.Find("#giftcards_table_header");
+        var placeholder = cut.Find("#giftcards_table_body_placeholder");
 
         Assert.Equal("Place", header.Children[0].InnerHtml);
-        Assert.Equal(30, elements.ChildElementCount);
+        Assert.Equal(30, placeholder.ChildElementCount);
         Assert.Equal("<span class=\"col-12 rounded placeholder bg-white\">&nbsp;</span>",
-            elements.Children[0].InnerHtml);
+            placeholder.Children[0].InnerHtml);
         Assert.Equal("<span class=\"col-12 rounded placeholder\">&nbsp;</span>",
-            elements.Children[1].InnerHtml);
+            placeholder.Children[1].InnerHtml);
+    }
+
+    [Fact]
+    public void GiftCardsShouldReplacePlaceholderWithTableWhenLoaded()
+    {
+        var tcs = new TaskCompletionSource<GiftCard[]>();
+        ctx.Services.AddSingleton<IGiftCardService>(new TestGiftCardService { PendingResult = tcs });
+
+        var cut = ctx.Render(@<GiftCards />);
+        cut.Find("#giftcards_table_body_placeholder");
+
+        tcs.SetResult([]);
+
+        cut.WaitForElement("#giftcards_no_records");
+        Assert.Empty(cut.FindAll("#giftcards_table_body_placeholder"));
     }
 
     [Fact]

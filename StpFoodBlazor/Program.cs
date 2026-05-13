@@ -77,24 +77,8 @@ builder.Services.AddHttpClient<HttpHolidayService>().AddStandardResilienceHandle
 builder.Services.AddScoped<IHolidayService>(sp => sp.GetRequiredService<HttpHolidayService>());
 builder.Services.AddScoped<ICacheRefreshService, CacheRefreshService>();
 
-if (builder.Environment.IsDevelopment())
-{
-    builder.Services.AddScoped<IDealService>(sp =>
-        new DelayedDealService(
-            sp.GetRequiredService<HttpDealService>(),
-            sp.GetRequiredService<ILogger<DelayedDealService>>(),
-            sp.GetRequiredService<IHostEnvironment>()));
-    builder.Services.AddScoped<IGiftCardService>(sp =>
-        new DelayedGiftCardService(
-            sp.GetRequiredService<HttpGiftCardService>(),
-            sp.GetRequiredService<ILogger<DelayedGiftCardService>>(),
-            sp.GetRequiredService<IHostEnvironment>()));
-}
-else
-{
-    builder.Services.AddScoped<IDealService>(sp => sp.GetRequiredService<HttpDealService>());
-    builder.Services.AddScoped<IGiftCardService>(sp => sp.GetRequiredService<HttpGiftCardService>());
-}
+builder.Services.AddScoped<IDealService>(sp => sp.GetRequiredService<HttpDealService>());
+builder.Services.AddScoped<IGiftCardService>(sp => sp.GetRequiredService<HttpGiftCardService>());
 builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
