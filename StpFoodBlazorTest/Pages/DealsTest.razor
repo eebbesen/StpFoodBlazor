@@ -188,7 +188,7 @@
     public void DealsShouldChangeWhenNewValueSelectedMonday()
     {
         var cut = ctx.Render(@<Deals />);
-        cut.WaitForElement("#day-of-week-select");
+        cut.WaitForElement("#deals_table_body");
         var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change("Monday");
@@ -203,7 +203,7 @@
     public void DealsShouldChangeWhenNewValueSelectedFriday()
     {
         var cut = ctx.Render(@<Deals />);
-        cut.WaitForElement("#day-of-week-select");
+        cut.WaitForElement("#deals_table_body");
         var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change("Friday");
@@ -218,7 +218,7 @@
     public void DealsShouldSortByDay()
     {
         var cut = ctx.Render(@<Deals />);
-        cut.WaitForElement("#day-of-week-select");
+        cut.WaitForElement("#deals_table_body");
         var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change(""); // All value in the select is ""
@@ -235,7 +235,7 @@
     public void DealsShouldShowDayColumnWhenAllDays()
     {
         var cut = ctx.Render(@<Deals />);
-        cut.WaitForElement("#day-of-week-select");
+        cut.WaitForElement("#deals_table_body");
         var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change(""); // All value in the select is ""
@@ -251,7 +251,7 @@
     public void DealsShouldNotShowDayColumnWhenNotAllDays()
     {
         var cut = ctx.Render(@<Deals />);
-        cut.WaitForElement("#day-of-week-select");
+        cut.WaitForElement("#deals_table_body");
         var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change("Friday");

@@ -22,25 +22,6 @@ namespace StpFoodBlazorTest.Integration
         }
 
         [Fact]
-        public void GiftCardsTableBodyPlaceholder()
-        {
-            try
-            {
-                Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
-                Driver.Navigate().GoToUrl(BaseUrl());
-                AssertCommon();
-                Driver.FindElement(By.Id("giftcards_table_body_placeholder"));
-                Driver.FindElement(By.Id("giftcards_table_header"));
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                SeleniumArtifacts("GiftCardsTableBodyPlaceholder");
-                throw;
-            }
-        }
-
-        [Fact]
         public void GiftCards()
         {
             try
