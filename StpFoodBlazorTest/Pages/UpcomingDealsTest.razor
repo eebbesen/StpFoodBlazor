@@ -32,6 +32,8 @@
         var placeholder = cut.Find("#deals_table_body_placeholder");
 
         Assert.Equal(30, placeholder.ChildElementCount);
+
+        tcs.SetResult([]);
     }
 
     [Fact]

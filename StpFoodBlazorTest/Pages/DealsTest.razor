@@ -42,6 +42,8 @@
             placeholder.Children[0].InnerHtml);
         Assert.Equal("<span class=\"col-12 rounded placeholder\">&nbsp;</span>",
             placeholder.Children[1].InnerHtml);
+
+        tcs.SetResult([]);
     }
 
     [Fact]
