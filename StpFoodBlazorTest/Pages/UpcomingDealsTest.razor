@@ -23,6 +23,35 @@
     }
 
     [Fact]
+    public void UpcomingDealsShouldDisplayPlaceholderWhenLoading()
+    {
+        var tcs = new TaskCompletionSource<DealEvent[]>();
+        ctx.Services.AddSingleton<IDealService>(new TestDealService { PendingResult = tcs });
+
+        var cut = ctx.Render(@<UpcomingDeals />);
+        var placeholder = cut.Find("#deals_table_body_placeholder");
+
+        Assert.Equal(30, placeholder.ChildElementCount);
+
+        tcs.SetResult([]);
+    }
+
+    [Fact]
+    public void UpcomingDealsShouldReplacePlaceholderWithTableWhenLoaded()
+    {
+        var tcs = new TaskCompletionSource<DealEvent[]>();
+        ctx.Services.AddSingleton<IDealService>(new TestDealService { PendingResult = tcs });
+
+        var cut = ctx.Render(@<UpcomingDeals />);
+        cut.Find("#deals_table_body_placeholder");
+
+        tcs.SetResult([new DealEvent { Name = "Test", Deal = "Test", Day = "Saturday", Start = "2100-05-15" }]);
+
+        cut.WaitForElement("#deals_table_body");
+        Assert.Empty(cut.FindAll("#deals_table_body_placeholder"));
+    }
+
+    [Fact]
     public void UpcomingDealsShouldIncludeUpcomingDeals()
     {
         TestDealService testDealService = new TestDealService();

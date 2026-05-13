@@ -27,22 +27,39 @@
     public void DealsShouldDisplayPlaceholderWhenLoading()
     {
         timeService.DayOfWeek = DayOfWeek.Wednesday.ToString();
-        TestDealService testDealService = new TestDealService();
-        testDealService.LongRunning = true;
-        ctx.Services.AddSingleton<IDealService>(testDealService);
+        var tcs = new TaskCompletionSource<DealEvent[]>();
+        ctx.Services.AddSingleton<IDealService>(new TestDealService { PendingResult = tcs });
 
         var cut = ctx.Render(@<Deals />);
-        var select = cut.WaitForElement("#day-of-week-select");
-        var header = cut.WaitForElement("#deals_table_header");
-        var elements = cut.WaitForElement("#deals_table_body_placeholder");
+        var select = cut.Find("#day-of-week-select");
+        var header = cut.Find("#deals_table_header");
+        var placeholder = cut.Find("#deals_table_body_placeholder");
 
         Assert.Equal(timeService.DayOfWeek.ToLower(), select.GetAttribute("value"));
         Assert.Equal("Place", header.Children[0].InnerHtml);
-        Assert.Equal(30, elements.ChildElementCount);
+        Assert.Equal(30, placeholder.ChildElementCount);
         Assert.Equal("<span class=\"col-12 rounded placeholder bg-white\">&nbsp;</span>",
-            elements.Children[0].InnerHtml);
+            placeholder.Children[0].InnerHtml);
         Assert.Equal("<span class=\"col-12 rounded placeholder\">&nbsp;</span>",
-            elements.Children[1].InnerHtml);
+            placeholder.Children[1].InnerHtml);
+
+        tcs.SetResult([]);
+    }
+
+    [Fact]
+    public void DealsShouldReplacePlaceholderWithTableWhenLoaded()
+    {
+        timeService.DayOfWeek = DayOfWeek.Wednesday.ToString();
+        var tcs = new TaskCompletionSource<DealEvent[]>();
+        ctx.Services.AddSingleton<IDealService>(new TestDealService { PendingResult = tcs });
+
+        var cut = ctx.Render(@<Deals />);
+        cut.Find("#deals_table_body_placeholder");
+
+        tcs.SetResult([]);
+
+        cut.WaitForElement("#deals_table_body");
+        Assert.Empty(cut.FindAll("#deals_table_body_placeholder"));
     }
 
     [Fact]
@@ -173,7 +190,7 @@
     public void DealsShouldChangeWhenNewValueSelectedMonday()
     {
         var cut = ctx.Render(@<Deals />);
-        cut.WaitForElement("#day-of-week-select");
+        cut.WaitForElement("#deals_table_body");
         var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change("Monday");
@@ -188,7 +205,7 @@
     public void DealsShouldChangeWhenNewValueSelectedFriday()
     {
         var cut = ctx.Render(@<Deals />);
-        cut.WaitForElement("#day-of-week-select");
+        cut.WaitForElement("#deals_table_body");
         var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change("Friday");
@@ -203,7 +220,7 @@
     public void DealsShouldSortByDay()
     {
         var cut = ctx.Render(@<Deals />);
-        cut.WaitForElement("#day-of-week-select");
+        cut.WaitForElement("#deals_table_body");
         var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change(""); // All value in the select is ""
@@ -220,7 +237,7 @@
     public void DealsShouldShowDayColumnWhenAllDays()
     {
         var cut = ctx.Render(@<Deals />);
-        cut.WaitForElement("#day-of-week-select");
+        cut.WaitForElement("#deals_table_body");
         var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change(""); // All value in the select is ""
@@ -236,7 +253,7 @@
     public void DealsShouldNotShowDayColumnWhenNotAllDays()
     {
         var cut = ctx.Render(@<Deals />);
-        cut.WaitForElement("#day-of-week-select");
+        cut.WaitForElement("#deals_table_body");
         var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
 
         dowSelect.Change("Friday");

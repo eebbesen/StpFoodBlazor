@@ -38,23 +38,6 @@ namespace StpFoodBlazorTest.Integration
         }
 
         [Fact]
-        public void DealsTableBodyPlaceholder()
-        {
-            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
-            try
-            {
-                Driver.Navigate().GoToUrl(BASE_URL);
-                AssertCommon();
-                Driver.FindElement(By.Id("deals_table_body_placeholder"));
-            }
-            catch (Exception)
-            {
-                SeleniumArtifacts("DealsTableBodyPlaceholder");
-                throw;
-            }
-        }
-
-        [Fact]
         public void DealsTableBodyLoads()
         {
             try

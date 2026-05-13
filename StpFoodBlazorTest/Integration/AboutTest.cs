@@ -17,13 +17,28 @@ namespace StpFoodBlazorTest.Integration
 
         private void AssertCommon()
         {
-            Assert.Equal("Deals", Driver.FindElement(By.Id("root-nav")).Text);
-            Assert.Equal(" flex-fill", Driver.FindElement(By.Id("root-nav")).GetAttribute("class"));
-            Assert.StartsWith("Gift Cards", Driver.FindElement(By.Id("giftcard-nav")).Text);
-            Assert.Equal(" justify-content-end position-relative", Driver.FindElement(By.Id("giftcard-nav")).GetAttribute("class"));
-            Assert.Equal(" d-none", Driver.FindElement(By.Id("about-nav")).GetAttribute("class"));
-            Assert.Contains("deals compiled by", Driver.FindElement(By.Id("about-content")).Text);
-            Assert.Contains("version: ", Driver.FindElement(By.Id("about-content")).Text);
+            int retryCount = 5;
+            for (int i = 0; i < retryCount; i++)
+            {
+                try
+                {
+                    Assert.Equal("Deals", Driver.FindElement(By.Id("root-nav")).Text);
+                    Assert.Equal(" flex-fill", Driver.FindElement(By.Id("root-nav")).GetAttribute("class"));
+                    Assert.StartsWith("Gift Cards", Driver.FindElement(By.Id("giftcard-nav")).Text);
+                    Assert.Equal(" justify-content-end position-relative", Driver.FindElement(By.Id("giftcard-nav")).GetAttribute("class"));
+                    Assert.Equal(" d-none", Driver.FindElement(By.Id("about-nav")).GetAttribute("class"));
+                    Assert.Contains("deals compiled by", Driver.FindElement(By.Id("about-content")).Text);
+                    Assert.Contains("version: ", Driver.FindElement(By.Id("about-content")).Text);
+                    return;
+                }
+                catch (StaleElementReferenceException)
+                {
+                    if (i == retryCount - 1)
+                    {
+                        throw;
+                    }
+                }
+            }
         }
 
         [Fact]

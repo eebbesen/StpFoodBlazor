@@ -24,23 +24,6 @@ namespace StpFoodBlazorTest.Integration
             Assert.Equal("About", Driver.FindElement(By.Id("about-nav")).Text);
         }
 
-        [Fact]
-        public void DealsTableBodyPlaceholder()
-        {
-            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
-            try
-            {
-                Driver.Navigate().GoToUrl(BaseUrl());
-                AssertCommon();
-                Driver.FindElement(By.Id("deals_table_body_placeholder"));
-            }
-            catch (Exception)
-            {
-                SeleniumArtifacts("UpcomingDealsTableBodyPlaceholder");
-                throw;
-            }
-        }
-
         // will only pass when there are upcoming deals
         // [Fact]
         // public void DealsTableBodyLoads()
