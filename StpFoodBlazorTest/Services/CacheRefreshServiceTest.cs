@@ -19,6 +19,7 @@ namespace StpFoodBlazorTest.Services
         private readonly IMemoryCache _cache;
         private readonly MockHttpMessageHandler _dealHandler;
         private readonly MockHttpMessageHandler _giftCardHandler;
+        private readonly MockHttpMessageHandler _holidayHandler;
         private readonly HttpDealService _dealService;
         private readonly HttpGiftCardService _giftCardService;
         private readonly HttpHolidayService _holidayService;
@@ -26,6 +27,7 @@ namespace StpFoodBlazorTest.Services
         private readonly CacheRefreshService _service;
         private readonly string _dealUrl;
         private readonly string _giftCardUrl;
+        private readonly string _holidayUrl;
 
         public CacheRefreshServiceTests()
         {
@@ -36,6 +38,7 @@ namespace StpFoodBlazorTest.Services
             _logger = Substitute.For<ILogger<CacheRefreshService>>();
             _dealHandler = new MockHttpMessageHandler();
             _giftCardHandler = new MockHttpMessageHandler();
+            _holidayHandler = new MockHttpMessageHandler();
 
             var dealConfig = new ConfigurationBuilder()
                 .AddInMemoryCollection(new Dictionary<string, string?> { ["CacheDuration:DealsMinutes"] = "200" })
@@ -53,11 +56,12 @@ namespace StpFoodBlazorTest.Services
 
             _dealService = new HttpDealService(_cache, new HttpClient(_dealHandler), Substitute.For<ILogger<HttpDealService>>(), dealConfig);
             _giftCardService = new HttpGiftCardService(_cache, new HttpClient(_giftCardHandler), Substitute.For<ILogger<HttpGiftCardService>>(), giftCardConfig);
-            _holidayService = new HttpHolidayService(_cache, new HttpClient(new MockHttpMessageHandler()), Substitute.For<ILogger<HttpHolidayService>>(), holidayConfig);
+            _holidayService = new HttpHolidayService(_cache, new HttpClient(_holidayHandler), Substitute.For<ILogger<HttpHolidayService>>(), holidayConfig);
             _service = new CacheRefreshService(_dealService, _giftCardService, _holidayService, _logger);
 
             _dealUrl = StpFoodBlazor.Helpers.Helper.GetUrl("Deals");
             _giftCardUrl = StpFoodBlazor.Helpers.Helper.GetUrl("giftcards");
+            _holidayUrl = "http://test-holiday-url/today/";
         }
 
         [Fact]
@@ -93,19 +97,49 @@ namespace StpFoodBlazorTest.Services
         }
 
         [Fact]
-        public async Task RefreshAsync_PopulatesAllCaches_WhenAllKeysProvided()
+        public async Task RefreshAsync_PopulatesHolidaysCache_WhenHolidaysKeyProvided()
         {
-            var deals = JsonSerializer.Deserialize<StpFoodBlazor.Models.DealEvent[]>(
-                File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "fixtures", "deals.json")))!;
+            var holidays = new Dictionary<string, string[]>
+            {
+                [DateTime.Now.ToString("MM-dd")] = ["Sample Holiday"]
+            };
+            _holidayHandler.SetResponse(_holidayUrl, new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = JsonContent.Create(holidays)
+            });
+
+            await _service.RefreshAsync([CacheKeys.Holidays]);
+
+            Assert.True(_cache.TryGetValue(CacheKeys.Holidays, out _));
+        }
+
+        [Fact]
+        public async Task RefreshAsync_ContinuesWhenOneKeyFails()
+        {
             var giftCards = JsonSerializer.Deserialize<StpFoodBlazor.Models.GiftCard[]>(
                 File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "fixtures", "giftcards.json")))!;
-            _dealHandler.SetResponse(_dealUrl, new HttpResponseMessage { StatusCode = HttpStatusCode.OK, Content = JsonContent.Create(deals) });
-            _giftCardHandler.SetResponse(_giftCardUrl, new HttpResponseMessage { StatusCode = HttpStatusCode.OK, Content = JsonContent.Create(giftCards) });
+            _dealHandler.SetResponse(_dealUrl, new HttpResponseMessage { StatusCode = HttpStatusCode.InternalServerError });
+            _giftCardHandler.SetResponse(_giftCardUrl, new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = JsonContent.Create(giftCards)
+            });
 
-            await _service.RefreshAsync(CacheKeys.SheetKeys);
+            await _service.RefreshAsync([CacheKeys.Deals, CacheKeys.GiftCards]);
 
-            Assert.True(_cache.TryGetValue(CacheKeys.Deals, out _));
             Assert.True(_cache.TryGetValue(CacheKeys.GiftCards, out _));
+        }
+
+        [Fact]
+        public async Task RefreshAsync_DoesNotThrow_WhenUnknownKeyProvided()
+        {
+            var exception = await Record.ExceptionAsync(() => _service.RefreshAsync(["unknown-key"]));
+
+            Assert.Null(exception);
+            Assert.False(_cache.TryGetValue(CacheKeys.Deals, out _));
+            Assert.False(_cache.TryGetValue(CacheKeys.GiftCards, out _));
+            Assert.False(_cache.TryGetValue(CacheKeys.Holidays, out _));
         }
 
         [Fact]

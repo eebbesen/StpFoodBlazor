@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    <InformationalVersion>0.6.2</InformationalVersion>
+    <InformationalVersion>0.7.0</InformationalVersion>
     <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
     <UserSecretsId>a7046a2a-1291-418c-a3dd-82f5b8e3488a</UserSecretsId>
   </PropertyGroup>

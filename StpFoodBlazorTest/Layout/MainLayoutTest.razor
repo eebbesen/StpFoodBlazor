@@ -4,6 +4,7 @@
 @using StpFoodBlazorTest.Services
 @using AngleSharp.Html.Dom
 @using AngleSharp.Dom
+@using Bunit.JSInterop
 
 @code {
     private TestContext ctx;
@@ -14,6 +15,9 @@
     public MainLayoutTest()
     {
         ctx = new TestContext();
+        ctx.JSInterop.Mode = JSRuntimeMode.Loose;
+        ctx.JSInterop.Setup<bool>("themeManager.initialize").SetResult(false);
+        ctx.JSInterop.Setup<bool>("themeManager.toggle").SetResult(true);
         holidayService.Data = CreateHolidays();
         giftCardService.Data = CreateGiftCards();
         ctx.Services.AddSingleton<IHolidayService>(holidayService);
@@ -122,6 +126,69 @@
 
         Assert.DoesNotContain("giftcards-exist", giftCardNav.InnerHtml);
         Assert.Equal(" flex-fill position-relative", giftCardNav.ClassName);
+    }
+
+    [Fact]
+    public void ShouldRenderThemeToggleButton()
+    {
+        var cut = RenderMainLayout("");
+
+        var toggle = cut.Find("#theme-toggle");
+
+        Assert.Equal("button", toggle.TagName.ToLowerInvariant());
+        Assert.Equal("Switch to dark mode", toggle.GetAttribute("aria-label"));
+        Assert.Equal("false", toggle.GetAttribute("aria-pressed"));
+    }
+
+    [Fact]
+    public async Task ShouldToggleThemeWhenButtonClicked()
+    {
+        var cut = RenderMainLayout("");
+        var toggle = cut.Find("#theme-toggle");
+
+        // Initial state: light mode (false)
+        Assert.Equal("false", toggle.GetAttribute("aria-pressed"));
+        Assert.Contains("🌙", toggle.InnerHtml); // Moon icon = light mode
+
+        // Act - Click theme toggle
+        await toggle.ClickAsync(new MouseEventArgs());
+
+        // Assert - Should switch to dark mode (true)
+        toggle = cut.Find("#theme-toggle");
+        Assert.Equal("true", toggle.GetAttribute("aria-pressed"));
+        Assert.Contains("☀️", toggle.InnerHtml); // Sun icon = dark mode
+    }
+
+    [Fact]
+    public async Task ShouldUpdateAriaLabelOnThemeToggle()
+    {
+        var cut = RenderMainLayout("");
+        var toggle = cut.Find("#theme-toggle");
+
+        // Initial state: light mode, label suggests switching to dark
+        Assert.Equal("Switch to dark mode", toggle.GetAttribute("aria-label"));
+
+        // Act - Click theme toggle
+        await toggle.ClickAsync(new MouseEventArgs());
+
+        // Assert - Label should suggest switching to light
+        toggle = cut.Find("#theme-toggle");
+        Assert.Equal("Switch to light mode", toggle.GetAttribute("aria-label"));
+    }
+
+    [Fact]
+    public async Task ShouldInvokeJsThemeManagerToggle()
+    {
+        var cut = RenderMainLayout("");
+        var toggle = cut.Find("#theme-toggle");
+
+        // Act
+        await toggle.ClickAsync(new MouseEventArgs());
+
+        // Assert - Verify JS interop was called
+        var calls = ctx.JSInterop.Invocations;
+        var toggleCall = calls.FirstOrDefault(c => c.Identifier == "themeManager.toggle");
+        Assert.True(toggleCall != default);
     }
 
     private void AssertCommon(IElement navbarItems)

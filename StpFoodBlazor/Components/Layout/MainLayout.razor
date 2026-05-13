@@ -1,12 +1,14 @@
-﻿@using StpFoodBlazor.Helpers
+@using StpFoodBlazor.Helpers
 @using StpFoodBlazor.Models
 @using StpFoodBlazor.Services
+@using Microsoft.JSInterop
 @implements IDisposable
 @inherits LayoutComponentBase
 @inject NavigationManager NavMan
 @inject IHolidayService HolidayServiceImpl
 @inject IGiftCardService GiftCardServiceImpl
 @inject ILogger<MainLayout> Logger
+@inject IJSRuntime JS
 
 <div class="page">
     <main>
@@ -29,6 +31,14 @@
                         }
                     </a>
                     <a id="about-nav" href="about" class=@(classValuesPosition("about")) aria-current=@(IsCurrentPage("about") ? "page" : null)>About</a>
+                    <button id="theme-toggle"
+                            type="button"
+                            class="btn btn-link theme-toggle"
+                            @onclick="ToggleThemeAsync"
+                            aria-label="@ThemeToggleAriaLabel"
+                            aria-pressed="@isDarkMode.ToString().ToLower()">
+                        <span class="theme-toggle-icon" aria-hidden="true">@ThemeToggleIcon</span>
+                    </button>
                 </div>
             </div>
         </nav>
@@ -49,6 +59,8 @@
     private HolidayDisplay[] holidayStrings = Array.Empty<HolidayDisplay>();
     private GiftCard[] giftCards = Array.Empty<GiftCard>();
     private bool initialized = false;
+    private bool isDarkMode;
+    private bool isThemeInitialized;
 
     protected override async Task OnInitializedAsync()
     {
@@ -77,6 +89,27 @@
         initialized = true;
     }
 
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender || isThemeInitialized)
+        {
+            return;
+        }
+
+        try
+        {
+            isDarkMode = await JS.InvokeAsync<bool>("themeManager.initialize");
+        }
+        catch (Exception ex)
+        {
+            Logger.LogWarning(ex, "Failed to initialize theme manager.");
+            isDarkMode = false;
+        }
+
+        isThemeInitialized = true;
+        StateHasChanged();
+    }
+
     private void OnLocationChanged(object? sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e)
     {
         StateHasChanged();
@@ -85,6 +118,18 @@
     public void Dispose()
     {
         NavMan.LocationChanged -= OnLocationChanged;
+    }
+
+    private async Task ToggleThemeAsync()
+    {
+        try
+        {
+            isDarkMode = await JS.InvokeAsync<bool>("themeManager.toggle");
+        }
+        catch (Exception ex)
+        {
+            Logger.LogWarning(ex, "Failed to toggle theme.");
+        }
     }
 
     private string CurrentPage() => NavMan.ToBaseRelativePath(NavMan.Uri).Split('?')[0];
@@ -134,4 +179,8 @@
             builder.CloseElement();
         }
     };
+
+    private string ThemeToggleIcon => isDarkMode ? "☀️" : "🌙";
+
+    private string ThemeToggleAriaLabel => isDarkMode ? "Switch to light mode" : "Switch to dark mode";
 }
