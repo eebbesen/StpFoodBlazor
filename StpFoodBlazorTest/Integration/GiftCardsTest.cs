@@ -17,8 +17,23 @@ namespace StpFoodBlazorTest.Integration
 
         private void AssertCommon()
         {
-            Assert.Equal("Deals", Driver.FindElement(By.Id("root-nav")).Text);
-            Assert.Equal("About", Driver.FindElement(By.Id("about-nav")).Text);
+            int retryCount = 5;
+            for (int i = 0; i < retryCount; i++)
+            {
+                try
+                {
+                    Assert.Equal("Deals", Driver.FindElement(By.Id("root-nav")).Text);
+                    Assert.Equal("About", Driver.FindElement(By.Id("about-nav")).Text);
+                    return;
+                }
+                catch (StaleElementReferenceException)
+                {
+                    if (i == retryCount - 1)
+                    {
+                        throw;
+                    }
+                }
+            }
         }
 
         [Fact]

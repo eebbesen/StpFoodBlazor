@@ -165,6 +165,20 @@
     }
 
     [Fact]
+    public void DealsShouldShowDateColumnHeaderWhenUpcomingChecked()
+    {
+        timeService.DayOfWeek = DayOfWeek.Saturday.ToString();
+        var cut = ctx.Render(@<Deals />);
+        getElements(cut);
+
+        cut.Find("#upcoming-checkbox").Change(true);
+        cut.WaitForState(() => cut.Find("#deals_table_header").Children[0].InnerHtml == "Date",
+            TimeSpan.FromSeconds(5));
+
+        Assert.Equal("Date", cut.Find("#deals_table_header").Children[0].InnerHtml);
+    }
+
+    [Fact]
     public void DealsShouldDisplayOnlyDealsForSelectedDayWednesday()
     {
         timeService.DayOfWeek = DayOfWeek.Wednesday.ToString();
