@@ -280,18 +280,17 @@ namespace StpFoodBlazorTest.Helpers
         [Fact]
         public void ShouldGetAllFutureDealsWhenStartInfinity()
         {
-            DateTime startDate;
             filter.StartInfinity = true;
 
             DealEvent[] filteredDeals = filter.Filter();
 
-            bool futureDeals = filteredDeals.Any(deal =>
-            {
-                startDate = GetDateTimeForTests(deal.Start);
-                return startDate > DateTime.Now.AddDays(+1);
-            });
+            Assert.True(filteredDeals.Any(deal =>
+                DateTime.TryParse(deal.Start, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out var s) &&
+                s > DateTime.Now.AddDays(1)));
 
-            Assert.True(futureDeals);
+            Assert.DoesNotContain(filteredDeals, deal =>
+                DateTime.TryParse(deal.Start, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out var s) &&
+                s < DateTime.Now.Date);
         }
 
         [Fact]
