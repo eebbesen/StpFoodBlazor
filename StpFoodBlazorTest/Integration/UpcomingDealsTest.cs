@@ -19,9 +19,24 @@ namespace StpFoodBlazorTest.Integration
 
         private void AssertCommon()
         {
-            Driver.FindElement(By.Id("deals_table_header"));
-            Assert.StartsWith("Gift Cards", Driver.FindElement(By.Id("giftcard-nav")).Text);
-            Assert.Equal("About", Driver.FindElement(By.Id("about-nav")).Text);
+            int retryCount = 5;
+            for (int i = 0; i < retryCount; i++)
+            {
+                try
+                {
+                    Driver.FindElement(By.Id("deals_table_header"));
+                    Assert.StartsWith("Gift Cards", Driver.FindElement(By.Id("giftcard-nav")).Text);
+                    Assert.Equal("About", Driver.FindElement(By.Id("about-nav")).Text);
+                    return;
+                }
+                catch (StaleElementReferenceException)
+                {
+                    if (i == retryCount - 1)
+                    {
+                        throw;
+                    }
+                }
+            }
         }
 
         // will only pass when there are upcoming deals

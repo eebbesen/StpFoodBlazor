@@ -22,7 +22,7 @@
         </div>
 
         <div role="table" aria-label="Deals" aria-busy="@(deals == null ? "true" : "false")">
-            <DealTableHeader selectedDayOfWeek="@(selectedDayOfWeek == null ? @TimeServiceImpl.GetDayOfWeek() : selectedDayOfWeek)" />
+            <DealTableHeader selectedDayOfWeek="@(selectedDayOfWeek == null ? @TimeServiceImpl.GetDayOfWeek() : selectedDayOfWeek)" upcoming="@upcoming" />
             @if (deals == null)
             {
                 <DealTableBodyPlaceholder />
