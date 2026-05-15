@@ -112,10 +112,9 @@ namespace StpFoodBlazor.Helpers
                     string.IsNullOrEmpty(deal.End) ||
                     !DateTime.TryParse(deal.End, CultureInfo.InvariantCulture, DateTimeStyles.None, out var endDate) ||
                     endDate >= now) &&
-                (startInfinity ||
-                    string.IsNullOrEmpty(deal.Start) ||
+                (string.IsNullOrEmpty(deal.Start) ||
                     !DateTime.TryParse(deal.Start, CultureInfo.InvariantCulture, DateTimeStyles.None, out var startDate) ||
-                    startDate <= now)
+                    (startInfinity ? startDate >= now : startDate <= now))
             )];
         }
     }
