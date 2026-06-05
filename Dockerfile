@@ -2,8 +2,7 @@ FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
 COPY StpFoodBlazor/StpFoodBlazor.csproj StpFoodBlazor/
-COPY StpFoodBlazor/packages.lock.json StpFoodBlazor/
-RUN dotnet restore StpFoodBlazor/StpFoodBlazor.csproj --locked-mode
+RUN dotnet restore StpFoodBlazor/StpFoodBlazor.csproj
 
 COPY StpFoodBlazor/ StpFoodBlazor/
 RUN dotnet publish StpFoodBlazor/StpFoodBlazor.csproj \
