@@ -5,7 +5,7 @@ Display downtown Saint Paul food and drink deals
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=eebbesen_StpFoodBlazor&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=eebbesen_StpFoodBlazor)
 
-[See it in action!](https://stpfoodblazor-d3f0aqbuf5bxfugt.centralus-01.azurewebsites.net)
+[See it in action!](https://stpfoodblazor.fly.dev)
 
 ## Parameterized Endpoints
 Happy hour and alcohol only parameters are respected and available on the About page:
@@ -54,7 +54,21 @@ The backing Google Sheet requires the following tabs and corresponding column he
 
 ## Run
 
+### Local (dotnet)
+
+    $ cd StpFoodBlazor/
     $ dotnet run
+
+### Local (Docker)
+
+    $ docker build -t stpfoodblazor .
+    $ docker run -p 8080:8080 \
+        -e APPCONFIG__HOLIDAYURL=https://DOMAIN.azurewebsites.net/api \
+        stpfoodblazor
+
+### Remote (Fly.io)
+
+See [DEVELOPER.md](DEVELOPER.md) for deployment instructions.
 
 ## Cache cleaning
 Caches can be invalidated when the underlying data changes if you add scripting to the Google Sheet.
@@ -65,18 +79,18 @@ See [scripts/sheets-cache-invalidation.gs](scripts/sheets-cache-invalidation.gs)
 
 ### Invalidate all sheet caches
 
-    curl -X POST https://DOMAIN.azurewebsites.net/api/cache/invalidate \
+    curl -X POST https://stpfoodblazor.fly.dev/api/cache/invalidate \
     -H "X-Cache-Invalidation-Key: SECRET"
 
 ### Invalidate a specific cache
 
-    curl -X POST "https://DOMAIN.azurewebsites.net/api/cache/invalidate?key=deals" \
+    curl -X POST "https://stpfoodblazor.fly.dev/api/cache/invalidate?key=deals" \
     -H "X-Cache-Invalidation-Key: SECRET"
 
-    curl -X POST "https://DOMAIN.azurewebsites.net/api/cache/invalidate?key=giftcards" \
+    curl -X POST "https://stpfoodblazor.fly.dev/api/cache/invalidate?key=giftcards" \
     -H "X-Cache-Invalidation-Key: SECRET"
 
 ### Check cache status
 
-    curl -X GET https://your-app.azurewebsites.net/api/cache \
+    curl -X GET https://stpfoodblazor.fly.dev/api/cache \
     -H "X-Cache-Invalidation-Key: SECRET"
