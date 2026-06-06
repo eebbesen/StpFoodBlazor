@@ -25,11 +25,11 @@ Create a `.env` file in the project root with the required variables:
 Alternatively, if the variables are already exported in your shell:
 
     $ docker run -p 8080:8080 \
-        -e ASPNETCORE_APPCONFIG__SHEETSURL=<URL> \
+    -e ASPNETCORE_APPCONFIG__SHEETSURL=<URL> \
     -e ASPNETCORE_APPCONFIG__SHEETID=<SHEET_ID> \
     -e APPCONFIG__HOLIDAYURL=<URL> \
     -e ASPNETCORE_APPCONFIG__CACHEINVALIDATIONKEY=<VALUE> \
-        stpfoodblazor
+    stpfoodblazor
 
 http://localhost:8080
 
@@ -95,7 +95,10 @@ The app is hosted on [Fly.io](https://fly.io) and deployed via Docker.
 
 Set required secrets via the CLI (never commit these):
 
-    $ fly secrets set APPCONFIG__HOLIDAYURL=https://DOMAIN.azurewebsites.net/api
+    $ fly secrets set ASPNETCORE_APPCONFIG__SHEETSURL=<URL>
+    $ fly secrets set ASPNETCORE_APPCONFIG__SHEETID=<GOOGLE_SHEETS_ID>
+    $ fly secrets set APPCONFIG__HOLIDAYURL=<URL>
+    $ fly secrets set ASPNETCORE_APPCONFIG__CACHEINVALIDATIONKEY=<KEY>
 
 ### Deploy
 
