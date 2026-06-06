@@ -1,10 +1,37 @@
 
 ## Run
 
+### dotnet
+
     $ cd StpFoodBlazor/
     $ dotnet run
 
 https://localhost:7073/ or http://localhost:5020
+
+### Docker
+
+Build and run locally using Docker (mirrors the production container):
+
+    $ docker build -t stpfoodblazor .
+    $ docker run -p 8080:8080 --env-file .env stpfoodblazor
+
+Create a `.env` file in the project root with the required variables:
+
+    ASPNETCORE_ENVIRONMENT=Staging
+    APPCONFIG__DEALURL=https://DOMAIN.azurewebsites.net/api
+    APPCONFIG__GIFTCARDURL=https://DOMAIN.azurewebsites.net/api
+    APPCONFIG__HOLIDAYURL=https://DOMAIN.azurewebsites.net/api
+
+Alternatively, if the variables are already exported in your shell:
+
+    $ docker run -p 8080:8080 \
+    -e ASPNETCORE_APPCONFIG__SHEETSURL=<URL> \
+    -e ASPNETCORE_APPCONFIG__SHEETID=<SHEET_ID> \
+    -e APPCONFIG__HOLIDAYURL=<URL> \
+    -e ASPNETCORE_APPCONFIG__CACHEINVALIDATIONKEY=<VALUE> \
+    stpfoodblazor
+
+http://localhost:8080
 
 ## Test
 
@@ -54,21 +81,36 @@ You'll need to uncomment the job in test.yml that installs Chrome.
     --secret ASPNETCORE_APPCONFIG__SHEETID=$ASPNETCORE_APPCONFIG__SHEETID \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest
 
-## Azure
+## Fly.io Deployment
 
-### Logging
+The app is hosted on [Fly.io](https://fly.io) and deployed via Docker.
 
-Refer to appsettings.json for more granular control of logging.
+### First-time setup
 
-When deployed on Azure logs aree available to stream. To enable:
-* navigate to your application in https://portal.azure.com
-* turn Application Logging (Filesystem) to On
-* set the Level to Information or Verbose
-* navigate to Log Stream
+    $ brew install flyctl
+    $ fly auth login
+    $ fly launch --no-deploy   # uses existing fly.toml
 
-You can also view the log stream using Azure CLI
+### Secrets
 
-    $ func azure functionapp logstream StpFoodBlazor
+Set required secrets via the CLI (never commit these):
+
+    $ fly secrets set ASPNETCORE_APPCONFIG__SHEETSURL=<URL>
+    $ fly secrets set ASPNETCORE_APPCONFIG__SHEETID=<GOOGLE_SHEETS_ID>
+    $ fly secrets set APPCONFIG__HOLIDAYURL=<URL>
+    $ fly secrets set ASPNETCORE_APPCONFIG__CACHEINVALIDATIONKEY=<KEY>
+
+### Deploy
+
+    $ fly deploy
+
+### Logs
+
+    $ fly logs
+
+### SSH into running machine
+
+    $ fly ssh console
 
 
 ## General

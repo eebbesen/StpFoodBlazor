@@ -1,5 +1,6 @@
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Logging.AzureAppServices;
 using StpFoodBlazor.Endpoints;
 using StpFoodBlazor.Components;
@@ -34,11 +35,10 @@ if (builder.Environment.IsProduction())
     }
     catch (Exception ex)
     {
-        // Log the exception, but don't expose sensitive details
+        // Log the exception but allow the app to start without Application Insights
         builder.Logging.AddConsole();
-        var logger = LoggerFactory.Create(builder => builder.AddConsole()).CreateLogger("Program");
+        var logger = LoggerFactory.Create(b => b.AddConsole()).CreateLogger("Program");
         logger.LogError(ex, "Failed to retrieve Application Insights connection string from Key Vault");
-        throw;
     }
 }
 else
@@ -83,6 +83,11 @@ builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+});
+
 app.UseMiddleware<PageAccessLoggingMiddleware>();
 app.UseMiddleware<SecurityHeadersMiddleware>();
 
@@ -98,6 +103,7 @@ else
 
 app.UseHttpsRedirection();
 
+app.UseStaticFiles();
 app.MapStaticAssets();
 app.UseAntiforgery();
 
