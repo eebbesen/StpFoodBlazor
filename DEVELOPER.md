@@ -13,8 +13,22 @@ https://localhost:7073/ or http://localhost:5020
 Build and run locally using Docker (mirrors the production container):
 
     $ docker build -t stpfoodblazor .
+    $ docker run -p 8080:8080 --env-file .env stpfoodblazor
+
+Create a `.env` file in the project root with the required variables:
+
+    ASPNETCORE_ENVIRONMENT=Staging
+    APPCONFIG__DEALURL=https://DOMAIN.azurewebsites.net/api
+    APPCONFIG__GIFTCARDURL=https://DOMAIN.azurewebsites.net/api
+    APPCONFIG__HOLIDAYURL=https://DOMAIN.azurewebsites.net/api
+
+Alternatively, if the variables are already exported in your shell:
+
     $ docker run -p 8080:8080 \
-        -e APPCONFIG__HOLIDAYURL=https://DOMAIN.azurewebsites.net/api \
+        -e ASPNETCORE_APPCONFIG__SHEETSURL=<URL> \
+    -e ASPNETCORE_APPCONFIG__SHEETID=<SHEET_ID> \
+    -e APPCONFIG__HOLIDAYURL=<URL> \
+    -e ASPNETCORE_APPCONFIG__CACHEINVALIDATIONKEY=<VALUE> \
         stpfoodblazor
 
 http://localhost:8080

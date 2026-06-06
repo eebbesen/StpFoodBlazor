@@ -7,14 +7,17 @@ RUN dotnet restore StpFoodBlazor/StpFoodBlazor.csproj
 COPY StpFoodBlazor/ StpFoodBlazor/
 RUN dotnet publish StpFoodBlazor/StpFoodBlazor.csproj \
     -c Release \
-    -o /app/publish \
-    --no-restore
+    -o /app/publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
 WORKDIR /app
 COPY --from=build /app/publish .
 
 ENV ASPNETCORE_URLS=http://+:8080
+ENV ASPNETCORE_APPCONFIG__SHEETSURL=""
+ENV ASPNETCORE_APPCONFIG__SHEETID=""
+ENV APPCONFIG__HOLIDAYURL=""
+ENV ASPNETCORE_APPCONFIG__CACHEINVALIDATIONKEY=""
 EXPOSE 8080
 
 ENTRYPOINT ["dotnet", "StpFoodBlazor.dll"]
