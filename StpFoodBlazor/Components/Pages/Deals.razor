@@ -11,6 +11,7 @@
 
 <PageTitle>Deals</PageTitle>
     <div class="container mb-5">
+        <PassportPrograms />
         <DealFilterBar selectedDayOfWeek="@(selectedDayOfWeek == null ?
                 @TimeServiceImpl.GetDayOfWeek() : selectedDayOfWeek)"
             OnSelectedDayChanged="OnSelectedDayChanged"

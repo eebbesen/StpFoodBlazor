@@ -148,6 +148,66 @@ h1:focus:not(:focus-visible) {
         content: "An error has occurred."
     }
 
+/* ── Passport Programs ─────────────────────────────────────────────── */
+
+.passport-programs {
+    margin-bottom: 1.25rem;
+}
+
+.passport-heading {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--app-text);
+    margin-bottom: 0.5rem;
+    opacity: 0.6;
+}
+
+.passport-cards {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.passport-card {
+    flex: 1 1 0;
+    min-width: 8rem;
+    padding: 0.25rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+    transition: filter 0.15s ease, transform 0.1s ease;
+}
+
+.passport-card:hover {
+    color: #ffffff;
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+    text-decoration: none;
+}
+
+.passport-card:focus-visible {
+    outline: 3px solid #005fcc;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px rgba(0, 95, 204, 0.25);
+}
+
+.card-taco     { background: #c0392b; }
+.card-dumpling { background: #b7470e; }
+.card-patio    { background: #1a6b3a; }
+.card-vip      { background: #5a3e9e; }
+
+@media (prefers-reduced-motion: reduce) {
+    .passport-card {
+        transition: none;
+    }
+}
+
+/* ── End Passport Programs ─────────────────────────────────────────── */
+
 .darker-border-checkbox.form-check-input {
     border-color: #929292;
 }
