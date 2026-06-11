@@ -30,8 +30,8 @@ namespace StpFoodBlazorTest.Helpers
         [InlineData("GiftCards")]
         public void GetUrl_WithPredefinedTabs_ReturnsCorrectUrls(string tabName)
         {
-            string sheetId = Environment.GetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETID") ?? string.Empty;
-            string sheetsUrl = Environment.GetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETSURL") ?? string.Empty;
+            string sheetId = Environment.GetEnvironmentVariable("APPCONFIG__SHEETID") ?? string.Empty;
+            string sheetsUrl = Environment.GetEnvironmentVariable("APPCONFIG__SHEETSURL") ?? string.Empty;
             string expectedUrl = $"{sheetsUrl}/?sheet_id={sheetId}&tab_name={tabName}";
 
             string result = Helper.GetUrl(tabName);

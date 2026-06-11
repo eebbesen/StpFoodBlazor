@@ -27,8 +27,8 @@ namespace StpFoodBlazor.Helpers
                 throw new ArgumentException("tabName cannot be empty.", nameof(tabName));
             }
 
-            string? sheetId = Environment.GetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETID");
-            string? sheetsUrl = Environment.GetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETSURL");
+            string? sheetId = Environment.GetEnvironmentVariable("APPCONFIG__SHEETID");
+            string? sheetsUrl = Environment.GetEnvironmentVariable("APPCONFIG__SHEETSURL");
 
             return $"{sheetsUrl}/?sheet_id={sheetId}&tab_name={tabName}";
         }

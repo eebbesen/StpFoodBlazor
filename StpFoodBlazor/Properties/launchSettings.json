@@ -15,8 +15,11 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_APPCONFIG__SHEETID": "${ASPNETCORE_APPCONFIG__SHEETID}",
-        "ASPNETCORE_APPCONFIG__SHEETSURL": "${ASPNETCORE_APPCONFIG__SHEETSURL}",
+        "APPCONFIG__SHEETID": "${APPCONFIG__SHEETID}",
+        "APPCONFIG__SHEETSURL": "${APPCONFIG__SHEETSURL}",
+        "APPCONFIG__HOLIDAYURL": "${APPCONFIG__HOLIDAYURL}",
+        "APPCONFIG__CACHINVALIDATIONKEY": "${APPCONFIG__CACHINVALIDATIONKEY}",
+        "APPCONFIG__KEYVAULTURL": "${APPCONFIG__KEYVAULTURL}"
       },
       "dotnetRunMessages": true,
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",

@@ -27,8 +27,8 @@ namespace StpFoodBlazorTest.Services
 
         public HttpGiftCardServiceTests()
         {
-            Environment.SetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETSURL", "http://test-sheets-url");
-            Environment.SetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETID", "test-sheet-id");
+            Environment.SetEnvironmentVariable("APPCONFIG__SHEETSURL", "http://test-sheets-url");
+            Environment.SetEnvironmentVariable("APPCONFIG__SHEETID", "test-sheet-id");
             _testUrl = Helper.GetUrl("giftcards");
             _logger = Substitute.For<ILogger<HttpGiftCardService>>();
             _memoryCache = new MemoryCache(new MemoryCacheOptions());

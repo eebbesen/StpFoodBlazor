@@ -10,7 +10,7 @@ namespace StpFoodBlazorTest.Integration
     {
         private bool disposedValue;
 
-        public static readonly string BASE_URL = Environment.GetEnvironmentVariable("ASPNETCORE_APPCONFIG__BASE_URL") ?? "http://localhost:5020";
+        public static readonly string BASE_URL = Environment.GetEnvironmentVariable("APPCONFIG__BASE_URL") ?? "http://localhost:5020";
         public required ChromeDriver Driver;
 
         protected IntegrationTest()
