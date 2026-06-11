@@ -31,8 +31,8 @@ namespace StpFoodBlazorTest.Services
 
         public CacheRefreshServiceTests()
         {
-            Environment.SetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETSURL", "http://test-sheets-url");
-            Environment.SetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETID", "test-sheet-id");
+            Environment.SetEnvironmentVariable("APPCONFIG__SHEETSURL", "http://test-sheets-url");
+            Environment.SetEnvironmentVariable("APPCONFIG__SHEETID", "test-sheet-id");
 
             _cache = new MemoryCache(new MemoryCacheOptions());
             _logger = Substitute.For<ILogger<CacheRefreshService>>();

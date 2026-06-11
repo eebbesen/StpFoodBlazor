@@ -44,13 +44,15 @@ The backing Google Sheet requires the following tabs and corresponding column he
 
 `SHEETID` is the Google Sheet ID from which data will be read.
 `SHEETSURL` is the URL of the service that retrieves the data from the Google Sheet.
-`HOLIDAYURL` is the URL of the service that retrieves holiday data.
+`HOLIDAYURL` is the URL of the service that retrieves holiday data (e.g., https://DOMAIN.azurewebsites.net/api).
 `CACHEINVALIDATIONKEY` is the secret that allows the cache to be invalidated.
+`KEYVAULTURL` is the the URL of the Key Vault in Azure (for Application Insights)
 
-    ASPNETCORE_APPCONFIG__SHEETID
-    ASPNETCORE_APPCONFIG__SHEETSURL
-    APPCONFIG__HOLIDAYURL root (e.g., https://DOMAIN.azurewebsites.net/api)
-    ASPNETCORE_APPCONFIG__CACHEINVALIDATIONKEY
+    APPCONFIG__SHEETID
+    APPCONFIG__SHEETSURL
+    APPCONFIG__HOLIDAYURL
+    APPCONFIG__CACHEINVALIDATIONKEY
+    APPCONFIG__KEYVAULTURL
 
 ## Run
 

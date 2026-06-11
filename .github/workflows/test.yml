@@ -14,9 +14,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      ASPNETCORE_APPCONFIG__SHEETID: ${{ secrets.ASPNETCORE_APPCONFIG__SHEETID }}
-      ASPNETCORE_APPCONFIG__SHEETSURL: ${{ secrets.ASPNETCORE_APPCONFIG__SHEETSURL }}
+      APPCONFIG__SHEETID: ${{ secrets.APPCONFIG__SHEETID }}
+      APPCONFIG__SHEETSURL: ${{ secrets.APPCONFIG__SHEETSURL }}
       APPCONFIG__HOLIDAYURL: ${{ secrets.APPCONFIG__HOLIDAYURL }}
+      APPCONFIG__KEYVAULTURL: ${{ secrets.APPCONFIG__KEYVAULTURL }}
       TEST_RESULTS_PATH: "/home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestResults"
       TEST_ARTIFACTS_PATH: "/home/runner/work/StpFoodBlazor/StpFoodBlazor/StpFoodBlazorTest/TestArtifacts"
       MIN_LINE_COVERAGE: 95

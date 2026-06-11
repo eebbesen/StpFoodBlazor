@@ -18,17 +18,21 @@ Build and run locally using Docker (mirrors the production container):
 Create a `.env` file in the project root with the required variables:
 
     ASPNETCORE_ENVIRONMENT=Staging
+    APPCONFIG__SHEETSURL=https://DOMAIN.vault.azure.net/
+    APPCONFIG__SHEETID=12345abcde
     APPCONFIG__DEALURL=https://DOMAIN.azurewebsites.net/api
     APPCONFIG__GIFTCARDURL=https://DOMAIN.azurewebsites.net/api
     APPCONFIG__HOLIDAYURL=https://DOMAIN.azurewebsites.net/api
+    APPCONFIG__KEYVAULTURL=https://DOMAIN.vault.azure.net/
 
 Alternatively, if the variables are already exported in your shell:
 
     $ docker run -p 8080:8080 \
-    -e ASPNETCORE_APPCONFIG__SHEETSURL=<URL> \
-    -e ASPNETCORE_APPCONFIG__SHEETID=<SHEET_ID> \
+    -e APPCONFIG__SHEETSURL=<URL> \
+    -e APPCONFIG__SHEETID=<SHEET_ID> \
     -e APPCONFIG__HOLIDAYURL=<URL> \
-    -e ASPNETCORE_APPCONFIG__CACHEINVALIDATIONKEY=<VALUE> \
+    -e APPCONFIG__CACHEINVALIDATIONKEY=<VALUE> \
+    -e APPCONFIG__KEYVAULTURL=<VALUE> \
     stpfoodblazor
 
 http://localhost:8080
@@ -77,8 +81,11 @@ Not working the same on an M1 Mac as it is in GitHub, in particular I'm seeing S
 You'll need to uncomment the job in test.yml that installs Chrome.
 
     $ act -W '.github/workflows/test.yml' --container-architecture linux/amd64 \
-    --secret ASPNETCORE_APPCONFIG__SHEETSURL=$ASPNETCORE_APPCONFIG__SHEETSURL \
-    --secret ASPNETCORE_APPCONFIG__SHEETID=$ASPNETCORE_APPCONFIG__SHEETID \
+    --secret APPCONFIG__SHEETSURL=$APPCONFIG__SHEETSURL \
+    --secret APPCONFIG__SHEETID=$APPCONFIG__SHEETID \
+    --secret APPCONFIG__HOLIDAYURL=$APPCONFIG__HOLIDAYURL \
+    --secret APPCONFIG__CACHEINVALIDATIONKEY=$APPCONFIG__CACHEINVALIDATIONKEY \
+    --secret APPCONFIG__KEYVAULTURL=$APPCONFIG__KEYVAULTURL \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest
 
 ## Fly.io Deployment
@@ -95,10 +102,11 @@ The app is hosted on [Fly.io](https://fly.io) and deployed via Docker.
 
 Set required secrets via the CLI (never commit these):
 
-    $ fly secrets set ASPNETCORE_APPCONFIG__SHEETSURL=<URL>
-    $ fly secrets set ASPNETCORE_APPCONFIG__SHEETID=<GOOGLE_SHEETS_ID>
+    $ fly secrets set APPCONFIG__SHEETSURL=<URL>
+    $ fly secrets set APPCONFIG__SHEETID=<GOOGLE_SHEETS_ID>
     $ fly secrets set APPCONFIG__HOLIDAYURL=<URL>
-    $ fly secrets set ASPNETCORE_APPCONFIG__CACHEINVALIDATIONKEY=<KEY>
+    $ fly secrets set APPCONFIG__CACHEINVALIDATIONKEY=<KEY>
+    $ fly secrets set APPCONFIG__KEYVAULTURL=<URL>
 
 ### Deploy
 

@@ -27,8 +27,8 @@ namespace StpFoodBlazorTest.Services
 
         public HttpDealServiceTests()
         {
-            Environment.SetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETSURL", "http://test-sheets-url");
-            Environment.SetEnvironmentVariable("ASPNETCORE_APPCONFIG__SHEETID", "test-sheet-id");
+            Environment.SetEnvironmentVariable("APPCONFIG__SHEETSURL", "http://test-sheets-url");
+            Environment.SetEnvironmentVariable("APPCONFIG__SHEETID", "test-sheet-id");
             _testUrl = Helper.GetUrl("Deals");
             _logger = Substitute.For<ILogger<HttpDealService>>();
             _messageHandlerMock = new MockHttpMessageHandler();
