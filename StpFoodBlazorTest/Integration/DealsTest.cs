@@ -62,6 +62,7 @@ namespace StpFoodBlazorTest.Integration
                 var messages = Driver.FindElement(By.Id("messages"));
                 Assert.True(messages.Text.Length > 10);
                 Assert.Equal("Today:", messages.FindElements(By.TagName("strong"))[0].GetAttribute("innerHTML"));
+                AssertCommon();
             }
             catch (Exception)
             {

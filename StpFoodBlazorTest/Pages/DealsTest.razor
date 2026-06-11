@@ -301,6 +301,16 @@
         Assert.Contains("opens in new tab", dealCellHtml);
     }
 
+    [Fact]
+    public void DealsShouldRenderPassportPrograms()
+    {
+        var cut = ctx.Render(@<Deals />);
+
+        var section = cut.Find("section.passport-programs");
+
+        Assert.NotNull(section);
+    }
+
     private IElement getElements(IRenderedFragment cut)
     {
         cut.WaitForElement("#deals_table_body", TimeSpan.FromSeconds(5));

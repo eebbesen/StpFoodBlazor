@@ -1,0 +1,117 @@
+@using StpFoodBlazor.Components.Layout
+@implements IDisposable
+
+@code {
+    private TestContext ctx;
+    private IRenderedFragment cut;
+
+    public PassportProgramsTest()
+    {
+        ctx = new TestContext();
+        cut = ctx.Render(@<PassportPrograms />);
+    }
+
+    public void Dispose() => ctx.Dispose();
+
+    [Fact]
+    public void ShouldRenderSectionWithAriaLabelledBy()
+    {
+        var section = cut.Find("section.passport-programs");
+
+        Assert.Equal("passport-heading", section.GetAttribute("aria-labelledby"));
+    }
+
+    [Fact]
+    public void ShouldRenderHeadingWithCorrectText()
+    {
+        var heading = cut.Find("h2#passport-heading");
+
+        Assert.Contains("Saint Paul Passport Programs", heading.InnerHtml);
+    }
+
+    [Fact]
+    public void ShouldRenderFourCards()
+    {
+        var cards = cut.FindAll("a.passport-card");
+
+        Assert.Equal(4, cards.Count);
+    }
+
+    [Fact]
+    public void ShouldRenderCardContainerWithListRole()
+    {
+        var cardList = cut.Find(".passport-cards");
+
+        Assert.Equal("list", cardList.GetAttribute("role"));
+    }
+
+    [Fact]
+    public void ShouldRenderAllCardsWithListItemRole()
+    {
+        var cards = cut.FindAll("a.passport-card");
+
+        foreach (var card in cards)
+        {
+            Assert.Equal("listitem", card.GetAttribute("role"));
+        }
+    }
+
+    [Fact]
+    public void ShouldRenderAllCardsOpeningInNewTab()
+    {
+        var cards = cut.FindAll("a.passport-card");
+
+        foreach (var card in cards)
+        {
+            Assert.Equal("_blank", card.GetAttribute("target"));
+            Assert.Equal("noopener noreferrer", card.GetAttribute("rel"));
+        }
+    }
+
+    [Fact]
+    public void ShouldRenderTaqueriaCard()
+    {
+        var card = cut.Find(".card-taco");
+
+        Assert.Contains("Taqueria Tour", card.InnerHtml);
+        Assert.Contains("Taqueria Tour", card.GetAttribute("aria-label"));
+    }
+
+    [Fact]
+    public void ShouldRenderDumplingCard()
+    {
+        var card = cut.Find(".card-dumpling");
+
+        Assert.Contains("Dumpling Passport", card.InnerHtml);
+        Assert.Contains("Dumpling Passport", card.GetAttribute("aria-label"));
+    }
+
+    [Fact]
+    public void ShouldRenderPatioCard()
+    {
+        var card = cut.Find(".card-patio");
+
+        Assert.Contains("Patio Passport", card.InnerHtml);
+        Assert.Contains("Patio Passport", card.GetAttribute("aria-label"));
+    }
+
+    [Fact]
+    public void ShouldRenderVipCard()
+    {
+        var card = cut.Find(".card-vip");
+
+        Assert.Contains("VIP Pass", card.InnerHtml);
+        Assert.Contains("VIP Pass", card.GetAttribute("aria-label"));
+    }
+
+    [Fact]
+    public void ShouldRenderAllCardsWithAriaLabelIndicatingNewTab()
+    {
+        var cards = cut.FindAll("a.passport-card");
+
+        foreach (var card in cards)
+        {
+            Assert.Contains("opens in new tab", card.GetAttribute("aria-label"));
+        }
+    }
+}
