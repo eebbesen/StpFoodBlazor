@@ -16,7 +16,7 @@ builder.Configuration.AddEnvironmentVariables();
 if (builder.Environment.IsProduction())
 {
     // In production, use managed identity to access Key Vault
-    var keyVaultUrl = new Uri(builder.Configuration["KEYVAULTURL"] ?? throw new InvalidOperationException("KeyVault:Url is not configured"));
+    var keyVaultUrl = new Uri(builder.Configuration["APPCONFIG:KEYVAULTURL"] ?? throw new InvalidOperationException("KeyVault:Url is not configured"));
     var credential = new DefaultAzureCredential();
     var secretClient = new SecretClient(keyVaultUrl, credential);
 
