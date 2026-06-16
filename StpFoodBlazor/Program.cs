@@ -114,4 +114,4 @@ app.MapRazorComponents<App>()
 
 CacheEndpoints.Map(app);
 
-app.Run();
+await app.RunAsync();
