@@ -18,7 +18,7 @@
 
         var header = cut.Find("#giftcards_table_header");
 
-        Assert.Equal("row bg-dark text-light rounded", header.ClassName);
+        Assert.Equal("row rounded", header.ClassName);
         Assert.Equal(4, header.ChildElementCount);
         header.Children[0].MarkupMatches("<div role=\"columnheader\" class=\"col-5 col-md-2\">Place</div>");
         header.Children[1].MarkupMatches("<div role=\"columnheader\" class=\"col-7 col-md-4\">Deal</div>");
