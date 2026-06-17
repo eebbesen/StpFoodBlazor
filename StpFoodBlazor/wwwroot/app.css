@@ -208,6 +208,20 @@ h1:focus:not(:focus-visible) {
 
 /* ── End Passport Programs ─────────────────────────────────────────── */
 
+#deals_table_header,
+#giftcards_table_header {
+    background-color: var(--app-text) !important;
+    color: var(--app-bg) !important;
+}
+
+#deals_table_header [role="columnheader"],
+#giftcards_table_header [role="columnheader"] {
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
 .darker-border-checkbox.form-check-input {
     border-color: #929292;
 }

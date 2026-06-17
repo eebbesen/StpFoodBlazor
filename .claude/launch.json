@@ -6,6 +6,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "7200"],
       "port": 7200
+    },
+    {
+      "name": "blazor",
+      "runtimeExecutable": "dotnet",
+      "runtimeArgs": ["run", "--project", "StpFoodBlazor/StpFoodBlazor.csproj", "--urls", "http://localhost:5200"],
+      "port": 5200
     }
   ]
 }
