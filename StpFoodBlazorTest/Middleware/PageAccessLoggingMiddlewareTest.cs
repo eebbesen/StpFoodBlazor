@@ -39,6 +39,7 @@ namespace StpFoodBlazorTest.Middleware
         [InlineData("/_blazor/negotiate")]
         [InlineData("/_framework/blazor.web.js")]
         [InlineData("/api/cache")]
+        [InlineData("/API/cache")]
         [InlineData("/api/cache/invalidate")]
         [InlineData("/app.css")]
         [InlineData("/favicon.ico")]
@@ -82,6 +83,25 @@ namespace StpFoodBlazorTest.Middleware
         }
 
         [Fact]
+        public async Task InvokeAsync_LogsAnalyticsFields_ForPageRequest()
+        {
+            var context = MakeContext("/deals");
+            context.Connection.RemoteIpAddress = IPAddress.Parse("198.51.100.42");
+            context.Request.Headers.Referer = "https://example.com";
+            context.Request.Headers.UserAgent = "UnitTestAgent/1.0";
+
+            await _middleware.InvokeAsync(context);
+
+            var log = _logger.InfoLogs[0];
+            Assert.Contains("Method=GET", log);
+            Assert.Contains("Path=/deals", log);
+            Assert.Contains("StatusCode=200", log);
+            Assert.Contains("IP=198.51.100.42", log);
+            Assert.Contains("Referrer=https://example.com", log);
+            Assert.Contains("UserAgent=UnitTestAgent/1.0", log);
+        }
+
+        [Fact]
         public async Task InvokeAsync_AlwaysCallsNext()
         {
             var context = MakeContext("/deals");
@@ -103,7 +123,7 @@ namespace StpFoodBlazorTest.Middleware
 
         private static DefaultHttpContext MakeContext(string path) => new()
         {
-            Request = { Path = path }
+            Request = { Path = path, Method = HttpMethods.Get }
         };
 
         private class TestLogger<T> : ILogger<T>
