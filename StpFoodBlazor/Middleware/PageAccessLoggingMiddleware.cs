@@ -10,10 +10,12 @@ namespace StpFoodBlazor.Middleware
                 var ip = context.Request.Headers["X-Forwarded-For"].FirstOrDefault()?.Split(',')[0].Trim()
                     ?? context.Connection.RemoteIpAddress?.ToString()
                     ?? "unknown";
-                var userAgent = context.Request.Headers.UserAgent.ToString();
-                var referrer = context.Request.Headers.Referer.ToString();
+var userAgent = context.Request.Headers["User-Agent"].ToString();
+var referrer = context.Request.Headers["Referer"].ToString();
+if (Uri.TryCreate(referrer, UriKind.Absolute, out var refUri))
+    referrer = refUri.GetLeftPart(UriPartial.Path);
 
-                var start = TimeProvider.System.GetTimestamp();
+var start = TimeProvider.System.GetTimestamp();
                 await next(context);
                 var elapsed = TimeProvider.System.GetElapsedTime(start);
 
