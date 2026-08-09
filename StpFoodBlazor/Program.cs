@@ -45,6 +45,17 @@ else
 {
     // In development, use user secrets or environment variables
     // dotnet user-secrets set "ApplicationInsights:ConnectionString" "your-connection-string"
+    var devConnectionString = builder.Configuration["ApplicationInsights:ConnectionString"];
+    if (!string.IsNullOrEmpty(devConnectionString))
+    {
+        builder.Logging.AddApplicationInsights(
+            configureTelemetryConfiguration: (config) =>
+                config.ConnectionString = devConnectionString,
+            configureApplicationInsightsLoggerOptions: (options) => {
+                options.IncludeScopes = true;
+                options.TrackExceptionsAsExceptionTelemetry = true;
+            });
+    }
 }
 
 builder.Logging.AddAzureWebAppDiagnostics();

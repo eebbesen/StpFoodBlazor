@@ -10,9 +10,21 @@ namespace StpFoodBlazor.Middleware
                 var ip = context.Request.Headers["X-Forwarded-For"].FirstOrDefault()?.Split(',')[0].Trim()
                     ?? context.Connection.RemoteIpAddress?.ToString()
                     ?? "unknown";
-                logger.LogInformation("Page accessed: IP={IP} Path={Path}", ip, path);
+                var userAgent = context.Request.Headers.UserAgent.ToString();
+                var referrer = context.Request.Headers.Referer.ToString();
+
+                var start = TimeProvider.System.GetTimestamp();
+                await next(context);
+                var elapsed = TimeProvider.System.GetElapsedTime(start);
+
+                logger.LogInformation(
+                    "Page accessed: IP={IP} Path={Path} Status={Status} Duration={Duration}ms UserAgent={UserAgent} Referrer={Referrer}",
+                    ip, path, context.Response.StatusCode, (int)elapsed.TotalMilliseconds, userAgent, referrer);
             }
-            await next(context);
+            else
+            {
+                await next(context);
+            }
         }
     }
 }
