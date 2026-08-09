@@ -82,6 +82,47 @@ namespace StpFoodBlazorTest.Middleware
         }
 
         [Fact]
+        public async Task InvokeAsync_LogsStatusCode_InMessage()
+        {
+            var context = MakeContext("/deals");
+_next.When(n => n.Invoke(context)).Do(_ => context.Response.StatusCode = 418);
+
+await _middleware.InvokeAsync(context);
+
+Assert.Contains("Status=418", _logger.InfoLogs[0]);
+        }
+
+        [Fact]
+        public async Task InvokeAsync_LogsDuration_InMessage()
+        {
+            await _middleware.InvokeAsync(MakeContext("/deals"));
+
+            Assert.Contains("Duration=", _logger.InfoLogs[0]);
+        }
+
+        [Fact]
+        public async Task InvokeAsync_LogsUserAgent_InMessage()
+        {
+            var context = MakeContext("/deals");
+            context.Request.Headers["User-Agent"] = "Mozilla/5.0";
+
+            await _middleware.InvokeAsync(context);
+
+            Assert.Contains("Mozilla/5.0", _logger.InfoLogs[0]);
+        }
+
+        [Fact]
+        public async Task InvokeAsync_LogsReferrer_InMessage()
+        {
+            var context = MakeContext("/deals");
+            context.Request.Headers["Referer"] = "https://example.com";
+
+            await _middleware.InvokeAsync(context);
+
+            Assert.Contains("https://example.com", _logger.InfoLogs[0]);
+        }
+
+        [Fact]
         public async Task InvokeAsync_AlwaysCallsNext()
         {
             var context = MakeContext("/deals");
