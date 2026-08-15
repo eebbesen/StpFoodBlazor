@@ -18,6 +18,11 @@ Both parameters can be used with each other.
 
 See [DEVELOPER.md](DEVELOPER.md) for more information on developing and running.
 
+## .NET Version
+
+This project targets .NET 10 (LTS).
+Use the .NET 10 SDK to build and test locally. The repo includes a `global.json` that pins the SDK feature band for consistent builds.
+
 ## Requirements
 
 You can modify this code to use other data services and data attributes but this code assumes you are using [sheet_zoukas-lambda](https://github.com/eebbesen/sheet_zoukas-lambda/) deployed on AWS to expose a Google Sheet.
