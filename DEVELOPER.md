@@ -41,7 +41,7 @@ http://localhost:8080
 
 Unit tests and Selenium functional tests are available.
 
-https://learn.microsoft.com/en-us/aspnet/core/blazor/test?view=aspnetcore-8.0
+https://learn.microsoft.com/en-us/aspnet/core/blazor/test?view=aspnetcore-10.0
 
     $ dotnet test --settings tests.runsettings --collect "XPlat Code Coverage"
 
