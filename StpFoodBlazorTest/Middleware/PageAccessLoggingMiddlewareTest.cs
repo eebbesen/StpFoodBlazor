@@ -85,11 +85,11 @@ namespace StpFoodBlazorTest.Middleware
         public async Task InvokeAsync_LogsStatusCode_InMessage()
         {
             var context = MakeContext("/deals");
-            _next.When(n => n.Invoke(context)).Do(_ => context.Response.StatusCode = 200);
+            _next.When(n => n.Invoke(context)).Do(_ => context.Response.StatusCode = 418);
 
             await _middleware.InvokeAsync(context);
 
-            Assert.Contains("Status=200", _logger.InfoLogs[0]);
+            Assert.Contains("Status=418", _logger.InfoLogs[0]);
         }
 
         [Fact]
