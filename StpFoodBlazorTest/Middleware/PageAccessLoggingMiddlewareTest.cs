@@ -101,6 +101,7 @@ namespace StpFoodBlazorTest.Middleware
             Assert.Contains("UserAgent=UnitTestAgent/1.0", log);
         }
 
+        [Fact]
         public async Task InvokeAsync_LogsStatusCode_InMessage()
         {
             var context = MakeContext("/deals");

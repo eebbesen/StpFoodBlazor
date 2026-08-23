@@ -18,35 +18,22 @@ namespace StpFoodBlazor.Middleware
                 var ip = context.Request.Headers["X-Forwarded-For"].FirstOrDefault()?.Split(',')[0].Trim()
                     ?? context.Connection.RemoteIpAddress?.ToString()
                     ?? "unknown";
-
-
                 var endpoint = context.GetEndpoint()?.DisplayName ?? "unknown";
                 var referrer = context.Request.Headers.Referer.FirstOrDefault() ?? "unknown";
                 var userAgent = context.Request.Headers.UserAgent.FirstOrDefault() ?? "unknown";
                 stopwatch?.Stop();
 
                 logger.LogInformation(
-                    "Page visit: Method={Method} Path={Path} Endpoint={Endpoint} StatusCode={StatusCode} DurationMs={DurationMs} IP={IP} Referrer={Referrer} UserAgent={UserAgent}",
+                    "Page accessed: Method={Method} Path={Path} Endpoint={Endpoint} StatusCode={StatusCode} Status={Status} Duration={Duration}ms IP={IP} Referrer={Referrer} UserAgent={UserAgent}",
                     context.Request.Method,
                     path,
                     endpoint,
+                    context.Response.StatusCode,
                     context.Response.StatusCode,
                     stopwatch?.ElapsedMilliseconds ?? 0,
                     ip,
                     referrer,
                     userAgent);
-
-                var start = TimeProvider.System.GetTimestamp();
-                await next(context);
-                var elapsed = TimeProvider.System.GetElapsedTime(start);
-
-                logger.LogInformation(
-                    "Page accessed: IP={IP} Path={Path} Status={Status} Duration={Duration}ms UserAgent={UserAgent} Referrer={Referrer}",
-                    ip, path, context.Response.StatusCode, (int)elapsed.TotalMilliseconds, userAgent, referrer);
-            }
-            else
-            {
-                await next(context);
             }
         }
     }
