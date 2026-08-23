@@ -5,7 +5,6 @@ namespace StpFoodBlazor.Middleware
         public async Task InvokeAsync(HttpContext context)
         {
             var path = context.Request.Path.Value ?? string.Empty;
-<<<<<<< HEAD
             var shouldLogPageVisit = !path.StartsWith("/_", StringComparison.OrdinalIgnoreCase)
                 && !path.StartsWith("/api", StringComparison.OrdinalIgnoreCase)
                 && !System.IO.Path.HasExtension(path);
@@ -15,14 +14,11 @@ namespace StpFoodBlazor.Middleware
             await next(context);
 
             if (shouldLogPageVisit)
-=======
-            if (!path.StartsWith("/_") && !path.StartsWith("/api") && !System.IO.Path.HasExtension(path))
->>>>>>> main
             {
                 var ip = context.Request.Headers["X-Forwarded-For"].FirstOrDefault()?.Split(',')[0].Trim()
                     ?? context.Connection.RemoteIpAddress?.ToString()
                     ?? "unknown";
-<<<<<<< HEAD
+
 
                 var endpoint = context.GetEndpoint()?.DisplayName ?? "unknown";
                 var referrer = context.Request.Headers.Referer.FirstOrDefault() ?? "unknown";
@@ -39,13 +35,8 @@ namespace StpFoodBlazor.Middleware
                     ip,
                     referrer,
                     userAgent);
-=======
-var userAgent = context.Request.Headers["User-Agent"].ToString();
-var referrer = context.Request.Headers["Referer"].ToString();
-if (Uri.TryCreate(referrer, UriKind.Absolute, out var refUri))
-    referrer = refUri.GetLeftPart(UriPartial.Path);
 
-var start = TimeProvider.System.GetTimestamp();
+                var start = TimeProvider.System.GetTimestamp();
                 await next(context);
                 var elapsed = TimeProvider.System.GetElapsedTime(start);
 
@@ -56,7 +47,6 @@ var start = TimeProvider.System.GetTimestamp();
             else
             {
                 await next(context);
->>>>>>> main
             }
         }
     }

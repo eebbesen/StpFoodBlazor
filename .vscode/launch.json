@@ -5,7 +5,7 @@
         "type": "coreclr",
         "request": "launch",
         "name": "Debug StpFoodBlazor",
-        "program": "${workspaceFolder}/StpFoodBlazor/bin/Debug/net8.0/StpFoodBlazor.dll",
+        "program": "${workspaceFolder}/StpFoodBlazor/bin/Debug/net10.0/StpFoodBlazor.dll",
         "args": [],
         "cwd": "${workspaceFolder}/StpFoodBlazor",
         "stopAtEntry": false,
