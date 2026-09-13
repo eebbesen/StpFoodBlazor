@@ -87,12 +87,12 @@
     }
 
     [Fact]
-    public void ShouldRenderPatioCard()
+    public void ShouldRenderPuckCard()
     {
-        var card = cut.Find(".card-patio");
+        var card = cut.Find(".card-puck");
 
-        Assert.Contains("Patio Passport", card.InnerHtml);
-        Assert.Contains("Patio Passport", card.GetAttribute("aria-label"));
+        Assert.Contains("Puck Passport", card.InnerHtml);
+        Assert.Contains("Puck Passport", card.GetAttribute("aria-label"));
     }
 
     [Fact]
