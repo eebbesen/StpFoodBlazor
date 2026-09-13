@@ -197,7 +197,7 @@ h1:focus:not(:focus-visible) {
 
 .card-taco     { background: #c0392b; }
 .card-dumpling { background: #b7470e; }
-.card-patio    { background: #1a6b3a; }
+.card-puck     { background: #1a6b3a; }
 .card-vip      { background: #5a3e9e; }
 
 @media (prefers-reduced-motion: reduce) {
