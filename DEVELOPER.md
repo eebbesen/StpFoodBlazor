@@ -88,7 +88,10 @@ You'll need to uncomment the job in test.yml that installs Chrome.
     --secret APPCONFIG__KEYVAULTURL=$APPCONFIG__KEYVAULTURL \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest
 
-## Fly.io Deployment
+## Render deployment
+You must navigate to the project in Render and do a manual deploy. Currently Cloudfare points to Render so this is the way to update stpfood.info.
+
+## Fly.io Deployment (currently disabled)
 
 The app is hosted on [Fly.io](https://fly.io) and deployed via Docker.
 
