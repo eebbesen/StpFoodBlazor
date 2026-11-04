@@ -1,0 +1,10 @@
+@using StpFoodBlazor.Services
+@using StpFoodBlazor.Components.Layout.Deals
+@inject ISnelrandDealService DealServiceImpl
+
+@page "/deals_snelrand"
+@rendermode InteractiveServer
+@attribute [StreamRendering]
+
+<PageTitle>Deals</PageTitle>
+<DealsView DealService="@DealServiceImpl" />

@@ -18,14 +18,17 @@ namespace StpFoodBlazorTest.Services
     {
         private readonly IMemoryCache _cache;
         private readonly MockHttpMessageHandler _dealHandler;
+        private readonly MockHttpMessageHandler _snelrandDealHandler;
         private readonly MockHttpMessageHandler _giftCardHandler;
         private readonly MockHttpMessageHandler _holidayHandler;
         private readonly HttpDealService _dealService;
+        private readonly HttpSnelrandDealService _snelrandDealService;
         private readonly HttpGiftCardService _giftCardService;
         private readonly HttpHolidayService _holidayService;
         private readonly ILogger<CacheRefreshService> _logger;
         private readonly CacheRefreshService _service;
         private readonly string _dealUrl;
+        private readonly string _snelrandDealUrl;
         private readonly string _giftCardUrl;
         private readonly string _holidayUrl;
 
@@ -33,15 +36,21 @@ namespace StpFoodBlazorTest.Services
         {
             Environment.SetEnvironmentVariable("APPCONFIG__SHEETSURL", "http://test-sheets-url");
             Environment.SetEnvironmentVariable("APPCONFIG__SHEETID", "test-sheet-id");
+            Environment.SetEnvironmentVariable("APPCONFIG__SNELRANDSHEETID", "test-snelrand-sheet-id");
 
             _cache = new MemoryCache(new MemoryCacheOptions());
             _logger = Substitute.For<ILogger<CacheRefreshService>>();
             _dealHandler = new MockHttpMessageHandler();
+            _snelrandDealHandler = new MockHttpMessageHandler();
             _giftCardHandler = new MockHttpMessageHandler();
             _holidayHandler = new MockHttpMessageHandler();
 
             var dealConfig = new ConfigurationBuilder()
-                .AddInMemoryCollection(new Dictionary<string, string?> { ["CacheDuration:DealsMinutes"] = "200" })
+                .AddInMemoryCollection(new Dictionary<string, string?>
+                {
+                    ["CacheDuration:DealsMinutes"] = "200",
+                    ["CacheDuration:DealsSnelrandMinutes"] = "200"
+                })
                 .Build();
             var giftCardConfig = new ConfigurationBuilder()
                 .AddInMemoryCollection(new Dictionary<string, string?> { ["CacheDuration:GiftCardsMinutes"] = "400" })
@@ -55,11 +64,13 @@ namespace StpFoodBlazorTest.Services
                 .Build();
 
             _dealService = new HttpDealService(_cache, new HttpClient(_dealHandler), Substitute.For<ILogger<HttpDealService>>(), dealConfig);
+            _snelrandDealService = new HttpSnelrandDealService(_cache, new HttpClient(_snelrandDealHandler), Substitute.For<ILogger<HttpSnelrandDealService>>(), dealConfig);
             _giftCardService = new HttpGiftCardService(_cache, new HttpClient(_giftCardHandler), Substitute.For<ILogger<HttpGiftCardService>>(), giftCardConfig);
             _holidayService = new HttpHolidayService(_cache, new HttpClient(_holidayHandler), Substitute.For<ILogger<HttpHolidayService>>(), holidayConfig);
-            _service = new CacheRefreshService(_dealService, _giftCardService, _holidayService, _logger);
+            _service = new CacheRefreshService(_dealService, _snelrandDealService, _giftCardService, _holidayService, _logger);
 
             _dealUrl = StpFoodBlazor.Helpers.Helper.GetUrl("Deals");
+            _snelrandDealUrl = StpFoodBlazor.Helpers.Helper.GetUrl("Deals", StpFoodBlazor.Helpers.Helper.SNELRAND_SHEET_ID_VARIABLE);
             _giftCardUrl = StpFoodBlazor.Helpers.Helper.GetUrl("giftcards");
             _holidayUrl = "http://test-holiday-url/today/";
         }
@@ -78,6 +89,23 @@ namespace StpFoodBlazorTest.Services
             await _service.RefreshAsync([CacheKeys.Deals]);
 
             Assert.True(_cache.TryGetValue(CacheKeys.Deals, out _));
+        }
+
+        [Fact]
+        public async Task RefreshAsync_PopulatesSnelrandDealsCacheOnly_WhenSnelrandKeyProvided()
+        {
+            var deals = JsonSerializer.Deserialize<StpFoodBlazor.Models.DealEvent[]>(
+                File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "fixtures", "deals.json")))!;
+            _snelrandDealHandler.SetResponse(_snelrandDealUrl, new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = JsonContent.Create(deals)
+            });
+
+            await _service.RefreshAsync([CacheKeys.DealsSnelrand]);
+
+            Assert.True(_cache.TryGetValue(CacheKeys.DealsSnelrand, out _));
+            Assert.False(_cache.TryGetValue(CacheKeys.Deals, out _));
         }
 
         [Fact]
@@ -138,6 +166,7 @@ namespace StpFoodBlazorTest.Services
 
             Assert.Null(exception);
             Assert.False(_cache.TryGetValue(CacheKeys.Deals, out _));
+            Assert.False(_cache.TryGetValue(CacheKeys.DealsSnelrand, out _));
             Assert.False(_cache.TryGetValue(CacheKeys.GiftCards, out _));
             Assert.False(_cache.TryGetValue(CacheKeys.Holidays, out _));
         }

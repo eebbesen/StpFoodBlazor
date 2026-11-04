@@ -20,6 +20,7 @@ Create a `.env` file in the project root with the required variables:
     ASPNETCORE_ENVIRONMENT=Staging
     APPCONFIG__SHEETSURL=https://DOMAIN.vault.azure.net/
     APPCONFIG__SHEETID=12345abcde
+    APPCONFIG__SNELRANDSHEETID=98765zyxwv
     APPCONFIG__DEALURL=https://DOMAIN.azurewebsites.net/api
     APPCONFIG__GIFTCARDURL=https://DOMAIN.azurewebsites.net/api
     APPCONFIG__HOLIDAYURL=https://DOMAIN.azurewebsites.net/api
@@ -30,6 +31,7 @@ Alternatively, if the variables are already exported in your shell:
     $ docker run -p 8080:8080 \
     -e APPCONFIG__SHEETSURL=<URL> \
     -e APPCONFIG__SHEETID=<SHEET_ID> \
+    -e APPCONFIG__SNELRANDSHEETID=<SNELRAND_SHEET_ID> \
     -e APPCONFIG__HOLIDAYURL=<URL> \
     -e APPCONFIG__CACHEINVALIDATIONKEY=<VALUE> \
     -e APPCONFIG__KEYVAULTURL=<VALUE> \
@@ -83,6 +85,7 @@ You'll need to uncomment the job in test.yml that installs Chrome.
     $ act -W '.github/workflows/test.yml' --container-architecture linux/amd64 \
     --secret APPCONFIG__SHEETSURL=$APPCONFIG__SHEETSURL \
     --secret APPCONFIG__SHEETID=$APPCONFIG__SHEETID \
+    --secret APPCONFIG__SNELRANDSHEETID=$APPCONFIG__SNELRANDSHEETID \
     --secret APPCONFIG__HOLIDAYURL=$APPCONFIG__HOLIDAYURL \
     --secret APPCONFIG__CACHEINVALIDATIONKEY=$APPCONFIG__CACHEINVALIDATIONKEY \
     --secret APPCONFIG__KEYVAULTURL=$APPCONFIG__KEYVAULTURL \
@@ -107,6 +110,7 @@ Set required secrets via the CLI (never commit these):
 
     $ fly secrets set APPCONFIG__SHEETSURL=<URL>
     $ fly secrets set APPCONFIG__SHEETID=<GOOGLE_SHEETS_ID>
+    $ fly secrets set APPCONFIG__SNELRANDSHEETID=<SNELRAND_GOOGLE_SHEETS_ID>
     $ fly secrets set APPCONFIG__HOLIDAYURL=<URL>
     $ fly secrets set APPCONFIG__CACHEINVALIDATIONKEY=<KEY>
     $ fly secrets set APPCONFIG__KEYVAULTURL=<URL>

@@ -1,0 +1,94 @@
+@using Bunit
+@using AngleSharp.Dom
+@using AngleSharp.Html.Dom
+@using StpFoodBlazor.Components.Pages
+@using StpFoodBlazor.Models
+@using StpFoodBlazor.Services
+@using StpFoodBlazorTest.Services
+
+@code {
+    private TestContext ctx;
+    private TestTimeService timeService = new TestTimeService();
+
+    public SnelrandDealsTest()
+    {
+        ctx = new TestContext();
+        // The main page's service returns nothing, so any rows must come from the Snelling service.
+        ctx.Services.AddSingleton<IDealService>(new TestDealService { NoRecords = true });
+        ctx.Services.AddSingleton<ISnelrandDealService>(new TestSnelrandDealService());
+        ctx.Services.AddSingleton<IHolidayService>(new TestHolidayService());
+        ctx.Services.AddSingleton<ITimeService>(timeService);
+    }
+
+    [Fact]
+    public void ShouldBeRoutedAtDealsSnelrand()
+    {
+        var route = (RouteAttribute)Attribute.GetCustomAttribute(typeof(SnelrandDeals), typeof(RouteAttribute))!;
+
+        Assert.Equal("/deals_snelrand", route.Template);
+    }
+
+    [Fact]
+    public void ShouldDisplayDealsFromSnelrandService()
+    {
+        timeService.DayOfWeek = DayOfWeek.Wednesday.ToString();
+        var cut = ctx.Render(@<SnelrandDeals />);
+        var elements = getElements(cut);
+
+        Assert.Equal(23, elements.ChildElementCount);
+        Assert.Equal("1881 by Lake Elmo Inn", elements.Children[0].Children[0].InnerHtml);
+    }
+
+    [Fact]
+    public void ShouldNotUseMainDealService()
+    {
+        ctx.Services.AddSingleton<ISnelrandDealService>(new TestSnelrandDealService { NoRecords = true });
+        ctx.Services.AddSingleton<IDealService>(new TestDealService());
+
+        var cut = ctx.Render(@<SnelrandDeals />);
+        var elements = getElements(cut);
+
+        Assert.Equal(0, elements.ChildElementCount);
+    }
+
+    [Fact]
+    public void ShouldDisplayPlaceholderWhenLoading()
+    {
+        var tcs = new TaskCompletionSource<DealEvent[]>();
+        ctx.Services.AddSingleton<ISnelrandDealService>(new TestSnelrandDealService { PendingResult = tcs });
+
+        var cut = ctx.Render(@<SnelrandDeals />);
+
+        Assert.NotNull(cut.Find("#deals_table_body_placeholder"));
+        tcs.SetResult([]);
+        cut.WaitForElement("#deals_table_body");
+    }
+
+    [Fact]
+    public void ShouldAcceptDowParameter()
+    {
+        var navigationManager = ctx.Services.GetRequiredService<NavigationManager>();
+        navigationManager.NavigateTo(navigationManager.GetUriWithQueryParameter("dow", "sunday"));
+
+        var cut = ctx.Render(@<SnelrandDeals />);
+        var dowSelect = (IHtmlSelectElement)cut.Find("#day-of-week-select");
+        var elements = getElements(cut);
+
+        Assert.Equal("sunday", dowSelect.Value);
+        Assert.Equal(6, elements.ChildElementCount);
+    }
+
+    [Fact]
+    public void ShouldRenderPassportPrograms()
+    {
+        var cut = ctx.Render(@<SnelrandDeals />);
+
+        Assert.NotNull(cut.Find("section.passport-programs"));
+    }
+
+    private IElement getElements(IRenderedFragment cut)
+    {
+        cut.WaitForElement("#deals_table_body", TimeSpan.FromSeconds(5));
+        return cut.Find("#deals_table_body");
+    }
+}

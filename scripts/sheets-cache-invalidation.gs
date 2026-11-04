@@ -2,27 +2,31 @@
 // Set the constants below, then add an installable onChange trigger:
 //   Triggers > Add Trigger > onSheetChange | From spreadsheet | On change
 //
-// Sheet tab names must match the cache keys: "deals" and "giftcards".
+// TAB_KEYS maps each tab name (lowercase) to the cache key it invalidates.
 // Changes to any other tab are ignored.
+//
+// Main sheet:     { "deals": "deals", "giftcards": "giftcards" }
+// Snelling sheet: { "deals": "deals_snelrand" }
 
 const APP_URLS = [
   "https://your-app-1.azurewebsites.net/api/cache/invalidate",
   "https://your-app-2.azurewebsites.net/api/cache/invalidate"
 ];
 const CACHE_INVALIDATION_KEY = "your-secret-key-here";
-const VALID_KEYS = ["deals", "giftcards"];
+const TAB_KEYS = { "deals": "deals", "giftcards": "giftcards" };
 
 function onSheetChange(e) {
   var sheetName = e.source.getActiveSheet().getName().toLowerCase();
+  var cacheKey = TAB_KEYS[sheetName];
 
-  if (!VALID_KEYS.includes(sheetName)) {
+  if (!cacheKey) {
     Logger.log("Ignoring change on sheet: " + sheetName);
     return;
   }
 
   APP_URLS.forEach(function(appUrl) {
     try {
-      var response = UrlFetchApp.fetch(appUrl + "?key=" + sheetName, {
+      var response = UrlFetchApp.fetch(appUrl + "?key=" + cacheKey, {
         method: "post",
         headers: {
           "X-Cache-Invalidation-Key": CACHE_INVALIDATION_KEY
@@ -31,7 +35,7 @@ function onSheetChange(e) {
       });
 
       if (response.getResponseCode() === 200) {
-        Logger.log("Cache invalidated for: " + sheetName + " at " + appUrl);
+        Logger.log("Cache invalidated for: " + cacheKey + " at " + appUrl);
       } else {
         Logger.log("Cache invalidation failed for " + appUrl + ": " + response.getResponseCode() + " " + response.getContentText());
       }

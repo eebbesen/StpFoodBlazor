@@ -48,12 +48,14 @@ The backing Google Sheet requires the following tabs and corresponding column he
 ## Environment Variables
 
 `SHEETID` is the Google Sheet ID from which data will be read.
+`SNELRANDSHEETID` is the Google Sheet ID for the Snelling deals shown at `/deals_snelrand`. It needs a `Deals` tab with the same columns as above.
 `SHEETSURL` is the URL of the service that retrieves the data from the Google Sheet.
 `HOLIDAYURL` is the URL of the service that retrieves holiday data (e.g., https://DOMAIN.azurewebsites.net/api).
 `CACHEINVALIDATIONKEY` is the secret that allows the cache to be invalidated.
 `KEYVAULTURL` is the the URL of the Key Vault in Azure (for Application Insights)
 
     APPCONFIG__SHEETID
+    APPCONFIG__SNELRANDSHEETID
     APPCONFIG__SHEETSURL
     APPCONFIG__HOLIDAYURL
     APPCONFIG__CACHEINVALIDATIONKEY
@@ -95,6 +97,12 @@ See [scripts/sheets-cache-invalidation.gs](scripts/sheets-cache-invalidation.gs)
     -H "X-Cache-Invalidation-Key: SECRET"
 
     curl -X POST "https://stpfoodblazor.fly.dev/api/cache/invalidate?key=giftcards" \
+    -H "X-Cache-Invalidation-Key: SECRET"
+
+    curl -X POST "https://stpfoodblazor.fly.dev/api/cache/invalidate?key=deals_snelrand" \
+    -H "X-Cache-Invalidation-Key: SECRET"
+
+    curl -X POST "https://stpfoodblazor.fly.dev/api/cache/invalidate?key=holidays" \
     -H "X-Cache-Invalidation-Key: SECRET"
 
 ### Check cache status
