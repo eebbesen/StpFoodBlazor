@@ -96,7 +96,7 @@ You must navigate to the project in Render and do a manual deploy. Currently Clo
 
 ## Fly.io Deployment (currently disabled)
 
-The app is hosted on [Fly.io](https://fly.io) and deployed via Docker.
+The app was hosted on [Fly.io](https://fly.io) and deployed via Docker.
 
 ### First-time setup
 

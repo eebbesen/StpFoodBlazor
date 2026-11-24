@@ -103,6 +103,24 @@ namespace StpFoodBlazorTest.Services
         }
 
         [Fact]
+        public async Task GetDealsAsync_ShouldReturnEmptyArray_WhenApiReturnsErrorObject()
+        {
+            _messageHandlerMock.SetResponse(_testUrl, new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = new StringContent(
+                    """{"statusCode":400,"body":{"error":"google rejected sheet_id and/or tab_name"}}""",
+                    System.Text.Encoding.UTF8,
+                    "application/json")
+            });
+
+            var result = await _service.GetDealsAsync();
+
+            Assert.Empty(result);
+            Assert.False(_memoryCache.TryGetValue(CacheKeys.DealsSnelrand, out _));
+        }
+
+        [Fact]
         public async Task GetDealsAsync_ShouldReturnEmptyArray_WhenApiThrowsException()
         {
             _messageHandlerMock.SetResponse(_testUrl, new HttpResponseMessage
