@@ -92,7 +92,7 @@ You'll need to uncomment the job in test.yml that installs Chrome.
     -P ubuntu-latest=catthehacker/ubuntu:act-latest
 
 ## Render deployment
-You must navigate to the project in Render and do a manual deploy. Currently Cloudfare points to Render so this is the way to update stpfood.info.
+You must navigate to the project in Render and do a manual deploy. Currently Cloudflare points to Render so this is the way to update stpfood.info.
 
 ## Fly.io Deployment (currently disabled)
 
