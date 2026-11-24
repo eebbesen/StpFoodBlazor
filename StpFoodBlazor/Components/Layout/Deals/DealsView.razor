@@ -1,0 +1,122 @@
+@using StpFoodBlazor.Helpers
+@using StpFoodBlazor.Services
+@using StpFoodBlazor.Models
+@inject ITimeService TimeServiceImpl
+
+    <div class="container mb-5">
+        <PassportPrograms />
+        <DealFilterBar selectedDayOfWeek="@(selectedDayOfWeek == null ?
+                @TimeServiceImpl.GetDayOfWeek() : selectedDayOfWeek)"
+            OnSelectedDayChanged="OnSelectedDayChanged"
+            happyHour="@happyHour" OnHappyHourChanged="OnHappyHourChanged"
+            upcoming="@upcoming" OnUpcomingChanged="OnUpcomingChanged" />
+
+        <div role="status" class="visually-hidden">
+            @(deals == null ? "Loading deals, please wait." : $"{deals.Length} deal{(deals.Length == 1 ? "" : "s")} loaded.")
+        </div>
+
+        <div role="table" aria-label="Deals" aria-busy="@(deals == null ? "true" : "false")">
+            <DealTableHeader selectedDayOfWeek="@(selectedDayOfWeek == null ? @TimeServiceImpl.GetDayOfWeek() : selectedDayOfWeek)" upcoming="@upcoming" />
+            @if (deals == null)
+            {
+                <DealTableBodyPlaceholder />
+            }
+            else
+            {
+                <DealTableBody deals="@deals" selectedDayOfWeek="@selectedDayOfWeek" upcoming="@upcoming" />
+            }
+        </div>
+    </div>
+
+@code {
+    // Shared by every deals page; each page passes in the service for its own sheet.
+    [Parameter, EditorRequired]
+    public required IDealService DealService { get; set; }
+
+    private DealEvent[]? deals;
+    private DealEvent[]? allDeals = null;
+    private string? selectedDayOfWeek = null;
+
+    private bool happyHour = false;
+    private bool upcoming = false;
+    private bool alcoholOnly = false;
+
+    [SupplyParameterFromQuery]
+    public string? Dow { get; set; }
+    [SupplyParameterFromQuery]
+    public bool? Hh { get; set; }
+    [SupplyParameterFromQuery]
+    public bool? Upcoming { get; set; }
+    [SupplyParameterFromQuery]
+    public bool? AlcoholOnly { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            allDeals = await DealService.GetDealsAsync();
+            FilterDeals();
+            SortDeals();
+            StateHasChanged();
+        }
+    }
+
+    void OnSelectedDayChanged(ChangeEventArgs e)
+    {
+        selectedDayOfWeek = (string?)e.Value;
+        FilterDeals();
+        SortDeals();
+    }
+
+    void OnHappyHourChanged(ChangeEventArgs e)
+    {
+        if (e.Value is bool value)
+        {
+            happyHour = value;
+        }
+
+        FilterDeals();
+        SortDeals();
+    }
+
+    void OnUpcomingChanged(ChangeEventArgs e)
+    {
+        if (e.Value is bool value)
+        {
+            upcoming = value;
+        }
+
+        FilterDeals();
+        SortDeals();
+    }
+
+    protected override void OnParametersSet()
+    {
+        selectedDayOfWeek =
+            string.IsNullOrEmpty(Dow) ? TimeServiceImpl.GetDayOfWeek().ToLower() : Dow.ToLower();
+        happyHour = Hh == true;
+        upcoming = Upcoming == true;
+        alcoholOnly = AlcoholOnly == true;
+    }
+
+    private void FilterDeals()
+    {
+        var filter = new DealFilter
+        {
+            Deals = allDeals,
+            Day = selectedDayOfWeek,
+            HappyHour = happyHour,
+            AlcoholOnly = alcoholOnly,
+            StartInfinity = upcoming
+        };
+        deals = filter.Filter();
+    }
+
+    private void SortDeals()
+    {
+        if (deals != null)
+        {
+            deals = DealSorter.Sort(deals);
+        }
+    }
+}

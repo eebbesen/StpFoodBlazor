@@ -20,14 +20,17 @@ namespace StpFoodBlazor.Helpers
             return attribute?.InformationalVersion ?? string.Empty;
         }
 
-        public static string GetUrl(string? tabName)
+        public const string DEFAULT_SHEET_ID_VARIABLE = "APPCONFIG__SHEETID";
+        public const string SNELRAND_SHEET_ID_VARIABLE = "APPCONFIG__SNELRANDSHEETID";
+
+        public static string GetUrl(string? tabName, string sheetIdVariable = DEFAULT_SHEET_ID_VARIABLE)
         {
             if (string.IsNullOrEmpty(tabName))
             {
                 throw new ArgumentException("tabName cannot be empty.", nameof(tabName));
             }
 
-            string? sheetId = Environment.GetEnvironmentVariable("APPCONFIG__SHEETID");
+            string? sheetId = Environment.GetEnvironmentVariable(sheetIdVariable);
             string? sheetsUrl = Environment.GetEnvironmentVariable("APPCONFIG__SHEETSURL");
 
             return $"{sheetsUrl}/?sheet_id={sheetId}&tab_name={tabName}";

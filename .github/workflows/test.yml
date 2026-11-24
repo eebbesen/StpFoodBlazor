@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       APPCONFIG__SHEETID: ${{ secrets.APPCONFIG__SHEETID }}
+      APPCONFIG__SNELRANDSHEETID: ${{ secrets.APPCONFIG__SNELRANDSHEETID }}
       APPCONFIG__SHEETSURL: ${{ secrets.APPCONFIG__SHEETSURL }}
       APPCONFIG__HOLIDAYURL: ${{ secrets.APPCONFIG__HOLIDAYURL }}
       APPCONFIG__KEYVAULTURL: ${{ secrets.APPCONFIG__KEYVAULTURL }}

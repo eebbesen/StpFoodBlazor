@@ -40,6 +40,17 @@ namespace StpFoodBlazorTest.Helpers
         }
 
         [Fact]
+        public void GetUrl_WithSnelrandSheetIdVariable_UsesSnelrandSheetId()
+        {
+            Environment.SetEnvironmentVariable(Helper.SNELRAND_SHEET_ID_VARIABLE, "test-snelrand-sheet-id");
+            string sheetsUrl = Environment.GetEnvironmentVariable("APPCONFIG__SHEETSURL") ?? string.Empty;
+
+            string result = Helper.GetUrl("Deals", Helper.SNELRAND_SHEET_ID_VARIABLE);
+
+            Assert.Equal($"{sheetsUrl}/?sheet_id=test-snelrand-sheet-id&tab_name=Deals", result);
+        }
+
+        [Fact]
         public void GetVersion()
         {
             string version = Helper.GetVersion();

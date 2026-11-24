@@ -52,6 +52,7 @@ namespace StpFoodBlazorTest.Endpoints
 
         [Theory]
         [InlineData(CacheKeys.Deals)]
+        [InlineData(CacheKeys.DealsSnelrand)]
         [InlineData(CacheKeys.GiftCards)]
         public void Handle_ReturnsOk_WhenValidCacheKeySpecified(string cacheKey)
         {
@@ -113,6 +114,7 @@ namespace StpFoodBlazorTest.Endpoints
 
         [Theory]
         [InlineData(CacheKeys.Deals)]
+        [InlineData(CacheKeys.DealsSnelrand)]
         [InlineData(CacheKeys.GiftCards)]
         public void Handle_RemovesOnlySpecifiedKey_WhenCacheKeyProvided(string targetKey)
         {
@@ -149,6 +151,7 @@ namespace StpFoodBlazorTest.Endpoints
 
         [Theory]
         [InlineData(CacheKeys.Deals)]
+        [InlineData(CacheKeys.DealsSnelrand)]
         [InlineData(CacheKeys.GiftCards)]
         public void Handle_TriggersRefreshForSpecificKey_WhenKeyIsProvided(string targetKey)
         {
@@ -206,6 +209,7 @@ namespace StpFoodBlazorTest.Endpoints
 
             var response = Assert.IsType<Ok<CacheStatusResponse>>(result).Value!;
             Assert.True(response.Keys[CacheKeys.Deals]);
+            Assert.False(response.Keys[CacheKeys.DealsSnelrand]);
             Assert.False(response.Keys[CacheKeys.GiftCards]);
             Assert.False(response.Keys[CacheKeys.Holidays]);
         }

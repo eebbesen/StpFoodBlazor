@@ -64,4 +64,16 @@
         Assert.Contains("Deals", dealsLink.TextContent);
         Assert.Contains("StpFoodBlazor", brandLink.TextContent);
     }
+
+    [Fact]
+    public void ShouldRenderSnellingLink()
+    {
+        var cut = ctx.Render(@<NavMenu />);
+
+        var links = cut.FindAll("a.nav-link");
+        var snellingLink = links.Single(l => l.TextContent.Contains("Snelling"));
+
+        Assert.Equal(2, links.Count);
+        Assert.Equal("deals_snelrand", snellingLink.GetAttribute("href"));
+    }
 }

@@ -83,12 +83,14 @@ builder.Services.AddMemoryCache();
 builder.Services.AddScoped<ITimeService, TimeService>();
 
 builder.Services.AddHttpClient<HttpDealService>().AddStandardResilienceHandler();
+builder.Services.AddHttpClient<HttpSnelrandDealService>().AddStandardResilienceHandler();
 builder.Services.AddHttpClient<HttpGiftCardService>().AddStandardResilienceHandler();
 builder.Services.AddHttpClient<HttpHolidayService>().AddStandardResilienceHandler();
 builder.Services.AddScoped<IHolidayService>(sp => sp.GetRequiredService<HttpHolidayService>());
 builder.Services.AddScoped<ICacheRefreshService, CacheRefreshService>();
 
 builder.Services.AddScoped<IDealService>(sp => sp.GetRequiredService<HttpDealService>());
+builder.Services.AddScoped<ISnelrandDealService>(sp => sp.GetRequiredService<HttpSnelrandDealService>());
 builder.Services.AddScoped<IGiftCardService>(sp => sp.GetRequiredService<HttpGiftCardService>());
 builder.Services.AddHttpContextAccessor();
 

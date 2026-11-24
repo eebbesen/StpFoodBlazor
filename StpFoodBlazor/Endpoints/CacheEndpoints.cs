@@ -64,7 +64,7 @@ namespace StpFoodBlazor.Endpoints
             var authResult = ValidateAuth(ctx, config, logger);
             if (authResult is not null) return authResult;
 
-            var allKeys = CacheKeys.SheetKeys.Append(CacheKeys.Holidays);
+            var allKeys = CacheKeys.SheetKeys;
             var status = allKeys.ToDictionary(k => k, k => cache.TryGetValue(k, out _));
 
             return Results.Ok(new CacheStatusResponse(status));

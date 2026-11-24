@@ -2,6 +2,7 @@ namespace StpFoodBlazor.Services
 {
     public class CacheRefreshService(
         HttpDealService dealService,
+        HttpSnelrandDealService snelrandDealService,
         HttpGiftCardService giftCardService,
         HttpHolidayService holidayService,
         ILogger<CacheRefreshService> logger) : ICacheRefreshService
@@ -16,6 +17,9 @@ namespace StpFoodBlazor.Services
                     {
                         case CacheKeys.Deals:
                             await dealService.GetDealsAsync();
+                            break;
+                        case CacheKeys.DealsSnelrand:
+                            await snelrandDealService.GetDealsAsync();
                             break;
                         case CacheKeys.GiftCards:
                             await giftCardService.GetGiftCardsAsync();
