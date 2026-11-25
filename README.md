@@ -53,6 +53,7 @@ The backing Google Sheet requires the following tabs and corresponding column he
 `HOLIDAYURL` is the URL of the service that retrieves holiday data (e.g., https://DOMAIN.azurewebsites.net/api).
 `CACHEINVALIDATIONKEY` is the secret that allows the cache to be invalidated.
 `KEYVAULTURL` is the the URL of the Key Vault in Azure (for Application Insights)
+`RENDER_GIT_COMMIT`, `GITHUB_SHA`, or `SOURCE_VERSION` (optional) can be set by your deployment platform to show the deployed git SHA on the About page.
 
     APPCONFIG__SHEETID
     APPCONFIG__SNELRANDSHEETID

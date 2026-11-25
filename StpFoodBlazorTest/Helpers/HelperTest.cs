@@ -58,6 +58,33 @@ namespace StpFoodBlazorTest.Helpers
             Assert.True(match.Success, $"Version '{version}' could not be parsed into parts");
         }
 
+        [Fact]
+        public void GetVersion_WithRenderGitCommit_UsesRenderGitCommit()
+        {
+            const string renderSha = "1234567890abcdef1234567890abcdef12345678";
+            string? originalRenderSha = Environment.GetEnvironmentVariable("RENDER_GIT_COMMIT");
+            string? originalGithubSha = Environment.GetEnvironmentVariable("GITHUB_SHA");
+            string? originalSourceVersion = Environment.GetEnvironmentVariable("SOURCE_VERSION");
+
+            try
+            {
+                Environment.SetEnvironmentVariable("RENDER_GIT_COMMIT", renderSha);
+                Environment.SetEnvironmentVariable("GITHUB_SHA", null);
+                Environment.SetEnvironmentVariable("SOURCE_VERSION", null);
+
+                string version = Helper.GetVersion();
+                string baseVersion = version.Split('+')[0];
+
+                Assert.Equal($"{baseVersion}+{renderSha}", version);
+            }
+            finally
+            {
+                Environment.SetEnvironmentVariable("RENDER_GIT_COMMIT", originalRenderSha);
+                Environment.SetEnvironmentVariable("GITHUB_SHA", originalGithubSha);
+                Environment.SetEnvironmentVariable("SOURCE_VERSION", originalSourceVersion);
+            }
+        }
+
         [GeneratedRegex(@"^(\d+\.\d+\.\d+)\+([a-f0-9]{40})$")]
         private static partial Regex MyRegex();
 

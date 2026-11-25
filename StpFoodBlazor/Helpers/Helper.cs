@@ -14,10 +14,24 @@ namespace StpFoodBlazor.Helpers
     {
         private const string DATE_DASH_FORMAT = "MM-dd";
         private const string DATE_SLASH_FORMAT = "MM/dd";
+        private static readonly string[] CommitShaVariableNames = ["RENDER_GIT_COMMIT", "GITHUB_SHA", "SOURCE_VERSION"];
+
         public static string GetVersion()
         {
             var attribute = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>();
-            return attribute?.InformationalVersion ?? string.Empty;
+            var version = attribute?.InformationalVersion ?? string.Empty;
+
+            foreach (var variableName in CommitShaVariableNames)
+            {
+                var commitSha = Environment.GetEnvironmentVariable(variableName);
+                if (!string.IsNullOrWhiteSpace(commitSha))
+                {
+                    var baseVersion = version.Split('+')[0];
+                    return $"{baseVersion}+{commitSha.Trim()}";
+                }
+            }
+
+            return version;
         }
 
         public const string DEFAULT_SHEET_ID_VARIABLE = "APPCONFIG__SHEETID";
